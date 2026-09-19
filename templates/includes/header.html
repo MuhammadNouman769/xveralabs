@@ -1004,6 +1004,146 @@ body {
   
   .btr-logo-switch {
     width: 100px;
+
+/* ================= POLISHED HEADER OVERRIDES ================= */
+.btr-header {
+  padding: 0 24px;
+  pointer-events: none;
+}
+
+.btr-header__inner {
+  pointer-events: auto;
+  margin: 14px auto;
+  min-height: 70px;
+  padding: 0 18px 0 22px;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(14, 186, 177, 0.16);
+  border-radius: 22px;
+  box-shadow: 0 12px 40px rgba(15, 42, 39, 0.12), inset 0 1px 0 rgba(255,255,255,0.9);
+  backdrop-filter: blur(22px) saturate(1.25);
+  -webkit-backdrop-filter: blur(22px) saturate(1.25);
+}
+
+.btr-header__inner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(105deg, rgba(14,186,177,0.08), transparent 35%, rgba(94,234,212,0.06));
+  pointer-events: none;
+}
+
+.btr-logo-switch {
+  z-index: 1;
+  width: 138px;
+  height: 44px;
+  padding: 5px 8px;
+  border-radius: 13px;
+  background: rgba(14, 186, 177, 0.06);
+  border: 1px solid rgba(14, 186, 177, 0.12);
+  transition: transform 0.35s var(--transition), box-shadow 0.35s var(--transition), background 0.35s var(--transition);
+}
+
+.btr-logo-switch:hover {
+  transform: translateY(-2px);
+  background: rgba(14, 186, 177, 0.11);
+  box-shadow: 0 8px 18px rgba(14, 186, 177, 0.14);
+}
+
+.btr-nav {
+  position: relative;
+  z-index: 1;
+}
+
+.btr-nav__list {
+  gap: 5px;
+}
+
+.btr-nav__link {
+  padding: 11px 13px;
+  color: #24413e;
+  border: 1px solid transparent;
+  font-size: 12px;
+  letter-spacing: 0.015em;
+}
+
+.btr-nav__link:hover,
+.btr-nav__link.active,
+.btrx-mega-parent.is-open > .btr-nav__link {
+  color: #087f79;
+  background: linear-gradient(135deg, rgba(14,186,177,0.13), rgba(94,234,212,0.07));
+  border-color: rgba(14,186,177,0.15);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
+}
+
+.btr-nav__link::after {
+  bottom: 4px;
+  background: #0ebab1;
+  box-shadow: 0 0 8px rgba(14,186,177,0.45);
+}
+
+.btrx-mega-menu {
+  top: calc(100% + 16px);
+  padding: 32px 38px;
+  border: 1px solid rgba(14,186,177,0.14);
+  border-radius: 22px;
+  background: rgba(255,255,255,0.94);
+  box-shadow: 0 28px 75px rgba(15,42,39,0.16), inset 0 1px 0 rgba(255,255,255,0.95);
+  backdrop-filter: blur(24px) saturate(1.2);
+  -webkit-backdrop-filter: blur(24px) saturate(1.2);
+}
+
+.btrx-mega-col h4 {
+  background: linear-gradient(135deg, rgba(14,186,177,0.14), rgba(14,186,177,0.04));
+  color: #16413d;
+}
+
+.btrx-mega-links a {
+  color: #3a514e;
+  border: 1px solid transparent;
+}
+
+.btrx-mega-links a:hover {
+  color: #087f79;
+  background: rgba(14,186,177,0.08);
+  border-color: rgba(14,186,177,0.1);
+}
+
+.btrx-mega-right {
+  border-left-color: rgba(14,186,177,0.14);
+}
+
+.btr-menu {
+  z-index: 1;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #0b817b, #0ebab1 58%, #5eead4);
+  box-shadow: 0 8px 22px rgba(14,186,177,0.32), inset 0 1px 0 rgba(255,255,255,0.35);
+}
+
+.btr-menu:hover {
+  box-shadow: 0 12px 28px rgba(14,186,177,0.45), inset 0 1px 0 rgba(255,255,255,0.45);
+}
+
+@media (max-width: 992px) {
+  .btr-header__inner {
+    padding: 0 16px 0 18px;
+    min-height: 64px;
+  }
+}
+
+@media (max-width: 768px) {
+  .btr-header {
+    padding: 0 12px;
+  }
+
+  .btr-header__inner {
+    margin: 10px auto;
+    min-height: 60px;
+    border-radius: 17px;
+  }
+}
     height: 32px;
   }
   
@@ -1085,7 +1225,7 @@ body {
                 <h4>Join X {Vera} Solutions</h4>
                 <ul class="btrx-mega-links">
                   <li><a href="{% url 'careeer' %}">Careers</a></li>
-                  <li><a href="{% url 'life_at_mn_solutions' %}">Life at X {Vera} Solutions</a></li>
+                  <li><a href="{% url 'life_at_mn_solutions' %}">Life at Xver Labs</a></li>
                   <li><a href="{% url 'diversity_equity_inclusion' %}">Diversity, Equity and Inclusion</a></li>
                   <li><a href="{% url 'contact_us' %}">Employee Success</a></li>
                   <li><a href="{% url 'contact_us' %}">Benefits</a></li>
@@ -1100,8 +1240,8 @@ body {
                   <img src="{% static 'images/logos/xvera.png' %}" class="btrx-brand-hover" alt="Logo Hover">
                 </a>
               </div>
-              <h3 class="btrx-company-title">About X {Vera} Solutions</h3>
-              <p class="btrx-company-desc">X {Vera} Solutions is a technology partner helping startups, SMEs and enterprises build innovative software products, scalable cloud infrastructure and AI-powered digital solutions.</p>
+              <h3 class="btrx-company-title">About Xvera Labs</h3>
+              <p class="btrx-company-desc">Xvera Labs is a technology partner helping startups, SMEs and enterprises build innovative software products, scalable cloud infrastructure and AI-powered digital solutions.</p>
               <div class="btrx-about-stats">
                 <div class="btrx-about-stat">
                   <h5>50+</h5>
@@ -1603,7 +1743,7 @@ body {
                 </a>
               </div>
               <h3 class="btrx-company-title">Proven Results</h3>
-              <p class="btrx-company-desc">Explore how BTR Solutions has helped startups and enterprises build scalable digital products, optimize operations and achieve measurable business growth.</p>
+              <p class="btrx-company-desc">Explore how Xvera Labs has helped startups and enterprises build scalable digital products, optimize operations and achieve measurable business growth.</p>
               <div class="btrx-case-highlight">
                 <strong>Featured Success</strong>
                 <p>Delivered a cloud-native SaaS platform that reduced operational costs by 40% and improved deployment speed by 5x.</p>
@@ -1766,7 +1906,7 @@ body {
       <button class="tf-close" id="btrClose" aria-label="Close menu">×</button>
     </div>
     <div class="tf-section">
-      <p>Welcome to X {Vera} Solutions, where innovation meets passion to drive the digital future. We are not just an IT company; we are a force of technology enthusiasts dedicated to pushing boundaries and unlocking possibilities.</p>
+      <p>Welcome to Xvera Labs, where innovation meets passion to drive the digital future. We are not just an IT company; we are a force of technology enthusiasts dedicated to pushing boundaries and unlocking possibilities.</p>
     </div>
     <div class="tf-section">
       <h4>Contact Info</h4>
@@ -1774,7 +1914,7 @@ body {
         <p>297-C, P.I.A. Main Boulevard Road, Lahore Pakistan.</p>
       </div>
       <div class="tf-info">
-        <p>btrsolution.contact@gmail.com</p>
+        <p>xveralabs.contact@gmail.com</p>
       </div>
       <div class="tf-info">
         <p>+92 324 8699647</p>
