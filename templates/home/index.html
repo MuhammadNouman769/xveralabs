@@ -584,26 +584,65 @@
     }
     .btr-black-hole {
         position: absolute;
-        width: 46px;
-        height: 46px;
+        width: 76px;
+        height: 76px;
         border-radius: 50%;
-        background: #010207;
-        border: 2px solid rgba(216, 180, 254, 0.8);
-        box-shadow: 0 0 12px #a855f7, 0 0 35px rgba(168, 85, 247, 0.6), inset 0 0 14px #000;
+        background: radial-gradient(circle, #000 0 42%, #03030a 58%, rgba(20, 8, 45, 0.82) 70%, transparent 72%);
+        border: 5px solid rgba(251, 146, 60, 0.76);
+        box-shadow: 0 0 10px #fff7ed, 0 0 26px #f97316, 0 0 64px rgba(168, 85, 247, 0.9), inset 0 0 24px #000;
         animation: btr-hole-pulse 3.2s ease-in-out infinite;
         z-index: 2;
+        transform-style: preserve-3d;
     }
     .btr-black-hole::before {
         content: "";
         position: absolute;
-        inset: -12px;
+        inset: -19px;
         border-radius: 50%;
-        border: 3px solid rgba(251, 146, 60, 0.62);
+        border: 9px solid rgba(249, 115, 22, 0.38);
         transform: rotateX(68deg) rotateZ(-18deg);
-        box-shadow: 0 0 12px rgba(251, 146, 60, 0.8);
+        box-shadow: 0 0 12px #fb923c, 0 0 28px rgba(168, 85, 247, 0.85), inset 0 0 18px #facc15;
+        animation: btr-disk-spin 2.8s linear infinite;
+    }
+    .btr-black-hole::after {
+        content: "";
+        position: absolute;
+        inset: -34px;
+        border-radius: 50%;
+        border: 1px solid rgba(216, 180, 254, 0.4);
+        transform: rotateX(72deg) rotateZ(28deg);
+        box-shadow: 0 0 18px rgba(192, 132, 252, 0.7), inset 0 0 18px rgba(249, 115, 22, 0.45);
+        animation: btr-lens-spin 8s linear infinite reverse;
     }
     .btr-black-hole--one { top: 12%; right: 30%; }
-    .btr-black-hole--two { bottom: 12%; left: 4%; width: 34px; height: 34px; animation-delay: 1.2s; }
+    .btr-black-hole--two { bottom: 12%; left: 4%; width: 56px; height: 56px; animation-delay: 1.2s; }
+    .btr-gravity-particle,
+    .btr-infall-planet {
+        position: absolute;
+        display: block;
+        z-index: 4;
+        border-radius: 50%;
+        pointer-events: none;
+    }
+    .btr-gravity-particle {
+        width: 7px;
+        height: 7px;
+        background: #fff7ed;
+        box-shadow: 0 0 10px #fbbf24, 0 0 20px #f97316;
+        animation: btr-fall-into-hole 5.5s linear infinite;
+    }
+    .btr-gravity-particle--one { top: 17%; right: 66%; animation-delay: -1s; }
+    .btr-gravity-particle--two { top: 35%; right: 53%; animation-delay: -3.2s; }
+    .btr-gravity-particle--three { top: 8%; right: 43%; animation-delay: -4.2s; }
+    .btr-infall-planet {
+        width: 20px;
+        height: 20px;
+        top: 30%;
+        right: 50%;
+        background: radial-gradient(circle at 30% 28%, #fef3c7, #f97316 48%, #431407 100%);
+        box-shadow: 0 0 12px #fb923c, 0 0 28px rgba(249, 115, 22, 0.7);
+        animation: btr-planet-fall 7s ease-in infinite;
+    }
     @keyframes btr-float-planet {
         0%, 100% { transform: translateY(0px) scale(1); }
         50% { transform: translateY(-14px) scale(1.04); }
@@ -627,6 +666,26 @@
     @keyframes btr-hole-pulse {
         0%, 100% { transform: scale(0.94); }
         50% { transform: scale(1.08); }
+    }
+    @keyframes btr-disk-spin {
+        from { transform: rotateX(68deg) rotateZ(0deg) scaleX(1.18); }
+        to { transform: rotateX(68deg) rotateZ(360deg) scaleX(1.18); }
+    }
+    @keyframes btr-lens-spin {
+        from { transform: rotateX(72deg) rotateZ(0deg) scale(0.92); }
+        to { transform: rotateX(72deg) rotateZ(360deg) scale(1.06); }
+    }
+    @keyframes btr-fall-into-hole {
+        0% { transform: translate3d(210px, -110px, 0) scale(0.55); opacity: 0; }
+        18% { opacity: 1; }
+        72% { transform: translate3d(58px, -22px, 0) scale(1.25); opacity: 1; }
+        100% { transform: translate3d(0, 0, 0) scale(0); opacity: 0; }
+    }
+    @keyframes btr-planet-fall {
+        0% { transform: translate3d(190px, 110px, 0) rotate(0deg) scale(0.7); opacity: 0; }
+        16% { opacity: 1; }
+        78% { transform: translate3d(54px, 18px, 0) rotate(280deg) scale(1); opacity: 1; }
+        100% { transform: translate3d(0, 0, 0) rotate(360deg) scale(0); opacity: 0; }
     }
     .btr-floating-card {
         position: absolute;
@@ -2200,6 +2259,10 @@
                 <div class="btr-space-planet btr-space-planet--saturn"></div>
                 <div class="btr-black-hole btr-black-hole--one" aria-label="Black hole"></div>
                 <div class="btr-black-hole btr-black-hole--two" aria-label="Black hole"></div>
+                <span class="btr-gravity-particle btr-gravity-particle--one"></span>
+                <span class="btr-gravity-particle btr-gravity-particle--two"></span>
+                <span class="btr-gravity-particle btr-gravity-particle--three"></span>
+                <span class="btr-infall-planet"></span>
                 <div class="btr-comet"></div>
             </div>
 
