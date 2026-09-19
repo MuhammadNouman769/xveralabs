@@ -135,7 +135,7 @@
         position: relative;
         z-index: 2;
         width: 100%;
-        padding: 0 8%;
+        padding: 90px 8% 0;
         color: #fff;
         display: flex;
         align-items: center;
@@ -146,6 +146,7 @@
         max-width: 720px;
         position: relative;
         z-index: 1;
+        animation: btr-copy-float 7s ease-in-out infinite;
     }
     .btr-hero-tag {
         display: inline-block;
@@ -187,7 +188,7 @@
         font-weight: 500;
         line-height: 1.75;
         margin-bottom: 32px;
-        font-size: 1.06rem;
+        font-size: 0.94rem;
     }
     .btr-hero-buttons {
         display: flex;
@@ -231,9 +232,9 @@
         flex-wrap: wrap;
     }
     .btr-hero-stats div {
-        min-width: 130px;
-        padding: 14px 18px;
-        border-radius: 18px;
+        min-width: 105px;
+        padding: 10px 13px;
+        border-radius: 14px;
         background: rgba(15, 23, 42, 0.36);
         border: 1px solid rgba(148, 163, 184, 0.18);
         backdrop-filter: blur(8px);
@@ -241,13 +242,13 @@
     }
     .btr-hero-stats div b {
         color: #7ef6eb;
-        font-size: 21px;
+        font-size: 17px;
         display: block;
         margin-bottom: 3px;
     }
     .btr-hero-stats div span {
         color: rgba(255,255,255,0.7);
-        font-size: 0.72rem;
+        font-size: 0.62rem;
         letter-spacing: 0.14em;
         text-transform: uppercase;
     }
@@ -280,6 +281,7 @@
         background: radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(254,240,138,0.9) 18%, rgba(251,191,36,0.9) 38%, rgba(249,115,22,0.8) 62%, rgba(234,88,12,0.2) 100%);
         box-shadow: 0 0 35px rgba(251, 191, 36, 0.7), 0 0 90px rgba(249, 115, 22, 0.35);
         filter: saturate(1.1);
+        animation: btr-sun-pulse 4s ease-in-out infinite;
     }
     .btr-planet-core {
         position: absolute;
@@ -418,19 +420,19 @@
     .btr-orbit-1 {
         width: 440px;
         height: 440px;
-        animation: none;
+        animation: btr-spin 18s linear infinite;
     }
     .btr-orbit-2 {
         width: 500px;
         height: 500px;
         border-color: rgba(126, 246, 235, 0.18);
-        animation: none;
+        animation: btr-spin-reverse 22s linear infinite;
     }
     .btr-orbit-3 {
         width: 560px;
         height: 560px;
         border-color: rgba(167, 243, 208, 0.12);
-        animation: none;
+        animation: btr-spin 26s linear infinite;
     }
     .btr-planet-sat {
         position: absolute;
@@ -528,9 +530,103 @@
         border: 4px solid rgba(253, 224, 71, 0.75);
         box-shadow: 0 0 22px rgba(253, 224, 71, 0.3);
     }
+    .btr-orbit-planet {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        border-radius: 50%;
+        transform: translate(-50%, -50%) rotateX(75deg);
+        transform-style: preserve-3d;
+    }
+    .btr-orbit-planet::after {
+        content: "";
+        position: absolute;
+        width: 26px;
+        height: 26px;
+        top: 50%;
+        left: 100%;
+        border-radius: 50%;
+        transform: translate(-50%, -50%) rotateX(-75deg);
+        box-shadow: 0 0 18px currentColor;
+    }
+    .btr-orbit-planet--blue {
+        width: 440px;
+        height: 440px;
+        color: #38bdf8;
+        animation: btr-orbit-planet 18s linear infinite;
+    }
+    .btr-orbit-planet--blue::after {
+        background: radial-gradient(circle at 35% 30%, #e0f2fe, #38bdf8 35%, #075985 100%);
+    }
+    .btr-orbit-planet--red {
+        width: 500px;
+        height: 500px;
+        color: #fb7185;
+        animation: btr-orbit-planet-reverse 22s linear infinite;
+    }
+    .btr-orbit-planet--red::after {
+        width: 20px;
+        height: 20px;
+        background: radial-gradient(circle at 35% 30%, #fecdd3, #f43f5e 45%, #881337 100%);
+    }
+    .btr-orbit-planet--ringed {
+        width: 560px;
+        height: 560px;
+        color: #facc15;
+        animation: btr-orbit-planet 26s linear infinite;
+    }
+    .btr-orbit-planet--ringed::after {
+        width: 34px;
+        height: 34px;
+        background: radial-gradient(circle at 35% 30%, #fef9c3, #f59e0b 55%, #78350f 100%);
+        border: 3px solid rgba(253, 224, 71, 0.72);
+        box-shadow: 0 0 18px currentColor, 0 0 0 7px rgba(253, 224, 71, 0.24);
+    }
+    .btr-black-hole {
+        position: absolute;
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        background: #010207;
+        border: 2px solid rgba(216, 180, 254, 0.8);
+        box-shadow: 0 0 12px #a855f7, 0 0 35px rgba(168, 85, 247, 0.6), inset 0 0 14px #000;
+        animation: btr-hole-pulse 3.2s ease-in-out infinite;
+        z-index: 2;
+    }
+    .btr-black-hole::before {
+        content: "";
+        position: absolute;
+        inset: -12px;
+        border-radius: 50%;
+        border: 3px solid rgba(251, 146, 60, 0.62);
+        transform: rotateX(68deg) rotateZ(-18deg);
+        box-shadow: 0 0 12px rgba(251, 146, 60, 0.8);
+    }
+    .btr-black-hole--one { top: 12%; right: 30%; }
+    .btr-black-hole--two { bottom: 12%; left: 4%; width: 34px; height: 34px; animation-delay: 1.2s; }
     @keyframes btr-float-planet {
         0%, 100% { transform: translateY(0px) scale(1); }
         50% { transform: translateY(-14px) scale(1.04); }
+    }
+    @keyframes btr-copy-float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-9px); }
+    }
+    @keyframes btr-sun-pulse {
+        0%, 100% { transform: scale(1); filter: saturate(1.1); }
+        50% { transform: scale(1.08); filter: saturate(1.35); }
+    }
+    @keyframes btr-orbit-planet {
+        0% { transform: translate(-50%, -50%) rotateX(75deg) rotateZ(0deg); }
+        100% { transform: translate(-50%, -50%) rotateX(75deg) rotateZ(360deg); }
+    }
+    @keyframes btr-orbit-planet-reverse {
+        0% { transform: translate(-50%, -50%) rotateX(75deg) rotateZ(360deg); }
+        100% { transform: translate(-50%, -50%) rotateX(75deg) rotateZ(0deg); }
+    }
+    @keyframes btr-hole-pulse {
+        0%, 100% { transform: scale(0.94); }
+        50% { transform: scale(1.08); }
     }
     .btr-floating-card {
         position: absolute;
@@ -1824,7 +1920,7 @@
     ================================================== */
     .btrx-clients-section {
         padding: 60px 0 70px;
-        background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+        background: #1e9f99;
         overflow: hidden;
         position: relative;
     }
@@ -2090,6 +2186,9 @@
                 <div class="btr-orbit btr-orbit-1"></div>
                 <div class="btr-orbit btr-orbit-2"></div>
                 <div class="btr-orbit btr-orbit-3"></div>
+                <div class="btr-orbit-planet btr-orbit-planet--blue" aria-hidden="true"></div>
+                <div class="btr-orbit-planet btr-orbit-planet--red" aria-hidden="true"></div>
+                <div class="btr-orbit-planet btr-orbit-planet--ringed" aria-hidden="true"></div>
                 <div class="btr-earth-orbit"><div class="btr-moon"></div></div>
                 <div class="btr-planet-ring"></div>
                 <div class="btr-planet-core"></div>
@@ -2099,6 +2198,8 @@
                 <div class="btr-space-planet btr-space-planet--mars"></div>
                 <div class="btr-space-planet btr-space-planet--platinum"></div>
                 <div class="btr-space-planet btr-space-planet--saturn"></div>
+                <div class="btr-black-hole btr-black-hole--one" aria-label="Black hole"></div>
+                <div class="btr-black-hole btr-black-hole--two" aria-label="Black hole"></div>
                 <div class="btr-comet"></div>
             </div>
 
