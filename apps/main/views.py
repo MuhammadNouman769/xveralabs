@@ -62,3 +62,6 @@ def coming(request):
 
 def careeer(request):
     return render(request, 'about/careers.html')
+
+def articial_detail(request):
+    return render(request, 'artificial_intelligence/ariticial_itelligence_detail.html')

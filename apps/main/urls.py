@@ -23,5 +23,7 @@ urlpatterns = [
    # path('about/leadership-&-team/', views.leadship, name='leadership-&-team'),
     path('coming-soon/', views.coming, name='coming'),
     path('about-us/why-choose-us/', views.why_choose_us, name='why_choose_us'),
-    path('about/careeer/', views.careeer, name="careeer")
+    path('about/careeer/', views.careeer, name="careeer"),
+    path('about/art/', views.articial_detail, name="careeer")
+    
 ]
