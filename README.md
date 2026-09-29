@@ -1,5 +1,5 @@
 
-# Xvera Labs
+# XVERA — Excellence in Versatile Technology & AI
 
 Xvera Labs is a Django-based corporate website designed for a technology and consulting company. The project includes the main landing page, about section, services, projects, blogs, contact page, FAQ pages, and a modular app structure for future expansion.
 
