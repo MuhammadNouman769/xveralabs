@@ -175,19 +175,35 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 4. Apply database migrations
+### 4. Configure environment
+
+For local development, copy `.env.example` to `.env`, generate a `DJANGO_SECRET_KEY`, then set `DJANGO_DEBUG=True`, `DJANGO_DB_ENGINE=sqlite`, and `DJANGO_SECURE_SSL_REDIRECT=False` in `.env`.
+
+Generate a local secret with:
+
+```bash
+python -c "import secrets; print(secrets.token_urlsafe(64))"
+```
+
+For deployment, configure the values from `.env.example` in your hosting provider instead of committing `.env`. Set the real domain names and trusted origins, provide the PostgreSQL credentials, and use HTTPS. Enable the proxy SSL header setting only when your trusted reverse proxy overwrites that header.
+
+### 5. Prepare the application
 
 ```bash
 python manage.py migrate
+python manage.py collectstatic --noinput
+python manage.py check --deploy
 ```
 
-### 5. Create a superuser
+The included `Procfile` starts the application with Gunicorn on the platform-provided port.
+
+### 6. Create a superuser
 
 ```bash
 python manage.py createsuperuser
 ```
 
-### 6. Run the development server
+### 7. Run the development server
 
 ```bash
 python manage.py runserver
@@ -209,14 +225,14 @@ http://127.0.0.1:8000/admin/
 
 ## Configuration Notes
 
-- The project currently uses SQLite for local development.
-- DEBUG is enabled in settings for local development.
-- For production, update the following before deployment:
-  - SECRET_KEY
-  - DEBUG
-  - ALLOWED_HOSTS
-  - database configuration
-  - static/media deployment settings
+- `.env.example` contains production-shaped settings; adapt it for local development as described above.
+- `.env` is loaded automatically and ignored by Git. Never commit production secrets.
+- The project uses SQLite by default for local development. Set `DJANGO_DB_ENGINE=postgresql` and the `DJANGO_DB_*` values for PostgreSQL.
+- `DJANGO_DEBUG` defaults to `False`; set it to `True` only in your local `.env` when developing.
+- Before deployment, configure `DJANGO_ALLOWED_HOSTS`, `DJANGO_CSRF_TRUSTED_ORIGINS`, the database, and HTTPS settings in the hosting provider's environment.
+- Run `python manage.py migrate`, `python manage.py collectstatic --noinput`, and `python manage.py check --deploy` during deployment.
+- WhiteNoise serves collected static files. User-uploaded media should be stored on persistent/object storage or served by the hosting platform; the local `media/` directory is not durable on many hosts.
+- Django's custom 404 and 500 responses use `templates/404.html` and `templates/500.html` when `DEBUG=False`.
 
 ## Notes
 

@@ -1,0 +1,132 @@
+.xvera-error-page {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  min-height: 620px;
+  padding: 150px 24px 88px;
+  place-items: center;
+  overflow: hidden;
+  background-color: #f5f8f7;
+  background-image:
+    linear-gradient(rgba(26, 56, 58, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26, 56, 58, 0.035) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+.xvera-error-page::before {
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  width: 520px;
+  height: 520px;
+  border: 1px solid rgba(14, 128, 122, 0.12);
+  border-radius: 50%;
+  content: "";
+  transform: translate(-50%, -50%);
+}
+
+.xvera-error-content {
+  width: min(100%, 680px);
+  text-align: center;
+}
+
+.xvera-error-kicker {
+  margin: 0 0 20px;
+  color: #55716f;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.xvera-error-code {
+  margin: 0;
+  color: #087f79;
+  font-size: 148px;
+  font-weight: 800;
+  line-height: 0.9;
+}
+
+.xvera-error-page[data-error="500"] .xvera-error-code {
+  color: #a44f3e;
+}
+
+.xvera-error-title {
+  margin: 22px 0 10px;
+  color: #172d30;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.xvera-error-copy {
+  max-width: 520px;
+  margin: 0 auto;
+  color: #526466;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.xvera-error-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.xvera-error-action {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  border: 1px solid #087f79;
+  border-radius: 6px;
+  background: #087f79;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.xvera-error-action:hover {
+  background: #066b66;
+  color: #fff;
+}
+
+.xvera-error-action--secondary {
+  background: transparent;
+  color: #087f79;
+}
+
+.xvera-error-action--secondary:hover {
+  background: rgba(8, 127, 121, 0.08);
+  color: #066b66;
+}
+
+@media (max-width: 600px) {
+  .xvera-error-page {
+    min-height: 520px;
+    padding: 128px 20px 64px;
+  }
+
+  .xvera-error-page::before {
+    width: 340px;
+    height: 340px;
+  }
+
+  .xvera-error-code {
+    font-size: 104px;
+  }
+
+  .xvera-error-title {
+    font-size: 28px;
+  }
+
+  .xvera-error-copy {
+    font-size: 15px;
+  }
+}

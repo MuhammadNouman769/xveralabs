@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Server Error | Xvera Labs{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/error-pages.css' %}">
+{% endblock %}
+
+{% block content %}
+<main class="xvera-error-page" data-error="500">
+  <div class="xvera-error-content">
+    <p class="xvera-error-kicker">Xvera Labs / Server response</p>
+    <p class="xvera-error-code" aria-hidden="true">500</p>
+    <h1 class="xvera-error-title">Something went wrong.</h1>
+    <p class="xvera-error-copy">An unexpected error interrupted this request. Please try again in a moment, or contact our team if the problem continues.</p>
+    <div class="xvera-error-actions">
+      <a class="xvera-error-action" href="{{ request.get_full_path }}">Try again</a>
+      <a class="xvera-error-action xvera-error-action--secondary" href="{% url 'home' %}">Back to home</a>
+    </div>
+  </div>
+</main>
+{% endblock %}
