@@ -13,7 +13,7 @@
     </a>
 
     <!-- NAV -->
-    <nav class="btr-nav">
+    <nav class="btr-nav" id="btrPrimaryNav" aria-label="Main navigation">
       <ul class="btr-nav__list">
 
         <!-- HOME -->
@@ -728,7 +728,7 @@
     </nav>
 
     <!-- MENU BUTTON -->
-    <button class="btr-menu" id="btrMenuBtn" aria-label="Open menu">
+    <button class="btr-menu" id="btrMenuBtn" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="btrPrimaryNav">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
         <path d="M3 6H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         <path d="M3 12H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -738,62 +738,6 @@
 
   </div>
 </header>
-
-<!-- ================= SIDEBAR ================= -->
-<div class="btr-sidebar" id="btrSidebar">
-  <div class="btr-sidebar__overlay" id="btrOverlay"></div>
-  <aside class="btr-sidebar__panel">
-    <div class="tf-sb-header">
-      <a href="{% url 'home' %}" class="btr-logo-switch">
-        <img src="{% static 'images/logos/xvera.png' %}" class="btr-logo-default" alt="Logo">
-        <img src="{% static 'images/logos/xvera.png' %}" class="btr-logo-hover" alt="Logo Hover">
-      </a>
-      <button class="tf-close" id="btrClose" aria-label="Close menu">×</button>
-    </div>
-    <div class="tf-section">
-      <p>Welcome to Xvera Labs, where innovation meets passion to drive the digital future. We are not just an IT company; we are a force of technology enthusiasts dedicated to pushing boundaries and unlocking possibilities.</p>
-    </div>
-    <div class="tf-section">
-      <h4>Contact Info</h4>
-      <div class="tf-info">
-        <p>297-C, P.I.A. Main Boulevard Road, Lahore Pakistan.</p>
-      </div>
-      <div class="tf-info">
-        <p>xveralabs.contact@gmail.com</p>
-      </div>
-      <div class="tf-info">
-        <p>+92 324 8699647</p>
-      </div>
-      <div class="tf-social-wrap">
-        <a href="https://www.linkedin.com/company/btr-solutions" target="_blank" class="tf-social-link" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M4.98 3.5C4.98 4.6 4.09 5.5 2.99 5.5S1 4.6 1 3.5 1.89 1.5 2.99 1.5s1.99.9 1.99 2zM1.2 8h3.6v12H1.2V8zm5.8 0h3.45v1.64h.05c.48-.91 1.65-1.87 3.4-1.87 3.63 0 4.3 2.39 4.3 5.5V20h-3.6v-5.9c0-1.4-.03-3.2-1.95-3.2-1.95 0-2.25 1.52-2.25 3.1V20H7V8z"/>
-          </svg>
-        </a>
-        <a href="https://x.com/" target="_blank" class="tf-social-link" aria-label="X">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M18.9 2H22l-6.8 7.8L23 22h-6.1l-4.8-6.3L6.6 22H3.5l7.3-8.3L1 2h6.2l4.3 5.7L18.9 2z"/>
-          </svg>
-        </a>
-        <a href="https://facebook.com/" target="_blank" class="tf-social-link" aria-label="Facebook">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M22 12.07C22 6.51 17.52 2 12 2S2 6.51 2 12.07c0 5.02 3.66 9.18 8.44 9.93v-7.02H7.9v-2.91h2.54V9.84c0-2.52 1.49-3.91 3.77-3.91 1.09 0 2.24.2 2.24.2v2.47h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.77l-.44 2.91h-2.33V22C18.34 21.25 22 17.09 22 12.07z"/>
-          </svg>
-        </a>
-      </div>
-    </div>
-    <div class="tf-section">
-      <h4>Learn More</h4>
-      <a href="{% url 'home' %}" class="tf-link">Home</a>
-      <a href="{% url 'about-us' %}" class="tf-link">About Us</a>
-      <a href="{% url 'coming' %}" class="tf-link">Services</a>
-      <a href="{% url 'coming' %}" class="tf-link">Artificial Intelligence</a>
-      <a href="{% url 'case_studies' %}" class="tf-link">Case Studies</a>
-      <a href="{% url 'blogs' %}" class="tf-link">Blogs</a>
-      <a href="{% url 'contact_us' %}" class="tf-link">Contact Us</a>
-    </div>
-  </aside>
-</div>
 
 <!-- ================= JS ================= -->
 <script src="{% static 'js/layout/header-1.js' %}"></script>
