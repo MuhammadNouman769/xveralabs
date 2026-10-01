@@ -1,0 +1,171 @@
+/* ================= SAFE WRAPPER ================= */
+:where(body.page-services-sqa) .qa-page{
+    font-family:'Poppins',sans-serif;
+    background:#f8fafc;
+    color:#0f172a;
+}
+
+/* ================= HERO ================= */
+:where(body.page-services-sqa) .qa-hero{
+    height:400px;
+    background:
+    linear-gradient(120deg, rgba(61, 67, 67, 0.332)),
+    url('/static/images/sqa.jpg') center/cover no-repeat;
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:20px;
+    color:white;
+    margin-top: 90px;
+}
+
+:where(body.page-services-sqa) .qa-hero-content{
+    max-width:900px;
+}
+
+:where(body.page-services-sqa) .qa-hero h1{
+    font-size:40px;
+    font-weight:700;
+    margin-bottom:18px;
+}
+
+:where(body.page-services-sqa) .qa-hero p{
+    font-size:18px;
+    line-height:1.8;
+    color:#e2e8f0;
+    max-width:550px !important;
+    margin:auto;
+}
+
+:where(body.page-services-sqa) .qa-btn{
+    margin-top:28px;
+    display:inline-block;
+    padding:14px 34px;
+    background:#0ebab1;
+    color:rgb(92, 90, 90);
+    border-radius:10px;
+    font-weight:600;
+    text-decoration:none;
+    transition:.3s;
+}
+
+:where(body.page-services-sqa) .qa-btn:hover{
+    color:#0ebab1;
+    background:rgb(92, 90, 90);
+    
+}
+
+/* ================= SECTION HEADER ================= */
+:where(body.page-services-sqa) .qa-section{
+    padding:100px 20px;
+    max-width:1100px;
+    margin:auto;
+}
+
+:where(body.page-services-sqa) .qa-badge{
+    display:inline-block;
+    background:#0ebab1;
+    color:rgb(80, 79, 79);
+    padding:8px 18px;
+    border-radius:50px;
+    font-size:12px;
+    letter-spacing:1px;
+}
+:where(body.page-services-sqa) .qa-badge:hover{
+    background:rgb(80, 79, 79);
+    color:#0ebab1;
+}
+
+:where(body.page-services-sqa) .qa-title{
+    text-align:center;
+    margin:20px 0 70px;
+}
+
+:where(body.page-services-sqa) .qa-title h2{
+    font-size:34px;
+    font-weight:600;
+    margin-top:10px;
+    line-height:1.4;
+    color:#0f172a;
+}
+
+:where(body.page-services-sqa) .qa-title small{
+    color:#64748b;
+    letter-spacing:2px;
+}
+
+/* ================= GRID ================= */
+:where(body.page-services-sqa) .qa-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+}
+
+/* ================= CARD ================= */
+:where(body.page-services-sqa) .qa-card{
+    background:white;
+    border-radius:16px;
+    padding:22px;
+    display:flex;
+    gap:16px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.06);
+    transition:.3s;
+    border:1px solid #eef2f7;
+}
+
+:where(body.page-services-sqa) .qa-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 18px 40px rgba(0,0,0,0.12);
+}
+
+/* ICON */
+:where(body.page-services-sqa) .qa-icon{
+    width:56px;
+    height:56px;
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+}
+
+/* ICON COLORS */
+:where(body.page-services-sqa) .i1{background:#fee2e2;}
+:where(body.page-services-sqa) .i2{background:#dbeafe;}
+:where(body.page-services-sqa) .i3{background:#dcfce7;}
+:where(body.page-services-sqa) .i4{background:#ffedd5;}
+:where(body.page-services-sqa) .i5{background:#f3e8ff;}
+:where(body.page-services-sqa) .i6{background:#e0e7ff;}
+
+/* TEXT */
+:where(body.page-services-sqa) .qa-card h3{
+    font-size:16px;
+    margin-bottom:6px;
+    font-weight:600;
+}
+
+:where(body.page-services-sqa) .qa-card p{
+    font-size:13px;
+    color:#64748b;
+    line-height:1.6;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:992px){
+    :where(body.page-services-sqa) .qa-grid{grid-template-columns:repeat(2,1fr);}
+    :where(body.page-services-sqa) .qa-hero h1{font-size:40px;}
+}
+
+@media(max-width:600px){
+    :where(body.page-services-sqa) .qa-grid{grid-template-columns:1fr;}
+    :where(body.page-services-sqa) .qa-hero h1{font-size:32px;}
+}
+
+
+
+:where(body.page-services-sqa) .page-inline-services-sqa-1 { text-align:center; }
+
+

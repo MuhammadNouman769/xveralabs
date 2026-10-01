@@ -1,0 +1,458 @@
+body:where(.page-services-strategy_-_consulting-strategy_and_consulting),:where(body.page-services-strategy_-_consulting-strategy_and_consulting) * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body:where(.page-services-strategy_-_consulting-strategy_and_consulting) {
+      font-family: 'Poppins', sans-serif;
+      background: #f8fafc;
+      color: #0b1a2e;
+      line-height: 1.6;
+    }
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    /* ----- hero banner (strategy & consulting) ----- */
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .hero-banner {
+      background: linear-gradient(to right, #f2f2f2 0%, #d8e8ea 30%, rgba(41, 195, 197, 0.81) 55%, rgba(71, 202, 202, 0.01) 75%, rgba(233, 241, 241, 0) 100%),
+                  url('/static/images/about-us.jpg') ;
+      background-size: cover;
+      background-position: center;
+      border-radius: 28px;
+      margin: 30px 0;
+      padding: 70px 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 50px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 40px -12px rgba(0,0,0,0.08);
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .hero-banner::before {
+      content: '';
+      position: absolute;
+      right: -100px;
+      top: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(14, 186, 177, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .hero-banner::after {
+      content: '';
+      position: absolute;
+      left: -50px;
+      bottom: -50px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(14, 186, 177, 0.05) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .hero-content {
+      flex: 1;
+      position: relative;
+      z-index: 2;
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .hero-badge {
+      display: inline-block;
+      background: rgba(14, 186, 177, 0.15);
+      color: #0ebab1;
+      padding: 6px 18px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      border: 1px solid rgba(14, 186, 177, 0.2);
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .hero-content h1 {
+      font-size: 52px;
+      font-weight: 800;
+      color: #000000;
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .hero-content h1 span {
+      color: #0ebab1;
+      background: linear-gradient(135deg, #0ebab1, #14cfc1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .hero-content p {
+      font-size: 18px;
+      color: #000000;
+      max-width: 580px;
+      margin-bottom: 30px;
+      line-height: 1.8;
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .btn-primary {
+      background: linear-gradient(135deg, #0ebab1, #14cfc1) !important;
+      color: #fff !important;
+      padding: 14px 36px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 8px 25px rgba(14, 186, 177, 0.3);
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(14, 186, 177, 0.4);
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .btn-secondary {
+      background: #fff;
+      color: #0ebab1;
+      padding: 14px 36px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .btn-secondary:hover {
+      border-color: #0ebab1;
+      background: rgba(14, 186, 177, 0.1);
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 35px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .hero-stats div strong {
+      display: block;
+      font-size: 28px;
+      color: #000000;
+      font-weight: 800;
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .hero-stats div span {
+      font-size: 14px;
+      color: #000000;
+      font-weight: 500;
+    }
+
+    /* ----- hero form (same style) ----- */
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .hero-form {
+      background: #223554;
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 20px;
+      padding: 35px 30px;
+      width: 380px;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .hero-form h3 {
+      color: #fff;
+      font-size: 22px;
+      margin-bottom: 6px;
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .hero-form p {
+      color: #8899bb;
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .form-group {
+      margin-bottom: 16px;
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .form-group input,:where(body.page-services-strategy_-_consulting-strategy_and_consulting) .form-group select,:where(body.page-services-strategy_-_consulting-strategy_and_consulting) .form-group textarea {
+      width: 100%;
+      padding: 13px 16px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      color: #fff;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      outline: none;
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .form-group input:focus,:where(body.page-services-strategy_-_consulting-strategy_and_consulting) .form-group select:focus,:where(body.page-services-strategy_-_consulting-strategy_and_consulting) .form-group textarea:focus {
+      border-color: #0ebab1;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .form-group input::placeholder,:where(body.page-services-strategy_-_consulting-strategy_and_consulting) .form-group textarea::placeholder {
+      color: #667799;
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .form-group select {
+      color: #fff;
+      cursor: pointer;
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .form-group select option {
+      background: #1a2a4a;
+      color: #fff;
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .form-group textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .form-row {
+      display: flex;
+      gap: 12px;
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .form-row .form-group {
+      flex: 1;
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .btn-submit {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(135deg, #0ebab1, #14cfc1);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(14, 186, 177, 0.25);
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 35px rgba(14, 186, 177, 0.35);
+    }
+
+    /* ----- section titles / cards (industry level) ----- */
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .section-title {
+      font-size: 36px;
+      font-weight: 700;
+      color: #0b1a2e;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .section-title span {
+      color: #0ebab1;
+      background: linear-gradient(135deg, #0ebab1, #14cfc1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .section-sub {
+      font-size: 16px;
+      color: #4a5a72;
+      max-width: 700px;
+      margin-bottom: 40px;
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      margin: 50px 0 70px;
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .service-card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 30px 24px;
+      box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.04);
+      border: 1px solid rgba(0, 0, 0, 0.02);
+      transition: all 0.25s ease;
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px -12px rgba(14, 186, 177, 0.12);
+      border-color: rgba(14, 186, 177, 0.1);
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .service-card .icon {
+      font-size: 38px;
+      color: #0ebab1;
+      margin-bottom: 16px;
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .service-card h4 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #0b1a2e;
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .service-card p {
+      color: #3f4f66;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .industry-highlight {
+      background: #edf4f7;
+      border-radius: 28px;
+      padding: 60px 50px;
+      margin: 40px 0 60px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(145deg, #f0f6f9, #e6edf2);
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .industry-highlight h2 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #0b1a2e;
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .industry-highlight h2 small {
+      font-size: 18px;
+      font-weight: 400;
+      color: #3f5a77;
+      display: block;
+      margin-top: 8px;
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .industry-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px 24px;
+      margin-top: 16px;
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .industry-tags span {
+      background: white;
+      padding: 8px 24px;
+      border-radius: 40px;
+      font-weight: 500;
+      font-size: 15px;
+      color: #0b1a2e;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+      border: 1px solid rgba(14, 186, 177, 0.1);
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .industry-tags span i {
+      color: #0ebab1;
+      margin-right: 8px;
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .cta-block {
+      background: #0b1a2e;
+      border-radius: 28px;
+      padding: 50px 50px;
+      margin: 40px 0 30px;
+      color: white;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .cta-block h3 {
+      font-size: 28px;
+      font-weight: 600;
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .cta-block p {
+      color: #aabbd5;
+      max-width: 480px;
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .cta-block .btn-primary {
+      background: #fff !important;
+      color: #0b1a2e !important;
+      box-shadow: none;
+    }
+
+    :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .cta-block .btn-primary i {
+      color: #0ebab1;
+    }
+
+    @media (max-width: 1024px) {
+      :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .hero-banner {
+        flex-direction: column;
+        padding: 40px 30px;
+      }
+      :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .hero-form {
+        width: 100%;
+        max-width: 480px;
+      }
+      :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .hero-content h1 {
+        font-size: 42px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .hero-banner {
+        padding: 30px 20px;
+        margin: 16px 0;
+        border-radius: 20px;
+      }
+      :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .hero-content h1 {
+        font-size: 32px;
+      }
+      :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .hero-stats {
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .industry-highlight {
+        padding: 30px 20px;
+      }
+      :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .cta-block {
+        padding: 30px 20px;
+      }
+      :where(body.page-services-strategy_-_consulting-strategy_and_consulting) .service-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  
+
+:where(body.page-services-strategy_-_consulting-strategy_and_consulting) .page-inline-services-strategy_-_consulting-strategy_and_consulting-1 { margin-right:6px; }
+
+:where(body.page-services-strategy_-_consulting-strategy_and_consulting) .page-inline-services-strategy_-_consulting-strategy_and_consulting-2 { margin-top: 20px; }
+
+:where(body.page-services-strategy_-_consulting-strategy_and_consulting) .page-inline-services-strategy_-_consulting-strategy_and_consulting-3 { margin-top: 20px; flex-shrink:0; }
+
+:where(body.page-services-strategy_-_consulting-strategy_and_consulting) .page-inline-services-strategy_-_consulting-strategy_and_consulting-4 { background: #0b1a2e !important; color: white !important; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+
+:where(body.page-services-strategy_-_consulting-strategy_and_consulting) .page-inline-services-strategy_-_consulting-strategy_and_consulting-5 { padding: 20px 0 10px; font-size: 13px; color: #6a7e9c; border-top: 1px solid #e2eaf0; margin-top: 20px; text-align: center; }
+
+:where(body.page-services-strategy_-_consulting-strategy_and_consulting) .page-inline-services-strategy_-_consulting-strategy_and_consulting-6 { color:#0ebab1; }
+
+

@@ -1,0 +1,355 @@
+body:where(.page-home-case-studies),:where(body.page-home-case-studies) * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body:where(.page-home-case-studies) {
+            background: #f5f7fa;
+        }
+
+        /* ===== HERO ===== */
+        :where(body.page-home-case-studies) .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.11), rgba(0, 0, 0, .75)),
+                url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=2000");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        :where(body.page-home-case-studies) .hero-content {
+            max-width: 900px;
+            padding: 20px;
+        }
+
+        :where(body.page-home-case-studies) .hero span {
+            display: inline-block;
+            padding: 8px 18px;
+            border: 1px solid rgba(255, 255, 255, .3);
+            border-radius: 30px;
+            margin-bottom: 25px;
+            font-size: 14px;
+            backdrop-filter: blur(10px);
+        }
+
+        :where(body.page-home-case-studies) .hero h1 {
+            font-size: 70px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 25px;
+        }
+
+        :where(body.page-home-case-studies) .hero p {
+            font-size: 20px;
+            color: #d9d9d9;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        :where(body.page-home-case-studies) .hero-btn {
+            display: inline-block;
+            padding: 16px 38px;
+            background: #0ebab1;
+            color: #696969;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: .3s;
+        }
+
+        :where(body.page-home-case-studies) .hero-btn:hover {
+            transform: translateY(-4px);
+            color: #0ebab1;
+            background: #696969;
+        }
+
+        /* ===== SECTION TITLE ===== */
+        :where(body.page-home-case-studies) .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        :where(body.page-home-case-studies) .section-title h2 {
+            font-size: 42px;
+            margin-bottom: 10px;
+            color: #111;
+        }
+
+        :where(body.page-home-case-studies) .section-title p {
+            color: #777;
+        }
+
+        /* ===== CARDS SECTION ===== */
+        :where(body.page-home-case-studies) .cards-section {
+            padding: 80px 8%;
+        }
+
+        :where(body.page-home-case-studies) .cards-section.alt-bg {
+            background: #f0f2f6;
+        }
+
+        :where(body.page-home-case-studies) .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        :where(body.page-home-case-studies) .card {
+            background: #fff;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, .07);
+            transition: .4s;
+            position: relative;
+        }
+
+        :where(body.page-home-case-studies) .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 45px rgba(0, 0, 0, .12);
+        }
+
+        /* ===== IMAGE CONTAINER WITH DARK OVERLAY ===== */
+        :where(body.page-home-case-studies) .card-img-wrap {
+            position: relative;
+            overflow: hidden;
+        }
+
+        :where(body.page-home-case-studies) .card-img-wrap img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* ===== DARK OVERLAY - TOP RIGHT CORNER ===== */
+        :where(body.page-home-case-studies) .card-img-wrap .dark-overlay {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(225deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%);
+            border-radius: 0 0 0 50px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* ===== {M N} TEXT - TOP RIGHT CORNER ===== */
+        :where(body.page-home-case-studies) .card .btr-label {
+            position: absolute;
+            top: 14px;
+            right: 18px;
+            font-size: 20px;
+            font-weight: 800;
+            color: #0ebab1;
+            letter-spacing: 2.5px;
+            z-index: 2;
+            text-shadow: 0 0 20px rgba(0, 0, 0, 0.6), 0 0 8px rgba(0, 0, 0, 0.4);
+            background: transparent;
+            padding: 0;
+            border: none;
+        }
+
+        :where(body.page-home-case-studies) .card-content {
+            padding: 25px 28px 30px;
+            position: relative;
+        }
+
+        :where(body.page-home-case-studies) .card-content h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        :where(body.page-home-case-studies) .card-content p {
+            color: #666;
+            line-height: 1.7;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        :where(body.page-home-case-studies) .card-content a {
+            display: inline-block;
+            text-decoration: none;
+            color: #0ebab1;
+            font-weight: 600;
+            font-size: 14px;
+            transition: .3s;
+        }
+
+        :where(body.page-home-case-studies) .card-content a:hover {
+            color: #081120;
+            transform: translateX(5px);
+        }
+
+        /* ===== RESULTS ===== */
+        :where(body.page-home-case-studies) .results {
+            background: #081120;
+            color: white;
+            padding: 100px 8%;
+        }
+
+        :where(body.page-home-case-studies) .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        :where(body.page-home-case-studies) .stat {
+            text-align: center;
+        }
+
+        :where(body.page-home-case-studies) .stat h2 {
+            font-size: 55px;
+            color: #0ebab1;
+            margin-bottom: 10px;
+        }
+
+        :where(body.page-home-case-studies) .stat p {
+            color: #c7c7c7;
+        }
+
+        /* ===== CTA ===== */
+        :where(body.page-home-case-studies) .cta {
+            padding: 80px 8% 50px;
+            text-align: center;
+            background: white;
+        }
+
+        :where(body.page-home-case-studies) .cta h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        :where(body.page-home-case-studies) .cta p {
+            max-width: 700px;
+            margin: auto;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        :where(body.page-home-case-studies) .cta a {
+            margin-top: 35px;
+            display: inline-block;
+            padding: 16px 40px;
+            background: #0ebab1;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: .3s;
+        }
+
+        :where(body.page-home-case-studies) .cta a:hover {
+            background: #081120;
+        }
+
+        /* ===== MINI TAGS (CTA KE NEECHE) ===== */
+        :where(body.page-home-case-studies) .tags-section {
+            background: white;
+            padding: 20px 8% 60px;
+            text-align: center;
+            border-top: 1px solid #f0f2f5;
+        }
+
+        :where(body.page-home-case-studies) .tags-section .tags-label {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #999;
+            margin-bottom: 18px;
+            font-weight: 500;
+        }
+
+        :where(body.page-home-case-studies) .tags-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px 14px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        :where(body.page-home-case-studies) .tags-wrapper .tag-item {
+            display: inline-block;
+            padding: 6px 20px;
+            background: #f0f2f6;
+            color: #1a2a3a;
+            font-size: 13px;
+            font-weight: 500;
+            border-radius: 40px;
+            transition: .3s;
+            border: 1px solid transparent;
+            cursor: default;
+        }
+
+        :where(body.page-home-case-studies) .tags-wrapper .tag-item:hover {
+            background: #0ebab1;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(14, 186, 177, 0.25);
+        }
+
+        :where(body.page-home-case-studies) .tags-wrapper .tag-item.highlight {
+            background: #081120;
+            color: white;
+        }
+
+        :where(body.page-home-case-studies) .tags-wrapper .tag-item.highlight:hover {
+            background: #0ebab1;
+        }
+
+        @media (max-width: 992px) {
+            :where(body.page-home-case-studies) .cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            :where(body.page-home-case-studies) .hero h1 {
+                font-size: 45px;
+            }
+            :where(body.page-home-case-studies) .hero p {
+                font-size: 17px;
+            }
+            :where(body.page-home-case-studies) .section-title h2 {
+                font-size: 32px;
+            }
+            :where(body.page-home-case-studies) .cta h2 {
+                font-size: 32px;
+            }
+            :where(body.page-home-case-studies) .cards-grid {
+                grid-template-columns: 1fr;
+            }
+            :where(body.page-home-case-studies) .card .btr-label {
+                font-size: 17px;
+                top: 12px;
+                right: 14px;
+            }
+            :where(body.page-home-case-studies) .card-img-wrap .dark-overlay {
+                width: 90px;
+                height: 90px;
+            }
+            :where(body.page-home-case-studies) .tags-wrapper {
+                gap: 8px 10px;
+            }
+            :where(body.page-home-case-studies) .tags-wrapper .tag-item {
+                font-size: 12px;
+                padding: 5px 14px;
+            }
+        }
+    
+
+:where(body.page-home-case-studies) .page-inline-home-case-studies-1 { color:white }
+
+:where(body.page-home-case-studies) .page-inline-home-case-studies-2 { color:#aaa }
+
+

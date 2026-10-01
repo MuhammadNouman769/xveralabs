@@ -1,0 +1,505 @@
+/* ===== RESET & BASE ===== */
+    :where(body.page-about-apply-now) .btr-apply-wrap * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    :where(body.page-about-apply-now) .btr-apply-wrap {
+        background: #f5f7fa;
+    }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    :where(body.page-about-apply-now) .btr-apply-hero {
+        position: relative;
+        height: 55vh;
+        min-height: 380px;
+        background:
+            linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.75)),
+            url("https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2000");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+    }
+
+    :where(body.page-about-apply-now) .btr-apply-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2));
+    }
+
+    :where(body.page-about-apply-now) .btr-apply-hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        padding: 20px;
+    }
+
+    :where(body.page-about-apply-now) .btr-apply-hero-tag {
+        display: inline-block;
+        color: #0ebab1;
+        font-weight: 600;
+        letter-spacing: 2px;
+        margin-bottom: 14px;
+        text-transform: uppercase;
+        font-size: 13px;
+        border: 1px solid rgba(14, 186, 177, 0.3);
+        padding: 5px 20px;
+        border-radius: 40px;
+    }
+
+    :where(body.page-about-apply-now) .btr-apply-hero-content h1 {
+        font-size: 52px;
+        font-weight: 800;
+        line-height: 1.15;
+        margin-bottom: 14px;
+    }
+
+    :where(body.page-about-apply-now) .btr-apply-hero-content h1 span {
+        color: #0ebab1;
+    }
+
+    :where(body.page-about-apply-now) .btr-apply-hero-content p {
+        font-size: 18px;
+        color: #d9d9d9;
+        line-height: 1.7;
+        margin-bottom: 0;
+        max-width: 650px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* ============================================================
+       JOB DETAILS + APPLICATION FORM
+    ============================================================ */
+    :where(body.page-about-apply-now) .btr-apply-main {
+        padding: 60px 8% 80px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    /* ===== JOB DETAILS COLUMN ===== */
+    :where(body.page-about-apply-now) .btr-job-details {
+        background: #ffffff;
+        border-radius: 16px;
+        padding: 36px 40px 40px;
+        box-shadow: 0 6px 28px rgba(0, 0, 0, 0.06);
+        align-self: start;
+    }
+
+    :where(body.page-about-apply-now) .btr-job-details .btr-job-badge {
+        display: inline-block;
+        background: #0ebab1;
+        color: white;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 4px 16px;
+        border-radius: 40px;
+        margin-bottom: 12px;
+    }
+
+    :where(body.page-about-apply-now) .btr-job-details h2 {
+        font-size: 26px;
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 6px;
+    }
+
+    :where(body.page-about-apply-now) .btr-job-details .btr-job-dept {
+        color: #0ebab1;
+        font-weight: 500;
+        font-size: 15px;
+        margin-bottom: 16px;
+        display: block;
+    }
+
+    :where(body.page-about-apply-now) .btr-job-details .btr-job-meta-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px 20px;
+        padding: 16px 0;
+        border-top: 1px solid #f0f2f5;
+        border-bottom: 1px solid #f0f2f5;
+        margin-bottom: 20px;
+    }
+
+    :where(body.page-about-apply-now) .btr-job-details .btr-job-meta-grid .btr-meta-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        color: #555;
+    }
+
+    :where(body.page-about-apply-now) .btr-job-details .btr-job-meta-grid .btr-meta-item strong {
+        color: #111;
+        font-weight: 600;
+    }
+
+    :where(body.page-about-apply-now) .btr-job-details .btr-job-desc h4 {
+        font-size: 16px;
+        font-weight: 700;
+        color: #111;
+        margin: 18px 0 8px;
+    }
+
+    :where(body.page-about-apply-now) .btr-job-details .btr-job-desc p {
+        color: #555;
+        line-height: 1.8;
+        font-size: 14.5px;
+        margin-bottom: 10px;
+    }
+
+    :where(body.page-about-apply-now) .btr-job-details .btr-job-desc ul {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 12px 0;
+    }
+
+    :where(body.page-about-apply-now) .btr-job-details .btr-job-desc ul li {
+        color: #555;
+        line-height: 1.8;
+        font-size: 14.5px;
+        padding-left: 22px;
+        position: relative;
+        margin-bottom: 4px;
+    }
+
+    :where(body.page-about-apply-now) .btr-job-details .btr-job-desc ul li::before {
+        content: "▸";
+        position: absolute;
+        left: 0;
+        color: #0ebab1;
+        font-weight: 700;
+    }
+
+    /* ===== APPLICATION FORM COLUMN ===== */
+    :where(body.page-about-apply-now) .btr-apply-form-wrapper {
+        background: #ffffff;
+        border-radius: 16px;
+        padding: 36px 40px 40px;
+        box-shadow: 0 6px 28px rgba(0, 0, 0, 0.06);
+    }
+
+    :where(body.page-about-apply-now) .btr-apply-form-wrapper .btr-form-header {
+        margin-bottom: 28px;
+    }
+
+    :where(body.page-about-apply-now) .btr-apply-form-wrapper .btr-form-header h3 {
+        font-size: 22px;
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 4px;
+    }
+
+    :where(body.page-about-apply-now) .btr-apply-form-wrapper .btr-form-header p {
+        color: #777;
+        font-size: 14px;
+    }
+
+    :where(body.page-about-apply-now) .btr-apply-form {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    :where(body.page-about-apply-now) .btr-apply-form .btr-form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    :where(body.page-about-apply-now) .btr-apply-form .btr-form-group label {
+        font-size: 14px;
+        font-weight: 600;
+        color: #1a2a3a;
+    }
+
+    :where(body.page-about-apply-now) .btr-apply-form .btr-form-group label .btr-required {
+        color: #e74c3c;
+        margin-left: 2px;
+    }
+
+    :where(body.page-about-apply-now) .btr-apply-form .btr-form-group input,:where(body.page-about-apply-now) .btr-apply-form .btr-form-group select,:where(body.page-about-apply-now) .btr-apply-form .btr-form-group textarea {
+        padding: 12px 16px;
+        border: 1.5px solid #e0e4ea;
+        border-radius: 10px;
+        font-size: 14px;
+        font-family: 'Poppins', sans-serif;
+        transition: .3s;
+        background: #fafbfc;
+        width: 100%;
+        outline: none;
+    }
+
+    :where(body.page-about-apply-now) .btr-apply-form .btr-form-group input:focus,:where(body.page-about-apply-now) .btr-apply-form .btr-form-group select:focus,:where(body.page-about-apply-now) .btr-apply-form .btr-form-group textarea:focus {
+        border-color: #0ebab1;
+        box-shadow: 0 0 0 3px rgba(14, 186, 177, 0.1);
+        background: #ffffff;
+    }
+
+    :where(body.page-about-apply-now) .btr-apply-form .btr-form-group textarea {
+        resize: vertical;
+        min-height: 110px;
+    }
+
+    :where(body.page-about-apply-now) .btr-apply-form .btr-form-group .btr-file-input {
+        padding: 10px 14px;
+        border: 1.5px dashed #d0d5dd;
+        border-radius: 10px;
+        background: #fafbfc;
+        cursor: pointer;
+        transition: .3s;
+        color: #666;
+        font-size: 14px;
+    }
+
+    :where(body.page-about-apply-now) .btr-apply-form .btr-form-group .btr-file-input:hover {
+        border-color: #0ebab1;
+        background: #f0fdfc;
+    }
+
+    :where(body.page-about-apply-now) .btr-apply-form .btr-form-group .btr-file-input input[type="file"] {
+        display: none;
+    }
+
+    :where(body.page-about-apply-now) .btr-apply-form .btr-form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+    }
+
+    :where(body.page-about-apply-now) .btr-apply-form .btr-submit-btn {
+        padding: 16px 32px;
+        background: #0ebab1;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: .3s;
+        margin-top: 6px;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    :where(body.page-about-apply-now) .btr-apply-form .btr-submit-btn:hover {
+        background: #0d9d95;
+        transform: scale(1.02);
+        box-shadow: 0 8px 28px rgba(14, 186, 177, 0.3);
+    }
+
+    /* ============================================================
+       SIMILAR JOBS
+    ============================================================ */
+    :where(body.page-about-apply-now) .btr-similar-section {
+        padding: 60px 8% 80px;
+        background: #f5f7fa;
+    }
+
+    :where(body.page-about-apply-now) .btr-similar-section .btr-section-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    :where(body.page-about-apply-now) .btr-similar-section .btr-section-header h2 {
+        font-size: 34px;
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 4px;
+    }
+
+    :where(body.page-about-apply-now) .btr-similar-section .btr-section-header p {
+        color: #777;
+        font-size: 15px;
+    }
+
+    :where(body.page-about-apply-now) .btr-similar-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    /* ---- Similar Job Card ---- */
+    :where(body.page-about-apply-now) .btr-similar-card {
+        background: #ffffff;
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 6px 28px rgba(0, 0, 0, 0.06);
+        transition: .4s ease;
+        position: relative;
+        border: 1px solid rgba(0, 0, 0, 0.03);
+    }
+
+    :where(body.page-about-apply-now) .btr-similar-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 18px 45px rgba(0, 0, 0, 0.10);
+    }
+
+    :where(body.page-about-apply-now) .btr-similar-img-wrap {
+        position: relative;
+        overflow: hidden;
+        background: #eef1f5;
+    }
+
+    :where(body.page-about-apply-now) .btr-similar-img-wrap img {
+        width: 100%;
+        height: 170px;
+        object-fit: cover;
+        display: block;
+        transition: .5s ease;
+    }
+
+    :where(body.page-about-apply-now) .btr-similar-card:hover .btr-similar-img-wrap img {
+        transform: scale(1.04);
+    }
+
+    :where(body.page-about-apply-now) .btr-similar-img-wrap .btr-dark-overlay {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100px;
+        height: 100px;
+        background: linear-gradient(225deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.35) 55%, transparent 100%);
+        border-radius: 0 0 0 50px;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    :where(body.page-about-apply-now) .btr-similar-img-wrap .btr-badge {
+        position: absolute;
+        top: 12px;
+        right: 16px;
+        font-size: 18px;
+        font-weight: 800;
+        color: #0ebab1;
+        letter-spacing: 2.5px;
+        z-index: 2;
+        text-shadow: 0 0 20px rgba(0, 0, 0, 0.6), 0 0 8px rgba(0, 0, 0, 0.4);
+        background: transparent;
+        padding: 0;
+        border: none;
+        line-height: 1;
+    }
+
+    :where(body.page-about-apply-now) .btr-similar-body {
+        padding: 20px 24px 24px;
+    }
+
+    :where(body.page-about-apply-now) .btr-similar-body .btr-similar-dept {
+        display: inline-block;
+        color: #0ebab1;
+        font-weight: 600;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        margin-bottom: 4px;
+    }
+
+    :where(body.page-about-apply-now) .btr-similar-body h3 {
+        font-size: 17px;
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 4px;
+        line-height: 1.3;
+    }
+
+    :where(body.page-about-apply-now) .btr-similar-body .btr-similar-meta {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        font-size: 12px;
+        color: #888;
+        margin-bottom: 10px;
+    }
+
+    :where(body.page-about-apply-now) .btr-similar-body p {
+        color: #555;
+        line-height: 1.6;
+        font-size: 13.5px;
+        margin-bottom: 12px;
+    }
+
+    :where(body.page-about-apply-now) .btr-similar-body .btr-similar-apply {
+        display: inline-block;
+        text-decoration: none;
+        color: #0ebab1;
+        font-weight: 600;
+        font-size: 13px;
+        transition: .3s;
+    }
+
+    :where(body.page-about-apply-now) .btr-similar-body .btr-similar-apply:hover {
+        color: #081120;
+        transform: translateX(5px);
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media(max-width: 1100px) {
+        :where(body.page-about-apply-now) .btr-apply-main {
+            grid-template-columns: 1fr;
+            gap: 35px;
+        }
+        :where(body.page-about-apply-now) .btr-similar-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media(max-width: 768px) {
+        :where(body.page-about-apply-now) .btr-apply-hero-content h1 {
+            font-size: 34px;
+        }
+        :where(body.page-about-apply-now) .btr-apply-hero-content p {
+            font-size: 16px;
+        }
+        :where(body.page-about-apply-now) .btr-apply-main {
+            padding: 40px 5% 60px;
+        }
+        :where(body.page-about-apply-now) .btr-job-details,:where(body.page-about-apply-now) .btr-apply-form-wrapper {
+            padding: 24px 20px 28px;
+        }
+        :where(body.page-about-apply-now) .btr-apply-form .btr-form-row {
+            grid-template-columns: 1fr;
+        }
+        :where(body.page-about-apply-now) .btr-job-details .btr-job-meta-grid {
+            grid-template-columns: 1fr;
+            gap: 8px;
+        }
+        :where(body.page-about-apply-now) .btr-similar-grid {
+            grid-template-columns: 1fr;
+        }
+        :where(body.page-about-apply-now) .btr-similar-img-wrap .btr-badge {
+            font-size: 16px;
+            top: 10px;
+            right: 12px;
+        }
+        :where(body.page-about-apply-now) .btr-similar-img-wrap .btr-dark-overlay {
+            width: 80px;
+            height: 80px;
+        }
+        :where(body.page-about-apply-now) .btr-apply-form .btr-submit-btn {
+            padding: 14px 24px;
+            font-size: 15px;
+        }
+    }
+
+
+:where(body.page-about-apply-now) .page-inline-about-apply-now-1 { cursor:pointer; display:flex; align-items:center; gap:10px; }
+
+

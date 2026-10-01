@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blog Details | Base - Tailwind CSS Startup Template</title>
   <link rel="icon" href="favicon.ico">
-  <link href="style.css" rel="stylesheet">
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
 </head>
 
 <body
@@ -503,7 +504,7 @@
   </button>
 
   <!-- ====== Back To Top End ===== -->
-  <script defer src="bundle.js"></script>
+  <script defer src="{% static 'js/bundle.js' %}"></script>
 </body>
 
 </html>

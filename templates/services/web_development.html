@@ -3,173 +3,17 @@
 
 {% block title %}Web Development - BTR Solution{% endblock %}
 
+{% block body_class %}page-services-web_development{% endblock %}
+
+{% block page_css %}<link rel="stylesheet" href="{% static 'css/pages/services-web_development.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<style>
 
-/* ================= WRAPPER ================= */
-.webdev-page{
-    font-family:'Poppins',sans-serif;
-    background:#f8fafc;
-    color:#0f172a;
-}
 
-/* ================= HERO ================= */
-.webdev-hero{
-    height:75vh;
-    background:
-    linear-gradient(120deg, rgba(2,6,23,.88), rgba(55, 103, 105, 0.217)),
-    url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=80');
-    background-size:cover;
-    background-position:center;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:20px;
-    color:white;
-}
-
-.webdev-hero-content{
-    max-width:900px;
-}
-
-.webdev-hero h1{
-    font-size:52px;
-    font-weight:700;
-    margin-bottom:18px;
-}
-
-.webdev-hero p{
-    font-size:18px;
-    line-height:1.8;
-    color:#e2e8f0;
-}
-
-.webdev-btn{
-    margin-top:28px;
-    display:inline-block;
-    padding:14px 34px;
-    background:#0ebab1;
-    color:rgb(94, 93, 93);
-    border-radius:10px;
-    font-weight:600;
-    text-decoration:none;
-    transition:.3s;
-}
-
-.webdev-btn:hover{
-    color:#0ebab1;
-    background:rgb(94, 93, 93);
-    transform:translateY(-3px);
-}
-
-/* ================= SECTION ================= */
-.webdev-section{
-    padding:100px 20px;
-    max-width:1100px;
-    margin:auto;
-}
-
-.webdev-badge{
-    display:inline-block;
-    background:#0ebab1;
-    color:rgb(98, 96, 96);
-    padding:8px 18px;
-    border-radius:50px;
-    font-size:12px;
-    letter-spacing:1px;
-}
-
-.webdev-badge:hover{
-    background:rgb(94, 93, 93);
-    color:#0ebab1;
-}
-.webdev-title{
-    text-align:center;
-    margin:20px 0 70px;
-}
-
-.webdev-title h2{
-    font-size:34px;
-    font-weight:600;
-    margin-top:10px;
-}
-
-.webdev-title small{
-    color:#64748b;
-    letter-spacing:2px;
-}
-
-/* ================= GRID ================= */
-.webdev-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:30px;
-}
-
-/* ================= CARD ================= */
-.webdev-card{
-    background:white;
-    border-radius:16px;
-    padding:22px;
-    display:flex;
-    gap:16px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.06);
-    transition:.3s;
-    border:1px solid #eef2f7;
-}
-
-.webdev-card:hover{
-    transform:translateY(-6px);
-    box-shadow:0 18px 40px rgba(0,0,0,0.12);
-}
-
-.webdev-icon{
-    width:56px;
-    height:56px;
-    border-radius:14px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex-shrink:0;
-}
-
-/* ICON COLORS */
-.w1{background:#dbeafe;}
-.w2{background:#dcfce7;}
-.w3{background:#fee2e2;}
-.w4{background:#fef3c7;}
-.w5{background:#ede9fe;}
-.w6{background:#e0f2fe;}
-
-/* TEXT */
-.webdev-card h3{
-    font-size:16px;
-    margin-bottom:6px;
-    font-weight:600;
-}
-
-.webdev-card p{
-    font-size:13px;
-    color:#64748b;
-    line-height:1.6;
-}
-
-/* ================= RESPONSIVE ================= */
-@media(max-width:992px){
-    .webdev-grid{grid-template-columns:repeat(2,1fr);}
-    .webdev-hero h1{font-size:40px;}
-}
-
-@media(max-width:600px){
-    .webdev-grid{grid-template-columns:1fr;}
-    .webdev-hero h1{font-size:32px;}
-}
-
-</style>
 
 <div class="webdev-page">
 <!-- HERO -->
@@ -189,7 +33,7 @@
 <!-- SERVICES -->
 <section class="webdev-section">
 
-    <div style="text-align:center;">
+    <div class="page-inline-services-web_development-1">
         <span class="webdev-badge">WEB DEVELOPMENT</span>
     </div>
 

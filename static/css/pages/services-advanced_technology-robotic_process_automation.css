@@ -1,0 +1,808 @@
+/* ============================================================
+     RESET & BASE
+  ============================================================ */
+  body:where(.page-services-advanced_technology-robotic_process_automation),:where(body.page-services-advanced_technology-robotic_process_automation) * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body:where(.page-services-advanced_technology-robotic_process_automation) {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #f4f7fc;
+    color: #1a2332;
+    line-height: 1.6;
+  }
+
+  /* ============================================================
+     HERO BANNER (EXACT SAME AS REFERENCE)
+  ============================================================ */
+  :where(body.page-services-advanced_technology-robotic_process_automation) .hero-banner {
+    background: linear-gradient(to right, #f2f2f2 0%, #d8e8ea 30%, rgba(41, 195, 197, 0.81) 55%, rgba(71, 202, 202, 0.01) 75%, rgba(233, 241, 241, 0) 100%),
+                url('/static/images/about-us.jpg');
+    border-radius: 28px;
+    margin: 30px 24px;
+    padding: 70px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .hero-banner::before {
+    content: '';
+    position: absolute;
+    right: -100px;
+    top: -100px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(14, 186, 177, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .hero-banner::after {
+    content: '';
+    position: absolute;
+    left: -50px;
+    bottom: -50px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(14, 186, 177, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .hero-content {
+    flex: 1;
+    position: relative;
+    z-index: 2;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .hero-badge {
+    display: inline-block;
+    background: rgba(14, 186, 177, 0.15);
+    color: #0ebab1;
+    padding: 6px 18px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    border: 1px solid rgba(14, 186, 177, 0.2);
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .hero-content h1 {
+    font-size: 52px;
+    font-weight: 800;
+    color: #000000;
+    line-height: 1.1;
+    margin-bottom: 18px;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .hero-content h1 span {
+    color: #0ebab1;
+    background: linear-gradient(135deg, #0ebab1, #14cfc1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .hero-content p {
+    font-size: 18px;
+    color: #000000;
+    max-width: 580px;
+    margin-bottom: 30px;
+    line-height: 1.8;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .hero-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .btn-primary {
+    background: linear-gradient(135deg, #0ebab1, #14cfc1) !important;
+    color: #fff !important;
+    padding: 14px 36px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 8px 25px rgba(14, 186, 177, 0.3);
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(14, 186, 177, 0.4);
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .btn-secondary {
+    background: #fff;
+    color: #0ebab1;
+    padding: 14px 36px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .btn-secondary:hover {
+    border-color: #0ebab1;
+    background: rgba(14, 186, 177, 0.1);
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .hero-stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 35px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .hero-stats div {
+    text-align: left;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .hero-stats div strong {
+    display: block;
+    font-size: 28px;
+    color: #000000;
+    font-weight: 800;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .hero-stats div span {
+    font-size: 14px;
+    color: #000000;
+    font-weight: 500;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .hero-form {
+    background: #223554;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
+    padding: 35px 30px;
+    width: 380px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .hero-form h3 {
+    color: #fff;
+    font-size: 22px;
+    margin-bottom: 6px;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .hero-form p {
+    color: #8899bb;
+    font-size: 14px;
+    margin-bottom: 22px;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .form-group {
+    margin-bottom: 16px;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .form-group input,:where(body.page-services-advanced_technology-robotic_process_automation) .form-group select,:where(body.page-services-advanced_technology-robotic_process_automation) .form-group textarea {
+    width: 100%;
+    padding: 13px 16px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    color: #fff;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    outline: none;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .form-group input:focus,:where(body.page-services-advanced_technology-robotic_process_automation) .form-group select:focus,:where(body.page-services-advanced_technology-robotic_process_automation) .form-group textarea:focus {
+    border-color: #0ebab1;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .form-group input::placeholder,:where(body.page-services-advanced_technology-robotic_process_automation) .form-group textarea::placeholder {
+    color: #667799;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .form-group select {
+    color: #fff;
+    cursor: pointer;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .form-group select option {
+    background: #1a2a4a;
+    color: #fff;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .form-row {
+    display: flex;
+    gap: 12px;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .form-row .form-group {
+    flex: 1;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .btn-submit {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #0ebab1, #14cfc1);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(14, 186, 177, 0.25);
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(14, 186, 177, 0.35);
+  }
+
+  /* ============================================================
+     SECTION TITLE
+  ============================================================ */
+  :where(body.page-services-advanced_technology-robotic_process_automation) .section-title {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 50px;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .section-title .tag {
+    display: inline-block;
+    background: rgba(14, 186, 177, 0.1);
+    color: #0ebab1;
+    padding: 6px 18px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    border: 1px solid rgba(14, 186, 177, 0.15);
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .section-title h2 {
+    font-size: 42px;
+    font-weight: 800;
+    color: #1a2332;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .section-title h2 span {
+    color: #0ebab1;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .section-title p {
+    font-size: 18px;
+    color: #64748b;
+    line-height: 1.8;
+  }
+
+  /* ============================================================
+     RPA SOLUTIONS - HEXAGON/DIAMOND CARDS
+  ============================================================ */
+  :where(body.page-services-advanced_technology-robotic_process_automation) .rpa-wrapper {
+    padding: 0 24px 50px;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .rpa-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .rpa-card {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 36px 30px 32px;
+    border: 1px solid #eef2f7;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+    clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .rpa-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #0ebab1, #14cfc1, #0ebab1);
+    background-size: 200% 100%;
+    opacity: 0;
+    transition: all 0.5s ease;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .rpa-card:hover::before {
+    opacity: 1;
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .rpa-card:hover {
+    border-color: #0ebab1;
+    box-shadow: 0 16px 48px -12px rgba(14, 186, 177, 0.12);
+    transform: translateY(-8px);
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .rpa-card .card-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(14, 186, 177, 0.08), rgba(14, 186, 177, 0.02));
+    border: 1px solid rgba(14, 186, 177, 0.06);
+    color: #0ebab1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    margin-bottom: 20px;
+    transition: all 0.4s ease;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .rpa-card:hover .card-icon {
+    background: linear-gradient(135deg, #0ebab1, #14cfc1);
+    color: #fff;
+    transform: scale(1.05) rotate(-5deg);
+    box-shadow: 0 8px 24px rgba(14, 186, 177, 0.2);
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .rpa-card .card-tag {
+    display: inline-block;
+    background: rgba(14, 186, 177, 0.08);
+    color: #0ebab1;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 16px;
+    border-radius: 50px;
+    margin-bottom: 14px;
+    letter-spacing: 0.5px;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .rpa-card h4 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a2332;
+    margin-bottom: 10px;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .rpa-card p {
+    font-size: 14px;
+    color: #64748b;
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .rpa-card .rpa-features {
+    list-style: none;
+    padding: 0;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .rpa-card .rpa-features li {
+    font-size: 13px;
+    color: #475569;
+    padding: 5px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .rpa-card .rpa-features li:last-child {
+    border-bottom: none;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .rpa-card .rpa-features li i {
+    color: #0ebab1;
+    font-size: 13px;
+    width: 20px;
+    text-align: center;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .rpa-card .rpa-metrics {
+    display: flex;
+    gap: 24px;
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(0, 0, 0, 0.04);
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .rpa-card .rpa-metrics span {
+    font-size: 12px;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .rpa-card .rpa-metrics span i {
+    color: #0ebab1;
+    font-size: 14px;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .rpa-card .cta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    color: #0ebab1;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .rpa-card .cta-link:hover {
+    gap: 14px;
+  }
+
+  /* ============================================================
+     RPA CAPABILITIES - MODERN TIMELINE
+  ============================================================ */
+  :where(body.page-services-advanced_technology-robotic_process_automation) .capabilities-section {
+    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+    padding: 70px 24px;
+    margin: 0 24px 40px;
+    border-radius: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .capabilities-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(14, 186, 177, 0.03) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .capabilities-section .cap-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .capabilities-section .cap-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .capabilities-section .cap-header .tag {
+    display: inline-block;
+    background: rgba(14, 186, 177, 0.1);
+    color: #0ebab1;
+    padding: 6px 18px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    border: 1px solid rgba(14, 186, 177, 0.15);
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .capabilities-section .cap-header h2 {
+    font-size: 42px;
+    font-weight: 800;
+    color: #1a2332;
+    line-height: 1.15;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .capabilities-section .cap-header h2 span {
+    color: #0ebab1;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .cap-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .cap-item {
+    background: #fff;
+    border-radius: 18px;
+    padding: 28px 22px;
+    text-align: center;
+    border: 1px solid #eef2f7;
+    transition: all 0.3s ease;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .cap-item:hover {
+    border-color: #0ebab1;
+    box-shadow: 0 12px 36px -8px rgba(14, 186, 177, 0.08);
+    transform: translateY(-4px);
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .cap-item .icon-circle {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(14, 186, 177, 0.08), rgba(14, 186, 177, 0.02));
+    color: #0ebab1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin: 0 auto 14px;
+    transition: all 0.3s ease;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .cap-item:hover .icon-circle {
+    background: linear-gradient(135deg, #0ebab1, #14cfc1);
+    color: #fff;
+    transform: scale(1.05);
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .cap-item h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1a2332;
+    margin-bottom: 4px;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .cap-item p {
+    font-size: 13px;
+    color: #64748b;
+    line-height: 1.6;
+  }
+
+  /* ============================================================
+     RPA SERVICES - MODERN CARD GRID
+  ============================================================ */
+  :where(body.page-services-advanced_technology-robotic_process_automation) .rpa-services-wrapper {
+    padding: 0 24px 50px;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .rpa-services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .rpa-service-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 32px 28px;
+    border: 1px solid #eef2f7;
+    transition: all 0.35s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .rpa-service-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #0ebab1, #14cfc1);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .rpa-service-card:hover::after {
+    opacity: 1;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .rpa-service-card:hover {
+    border-color: #0ebab1;
+    box-shadow: 0 12px 36px -8px rgba(14, 186, 177, 0.08);
+    transform: translateY(-4px);
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .rpa-service-card .icon-wrap {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: rgba(14, 186, 177, 0.08);
+    color: #0ebab1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 18px;
+    transition: all 0.3s ease;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .rpa-service-card:hover .icon-wrap {
+    background: linear-gradient(135deg, #0ebab1, #14cfc1);
+    color: #fff;
+    transform: scale(1.05);
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .rpa-service-card h4 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a2332;
+    margin-bottom: 8px;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .rpa-service-card p {
+    font-size: 14px;
+    color: #64748b;
+    line-height: 1.7;
+    flex: 1;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .rpa-service-card .service-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #f1f5f9;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .rpa-service-card .service-tags span {
+    font-size: 11px;
+    color: #475569;
+    background: #f1f5f9;
+    padding: 3px 12px;
+    border-radius: 50px;
+    font-weight: 500;
+  }
+
+  :where(body.page-services-advanced_technology-robotic_process_automation) .rpa-service-card .service-tags span i {
+    color: #0ebab1;
+    margin-right: 4px;
+    font-size: 10px;
+  }
+
+  /* ============================================================
+     RESPONSIVE
+  ============================================================ */
+  @media (max-width: 1024px) {
+    :where(body.page-services-advanced_technology-robotic_process_automation) .hero-banner {
+      flex-direction: column;
+      padding: 50px 35px;
+      margin: 20px 16px;
+    }
+
+    :where(body.page-services-advanced_technology-robotic_process_automation) .hero-form {
+      width: 100%;
+    }
+
+    :where(body.page-services-advanced_technology-robotic_process_automation) .hero-content h1 {
+      font-size: 38px;
+    }
+
+    :where(body.page-services-advanced_technology-robotic_process_automation) .rpa-grid,:where(body.page-services-advanced_technology-robotic_process_automation) .rpa-services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    :where(body.page-services-advanced_technology-robotic_process_automation) .cap-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    :where(body.page-services-advanced_technology-robotic_process_automation) .hero-banner {
+      padding: 30px 20px;
+      margin: 16px 12px;
+      border-radius: 20px;
+    }
+
+    :where(body.page-services-advanced_technology-robotic_process_automation) .hero-content h1 {
+      font-size: 28px;
+    }
+
+    :where(body.page-services-advanced_technology-robotic_process_automation) .hero-content p {
+      font-size: 15px;
+    }
+
+    :where(body.page-services-advanced_technology-robotic_process_automation) .hero-stats {
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    :where(body.page-services-advanced_technology-robotic_process_automation) .hero-stats div strong {
+      font-size: 22px;
+    }
+
+    :where(body.page-services-advanced_technology-robotic_process_automation) .form-row {
+      flex-direction: column;
+      gap: 0;
+    }
+
+    :where(body.page-services-advanced_technology-robotic_process_automation) .rpa-grid,:where(body.page-services-advanced_technology-robotic_process_automation) .rpa-services-grid,:where(body.page-services-advanced_technology-robotic_process_automation) .cap-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    :where(body.page-services-advanced_technology-robotic_process_automation) .rpa-wrapper,:where(body.page-services-advanced_technology-robotic_process_automation) .rpa-services-wrapper {
+      padding: 0 12px 30px;
+    }
+
+    :where(body.page-services-advanced_technology-robotic_process_automation) .capabilities-section {
+      margin: 0 12px 24px;
+      padding: 30px 16px;
+      border-radius: 20px;
+    }
+
+    :where(body.page-services-advanced_technology-robotic_process_automation) .capabilities-section .cap-header h2,:where(body.page-services-advanced_technology-robotic_process_automation) .section-title h2 {
+      font-size: 28px;
+    }
+
+    :where(body.page-services-advanced_technology-robotic_process_automation) .section-title {
+      margin: 0 auto 30px;
+      padding: 0 12px;
+    }
+
+    :where(body.page-services-advanced_technology-robotic_process_automation) .rpa-card {
+      padding: 24px 20px;
+    }
+
+    :where(body.page-services-advanced_technology-robotic_process_automation) .rpa-service-card {
+      padding: 24px 20px;
+    }
+
+    :where(body.page-services-advanced_technology-robotic_process_automation) .cap-item {
+      padding: 20px 16px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    :where(body.page-services-advanced_technology-robotic_process_automation) .hero-buttons {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    :where(body.page-services-advanced_technology-robotic_process_automation) .hero-buttons .btn-primary,:where(body.page-services-advanced_technology-robotic_process_automation) .hero-buttons .btn-secondary {
+      text-align: center;
+      justify-content: center;
+    }
+
+    :where(body.page-services-advanced_technology-robotic_process_automation) .hero-stats {
+      gap: 16px;
+    }
+
+    :where(body.page-services-advanced_technology-robotic_process_automation) .hero-stats div strong {
+      font-size: 20px;
+    }
+  }
+
+
+:where(body.page-services-advanced_technology-robotic_process_automation) .page-inline-services-advanced_technology-robotic_process_automation-1 { margin-right: 6px; }
+
+

@@ -1,0 +1,1020 @@
+/* =====================================
+           BTR FUTURISTIC INDUSTRY PRELOADER
+        ===================================== */
+
+        #btrx-preloader {
+            position: fixed;
+            inset: 0;
+            z-index: 999999;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background:
+                radial-gradient(circle at 50% 40%, rgba(102, 181, 255, 0.14), transparent 22%),
+                radial-gradient(circle at 15% 20%, rgba(73, 181, 255, 0.18), transparent 18%),
+                radial-gradient(circle at 85% 25%, rgba(34, 211, 238, 0.12), transparent 20%),
+                linear-gradient(135deg, #010a13 0%, #041827 20%, #071d2f 50%, #020b14 100%);
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        #btrx-preloader::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(2px 2px at 10% 20%, rgba(255,255,255,0.9), transparent),
+                radial-gradient(1.5px 1.5px at 30% 30%, rgba(125,211,252,0.8), transparent),
+                radial-gradient(2px 2px at 55% 18%, rgba(255,255,255,0.8), transparent),
+                radial-gradient(1.5px 1.5px at 70% 35%, rgba(103,232,249,0.8), transparent),
+                radial-gradient(1.5px 1.5px at 80% 15%, rgba(255,255,255,0.7), transparent),
+                radial-gradient(1.5px 1.5px at 20% 75%, rgba(255,255,255,0.8), transparent),
+                radial-gradient(2px 2px at 60% 68%, rgba(125,211,252,0.8), transparent),
+                radial-gradient(1.5px 1.5px at 90% 70%, rgba(255,255,255,0.9), transparent);
+            opacity: 0.95;
+        }
+
+        #btrx-preloader.btrx-hide {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .btrx-preloader-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(125, 211, 252, 0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(125, 211, 252, 0.06) 1px, transparent 1px);
+            background-size: 32px 32px;
+            mask-image: radial-gradient(circle at center, black 45%, transparent 100%);
+        }
+
+        .btrx-preloader-grid::before,
+        .btrx-preloader-grid::after {
+            content: "";
+            position: absolute;
+            inset: 16% 10%;
+            border-radius: 50%;
+            border: 1px solid rgba(103, 232, 249, 0.12);
+        }
+
+        .btrx-preloader-grid::after {
+            inset: 26% 20%;
+            border-color: rgba(125, 211, 252, 0.18);
+        }
+
+        .btrx-bg-glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.7;
+            animation: btrxGlow 10s ease-in-out infinite;
+        }
+
+        .btrx-bg-glow-1 {
+            width: 380px;
+            height: 380px;
+            left: 10%;
+            top: 12%;
+            background: rgba(34, 211, 238, 0.28);
+        }
+
+        .btrx-bg-glow-2 {
+            width: 450px;
+            height: 450px;
+            right: 12%;
+            bottom: 8%;
+            background: rgba(45, 212, 191, 0.22);
+            animation-delay: 3s;
+        }
+
+        .btrx-bg-glow-3 {
+            width: 260px;
+            height: 260px;
+            left: 50%;
+            bottom: 10%;
+            background: rgba(59, 130, 246, 0.2);
+            animation-delay: 6s;
+        }
+
+        @keyframes btrxGlow {
+            0%, 100% { transform: scale(1) translateY(0); }
+            50% { transform: scale(1.12) translateY(-18px); }
+        }
+
+        .btrx-loader-scene {
+            position: relative;
+            width: 260px;
+            height: 260px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1000px;
+        }
+
+        .btrx-orbit {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(125, 211, 252, 0.28);
+            box-shadow: inset 0 0 18px rgba(125, 211, 252, 0.08), 0 0 18px rgba(125, 211, 252, 0.08);
+        }
+
+        .btrx-orbit-one {
+            width: 240px;
+            height: 240px;
+            transform: rotateX(65deg) rotateY(18deg);
+            animation: btrxSpin 12s linear infinite;
+        }
+
+        .btrx-orbit-two {
+            width: 190px;
+            height: 190px;
+            transform: rotateY(70deg) rotateZ(25deg);
+            border-color: rgba(103, 232, 249, 0.32);
+            animation: btrxSpinReverse 10s linear infinite;
+        }
+
+        .btrx-loader-plate {
+            position: absolute;
+            width: 210px;
+            height: 210px;
+            border-radius: 50%;
+            background:
+                radial-gradient(circle at 35% 30%, rgba(255,255,255,0.82), rgba(202, 240, 255, 0.26) 12%, rgba(15, 118, 110, 0.28) 24%, rgba(7, 13, 22, 0.9) 52%, rgba(1, 7, 13, 1) 100%);
+            border: 1px solid rgba(125, 211, 252, 0.5);
+            box-shadow:
+                inset 0 0 24px rgba(255,255,255,0.08),
+                inset -22px -22px 36px rgba(2, 6, 23, 0.9),
+                0 0 26px rgba(16, 185, 129, 0.12),
+                0 0 44px rgba(34, 211, 238, 0.12);
+            transform: rotateX(68deg) rotateY(25deg);
+            animation: btrxPlateSpin 16s linear infinite;
+        }
+
+        .btrx-loader-plate::before,
+        .btrx-loader-plate::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            inset: 15%;
+            border: 1px solid rgba(125, 211, 252, 0.22);
+        }
+
+        .btrx-loader-plate::after {
+            inset: 30%;
+            border-color: rgba(94, 234, 212, 0.42);
+            box-shadow: 0 0 18px rgba(34, 211, 238, 0.18);
+        }
+
+        .btrx-loader-core {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at 35% 30%, rgba(255,255,255,0.9), rgba(125, 211, 252, 0.35) 10%, rgba(8, 82, 116, 0.9) 30%, rgba(2, 6, 18, 1) 72%);
+            border: 1px solid rgba(126, 246, 235, 0.5);
+            box-shadow:
+                inset -18px -18px 35px rgba(2, 6, 23, 0.9),
+                inset 14px 10px 22px rgba(103, 232, 249, 0.16),
+                0 0 36px rgba(34, 211, 238, 0.24),
+                0 0 80px rgba(45, 212, 191, 0.18);
+            animation: btrxPulseCore 2.4s ease-in-out infinite;
+        }
+
+        .btrx-loader-core::before {
+            content: "";
+            position: absolute;
+            inset: 14px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.14);
+        }
+
+        .btrx-loader-core::after {
+            content: "";
+            position: absolute;
+            inset: 18px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(125, 211, 252, 0.16), rgba(255,255,255,0.04), rgba(45, 212, 191, 0.1));
+            border: 1px solid rgba(125, 211, 252, 0.16);
+            transform: rotateX(62deg);
+        }
+
+        .btrx-core-ring {
+            position: absolute;
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 1px solid rgba(103, 232, 249, 0.35);
+            animation: btrxRotatingRing 5s linear infinite;
+        }
+
+        .btrx-core-dot {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #7ef6eb;
+            box-shadow: 0 0 16px rgba(126, 246, 235, 0.9);
+            animation: btrxDotPulse 1.6s ease-in-out infinite;
+        }
+
+        @keyframes btrxSpin {
+            0% { transform: rotateX(65deg) rotateY(18deg) rotateZ(0deg); }
+            100% { transform: rotateX(65deg) rotateY(18deg) rotateZ(360deg); }
+        }
+
+        @keyframes btrxSpinReverse {
+            0% { transform: rotateY(70deg) rotateZ(25deg) rotateX(0deg); }
+            100% { transform: rotateY(70deg) rotateZ(25deg) rotateX(360deg); }
+        }
+
+        @keyframes btrxRotatingRing {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.06); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        @keyframes btrxPlateSpin {
+            0% { transform: rotateX(68deg) rotateY(25deg) rotateZ(0deg); }
+            100% { transform: rotateX(68deg) rotateY(25deg) rotateZ(360deg); }
+        }
+
+        @keyframes btrxPulseCore {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
+
+        @keyframes btrxDotPulse {
+            0%, 100% { transform: scale(0.9); opacity: 0.8; }
+            50% { transform: scale(1.25); opacity: 1; }
+        }
+
+        .btrx-preloader-brand {
+            position: absolute;
+            top: 420px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .btrx-brand-btr {
+            color: #bfe9ff;
+            font-size: 2.15rem;
+            text-shadow: 0 0 22px rgba(125, 211, 252, 0.4);
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .btrx-brand-solution {
+            color: rgba(159, 244, 255, 0.9);
+            font-size: 0.82rem;
+            opacity: 0.9;
+        }
+
+        .btrx-preloader-meta {
+            position: absolute;
+            top: 475px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(320px, 72vw);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btrx-preloader-meta span {
+            color: rgba(191, 219, 254, 0.78);
+            font-size: 10px;
+            letter-spacing: 0.38em;
+            text-transform: uppercase;
+        }
+
+        .btrx-progress {
+            width: 100%;
+            height: 4px;
+            background: rgba(148, 163, 184, 0.15);
+            border-radius: 999px;
+            overflow: hidden;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        .btrx-progress-fill {
+            display: block;
+            width: 35%;
+            height: 100%;
+            border-radius: inherit;
+            background: linear-gradient(90deg, #22d3ee 0%, #7ef6eb 50%, #60a5fa 100%);
+            box-shadow: 0 0 16px rgba(94, 234, 212, 0.65);
+            animation: btrxProgress 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes btrxProgress {
+            0% { width: 18%; }
+            100% { width: 90%; }
+        }
+
+        /* ==================================================
+           BTRX CHAT WIDGET - VERTICAL BUTTON WITH BORDER
+           "Let's Talk Business" - Bottom to Top Vertical
+        ================================================== */
+
+        .btrx-chat-widget {
+            position: fixed;
+            right: 0px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        /* Chat Toggle Button - Vertical with Border */
+        .btrx-chat-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px 14px;
+            border: 2px solid #0ebab1;
+            border-radius: 20% 0% 0% 20% !important;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.95);
+            color: #0ebab1;
+            box-shadow: 0 10px 35px rgba(14, 186, 177, 0.2);
+            transition: all .35s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            font-family: 'Inter', -apple-system, sans-serif;
+            width: 48px;
+            height: auto;
+            min-height: 180px;
+            backdrop-filter: blur(10px);
+            gap: 8px;
+            flex-direction: column;
+            border-right: none;
+            border-radius: 50px 0 0 50px;
+        }
+
+        .btrx-chat-toggle:hover {
+            transform: scale(1.04) translateX(-4px);
+            background: #0ebab1;
+            color: #fff;
+            border-color: #0ebab1;
+            box-shadow: -10px 15px 40px rgba(14, 186, 177, 0.4);
+        }
+
+        .btrx-chat-toggle .btrx-toggle-icon {
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform .4s ease;
+            width: 36px;
+            height: 36px;
+            flex-shrink: 0;
+        }
+
+        .btrx-chat-toggle .btrx-toggle-text {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            text-orientation: mixed;
+            white-space: nowrap;
+            line-height: 1.4;
+            padding: 4px 0;
+        }
+
+        .btrx-chat-toggle .btrx-toggle-sub {
+            font-size: 9px;
+            opacity: 0.7;
+            font-weight: 400;
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            text-orientation: mixed;
+            white-space: nowrap;
+            margin-top: 4px;
+        }
+
+        .btrx-chat-toggle:hover .btrx-toggle-sub {
+            opacity: 1;
+        }
+
+        .btrx-chat-toggle.active .btrx-toggle-icon {
+            transform: rotate(90deg);
+        }
+
+        .btrx-chat-toggle.active {
+            background: #1a2332;
+            color: #fff;
+            border-color: #1a2332;
+        }
+
+        .btrx-chat-badge {
+            position: absolute;
+            top: 8px;
+            right: 6px;
+            background: #ef4444;
+            color: #fff;
+            font-size: 10px;
+            font-weight: 700;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: btrxPulseBadge 2s infinite;
+        }
+
+        @keyframes btrxPulseBadge {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        /* Chat Box - Right Side */
+        .btrx-chat-box {
+            position: absolute;
+            right: 0px;
+            top: 50%;
+            transform: translateY(-50%) scale(.95);
+            width: 480px;
+            max-width: 94vw;
+            max-height: 85vh;
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, .25);
+            opacity: 0;
+            visibility: hidden;
+            transition: all .4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: right center;
+            display: flex;
+            flex-direction: column;
+            z-index: 5;
+            pointer-events: none;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .btrx-chat-box.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(-50%) scale(1);
+            pointer-events: auto;
+        }
+
+        /* Chat Header - Get In Touch */
+        .btrx-chat-header {
+            padding: 24px 28px 18px;
+            background: linear-gradient(135deg, #0a1628, #1a2a4a);
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .btrx-chat-header::after {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -20%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(14, 186, 177, .08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .btrx-chat-header .chat-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 4px;
+        }
+
+        .btrx-chat-header .chat-status .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #22c55e;
+            display: inline-block;
+            animation: btrxDotPulse 1.5s infinite;
+        }
+
+        @keyframes btrxDotPulse {
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: .4;
+            }
+        }
+
+        .btrx-chat-header .chat-status span {
+            font-size: 12px;
+            color: #94a3b8;
+            font-weight: 500;
+        }
+
+        .btrx-chat-header h3 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btrx-chat-header h3 i {
+            color: #0ebab1;
+            margin-right: 8px;
+        }
+
+        .btrx-chat-header p {
+            margin: 4px 0 0;
+            font-size: 13px;
+            opacity: .8;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btrx-chat-close {
+            position: absolute;
+            top: 14px;
+            right: 16px;
+            background: rgba(255, 255, 255, .08);
+            border: none;
+            color: #94a3b8;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all .3s ease;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btrx-chat-close:hover {
+            background: rgba(255, 255, 255, .15);
+            color: #fff;
+        }
+
+        /* Chat Body - Scrollable */
+        .btrx-chat-body {
+            padding: 20px 28px 24px;
+            background: #f8fafc;
+            flex: 1;
+            overflow-y: auto;
+            min-height: 0;
+            max-height: 500px;
+        }
+
+        .btrx-chat-body::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .btrx-chat-body::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 10px;
+        }
+
+        .btrx-chat-body::-webkit-scrollbar-thumb {
+            background: #0ebab1;
+            border-radius: 10px;
+        }
+
+        .btrx-chat-body::-webkit-scrollbar-thumb:hover {
+            background: #07a59d;
+        }
+
+        /* Form Groups - Each field on separate line */
+        .btrx-chat-form-group {
+            margin-bottom: 14px;
+        }
+
+        .btrx-chat-form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #1a2332;
+            margin-bottom: 4px;
+        }
+
+        .btrx-chat-form-group label .required {
+            color: #ef4444;
+        }
+
+        .btrx-chat-input,
+        .btrx-chat-textarea,
+        .btrx-chat-select {
+            width: 100%;
+            padding: 10px 14px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            outline: none;
+            font-size: 13px;
+            transition: all .3s ease;
+            background: #ffffff;
+            color: #1a2332;
+            font-family: inherit;
+        }
+
+        .btrx-chat-input:focus,
+        .btrx-chat-textarea:focus,
+        .btrx-chat-select:focus {
+            border-color: #0ebab1;
+            box-shadow: 0 0 0 3px rgba(14, 186, 177, .08);
+        }
+
+        .btrx-chat-input::placeholder,
+        .btrx-chat-textarea::placeholder {
+            color: #94a3b8;
+        }
+
+        .btrx-chat-textarea {
+            height: 70px;
+            resize: vertical;
+            min-height: 60px;
+            max-height: 120px;
+        }
+
+        .btrx-chat-select {
+            appearance: auto;
+            cursor: pointer;
+            color: #1a2332;
+        }
+
+        .btrx-chat-select option {
+            color: #1a2332;
+        }
+
+        /* Checkbox Group - Services */
+        .btrx-chat-checkbox-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 16px;
+            padding: 6px 0 4px;
+        }
+
+        .btrx-chat-checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btrx-chat-checkbox-item input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: #0ebab1;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .btrx-chat-checkbox-item label {
+            font-size: 13px;
+            color: #1a2332;
+            cursor: pointer;
+            font-weight: 400;
+        }
+
+        .btrx-chat-checkbox-item label:hover {
+            color: #0ebab1;
+        }
+
+        /* Submit Button */
+        .btrx-chat-send {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            background: linear-gradient(135deg, #0ebab1, #07a59d);
+            color: #fff;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 16px;
+            transition: all .3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 6px 20px rgba(14, 186, 177, .25);
+            margin-top: 6px;
+        }
+
+        .btrx-chat-send:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(14, 186, 177, .35);
+            background: linear-gradient(135deg, #09a59d, #068a83);
+        }
+
+        .btrx-chat-send:active {
+            transform: translateY(0);
+        }
+
+        .btrx-chat-send:disabled {
+            opacity: .6;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        /* Chat Footer */
+        .btrx-chat-footer {
+            padding: 12px 28px 16px;
+            background: #ffffff;
+            border-top: 1px solid #f1f5f9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+            color: #94a3b8;
+            flex-shrink: 0;
+        }
+
+        .btrx-chat-footer .chat-security {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btrx-chat-footer .chat-security i {
+            color: #22c55e;
+            font-size: 12px;
+        }
+
+        .btrx-chat-footer .chat-response {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btrx-chat-footer .chat-response .avatars {
+            display: flex;
+        }
+
+        .btrx-chat-footer .chat-response .avatars span {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            margin-left: -6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+            font-weight: 700;
+            color: #fff;
+            background-color: #149a14;
+        }
+
+        .btrx-chat-footer .chat-response .avatars span:first-child {
+            margin-left: 0;
+        }
+
+        .btrx-chat-footer .chat-response .avatars span:nth-child(1) {
+            background: #0ebab1;
+        }
+        .btrx-chat-footer .chat-response .avatars span:nth-child(2) {
+            background: #f59e0b;
+        }
+        .btrx-chat-footer .chat-response .avatars span:nth-child(3) {
+            background: #3b82f6;
+        }
+
+        .btrx-chat-footer .chat-response .response-text {
+            font-size: 10px;
+            color: #64748b;
+        }
+
+        /* ==================================================
+           RESPONSIVE
+        ================================================== */
+
+        @media(max-width:768px) {
+            .btrx-chat-widget {
+                right: 12px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .btrx-chat-toggle {
+                padding: 14px 10px;
+                width: 40px;
+                min-height: 140px;
+                border-radius: 40px 0 0 40px;
+            }
+
+            .btrx-chat-toggle .btrx-toggle-icon {
+                font-size: 18px;
+                width: 28px;
+                height: 28px;
+            }
+
+            .btrx-chat-toggle .btrx-toggle-text {
+                font-size: 12px;
+            }
+
+            .btrx-chat-toggle .btrx-toggle-sub {
+                font-size: 8px;
+            }
+
+            .btrx-chat-box {
+                width: calc(100vw - 60px);
+                max-width: 400px;
+                max-height: 80vh;
+                right: 52px;
+                top: 50%;
+                transform: translateY(-50%) scale(.95);
+                border-radius: 16px;
+            }
+
+            .btrx-chat-box.active {
+                transform: translateY(-50%) scale(1);
+            }
+
+            .btrx-chat-header {
+                padding: 16px 18px 12px;
+            }
+
+            .btrx-chat-header h3 {
+                font-size: 18px;
+            }
+
+            .btrx-chat-body {
+                padding: 14px 18px 16px;
+                max-height: 350px;
+            }
+
+            .btrx-chat-checkbox-group {
+                grid-template-columns: 1fr 1fr;
+                gap: 4px 12px;
+            }
+
+            .btrx-chat-footer {
+                flex-direction: column;
+                gap: 6px;
+                padding: 10px 18px 12px;
+                text-align: center;
+            }
+
+            .btrx-chat-textarea {
+                height: 50px;
+                min-height: 40px;
+            }
+
+            .btrx-chat-badge {
+                width: 18px;
+                height: 18px;
+                font-size: 9px;
+                top: -4px;
+                right: -4px;
+            }
+
+            .btrx-company-name {
+                font-size: 22px;
+                top: 200px;
+            }
+
+            .btrx-loading-text {
+                font-size: 10px;
+                top: 240px;
+                padding: 3px 14px;
+            }
+
+            .btrx-loader {
+                width: 160px;
+                height: 160px;
+            }
+
+            .btrx-center {
+                width: 75px;
+                height: 75px;
+            }
+
+            .btrx-center img {
+                width: 48px;
+            }
+        }
+
+        @media(max-width:400px) {
+            .btrx-chat-widget {
+                right: 8px;
+            }
+
+            .btrx-chat-toggle {
+                padding: 10px 8px;
+                width: 34px;
+                min-height: 110px;
+                border-radius: 34px 0 0 34px;
+            }
+
+            .btrx-chat-toggle .btrx-toggle-icon {
+                font-size: 16px;
+                width: 24px;
+                height: 24px;
+            }
+
+            .btrx-chat-toggle .btrx-toggle-text {
+                font-size: 10px;
+            }
+
+            .btrx-chat-toggle .btrx-toggle-sub {
+                font-size: 7px;
+            }
+
+            .btrx-chat-box {
+                width: calc(100vw - 50px);
+                max-width: 340px;
+                right: 44px;
+                border-radius: 14px;
+                max-height: 75vh;
+            }
+
+            .btrx-chat-header h3 {
+                font-size: 16px;
+            }
+
+            .btrx-chat-body {
+                padding: 12px 14px 14px;
+                max-height: 280px;
+            }
+
+            .btrx-chat-input,
+            .btrx-chat-textarea,
+            .btrx-chat-select {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+
+            .btrx-chat-send {
+                padding: 10px;
+                font-size: 14px;
+            }
+
+            .btrx-chat-form-group {
+                margin-bottom: 10px;
+            }
+
+            .btrx-chat-checkbox-group {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+
+            .btrx-chat-checkbox-item label {
+                font-size: 12px;
+            }
+
+            .btrx-company-name {
+                font-size: 18px;
+                top: 175px;
+            }
+
+            .btrx-loading-text {
+                font-size: 9px;
+                top: 210px;
+                padding: 2px 12px;
+                letter-spacing: 2px;
+            }
+
+            .btrx-loader {
+                width: 140px;
+                height: 140px;
+            }
+
+            .btrx-center {
+                width: 65px;
+                height: 65px;
+            }
+
+            .btrx-center img {
+                width: 40px;
+            }
+
+            .btrx-ring-one {
+                border-width: 4px;
+            }
+            .btrx-ring-two {
+                border-width: 4px;
+                inset: 14px;
+            }
+            .btrx-ring-three {
+                inset: 30px;
+                border-width: 2px;
+            }
+        }

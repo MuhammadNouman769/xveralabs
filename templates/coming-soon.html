@@ -3,135 +3,13 @@
 
 {% block title %}Coming Soon |Xveralabs{% endblock %}
 
+{% block body_class %}page-coming-soon{% endblock %}
+
+{% block page_css %}<link rel="stylesheet" href="{% static 'css/pages/coming-soon.css' %}">{% endblock %}
+
 {% block content %}
 
-<style>
 
-/* ===== BASE ===== */
-body{
-    margin:0;
-    font-family:Arial, sans-serif;
-    background:linear-gradient(135deg,#0a0f1c,#111827);
-    color:#fff;
-    overflow:hidden;
-}
-
-/* ===== CENTER WRAP ===== */
-.cs-wrap{
-    height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    flex-direction:column;
-    padding:20px;
-}
-
-/* ===== LOGO ===== */
-.cs-logo img{
-    width:180px;
-    margin-bottom:10px;
-}
-
-/* ===== TITLE ===== */
-.cs-title{
-    font-size:48px;
-    font-weight:800;
-    margin:10px 0;
-}
-
-.cs-title span{
-    color:#0ebab1;
-}
-
-/* ===== SUB TEXT ===== */
-.cs-text{
-    font-size:16px;
-    color:#cbd5e1;
-    max-width:600px;
-    line-height:1.7;
-}
-
-/* ===== COUNTDOWN ===== */
-.cs-countdown{
-    display:flex;
-    gap:20px;
-    margin-top:30px;
-}
-
-.cs-box{
-    background:rgba(255,255,255,0.05);
-    padding:15px 20px;
-    border-radius:12px;
-    min-width:80px;
-    border:1px solid rgba(255,255,255,0.08);
-}
-
-.cs-box h2{
-    margin:0;
-    font-size:28px;
-    color:#0ebab1;
-}
-
-.cs-box span{
-    font-size:12px;
-    color:#94a3b8;
-}
-
-/* ===== EMAIL ===== */
-.cs-form{
-    margin-top:35px;
-    display:flex;
-    gap:10px;
-}
-
-.cs-form input{
-    padding:12px 15px;
-    width:260px;
-    border:none;
-    border-radius:8px;
-    outline:none;
-}
-
-.cs-form button{
-    padding:12px 18px;
-    background:#0ebab1;
-    border:none;
-    color:#fff;
-    border-radius:8px;
-    cursor:pointer;
-    font-weight:600;
-}
-
-.cs-form button:hover{
-    background:#0a9c91;
-}
-
-/* ===== FLOATING SHAPES ===== */
-.shape{
-    position:absolute;
-    border-radius:50%;
-    opacity:0.15;
-    animation:float 6s infinite ease-in-out;
-}
-
-.shape1{width:120px;height:120px;background:#0ebab1;top:10%;left:10%;}
-.shape2{width:80px;height:80px;background:#38bdf8;bottom:15%;right:10%;}
-.shape3{width:150px;height:150px;background:#6366f1;top:60%;left:80%;}
-
-@keyframes float{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-20px);}
-}
-
-/* ===== RESPONSIVE ===== */
-@media(max-width:600px){
-    .cs-title{font-size:32px;}
-    .cs-form{flex-direction:column;}
-    .cs-form input{width:100%;}
-}
-
-</style>
 </head>
 
 <body>
@@ -192,29 +70,7 @@ body{
 
 </div>
 
-<script>
-
-// ===== COUNTDOWN =====
-const targetDate = new Date("2026-12-31 00:00:00").getTime();
-
-function updateCountdown(){
-    const now = new Date().getTime();
-    const gap = targetDate - now;
-
-    const days = Math.floor(gap / (1000*60*60*24));
-    const hours = Math.floor((gap % (1000*60*60*24)) / (1000*60*60));
-    const minutes = Math.floor((gap % (1000*60*60)) / (1000*60));
-    const seconds = Math.floor((gap % (1000*60)) / 1000);
-
-    document.getElementById("days").innerText = days;
-    document.getElementById("hours").innerText = hours;
-    document.getElementById("minutes").innerText = minutes;
-    document.getElementById("seconds").innerText = seconds;
-}
-
-setInterval(updateCountdown,1000);
-
-</script>
+<script src="{% static 'js/pages/coming-soon-1.js' %}"></script>
 
 </body>
 </html>

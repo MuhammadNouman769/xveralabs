@@ -29,6 +29,7 @@ def env_bool(name, default=False):
 
 
 DEBUG = env_bool('DJANGO_DEBUG', False)
+SERVE_MEDIA = env_bool('DJANGO_SERVE_MEDIA', DEBUG)
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '')
 if not SECRET_KEY:
     raise ImproperlyConfigured('Set DJANGO_SECRET_KEY to a unique, secret value.')

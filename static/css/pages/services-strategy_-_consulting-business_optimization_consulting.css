@@ -1,0 +1,555 @@
+/* ===== RESET & GLOBAL STYLES ===== */
+  body:where(.page-services-strategy_-_consulting-business_optimization_consulting),:where(body.page-services-strategy_-_consulting-business_optimization_consulting) * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body:where(.page-services-strategy_-_consulting-business_optimization_consulting),body:where(.page-services-strategy_-_consulting-business_optimization_consulting) {
+    font-family: 'Poppins', sans-serif;
+    color: #2d3748;
+    background-color: #f8fafc;
+    overflow-x: hidden;
+  }
+
+  /* ===== FULL-SCREEN HERO BANNER ===== */
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .hero-fullscreen {
+    padding: 140px 8% 100px;
+    background: linear-gradient(to right, #f2f2f2 0%, #d8e8ea 30%, rgba(41, 195, 197, 0.81) 55%, rgba(71, 202, 202, 0.01) 75%, rgba(233, 241, 241, 0) 100%),
+                url('/static/images/about-us.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .hero-container {
+    max-width: 1400px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .hero-left-content {
+    flex: 1.2;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .hero-badge-tag {
+    display: inline-block;
+    background: #c3f2ee;
+    color: #0ebab1;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    border: 1px solid rgba(14, 186, 177, 0.3);
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .hero-left-content h1 {
+    font-size: 56px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.15;
+    margin-bottom: 24px;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .hero-left-content h1 span {
+    color: #0ebab1;
+    background: linear-gradient(135deg, #0ebab1, #14cfc1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .hero-left-content p {
+    font-size: 18px;
+    color: #475569;
+    line-height: 1.8;
+    margin-bottom: 36px;
+    max-width: 620px;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .hero-actions {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .btn-primary-hero {
+    background: #0ebab1;
+    color: #ffffff;
+    padding: 16px 38px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 10px 25px rgba(14, 186, 177, 0.35);
+    transition: all 0.3s ease;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .btn-primary-hero:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(14, 186, 177, 0.45);
+    background: #10d4ca;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .btn-secondary-hero {
+    background: #ffffff;
+    color: #0ebab1;
+    padding: 16px 38px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    border: 2px solid #e2e8f0;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .btn-secondary-hero:hover {
+    border-color: #0ebab1;
+    background: #f0faf9;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .hero-stats-grid {
+    display: flex;
+    gap: 50px;
+    border-top: 1px solid rgba(15, 23, 42, 0.1);
+    padding-top: 30px;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .stat-box strong {
+    display: block;
+    font-size: 32px;
+    font-weight: 800;
+    color: #0f172a;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .stat-box span {
+    font-size: 14px;
+    color: #64748b;
+    font-weight: 600;
+  }
+
+  /* QUICK CONTACT FLOATING FORM */
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .hero-form-wrapper {
+    flex: 0.85;
+    max-width: 420px;
+    background: #1a2a4a;
+    border-radius: 20px;
+    padding: 36px 30px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .hero-form-wrapper h3 {
+    color: #ffffff;
+    font-size: 22px;
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .hero-form-wrapper form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .form-row-2 {
+    display: flex;
+    gap: 12px;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .hero-form-wrapper input,:where(body.page-services-strategy_-_consulting-business_optimization_consulting) .hero-form-wrapper select,:where(body.page-services-strategy_-_consulting-business_optimization_consulting) .hero-form-wrapper textarea {
+    width: 100%;
+    padding: 12px 16px;
+    background: #1a2a4a;
+    border: 1px solid #475569;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 14px;
+    outline: none;
+    font-family: inherit;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .hero-form-wrapper input::placeholder,:where(body.page-services-strategy_-_consulting-business_optimization_consulting) .hero-form-wrapper textarea::placeholder {
+    color: #94a3b8;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .hero-form-wrapper select {
+    color: #94a3b8;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .hero-form-wrapper select option {
+    background: #1e293b;
+    color: #ffffff;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .hero-form-wrapper textarea {
+    resize: none;
+    height: 90px;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .btn-form-submit {
+    background: #0ebab1;
+    color: #ffffff;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .btn-form-submit:hover {
+    background: #12cfc3;
+  }
+
+  /* ===== MAIN CONTENT LAYOUT WITH SIDEBAR ===== */
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .main-layout-wrapper {
+    max-width: 1400px;
+    margin: 60px auto;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 50px;
+  }
+
+  /* SIDE NAVIGATION / SIDE HEADINGS */
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .sidebar-nav-panel {
+    position: sticky;
+    top: 40px;
+    height: fit-content;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 28px 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .sidebar-nav-panel h4 {
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #0f172a;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #0ebab1;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .sidebar-menu {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .sidebar-menu a {
+    text-decoration: none;
+    color: #64748b;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    border-radius: 8px;
+    transition: all 0.25s ease;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .sidebar-menu a:hover,:where(body.page-services-strategy_-_consulting-business_optimization_consulting) .sidebar-menu a.active {
+    background: #f0faf9;
+    color: #0ebab1;
+    padding-left: 18px;
+  }
+
+  /* CONTENT AREA & CARDS */
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .content-body {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .section-header h2 {
+    font-size: 34px;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 12px;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .section-header h2 span {
+    color: #0ebab1;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .section-header p {
+    font-size: 16px;
+    color: #64748b;
+    line-height: 1.8;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .arbisoft-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 24px;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .arbisoft-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 36px 30px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .arbisoft-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 35px -10px rgba(14, 186, 177, 0.15);
+    border-color: rgba(14, 186, 177, 0.4);
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .arbisoft-card .card-icon-box {
+    width: 50px;
+    height: 50px;
+    background: #f0faf9;
+    color: #0ebab1;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .arbisoft-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 14px;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .arbisoft-card p {
+    font-size: 14px;
+    color: #475569;
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .card-bullet-list {
+    list-style: none;
+    padding: 0;
+    margin-top: auto;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .card-bullet-list li {
+    font-size: 13px;
+    color: #334155;
+    padding: 6px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .card-bullet-list li i {
+    color: #0ebab1;
+  }
+
+  /* DETAILED FEATURES LIST SECTION */
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .detailed-features-box {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 40px;
+    border: 1px solid #e2e8f0;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .feature-row {
+    display: flex;
+    gap: 30px;
+    padding: 24px 0;
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .feature-row:last-child {
+    border-bottom: none;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .feature-num {
+    font-size: 24px;
+    font-weight: 800;
+    color: #0ebab1;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .feature-info h4 {
+    font-size: 18px;
+    color: #0f172a;
+    margin-bottom: 8px;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .feature-info p {
+    font-size: 14px;
+    color: #64748b;
+    line-height: 1.7;
+  }
+
+  /* ===== INDUSTRY EXPERTISE SECTION ===== */
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .industry-expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+    margin-top: 24px;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .industry-tag-card {
+    background: #ffffff;
+    padding: 24px 20px;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .industry-tag-card:hover {
+    border-color: #0ebab1;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px -8px rgba(14, 186, 177, 0.1);
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .industry-tag-card i {
+    font-size: 32px;
+    color: #0ebab1;
+    margin-bottom: 12px;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .industry-tag-card h5 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 4px;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .industry-tag-card p {
+    font-size: 13px;
+    color: #64748b;
+  }
+
+  /* ===== FAQ SECTION ===== */
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .faq-box {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 40px;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .faq-item {
+    padding: 16px 0;
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .faq-item:last-child {
+    border-bottom: none;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .faq-item h4 {
+    font-size: 16px;
+    color: #0f172a;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .faq-item h4 i {
+    color: #0ebab1;
+  }
+
+  :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .faq-item p {
+    font-size: 14px;
+    color: #64748b;
+    line-height: 1.7;
+    margin-top: 6px;
+    padding-left: 32px;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1200px) {
+    :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .main-layout-wrapper {
+      grid-template-columns: 1fr;
+    }
+    :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .sidebar-nav-panel {
+      position: static;
+    }
+  }
+
+  @media (max-width: 992px) {
+    :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .hero-container {
+      flex-direction: column;
+    }
+    :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .hero-form-wrapper {
+      max-width: 100%;
+      width: 100%;
+    }
+    :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .arbisoft-cards-grid {
+      grid-template-columns: 1fr;
+    }
+    :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .hero-left-content h1 {
+      font-size: 40px;
+    }
+    :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .hero-stats-grid {
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+  }
+
+  @media (max-width: 600px) {
+    :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .hero-fullscreen {
+      padding: 40px 20px;
+    }
+    :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .hero-left-content h1 {
+      font-size: 32px;
+    }
+    :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .hero-stats-grid {
+      gap: 20px;
+    }
+    :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .hero-stats-grid .stat-box strong {
+      font-size: 24px;
+    }
+    :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .detailed-features-box {
+      padding: 24px;
+    }
+    :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .feature-row {
+      flex-direction: column;
+      gap: 8px;
+    }
+    :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .faq-box {
+      padding: 24px;
+    }
+    :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .faq-item p {
+      padding-left: 0;
+    }
+    :where(body.page-services-strategy_-_consulting-business_optimization_consulting) .sidebar-nav-panel {
+      padding: 20px 16px;
+    }
+  }
+
+

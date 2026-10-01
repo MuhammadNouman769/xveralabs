@@ -177,7 +177,7 @@ pip install -r requirements.txt
 
 ### 4. Configure environment
 
-For local development, copy `.env.example` to `.env`, generate a `DJANGO_SECRET_KEY`, then set `DJANGO_DEBUG=True`, `DJANGO_DB_ENGINE=sqlite`, and `DJANGO_SECURE_SSL_REDIRECT=False` in `.env`.
+For local development, copy `.env.example` to `.env`, generate a `DJANGO_SECRET_KEY`, then set `DJANGO_DEBUG=True`, `DJANGO_SERVE_MEDIA=True`, `DJANGO_DB_ENGINE=sqlite`, and `DJANGO_SECURE_SSL_REDIRECT=False` in `.env`. `DJANGO_SERVE_MEDIA` only enables Django's local media file route when debug is off; leave it disabled in production.
 
 Generate a local secret with:
 

@@ -1,0 +1,512 @@
+/* ===== RESET & BASE ===== */
+    :where(body.page-about-careers) .btr-careers-wrap * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    :where(body.page-about-careers) .btr-careers-wrap {
+        background: #f5f7fa;
+    }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    :where(body.page-about-careers) .btr-careers-hero {
+        position: relative;
+        height: 80vh;
+        min-height: 520px;
+        background:
+            linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)),
+            url("https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2000");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+    }
+
+    :where(body.page-about-careers) .btr-careers-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2));
+    }
+
+    :where(body.page-about-careers) .btr-careers-hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 900px;
+        padding: 20px;
+    }
+
+    :where(body.page-about-careers) .btr-careers-hero-tag {
+        display: inline-block;
+        color: #0ebab1;
+        font-weight: 600;
+        letter-spacing: 2px;
+        margin-bottom: 18px;
+        text-transform: uppercase;
+        font-size: 14px;
+        border: 1px solid rgba(14, 186, 177, 0.3);
+        padding: 6px 22px;
+        border-radius: 40px;
+    }
+
+    :where(body.page-about-careers) .btr-careers-hero-content h1 {
+        font-size: 68px;
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 18px;
+    }
+
+    :where(body.page-about-careers) .btr-careers-hero-content h1 span {
+        color: #0ebab1;
+    }
+
+    :where(body.page-about-careers) .btr-careers-hero-content p {
+        font-size: 19px;
+        color: #d9d9d9;
+        line-height: 1.8;
+        margin-bottom: 32px;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    :where(body.page-about-careers) .btr-careers-hero-btns {
+        display: flex;
+        justify-content: center;
+        gap: 18px;
+        flex-wrap: wrap;
+    }
+
+    :where(body.page-about-careers) .btr-careers-hero-btn {
+        text-decoration: none;
+        padding: 14px 36px;
+        border-radius: 10px;
+        font-weight: 600;
+        transition: .3s;
+    }
+
+    :where(body.page-about-careers) .btr-careers-hero-btn.btr-primary {
+        background: #0ebab1;
+        color: white;
+        border: 2px solid #0ebab1;
+    }
+
+    :where(body.page-about-careers) .btr-careers-hero-btn.btr-primary:hover {
+        background: transparent;
+        color: #0ebab1;
+    }
+
+    :where(body.page-about-careers) .btr-careers-hero-btn.btr-outline {
+        border: 2px solid rgba(255, 255, 255, 0.4);
+        color: white;
+        backdrop-filter: blur(10px);
+    }
+
+    :where(body.page-about-careers) .btr-careers-hero-btn.btr-outline:hover {
+        background: #0ebab1;
+        color: white;
+        border-color: #0ebab1;
+    }
+
+    /* ===== FLOATING STATS ===== */
+    :where(body.page-about-careers) .btr-careers-stat {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 15px;
+        color: white;
+        padding: 16px 26px;
+        z-index: 2;
+    }
+
+    :where(body.page-about-careers) .btr-careers-stat h4 {
+        font-size: 28px;
+        color: #0ebab1;
+        margin-bottom: 2px;
+    }
+
+    :where(body.page-about-careers) .btr-careers-stat span {
+        font-size: 13px;
+        opacity: 0.7;
+    }
+
+    :where(body.page-about-careers) .btr-stat-1 {
+        top: 18%;
+        left: 6%;
+    }
+
+    :where(body.page-about-careers) .btr-stat-2 {
+        bottom: 20%;
+        right: 6%;
+    }
+
+    /* ============================================================
+       CULTURE SECTION
+    ============================================================ */
+    :where(body.page-about-careers) .btr-culture-section {
+        padding: 80px 8% 60px;
+        background: #ffffff;
+    }
+
+    :where(body.page-about-careers) .btr-section-header {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    :where(body.page-about-careers) .btr-section-header .btr-section-tag {
+        color: #0ebab1;
+        font-weight: 600;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 8px;
+        display: inline-block;
+    }
+
+    :where(body.page-about-careers) .btr-section-header h2 {
+        font-size: 40px;
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 8px;
+    }
+
+    :where(body.page-about-careers) .btr-section-header p {
+        color: #777;
+        font-size: 16px;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    :where(body.page-about-careers) .btr-culture-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    :where(body.page-about-careers) .btr-culture-card {
+        background: #f5f7fa;
+        border-radius: 14px;
+        padding: 30px 24px;
+        text-align: center;
+        transition: .4s ease;
+        border: 1px solid rgba(0, 0, 0, 0.03);
+        position: relative;
+    }
+
+    :where(body.page-about-careers) .btr-culture-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+        background: #ffffff;
+    }
+
+    :where(body.page-about-careers) .btr-culture-card .btr-culture-icon {
+        font-size: 40px;
+        margin-bottom: 14px;
+        display: inline-block;
+    }
+
+    :where(body.page-about-careers) .btr-culture-card h3 {
+        font-size: 18px;
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 6px;
+    }
+
+    :where(body.page-about-careers) .btr-culture-card p {
+        color: #666;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    /* ============================================================
+       OPEN POSITIONS - CARDS
+    ============================================================ */
+    :where(body.page-about-careers) .btr-positions-section {
+        padding: 60px 8% 80px;
+        background: #f5f7fa;
+    }
+
+    :where(body.page-about-careers) .btr-positions-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    /* ---- Position Card ---- */
+    :where(body.page-about-careers) .btr-position-card {
+        background: #ffffff;
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 6px 28px rgba(0, 0, 0, 0.06);
+        transition: .4s ease;
+        position: relative;
+        border: 1px solid rgba(0, 0, 0, 0.03);
+    }
+
+    :where(body.page-about-careers) .btr-position-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+    }
+
+    :where(body.page-about-careers) .btr-position-img-wrap {
+        position: relative;
+        overflow: hidden;
+        background: #eef1f5;
+    }
+
+    :where(body.page-about-careers) .btr-position-img-wrap img {
+        width: 100%;
+        height: 190px;
+        object-fit: cover;
+        display: block;
+        transition: .5s ease;
+    }
+
+    :where(body.page-about-careers) .btr-position-card:hover .btr-position-img-wrap img {
+        transform: scale(1.04);
+    }
+
+    :where(body.page-about-careers) .btr-position-img-wrap .btr-dark-overlay {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 110px;
+        height: 110px;
+        background: linear-gradient(225deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.35) 55%, transparent 100%);
+        border-radius: 0 0 0 50px;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    :where(body.page-about-careers) .btr-position-img-wrap .btr-badge {
+        position: absolute;
+        top: 14px;
+        right: 18px;
+        font-size: 20px;
+        font-weight: 800;
+        color: #0ebab1;
+        letter-spacing: 2.5px;
+        z-index: 2;
+        text-shadow: 0 0 20px rgba(0, 0, 0, 0.6), 0 0 8px rgba(0, 0, 0, 0.4);
+        background: transparent;
+        padding: 0;
+        border: none;
+        line-height: 1;
+    }
+
+    :where(body.page-about-careers) .btr-position-body {
+        padding: 22px 26px 26px;
+    }
+
+    :where(body.page-about-careers) .btr-position-body .btr-position-dept {
+        display: inline-block;
+        color: #0ebab1;
+        font-weight: 600;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 4px;
+    }
+
+    :where(body.page-about-careers) .btr-position-body h3 {
+        font-size: 19px;
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 6px;
+        line-height: 1.3;
+    }
+
+    :where(body.page-about-careers) .btr-position-body .btr-position-meta {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        font-size: 13px;
+        color: #888;
+        margin-bottom: 10px;
+    }
+
+    :where(body.page-about-careers) .btr-position-body .btr-position-meta span {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    :where(body.page-about-careers) .btr-position-body p {
+        color: #555;
+        line-height: 1.7;
+        font-size: 14px;
+        margin-bottom: 14px;
+    }
+
+    :where(body.page-about-careers) .btr-position-body .btr-apply-btn {
+        display: inline-block;
+        text-decoration: none;
+        color: #0ebab1;
+        font-weight: 600;
+        font-size: 14px;
+        transition: .3s;
+        padding: 8px 0;
+    }
+
+    :where(body.page-about-careers) .btr-position-body .btr-apply-btn:hover {
+        color: #081120;
+        transform: translateX(6px);
+    }
+
+    /* ============================================================
+       WHY JOIN US
+    ============================================================ */
+    :where(body.page-about-careers) .btr-why-section {
+        padding: 80px 8%;
+        background: #081120;
+        color: white;
+    }
+
+    :where(body.page-about-careers) .btr-why-section .btr-section-header h2 {
+        color: white;
+    }
+
+    :where(body.page-about-careers) .btr-why-section .btr-section-header p {
+        color: #aaa;
+    }
+
+    :where(body.page-about-careers) .btr-why-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 35px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    :where(body.page-about-careers) .btr-why-card {
+        text-align: center;
+        padding: 30px 20px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        transition: .4s ease;
+    }
+
+    :where(body.page-about-careers) .btr-why-card:hover {
+        border-color: rgba(14, 186, 177, 0.3);
+        transform: translateY(-4px);
+    }
+
+    :where(body.page-about-careers) .btr-why-card .btr-why-icon {
+        font-size: 44px;
+        margin-bottom: 14px;
+        display: inline-block;
+    }
+
+    :where(body.page-about-careers) .btr-why-card h3 {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    :where(body.page-about-careers) .btr-why-card p {
+        color: #aaa;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    /* ============================================================
+       CTA
+    ============================================================ */
+    :where(body.page-about-careers) .btr-careers-cta {
+        padding: 80px 8%;
+        background: #ffffff;
+        text-align: center;
+    }
+
+    :where(body.page-about-careers) .btr-careers-cta h2 {
+        font-size: 42px;
+        margin-bottom: 15px;
+    }
+
+    :where(body.page-about-careers) .btr-careers-cta p {
+        max-width: 650px;
+        margin: 0 auto 35px;
+        color: #666;
+        line-height: 1.8;
+    }
+
+    :where(body.page-about-careers) .btr-careers-cta .btr-cta-btn {
+        display: inline-block;
+        padding: 16px 42px;
+        background: #0ebab1;
+        color: white;
+        text-decoration: none;
+        border-radius: 10px;
+        font-weight: 600;
+        transition: .3s;
+    }
+
+    :where(body.page-about-careers) .btr-careers-cta .btr-cta-btn:hover {
+        background: #0d9d95;
+        transform: scale(1.02);
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media(max-width: 1100px) {
+        :where(body.page-about-careers) .btr-culture-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        :where(body.page-about-careers) .btr-positions-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        :where(body.page-about-careers) .btr-why-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media(max-width: 768px) {
+        :where(body.page-about-careers) .btr-careers-hero-content h1 {
+            font-size: 38px;
+        }
+        :where(body.page-about-careers) .btr-careers-hero-content p {
+            font-size: 16px;
+        }
+        :where(body.page-about-careers) .btr-culture-grid,:where(body.page-about-careers) .btr-positions-grid,:where(body.page-about-careers) .btr-why-grid {
+            grid-template-columns: 1fr;
+        }
+        :where(body.page-about-careers) .btr-stat-1,:where(body.page-about-careers) .btr-stat-2 {
+            display: none;
+        }
+        :where(body.page-about-careers) .btr-position-img-wrap .btr-badge {
+            font-size: 17px;
+            top: 12px;
+            right: 14px;
+        }
+        :where(body.page-about-careers) .btr-position-img-wrap .btr-dark-overlay {
+            width: 90px;
+            height: 90px;
+        }
+        :where(body.page-about-careers) .btr-section-header h2 {
+            font-size: 30px;
+        }
+        :where(body.page-about-careers) .btr-careers-cta h2 {
+            font-size: 30px;
+        }
+    }
+
+
+:where(body.page-about-careers) .page-inline-about-careers-1 { color:#0ebab1; }
+
+:where(body.page-about-careers) .page-inline-about-careers-2 { color:white; }
+
+:where(body.page-about-careers) .page-inline-about-careers-3 { color:#aaa; }
+
+

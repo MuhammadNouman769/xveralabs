@@ -1,0 +1,1107 @@
+/* ========== RESET & BASE ========== */
+    body:where(.page-about-why-choose-us),:where(body.page-about-why-choose-us) * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    body:where(.page-about-why-choose-us) {
+        background: #f0f4f8;
+        line-height: 1.6;
+        color: #1a2332;
+    }
+
+    /* ========== HERO BANNER ========== */
+    :where(body.page-about-why-choose-us) .hero-banner {
+        background: linear-gradient(to right, #f2f2f2 0%, #d8e8ea 30%, rgba(41, 195, 197, 0.81) 55%, rgba(71, 202, 202, 0.01) 75%, rgba(233, 241, 241, 0) 100%),
+                    url('/static/images/about-us.jpg');
+        border-radius: 28px;
+        margin: 30px 24px;
+        padding: 70px 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 50px;
+        position: relative;
+        overflow: hidden;
+        background-size: cover;
+        background-position: center;
+    }
+    :where(body.page-about-why-choose-us) .hero-banner::before {
+        content: '';
+        position: absolute;
+        right: -100px;
+        top: -100px;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(14, 186, 177, 0.08) 0%, transparent 70%);
+        border-radius: 50%;
+    }
+    :where(body.page-about-why-choose-us) .hero-banner::after {
+        content: '';
+        position: absolute;
+        left: -50px;
+        bottom: -50px;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(circle, rgba(14, 186, 177, 0.05) 0%, transparent 70%);
+        border-radius: 50%;
+    }
+    :where(body.page-about-why-choose-us) .hero-content {
+        flex: 1;
+        position: relative;
+        z-index: 2;
+    }
+    :where(body.page-about-why-choose-us) .hero-badge {
+        display: inline-block;
+        background: rgba(14, 186, 177, 0.15);
+        color: #0ebab1;
+        padding: 6px 18px;
+        border-radius: 50px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        border: 1px solid rgba(14, 186, 177, 0.2);
+    }
+    :where(body.page-about-why-choose-us) .hero-content h1 {
+        font-size: 52px;
+        font-weight: 800;
+        color: #000000;
+        line-height: 1.1;
+        margin-bottom: 18px;
+    }
+    :where(body.page-about-why-choose-us) .hero-content h1 span {
+        color: #0ebab1;
+        background: linear-gradient(135deg, #0ebab1, #14cfc1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    :where(body.page-about-why-choose-us) .hero-content p {
+        font-size: 18px;
+        color: #000000;
+        max-width: 580px;
+        margin-bottom: 30px;
+        line-height: 1.8;
+    }
+    :where(body.page-about-why-choose-us) .hero-buttons {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+    }
+    :where(body.page-about-why-choose-us) .btn-primary {
+        background: linear-gradient(135deg, #0ebab1, #14cfc1)!important;
+        color: #fff!important;
+        padding: 14px 36px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 700;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        box-shadow: 0 8px 25px rgba(14, 186, 177, 0.3);
+    }
+    :where(body.page-about-why-choose-us) .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px rgba(14, 186, 177, 0.4);
+    }
+    :where(body.page-about-why-choose-us) .btn-secondary {
+        background: #fff;
+        color: #0ebab1;
+        padding: 14px 36px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 700;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+    }
+    :where(body.page-about-why-choose-us) .btn-secondary:hover {
+        border-color: #0ebab1;
+        background: rgba(14, 186, 177, 0.1);
+    }
+    :where(body.page-about-why-choose-us) .hero-stats {
+        display: flex;
+        gap: 40px;
+        margin-top: 35px;
+        padding-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    :where(body.page-about-why-choose-us) .hero-stats div {
+        text-align: left;
+    }
+    :where(body.page-about-why-choose-us) .hero-stats div strong {
+        display: block;
+        font-size: 28px;
+        color: #000000;
+        font-weight: 800;
+    }
+    :where(body.page-about-why-choose-us) .hero-stats div span {
+        font-size: 14px;
+        color: #000000;
+        font-weight: 500;
+    }
+    :where(body.page-about-why-choose-us) .hero-form {
+        background: #223554;
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 20px;
+        padding: 35px 30px;
+        width: 380px;
+        flex-shrink: 0;
+        position: relative;
+        z-index: 2;
+    }
+    :where(body.page-about-why-choose-us) .hero-form h3 {
+        color: #fff;
+        font-size: 22px;
+        margin-bottom: 6px;
+    }
+    :where(body.page-about-why-choose-us) .hero-form p {
+        color: #8899bb;
+        font-size: 14px;
+        margin-bottom: 22px;
+    }
+    :where(body.page-about-why-choose-us) .form-group {
+        margin-bottom: 16px;
+    }
+    :where(body.page-about-why-choose-us) .form-group input,:where(body.page-about-why-choose-us) .form-group select,:where(body.page-about-why-choose-us) .form-group textarea {
+        width: 100%;
+        padding: 13px 16px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        color: #fff;
+        font-size: 14px;
+        transition: all 0.3s ease;
+        outline: none;
+    }
+    :where(body.page-about-why-choose-us) .form-group input:focus,:where(body.page-about-why-choose-us) .form-group select:focus,:where(body.page-about-why-choose-us) .form-group textarea:focus {
+        border-color: #0ebab1;
+        background: rgba(255, 255, 255, 0.08);
+    }
+    :where(body.page-about-why-choose-us) .form-group input::placeholder,:where(body.page-about-why-choose-us) .form-group textarea::placeholder {
+        color: #667799;
+    }
+    :where(body.page-about-why-choose-us) .form-group select {
+        color: #fff;
+        cursor: pointer;
+    }
+    :where(body.page-about-why-choose-us) .form-group select option {
+        background: #1a2a4a;
+        color: #fff;
+    }
+    :where(body.page-about-why-choose-us) .form-group textarea {
+        resize: vertical;
+        min-height: 80px;
+    }
+    :where(body.page-about-why-choose-us) .form-row {
+        display: flex;
+        gap: 12px;
+    }
+    :where(body.page-about-why-choose-us) .form-row .form-group {
+        flex: 1;
+    }
+    :where(body.page-about-why-choose-us) .btn-submit {
+        width: 100%;
+        padding: 15px;
+        background: linear-gradient(135deg, #0ebab1, #14cfc1);
+        color: #fff;
+        border: none;
+        border-radius: 12px;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 25px rgba(14, 186, 177, 0.25);
+    }
+    :where(body.page-about-why-choose-us) .btn-submit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 35px rgba(14, 186, 177, 0.35);
+    }
+
+    /* ========== CHATBOX ========== */
+    :where(body.page-about-why-choose-us) .chat-toggle {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #0ebab1, #14cfc1);
+        color: #fff;
+        border: none;
+        font-size: 26px;
+        cursor: pointer;
+        box-shadow: 0 8px 30px rgba(14, 186, 177, 0.35);
+        transition: all 0.3s ease;
+        z-index: 999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    :where(body.page-about-why-choose-us) .chat-toggle:hover {
+        transform: scale(1.05);
+        box-shadow: 0 12px 40px rgba(14, 186, 177, 0.45);
+    }
+    :where(body.page-about-why-choose-us) .chat-widget {
+        position: fixed;
+        bottom: 100px;
+        right: 30px;
+        width: 360px;
+        background: #fff;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        z-index: 999;
+        display: none;
+        overflow: hidden;
+        animation: slideUp 0.3s ease;
+    }
+    :where(body.page-about-why-choose-us) .chat-widget.active {
+        display: block;
+    }
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    :where(body.page-about-why-choose-us) .chat-header {
+        background: linear-gradient(135deg, #0a1628, #1a2a4a);
+        color: #fff;
+        padding: 18px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    :where(body.page-about-why-choose-us) .chat-header h4 {
+        font-size: 16px;
+        font-weight: 700;
+    }
+    :where(body.page-about-why-choose-us) .chat-header span {
+        font-size: 12px;
+        color: #0ebab1;
+        font-weight: 500;
+    }
+    :where(body.page-about-why-choose-us) .chat-close {
+        background: none;
+        border: none;
+        color: #8899bb;
+        font-size: 20px;
+        cursor: pointer;
+        transition: color 0.3s;
+    }
+    :where(body.page-about-why-choose-us) .chat-close:hover {
+        color: #fff;
+    }
+    :where(body.page-about-why-choose-us) .chat-messages {
+        padding: 20px 24px;
+        height: 280px;
+        overflow-y: auto;
+        background: #f8fafc;
+    }
+    :where(body.page-about-why-choose-us) .chat-message {
+        margin-bottom: 16px;
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    :where(body.page-about-why-choose-us) .chat-message.bot {
+        flex-direction: row;
+    }
+    :where(body.page-about-why-choose-us) .chat-message.user {
+        flex-direction: row-reverse;
+    }
+    :where(body.page-about-why-choose-us) .chat-avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #0ebab1, #14cfc1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 14px;
+        flex-shrink: 0;
+    }
+    :where(body.page-about-why-choose-us) .chat-avatar.user-avatar {
+        background: #e8ecf1;
+        color: #1a2332;
+    }
+    :where(body.page-about-why-choose-us) .chat-bubble {
+        background: #fff;
+        padding: 12px 16px;
+        border-radius: 14px;
+        max-width: 80%;
+        font-size: 14px;
+        color: #1a2332;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        line-height: 1.5;
+    }
+    :where(body.page-about-why-choose-us) .chat-message.user .chat-bubble {
+        background: #0ebab1;
+        color: #fff;
+    }
+    :where(body.page-about-why-choose-us) .chat-input-area {
+        padding: 16px 20px;
+        border-top: 1px solid #eef2f7;
+        display: flex;
+        gap: 10px;
+        background: #fff;
+    }
+    :where(body.page-about-why-choose-us) .chat-input-area input {
+        flex: 1;
+        padding: 10px 16px;
+        border: 1px solid #eef2f7;
+        border-radius: 12px;
+        font-size: 14px;
+        outline: none;
+        transition: all 0.3s ease;
+    }
+    :where(body.page-about-why-choose-us) .chat-input-area input:focus {
+        border-color: #0ebab1;
+    }
+    :where(body.page-about-why-choose-us) .chat-input-area button {
+        padding: 10px 20px;
+        background: linear-gradient(135deg, #0ebab1, #14cfc1);
+        color: #fff;
+        border: none;
+        border-radius: 12px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    :where(body.page-about-why-choose-us) .chat-input-area button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(14, 186, 177, 0.3);
+    }
+
+    /* ========== SECTION TITLE ========== */
+    :where(body.page-about-why-choose-us) .section-title {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 50px;
+    }
+    :where(body.page-about-why-choose-us) .section-title .tag {
+        display: inline-block;
+        background: rgba(14, 186, 177, 0.1);
+        color: #0ebab1;
+        padding: 6px 18px;
+        border-radius: 50px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+        border: 1px solid rgba(14, 186, 177, 0.15);
+    }
+    :where(body.page-about-why-choose-us) .section-title h2 {
+        font-size: 42px;
+        font-weight: 800;
+        color: #1a2332;
+        line-height: 1.15;
+        margin-bottom: 16px;
+    }
+    :where(body.page-about-why-choose-us) .section-title h2 span {
+        color: #0ebab1;
+    }
+    :where(body.page-about-why-choose-us) .section-title p {
+        font-size: 18px;
+        color: #64748b;
+        line-height: 1.8;
+    }
+
+    /* ========== INDUSTRY GRID - ALL SECTORS ========== */
+    :where(body.page-about-why-choose-us) .industry-wrapper {
+        padding: 20px 24px 50px;
+    }
+    :where(body.page-about-why-choose-us) .industry-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+    }
+    :where(body.page-about-why-choose-us) .industry-card {
+        background: #fff;
+        border-radius: 14px;
+        padding: 20px 18px;
+        border: 1px solid #eef2f7;
+        transition: all 0.2s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    }
+    :where(body.page-about-why-choose-us) .industry-card .icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        background: rgba(14, 186, 177, 0.08);
+        color: #0ebab1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+    :where(body.page-about-why-choose-us) .industry-card h4 {
+        font-size: 15px;
+        color: #1a2332;
+        font-weight: 700;
+        margin-bottom: 4px;
+    }
+    :where(body.page-about-why-choose-us) .industry-card p {
+        font-size: 12px;
+        color: #64748b;
+        line-height: 1.5;
+        margin-bottom: 10px;
+    }
+    :where(body.page-about-why-choose-us) .industry-card .features {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px 8px;
+    }
+    :where(body.page-about-why-choose-us) .industry-card .features span {
+        font-size: 10px;
+        color: #475569;
+        background: #f1f5f9;
+        padding: 2px 8px;
+        border-radius: 50px;
+        font-weight: 500;
+    }
+    :where(body.page-about-why-choose-us) .industry-card .card-footer {
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px solid #f1f5f9;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    :where(body.page-about-why-choose-us) .industry-card .card-footer a {
+        color: #0ebab1;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 12px;
+    }
+    :where(body.page-about-why-choose-us) .industry-card .card-footer span {
+        font-size: 11px;
+        color: #94a3b8;
+        font-weight: 500;
+    }
+    :where(body.page-about-why-choose-us) .industry-card:hover {
+        border-color: #0ebab1;
+        box-shadow: 0 4px 16px rgba(14, 186, 177, 0.08);
+    }
+
+    /* ========== END TO END - ENHANCED ========== */
+    :where(body.page-about-why-choose-us) .e2e-wrapper {
+        padding: 0 24px 50px;
+    }
+    :where(body.page-about-why-choose-us) .e2e-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+    }
+    :where(body.page-about-why-choose-us) .e2e-card {
+        background: #fff;
+        border-radius: 20px;
+        padding: 30px 26px;
+        border: 1px solid #eef2f7;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.02);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    :where(body.page-about-why-choose-us) .e2e-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #0ebab1, #14cfc1);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    :where(body.page-about-why-choose-us) .e2e-card:hover {
+        border-color: #0ebab1;
+        box-shadow: 0 8px 30px rgba(14, 186, 177, 0.08);
+        transform: translateY(-4px);
+    }
+    :where(body.page-about-why-choose-us) .e2e-card:hover::before {
+        opacity: 1;
+    }
+    :where(body.page-about-why-choose-us) .e2e-card .step-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(14, 186, 177, 0.08);
+        color: #0ebab1;
+        font-weight: 800;
+        font-size: 12px;
+        padding: 4px 14px;
+        border-radius: 50px;
+        margin-bottom: 14px;
+        letter-spacing: 1px;
+    }
+    :where(body.page-about-why-choose-us) .e2e-card .icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, rgba(14, 186, 177, 0.08), rgba(14, 186, 177, 0.02));
+        color: #0ebab1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        margin-bottom: 16px;
+        transition: all 0.3s ease;
+    }
+    :where(body.page-about-why-choose-us) .e2e-card:hover .icon {
+        background: linear-gradient(135deg, #0ebab1, #14cfc1);
+        color: #fff;
+        transform: scale(1.05);
+    }
+    :where(body.page-about-why-choose-us) .e2e-card h4 {
+        font-size: 19px;
+        color: #1a2332;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+    :where(body.page-about-why-choose-us) .e2e-card p {
+        font-size: 14px;
+        color: #64748b;
+        line-height: 1.7;
+        margin-bottom: 16px;
+    }
+    :where(body.page-about-why-choose-us) .e2e-card ul {
+        list-style: none;
+        padding: 0;
+    }
+    :where(body.page-about-why-choose-us) .e2e-card ul li {
+        font-size: 13px;
+        color: #475569;
+        padding: 5px 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border-bottom: 1px solid #f8fafc;
+    }
+    :where(body.page-about-why-choose-us) .e2e-card ul li:last-child {
+        border-bottom: none;
+    }
+    :where(body.page-about-why-choose-us) .e2e-card ul li i {
+        color: #0ebab1;
+        font-size: 13px;
+        width: 20px;
+        text-align: center;
+    }
+    :where(body.page-about-why-choose-us) .e2e-card .card-tag {
+        display: inline-block;
+        margin-top: 14px;
+        padding: 4px 14px;
+        background: rgba(14, 186, 177, 0.06);
+        color: #0ebab1;
+        font-size: 11px;
+        font-weight: 600;
+        border-radius: 50px;
+    }
+
+    /* ========== AGILE DELIVERY - ENHANCED ========== */
+    :where(body.page-about-why-choose-us) .agile-section {
+        background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+        padding: 70px 24px;
+        margin: 0 24px 40px;
+        border-radius: 28px;
+        position: relative;
+        overflow: hidden;
+    }
+    :where(body.page-about-why-choose-us) .agile-section::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(14, 186, 177, 0.03) 0%, transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+    }
+    :where(body.page-about-why-choose-us) .agile-section::after {
+        content: '';
+        position: absolute;
+        bottom: -30%;
+        left: -10%;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(14, 186, 177, 0.02) 0%, transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+    }
+
+    :where(body.page-about-why-choose-us) .agile-header {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 50px;
+        position: relative;
+        z-index: 2;
+    }
+    :where(body.page-about-why-choose-us) .agile-header .tag {
+        display: inline-block;
+        background: rgba(14, 186, 177, 0.1);
+        color: #0ebab1;
+        padding: 6px 18px;
+        border-radius: 50px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+        border: 1px solid rgba(14, 186, 177, 0.15);
+    }
+    :where(body.page-about-why-choose-us) .agile-header h2 {
+        font-size: 42px;
+        font-weight: 800;
+        color: #1a2332;
+        line-height: 1.15;
+        margin-bottom: 14px;
+    }
+    :where(body.page-about-why-choose-us) .agile-header h2 span {
+        color: #0ebab1;
+    }
+    :where(body.page-about-why-choose-us) .agile-header p {
+        font-size: 17px;
+        color: #64748b;
+        line-height: 1.8;
+    }
+
+    :where(body.page-about-why-choose-us) .agile-wrapper {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 50px;
+        align-items: start;
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+    }
+
+    :where(body.page-about-why-choose-us) .agile-steps {
+        position: relative;
+        padding-left: 40px;
+    }
+    :where(body.page-about-why-choose-us) .agile-steps::before {
+        content: '';
+        position: absolute;
+        left: 14px;
+        top: 8px;
+        bottom: 8px;
+        width: 3px;
+        background: linear-gradient(180deg, #0ebab1, #d9f4f3, #0ebab1);
+        border-radius: 3px;
+    }
+    :where(body.page-about-why-choose-us) .agile-step {
+        position: relative;
+        margin-bottom: 28px;
+        padding: 22px 26px;
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.04);
+        border: 1px solid #eef2f7;
+        transition: all 0.3s ease;
+    }
+    :where(body.page-about-why-choose-us) .agile-step:hover {
+        transform: translateX(8px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+        border-color: #0ebab1;
+    }
+    :where(body.page-about-why-choose-us) .agile-step::before {
+        content: '';
+        position: absolute;
+        left: -32px;
+        top: 28px;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: #0ebab1;
+        border: 4px solid #fff;
+        box-shadow: 0 0 0 4px #d9f4f3;
+        transition: all 0.3s ease;
+    }
+    :where(body.page-about-why-choose-us) .agile-step:hover::before {
+        box-shadow: 0 0 0 6px rgba(14, 186, 177, 0.2);
+        transform: scale(1.1);
+    }
+    :where(body.page-about-why-choose-us) .agile-step .num {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #0ebab1, #14cfc1);
+        color: #fff;
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        font-weight: 700;
+        font-size: 14px;
+        margin-bottom: 12px;
+        box-shadow: 0 4px 12px rgba(14, 186, 177, 0.2);
+    }
+    :where(body.page-about-why-choose-us) .agile-step h4 {
+        font-size: 18px;
+        color: #1a2332;
+        font-weight: 700;
+        margin-bottom: 6px;
+    }
+    :where(body.page-about-why-choose-us) .agile-step p {
+        font-size: 14px;
+        color: #64748b;
+        line-height: 1.7;
+    }
+    :where(body.page-about-why-choose-us) .agile-step .tools {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px solid #f1f5f9;
+    }
+    :where(body.page-about-why-choose-us) .agile-step .tools span {
+        font-size: 11px;
+        color: #475569;
+        background: #f1f5f9;
+        padding: 3px 12px;
+        border-radius: 50px;
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+    }
+    :where(body.page-about-why-choose-us) .agile-step .tools span i {
+        color: #0ebab1;
+        font-size: 10px;
+    }
+
+    :where(body.page-about-why-choose-us) .agile-side {
+        background: #fff;
+        padding: 38px 34px;
+        border-radius: 24px;
+        border: 1px solid #eef2f7;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+        position: sticky;
+        top: 30px;
+    }
+    :where(body.page-about-why-choose-us) .agile-side h3 {
+        font-size: 28px;
+        color: #1a2332;
+        font-weight: 800;
+        margin-bottom: 6px;
+    }
+    :where(body.page-about-why-choose-us) .agile-side .subtitle {
+        color: #64748b;
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    :where(body.page-about-why-choose-us) .agile-side .benefits-list {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 24px;
+    }
+    :where(body.page-about-why-choose-us) .agile-side .benefits-list li {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 10px 0;
+        font-size: 15px;
+        color: #1a2332;
+        font-weight: 500;
+        border-bottom: 1px solid #f1f5f9;
+    }
+    :where(body.page-about-why-choose-us) .agile-side .benefits-list li:last-child {
+        border-bottom: none;
+    }
+    :where(body.page-about-why-choose-us) .agile-side .benefits-list li i {
+        width: 32px;
+        height: 32px;
+        background: rgba(14, 186, 177, 0.08);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #0ebab1;
+        font-size: 14px;
+        flex-shrink: 0;
+    }
+
+    :where(body.page-about-why-choose-us) .agile-tools-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-top: 16px;
+        padding-top: 16px;
+        border-top: 1px solid #f1f5f9;
+    }
+    :where(body.page-about-why-choose-us) .agile-tools-grid .tool-item {
+        background: #f8fafc;
+        border-radius: 10px;
+        padding: 10px 8px;
+        text-align: center;
+        transition: all 0.2s ease;
+        border: 1px solid transparent;
+    }
+    :where(body.page-about-why-choose-us) .agile-tools-grid .tool-item:hover {
+        border-color: #0ebab1;
+        background: #fff;
+        box-shadow: 0 2px 12px rgba(14, 186, 177, 0.06);
+    }
+    :where(body.page-about-why-choose-us) .agile-tools-grid .tool-item i {
+        font-size: 20px;
+        color: #0ebab1;
+        display: block;
+        margin-bottom: 4px;
+    }
+    :where(body.page-about-why-choose-us) .agile-tools-grid .tool-item span {
+        font-size: 10px;
+        color: #475569;
+        font-weight: 500;
+        display: block;
+    }
+
+    /* ========== GLOBAL STANDARDS - ENHANCED ========== */
+    :where(body.page-about-why-choose-us) .standards-wrapper {
+        padding: 0 24px 50px;
+    }
+    :where(body.page-about-why-choose-us) .standards-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+    }
+    :where(body.page-about-why-choose-us) .standard-card {
+        background: #fff;
+        border-radius: 20px;
+        padding: 30px 24px;
+        border: 1px solid #eef2f7;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.02);
+        text-align: center;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    :where(body.page-about-why-choose-us) .standard-card::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #0ebab1, #14cfc1);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    :where(body.page-about-why-choose-us) .standard-card:hover {
+        border-color: #0ebab1;
+        box-shadow: 0 8px 30px rgba(14, 186, 177, 0.08);
+        transform: translateY(-4px);
+    }
+    :where(body.page-about-why-choose-us) .standard-card:hover::after {
+        opacity: 1;
+    }
+    :where(body.page-about-why-choose-us) .standard-card .icon-wrap {
+        width: 64px;
+        height: 64px;
+        border-radius: 16px;
+        background: linear-gradient(135deg, rgba(14, 186, 177, 0.08), rgba(14, 186, 177, 0.02));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 16px;
+        transition: all 0.3s ease;
+    }
+    :where(body.page-about-why-choose-us) .standard-card:hover .icon-wrap {
+        background: linear-gradient(135deg, #0ebab1, #14cfc1);
+    }
+    :where(body.page-about-why-choose-us) .standard-card:hover .icon-wrap i {
+        color: #fff;
+    }
+    :where(body.page-about-why-choose-us) .standard-card .icon-wrap i {
+        font-size: 28px;
+        color: #0ebab1;
+        transition: all 0.3s ease;
+    }
+    :where(body.page-about-why-choose-us) .standard-card h4 {
+        font-size: 18px;
+        color: #1a2332;
+        margin-bottom: 6px;
+        font-weight: 700;
+    }
+    :where(body.page-about-why-choose-us) .standard-card p {
+        font-size: 13px;
+        color: #64748b;
+        line-height: 1.7;
+        margin-bottom: 14px;
+    }
+    :where(body.page-about-why-choose-us) .standard-card .metric {
+        display: inline-block;
+        background: rgba(14, 186, 177, 0.06);
+        color: #0ebab1;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 4px 16px;
+        border-radius: 50px;
+        letter-spacing: 0.5px;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 1024px) {
+        :where(body.page-about-why-choose-us) .hero-banner {
+            flex-direction: column;
+            padding: 50px 35px;
+            margin: 20px 16px;
+        }
+        :where(body.page-about-why-choose-us) .hero-form {
+            width: 100%;
+        }
+        :where(body.page-about-why-choose-us) .hero-content h1 {
+            font-size: 38px;
+        }
+        :where(body.page-about-why-choose-us) .industry-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        :where(body.page-about-why-choose-us) .e2e-grid,:where(body.page-about-why-choose-us) .standards-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        :where(body.page-about-why-choose-us) .agile-wrapper {
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        :where(body.page-about-why-choose-us) .agile-side {
+            position: static;
+        }
+        :where(body.page-about-why-choose-us) .agile-section {
+            margin: 0 16px 30px;
+            padding: 40px 20px;
+        }
+        :where(body.page-about-why-choose-us) .agile-header h2 {
+            font-size: 36px;
+        }
+        :where(body.page-about-why-choose-us) .e2e-wrapper {
+            padding: 0 16px 30px;
+        }
+        :where(body.page-about-why-choose-us) .standards-wrapper {
+            padding: 0 16px 30px;
+        }
+    }
+    @media (max-width: 768px) {
+        :where(body.page-about-why-choose-us) .industry-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        :where(body.page-about-why-choose-us) .agile-tools-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+    @media (max-width: 640px) {
+        :where(body.page-about-why-choose-us) .hero-banner {
+            padding: 30px 20px;
+            margin: 16px 12px;
+            border-radius: 20px;
+        }
+        :where(body.page-about-why-choose-us) .hero-content h1 {
+            font-size: 28px;
+        }
+        :where(body.page-about-why-choose-us) .hero-content p {
+            font-size: 15px;
+        }
+        :where(body.page-about-why-choose-us) .hero-stats {
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        :where(body.page-about-why-choose-us) .hero-stats div strong {
+            font-size: 22px;
+        }
+        :where(body.page-about-why-choose-us) .form-row {
+            flex-direction: column;
+            gap: 0;
+        }
+        :where(body.page-about-why-choose-us) .industry-grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        :where(body.page-about-why-choose-us) .e2e-grid,:where(body.page-about-why-choose-us) .standards-grid {
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+        :where(body.page-about-why-choose-us) .chat-widget {
+            width: calc(100vw - 40px);
+            right: 20px;
+            bottom: 90px;
+        }
+        :where(body.page-about-why-choose-us) .chat-toggle {
+            width: 52px;
+            height: 52px;
+            font-size: 22px;
+            bottom: 20px;
+            right: 20px;
+        }
+        :where(body.page-about-why-choose-us) .section-title h2,:where(body.page-about-why-choose-us) .agile-header h2 {
+            font-size: 28px;
+        }
+        :where(body.page-about-why-choose-us) .agile-section {
+            margin: 0 12px 24px;
+            padding: 30px 16px;
+            border-radius: 20px;
+        }
+        :where(body.page-about-why-choose-us) .agile-step {
+            padding: 16px 18px;
+        }
+        :where(body.page-about-why-choose-us) .agile-step::before {
+            left: -26px;
+            width: 14px;
+            height: 14px;
+        }
+        :where(body.page-about-why-choose-us) .agile-steps {
+            padding-left: 30px;
+        }
+        :where(body.page-about-why-choose-us) .agile-steps::before {
+            left: 10px;
+        }
+        :where(body.page-about-why-choose-us) .agile-side {
+            padding: 24px 20px;
+        }
+        :where(body.page-about-why-choose-us) .agile-tools-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        :where(body.page-about-why-choose-us) .industry-wrapper {
+            padding: 20px 12px 30px;
+        }
+        :where(body.page-about-why-choose-us) .e2e-wrapper {
+            padding: 0 12px 24px;
+        }
+        :where(body.page-about-why-choose-us) .standards-wrapper {
+            padding: 0 12px 24px;
+        }
+        :where(body.page-about-why-choose-us) .e2e-card {
+            padding: 24px 20px;
+        }
+        :where(body.page-about-why-choose-us) .standard-card {
+            padding: 24px 20px;
+        }
+    }
+
+
+:where(body.page-about-why-choose-us) .page-inline-about-why-choose-us-1 { padding-top: 20px; }
+
+:where(body.page-about-why-choose-us) .page-inline-about-why-choose-us-2 { padding-top: 10px; }
+
+:where(body.page-about-why-choose-us) .page-inline-about-why-choose-us-3 { font-size:16px; color:#1a2332; margin-bottom:12px; font-weight:700; }
+
+:where(body.page-about-why-choose-us) .page-inline-about-why-choose-us-4 { color:#0ebab1; margin-right:8px; }
+
+:where(body.page-about-why-choose-us) .page-inline-about-why-choose-us-5 { padding-top: 10px; }
+
+

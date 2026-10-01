@@ -1,0 +1,106 @@
+/* RESET */
+body:where(.page-home-contact-us),:where(body.page-home-contact-us) *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body:where(.page-home-contact-us){
+    background:#fefefe;
+}
+
+/* HERO SECTION */
+:where(body.page-home-contact-us) .contact-hero{
+    height:100vh;
+    width:100%;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:#fff;
+    overflow:hidden;
+}
+
+/* BACKGROUND IMAGE (INDUSTRY LEVEL) */
+:where(body.page-home-contact-us) .contact-hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+    linear-gradient(135deg, rgba(0, 0, 0, 0.11), rgba(0, 0, 0, 0.06)),
+    url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1950&q=80")
+    center/cover no-repeat;
+    transform:scale(1.08);
+    filter: contrast(1.1) brightness(0.9);
+    animation: zoomIn 12s ease-in-out infinite alternate;
+}
+
+/* subtle zoom animation */
+@keyframes zoomIn{
+    from{ transform:scale(1.05); }
+    to{ transform:scale(1.12); }
+}
+
+/* CONTENT CARD */
+:where(body.page-home-contact-us) .hero-content{
+    position:relative;
+    max-width:900px;
+    padding:40px;
+    background:rgba(255,255,255,0.06);
+    backdrop-filter: blur(12px);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:18px;
+}
+
+/* TITLE */
+:where(body.page-home-contact-us) .hero-content h1{
+    font-size:72px;
+    font-weight:800;
+    letter-spacing:1px;
+}
+
+/* TEXT */
+:where(body.page-home-contact-us) .hero-content p{
+    margin-top:18px;
+    font-size:20px;
+    color:#d1d5db;
+    line-height:1.6;
+}
+
+/* BUTTON */
+:where(body.page-home-contact-us) .hero-content a{
+    display:inline-block;
+    margin-top:25px;
+    padding:14px 30px;
+    background:#0ebab1;
+    color:#444;
+    text-decoration:none;
+    border-radius:12px;
+    font-weight:600;
+    transition:.3s;
+}
+
+:where(body.page-home-contact-us) .hero-content a:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(23, 101, 84, 0.2);
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    :where(body.page-home-contact-us) .hero-content h1{
+        font-size:40px;
+    }
+
+    :where(body.page-home-contact-us) .hero-content p{
+        font-size:16px;
+    }
+
+    :where(body.page-home-contact-us) .hero-content{
+        margin:20px;
+        padding:25px;
+    }
+}
+
+

@@ -40,3 +40,17 @@ class ErrorPageTests(TestCase):
 		self.assertEqual(response.status_code, 500)
 		self.assertTemplateUsed(response, '500.html')
 		self.assertContains(response, 'Something went wrong.', status_code=500)
+
+	@override_settings(
+		DEBUG=True,
+		ALLOWED_HOSTS=['testserver'],
+		SECURE_SSL_REDIRECT=False,
+	)
+	def test_homepage_loads_scoped_static_assets_without_inline_styles(self):
+		response = self.client.get('/')
+
+		self.assertEqual(response.status_code, 200)
+		self.assertContains(response, 'page-home-index')
+		self.assertContains(response, '/static/css/pages/home-index.css')
+		self.assertNotContains(response, '<style')
+		self.assertNotContains(response, ' style=')
