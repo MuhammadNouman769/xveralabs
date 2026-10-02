@@ -403,31 +403,6 @@
         border-radius: 50%;
         border: 1px solid rgba(126, 246, 235, 0.35);
     }
-    :where(body.page-home-index) .btr-orbit {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        border-radius: 50%;
-        transform: translate(-50%, -50%) rotateX(75deg) translateZ(12px);
-        border: 1px solid rgba(125, 211, 252, 0.2);
-    }
-    :where(body.page-home-index) .btr-orbit-1 {
-        width: 440px;
-        height: 440px;
-        animation: btr-spin 18s linear infinite;
-    }
-    :where(body.page-home-index) .btr-orbit-2 {
-        width: 500px;
-        height: 500px;
-        border-color: rgba(126, 246, 235, 0.18);
-        animation: btr-spin-reverse 22s linear infinite;
-    }
-    :where(body.page-home-index) .btr-orbit-3 {
-        width: 560px;
-        height: 560px;
-        border-color: rgba(167, 243, 208, 0.12);
-        animation: btr-spin 26s linear infinite;
-    }
     :where(body.page-home-index) .btr-planet-sat {
         position: absolute;
         width: 18px;
@@ -710,7 +685,7 @@
         transform: rotate(12deg);
     }
     :where(body.page-home-index) .btr-floating-card-bottom {
-        left: 317;
+        left: 317px;
         bottom: 0%;
         transform: rotate(-12deg);
     }
@@ -981,7 +956,7 @@
             height: 210px;
         }
     }
-    
+
 /* ===================== WHO WE ARE ===================== */
 :where(body.page-home-index) .btrwho-section {
     padding: 180px 4%;
@@ -1094,7 +1069,7 @@
     transform: scale(1.04);
 }
     /* ================================================
-       TESTIMONIALS SECTION - REDESIGNED
+       TESTIMONIALS SECTION - card-by-card (JS controlled)
        ================================================ */
     :where(body.page-home-index) .btr-testimonials-section {
         padding: 120px 0;
@@ -1129,10 +1104,7 @@
         display: flex;
         width: max-content;
         gap: 26px;
-        animation: btr-testimonials-marquee 28s linear infinite;
-    }
-    :where(body.page-home-index) .btr-testimonials-track:hover {
-        animation-play-state: paused;
+        will-change: transform;
     }
     :where(body.page-home-index) .btr-testimonial-card {
         width: 440px;
@@ -1222,10 +1194,6 @@
         letter-spacing: 0.18em;
         color: #f59e0b;
         font-size: 14px;
-    }
-    @keyframes btr-testimonials-marquee {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
     }
     @media (max-width: 640px) {
         :where(body.page-home-index) .btr-testimonial-card {
@@ -1343,9 +1311,7 @@
         height: 100%;
         object-fit: cover;
         display: block;
-    
     }
-    
     :where(body.page-home-index) .btr-blog-category {
         position: absolute;
         top: 18px;
@@ -1361,7 +1327,6 @@
         font-weight: 700;
         letter-spacing: 0.12em;
         text-transform: uppercase;
-     
     }
     :where(body.page-home-index) .btr-blog-content {
         padding: 24px 24px 28px;
@@ -1384,11 +1349,9 @@
         font-weight: 700;
         color: #0f172a;
         text-decoration: none;
-        
     }
     :where(body.page-home-index) .btr-blog-card:hover .btr-blog-title {
         color: #0f172a;
-        
     }
     :where(body.page-home-index) .btr-blog-excerpt {
         color: #475569;
@@ -1689,7 +1652,7 @@
         }
     }
     /* =========================================================
-       SECTION
+       TECH SECTION
     ========================================================= */
     :where(body.page-home-index) .btr-tech-section {
         width: 100%;
@@ -1702,9 +1665,6 @@
         max-width: 1400px;
         margin: 0 auto;
     }
-    /* =========================================================
-       HEADING
-    ========================================================= */
     :where(body.page-home-index) .btr-tech-heading {
         max-width: 760px;
         margin-bottom: 28px;
@@ -1717,9 +1677,6 @@
         font-weight: 700;
         letter-spacing: -1px;
     }
-    /* =========================================================
-       CARDS WRAPPER
-    ========================================================= */
     :where(body.page-home-index) .btr-tech-cards {
         display: flex;
         align-items: stretch;
@@ -1727,9 +1684,6 @@
         width: 100%;
         height: 450px;
     }
-    /* =========================================================
-       CARD
-    ========================================================= */
     :where(body.page-home-index) .btr-tech-card {
         position: relative;
         flex: 0 0 145px;
@@ -1741,9 +1695,6 @@
         transition: flex-basis 0.55s cubic-bezier(.22, .61, .36, 1), box-shadow 0.4s ease;
         isolation: isolate;
     }
-    /* =========================================================
-       IMAGE
-    ========================================================= */
     :where(body.page-home-index) .btr-tech-card img {
         position: absolute;
         inset: 0;
@@ -1753,9 +1704,6 @@
         display: block;
         transition: transform 0.65s cubic-bezier(.22, .61, .36, 1), filter 0.5s ease;
     }
-    /* =========================================================
-       OVERLAY
-    ========================================================= */
     :where(body.page-home-index) .btr-tech-card::after {
         content: "";
         position: absolute;
@@ -1765,9 +1713,6 @@
         pointer-events: none;
         transition: background .45s ease;
     }
-    /* =========================================================
-       TITLE
-    ========================================================= */
     :where(body.page-home-index) .btr-tech-title {
         position: absolute;
         top: 18px;
@@ -1780,9 +1725,6 @@
         font-weight: 600;
         transition: font-size .35s ease, top .35s ease;
     }
-    /* =========================================================
-       DETAIL BUTTON
-    ========================================================= */
     :where(body.page-home-index) .btr-tech-detail-btn {
         position: absolute;
         top: 14px;
@@ -1813,9 +1755,6 @@
         line-height: 1;
         transition: transform .35s ease;
     }
-    /* =========================================================
-       CONTENT
-    ========================================================= */
     :where(body.page-home-index) .btr-tech-content {
         position: absolute;
         left: 20px;
@@ -1836,9 +1775,6 @@
         font-weight: 400;
         max-width: 430px;
     }
-    /* =========================================================
-       HOVER / ACTIVE CARD
-    ========================================================= */
     :where(body.page-home-index) .btr-tech-card:hover,:where(body.page-home-index) .btr-tech-card.is-active {
         flex-basis: 365px;
         box-shadow: 0 20px 45px rgba(0, 0, 0, .22);
@@ -1854,24 +1790,16 @@
     :where(body.page-home-index) .btr-tech-card:hover .btr-tech-title,:where(body.page-home-index) .btr-tech-card.is-active .btr-tech-title {
         font-size: 16px;
     }
-    /* =========================================================
-       ACTIVE BUTTON
-    ========================================================= */
     :where(body.page-home-index) .btr-tech-card.is-active .btr-tech-detail-btn {
         background: rgba(255, 255, 255, .20);
     }
     :where(body.page-home-index) .btr-tech-card.is-active .btr-tech-detail-btn span {
         transform: rotate(45deg);
     }
-    /* =========================================================
-       NON ACTIVE CARDS
-    ========================================================= */
     :where(body.page-home-index) .btr-tech-cards:hover .btr-tech-card:not(:hover):not(.is-active) {
         transform: none;
     }
-    /* =========================================================
-       TABLET
-    ========================================================= */
+    /* TABLET */
     @media (max-width: 1250px) {
         :where(body.page-home-index) .btr-tech-cards {
             gap: 12px;
@@ -1883,9 +1811,7 @@
             flex-basis: 330px;
         }
     }
-    /* =========================================================
-       MOBILE / TABLET
-    ========================================================= */
+    /* MOBILE / TABLET */
     @media (max-width: 1000px) {
         :where(body.page-home-index) .btr-tech-section {
             padding: 55px 25px;
@@ -1907,9 +1833,7 @@
             flex-basis: 330px;
         }
     }
-    /* =========================================================
-       SMALL MOBILE
-    ========================================================= */
+    /* SMALL MOBILE */
     @media (max-width: 700px) {
         :where(body.page-home-index) .btr-tech-section {
             padding: 45px 18px;
@@ -2005,9 +1929,6 @@
         content: ' ✦';
         color: #0ebab1;
     }
-    /* ==================================================
-       SCROLL TRACKS
-    ================================================== */
     :where(body.page-home-index) .btrx-scroll-track {
         position: relative;
         overflow: hidden;
@@ -2044,16 +1965,12 @@
     :where(body.page-home-index) .btrx-scroll-container.reverse {
         animation: btrxScrollLeft 25s linear infinite;
     }
-    /* Pause on hover */
     :where(body.page-home-index) .btrx-scroll-track:hover .btrx-scroll-container {
         animation-play-state: paused;
     }
     :where(body.page-home-index) .btrx-scroll-track:hover .btrx-scroll-container.reverse {
         animation-play-state: paused;
     }
-    /* ==================================================
-       CLIENT LOGO ITEMS
-    ================================================== */
     :where(body.page-home-index) .btrx-client-item {
         flex-shrink: 0;
         display: flex;
@@ -2089,7 +2006,6 @@
         filter: grayscale(0%) brightness(1);
         opacity: 1;
     }
-    /* Fallback - if no images, show text */
     :where(body.page-home-index) .btrx-client-item .client-name {
         font-size: 18px;
         font-weight: 700;
@@ -2102,28 +2018,14 @@
     :where(body.page-home-index) .btrx-client-item:hover .client-name {
         color: #0ebab1;
     }
-    /* ==================================================
-       ANIMATIONS
-    ================================================== */
     @keyframes btrxScrollRight {
-        0% {
-            transform: translateX(0);
-        }
-        100% {
-            transform: translateX(-50%);
-        }
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
     }
     @keyframes btrxScrollLeft {
-        0% {
-            transform: translateX(-50%);
-        }
-        100% {
-            transform: translateX(0);
-        }
+        0% { transform: translateX(-50%); }
+        100% { transform: translateX(0); }
     }
-    /* ==================================================
-       RESPONSIVE
-    ================================================== */
     @media (max-width: 992px) {
         :where(body.page-home-index) .btrx-clients-section {
             padding: 40px 0 50px;
@@ -2196,22 +2098,15 @@
         }
     }
 
-
 :where(body.page-home-index) .page-inline-home-index-1 { text-align:center;margin-bottom:30px; }
-
 :where(body.page-home-index) .page-inline-home-index-2 { margin:0 auto; }
-
 :where(body.page-home-index) .page-inline-home-index-3 { text-align:center;margin-bottom:20px; }
-
 :where(body.page-home-index) .page-inline-home-index-4 { margin:0 auto; }
-
 :where(body.page-home-index) .page-inline-home-index-5 { text-align:center;margin-bottom:20px; }
-
 :where(body.page-home-index) .page-inline-home-index-6 { margin:0 auto; }
 
-
 /* =====================================================================
-   HOME PAGE: FINAL RESPONSIVE BLOCK (isay file ke end mein rakhein)
+   HOME PAGE: FINAL RESPONSIVE BLOCK
    Breakpoints: 1450 / 1200 / 992 / 768 / 480
    ===================================================================== */
 
@@ -2228,7 +2123,6 @@
 
 /* ====================== 1450px ====================== */
 @media (max-width: 1450px) {
-    /* WHO WE ARE: cards chhote */
     :where(body.page-home-index) .btrwho-section {
         padding: 150px 3%;
         gap: 50px;
@@ -2289,9 +2183,8 @@
     }
 }
 
-/* ====================== 1200px: laptop chhota ====================== */
+/* ====================== 1200px ====================== */
 @media (max-width: 1200px) {
-    /* HERO */
     :where(body.page-home-index) .btr-hero-container {
         padding: 100px 5% 40px;
         gap: 24px;
@@ -2313,7 +2206,6 @@
     :where(body.page-home-index) .btr-orbit-planet--ringed { width: 480px; height: 480px; }
     :where(body.page-home-index) .btr-earth-orbit { width: 190px; height: 190px; }
 
-    /* WHO WE ARE: stack hota hai, cards grid mein */
     :where(body.page-home-index) .btrwho-section {
         flex-direction: column;
         align-items: stretch;
@@ -2347,12 +2239,10 @@
         aspect-ratio: 1 / 1;
     }
 
-    /* Showcase */
     :where(body.page-home-index) .btr-showcase-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    /* Section headings */
     :where(body.page-home-index) .btr-section-title {
         font-size: 44px;
     }
@@ -2360,7 +2250,6 @@
 
 /* ====================== 992px: tablet ====================== */
 @media (max-width: 992px) {
-    /* Helpers */
     :where(body.page-home-index) .btr-container {
         padding: 0 20px;
     }
@@ -2379,7 +2268,6 @@
         padding-bottom: 90px;
     }
 
-    /* HERO: column layout */
     :where(body.page-home-index) .btr-hero-section {
         align-items: flex-start;
     }
@@ -2415,7 +2303,6 @@
     :where(body.page-home-index) .btr-orbit-planet--ringed { width: 410px; height: 410px; }
     :where(body.page-home-index) .btr-earth-orbit { width: 160px; height: 160px; }
 
-    /* Floating cards scene ke andar */
     :where(body.page-home-index) .btr-floating-card-top {
         top: 4%;
         right: 0;
@@ -2431,7 +2318,6 @@
         transform: rotate(-6deg);
     }
 
-    /* WHO WE ARE */
     :where(body.page-home-index) .btrwho-section {
         padding: 80px 20px;
     }
@@ -2439,7 +2325,6 @@
         font-size: 38px;
     }
 
-    /* Tech cards */
     :where(body.page-home-index) .btr-tech-section {
         padding: 55px 25px;
     }
@@ -2455,7 +2340,6 @@
         flex-basis: 320px;
     }
 
-    /* Counters */
     :where(body.page-home-index) .btr-counter-section {
         padding: 70px 0;
     }
@@ -2464,18 +2348,15 @@
         gap: 36px 20px;
     }
 
-    /* Blog */
     :where(body.page-home-index) .btr-blog-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    /* Contact */
     :where(body.page-home-index) .btr-contact-grid {
         grid-template-columns: 1fr;
         gap: 36px;
     }
 
-    /* CTA */
     :where(body.page-home-index) .btr-cta-section {
         padding: 70px 0;
     }
@@ -2494,7 +2375,6 @@
 
 /* ====================== 768px: mobile ====================== */
 @media (max-width: 768px) {
-    /* Headings */
     :where(body.page-home-index) .btr-section-title {
         font-size: 30px;
         line-height: 1.2;
@@ -2511,7 +2391,6 @@
         padding-bottom: 70px;
     }
 
-    /* HERO */
     :where(body.page-home-index) .btr-hero-container {
         padding: 105px 20px 50px;
         gap: 24px;
@@ -2564,7 +2443,6 @@
     :where(body.page-home-index) .btr-floating-card strong { font-size: 0.95rem; }
     :where(body.page-home-index) .btr-floating-card span { font-size: 0.6rem; }
 
-    /* WHO WE ARE: 2 columns */
     :where(body.page-home-index) .btrwho-section {
         padding: 60px 20px;
         gap: 36px;
@@ -2582,7 +2460,6 @@
         gap: 14px;
     }
 
-    /* Showcase */
     :where(body.page-home-index) .btr-showcase-header {
         margin-bottom: 36px;
     }
@@ -2605,7 +2482,6 @@
         height: 200px;
     }
 
-    /* Tech cards */
     :where(body.page-home-index) .btr-tech-section {
         padding: 45px 18px;
     }
@@ -2626,7 +2502,6 @@
         flex-basis: 285px;
     }
 
-    /* Testimonials */
     :where(body.page-home-index) .btr-testimonials-shell {
         margin-top: 30px;
     }
@@ -2648,7 +2523,6 @@
         line-height: 1.7;
     }
 
-    /* Counters */
     :where(body.page-home-index) .btr-counter-number {
         font-size: 40px;
     }
@@ -2656,7 +2530,6 @@
         font-size: 15px;
     }
 
-    /* Blog */
     :where(body.page-home-index) .btr-blog-grid {
         grid-template-columns: 1fr;
         gap: 22px;
@@ -2666,7 +2539,6 @@
         height: 220px;
     }
 
-    /* Contact */
     :where(body.page-home-index) .btr-form-row {
         grid-template-columns: 1fr;
         gap: 16px;
@@ -2682,7 +2554,6 @@
         word-break: break-word;
     }
 
-    /* CTA */
     :where(body.page-home-index) .btr-cta-text h2 {
         font-size: 28px;
     }
@@ -2693,7 +2564,6 @@
         padding: 15px 32px;
     }
 
-    /* Clients marquee */
     :where(body.page-home-index) .btrx-clients-section .section-header h2 {
         font-size: 28px;
     }
@@ -2708,7 +2578,6 @@
         font-size: 26px;
     }
 
-    /* HERO */
     :where(body.page-home-index) .btr-hero-container {
         padding: 95px 16px 40px;
     }
@@ -2742,7 +2611,6 @@
     :where(body.page-home-index) .btr-orbit-planet::after { width: 18px; height: 18px; }
     :where(body.page-home-index) .btr-orbit-planet--ringed::after { width: 24px; height: 24px; }
 
-    /* WHO WE ARE: 1 column */
     :where(body.page-home-index) .btrwho-section {
         padding: 50px 16px;
     }
@@ -2756,17 +2624,14 @@
         aspect-ratio: 4 / 3;
     }
 
-    /* Tech */
     :where(body.page-home-index) .btr-tech-heading h2 {
         font-size: 26px;
     }
 
-    /* Testimonials */
     :where(body.page-home-index) .btr-testimonial-card {
         width: 290px;
     }
 
-    /* Counters */
     :where(body.page-home-index) .btr-counter-grid {
         gap: 28px 12px;
     }
@@ -2777,7 +2642,6 @@
         font-size: 13px;
     }
 
-    /* CTA */
     :where(body.page-home-index) .btr-cta-text h2 {
         font-size: 24px;
     }
@@ -2788,10 +2652,109 @@
 }
 
 /* ====================== Touch devices ====================== */
-/* Mobile par hover nahi hota, is liye "Explore More" buttons hamesha visible */
 @media (hover: none) {
     :where(body.page-home-index) .btrwho-overlay a {
         opacity: 1;
         transform: none;
+    }
+}
+
+/* =====================================================================
+   NEW (FILE KE AAKHIR MEIN RAHNE DEIN — purani media queries override karta hai)
+   TECH CARDS: ≤1000px par ek card ek waqt mein (slider)
+   TESTIMONIALS: har screen par card-by-card right → left (JS se)
+   ===================================================================== */
+
+/* dots desktop par hidden */
+:where(body.page-home-index) .btr-tech-dots { display: none; }
+
+@media (max-width: 1000px) {
+    :where(body.page-home-index) .btr-tech-cards {
+        position: relative;
+        display: flex;
+        gap: 14px;
+        height: 420px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+    :where(body.page-home-index) .btr-tech-cards::-webkit-scrollbar { display: none; }
+
+    :where(body.page-home-index) .btr-tech-card,
+    :where(body.page-home-index) .btr-tech-card:hover,
+    :where(body.page-home-index) .btr-tech-card.is-active {
+        flex: 0 0 100%;
+        width: 100%;
+        height: 420px;
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        box-shadow: none;
+        cursor: default;
+    }
+    :where(body.page-home-index) .btr-tech-card:hover img,
+    :where(body.page-home-index) .btr-tech-card.is-active img {
+        transform: none;
+    }
+
+    :where(body.page-home-index) .btr-tech-content,
+    :where(body.page-home-index) .btr-tech-card:hover .btr-tech-content,
+    :where(body.page-home-index) .btr-tech-card.is-active .btr-tech-content {
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        pointer-events: auto;
+    }
+    :where(body.page-home-index) .btr-tech-title,
+    :where(body.page-home-index) .btr-tech-card:hover .btr-tech-title,
+    :where(body.page-home-index) .btr-tech-card.is-active .btr-tech-title {
+        font-size: 20px;
+        right: 20px;
+    }
+    :where(body.page-home-index) .btr-tech-detail-btn { display: none; }
+
+    :where(body.page-home-index) .btr-tech-dots {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 18px;
+    }
+    :where(body.page-home-index) .btr-tech-dot {
+        width: 9px;
+        height: 9px;
+        padding: 0;
+        border: 0;
+        border-radius: 50%;
+        background: #cbd5e1;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    :where(body.page-home-index) .btr-tech-dot.active {
+        width: 26px;
+        border-radius: 999px;
+        background: #0ebab1;
+    }
+}
+
+@media (max-width: 700px) {
+    :where(body.page-home-index) .btr-tech-cards { height: 380px; }
+    :where(body.page-home-index) .btr-tech-card,
+    :where(body.page-home-index) .btr-tech-card:hover,
+    :where(body.page-home-index) .btr-tech-card.is-active { height: 380px; }
+    :where(body.page-home-index) .btr-tech-title,
+    :where(body.page-home-index) .btr-tech-card:hover .btr-tech-title,
+    :where(body.page-home-index) .btr-tech-card.is-active .btr-tech-title { font-size: 18px; }
+}
+
+/* Testimonials: chhoti screens par card width screen ke hisaab se */
+@media (max-width: 768px) {
+    :where(body.page-home-index) .btr-testimonial-card {
+        width: min(340px, 86vw);
+    }
+}
+@media (max-width: 480px) {
+    :where(body.page-home-index) .btr-testimonial-card {
+        width: 86vw;
     }
 }
