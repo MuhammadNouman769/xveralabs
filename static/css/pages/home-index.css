@@ -2212,3 +2212,588 @@
 :where(body.page-home-index) .page-inline-home-index-6 { margin:0 auto; }
 
 
+/* =====================================================================
+   HOME PAGE: FINAL RESPONSIVE BLOCK (isay file ke end mein rakhein)
+   Breakpoints: 1450 / 1200 / 992 / 768 / 480
+   ===================================================================== */
+
+/* ---------- Base fixes (sab screens) ---------- */
+:where(body.page-home-index) .btr-hero-section {
+    min-height: 100vh;
+    min-height: 100svh;
+    height: auto;
+}
+
+:where(body.page-home-index) .btr-hero-scene {
+    flex-shrink: 0;
+}
+
+/* ====================== 1450px ====================== */
+@media (max-width: 1450px) {
+    /* WHO WE ARE: cards chhote */
+    :where(body.page-home-index) .btrwho-section {
+        padding: 150px 3%;
+        gap: 50px;
+    }
+    :where(body.page-home-index) .btrwho-left {
+        width: 340px;
+    }
+    :where(body.page-home-index) .btrwho-left h2 {
+        font-size: 46px;
+    }
+    :where(body.page-home-index) .btrwho-left p {
+        font-size: 16px;
+    }
+    :where(body.page-home-index) .btrwho-layout,
+    :where(body.page-home-index) .btrwho-column {
+        gap: 20px;
+    }
+    :where(body.page-home-index) .btrwho-card {
+        width: 220px;
+        height: 220px;
+    }
+    :where(body.page-home-index) .btrwho-col-1 { margin-top: 145px; }
+    :where(body.page-home-index) .btrwho-col-2 { margin-top: 17px; }
+    :where(body.page-home-index) .btrwho-col-3 { margin-top: -125px; }
+    :where(body.page-home-index) .btrwho-overlay {
+        padding: 24px 18px 56px;
+    }
+    :where(body.page-home-index) .btrwho-overlay h3 {
+        font-size: 20px;
+    }
+    :where(body.page-home-index) .btrwho-overlay p {
+        font-size: 13px;
+        margin-bottom: 12px;
+    }
+    :where(body.page-home-index) .btrwho-overlay a {
+        padding: 9px 18px;
+        font-size: 13px;
+    }
+}
+
+/* ====================== 1250px: tech cards ====================== */
+@media (max-width: 1250px) {
+    :where(body.page-home-index) .btr-tech-cards {
+        gap: 10px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: none;
+    }
+    :where(body.page-home-index) .btr-tech-cards::-webkit-scrollbar {
+        display: none;
+    }
+    :where(body.page-home-index) .btr-tech-card {
+        flex: 0 0 110px;
+    }
+    :where(body.page-home-index) .btr-tech-card:hover,
+    :where(body.page-home-index) .btr-tech-card.is-active {
+        flex-basis: 300px;
+    }
+}
+
+/* ====================== 1200px: laptop chhota ====================== */
+@media (max-width: 1200px) {
+    /* HERO */
+    :where(body.page-home-index) .btr-hero-container {
+        padding: 100px 5% 40px;
+        gap: 24px;
+    }
+    :where(body.page-home-index) .btr-hero-title {
+        font-size: 52px !important;
+    }
+    :where(body.page-home-index) .btr-hero-scene {
+        width: min(480px, 44vw);
+        height: 460px;
+    }
+    :where(body.page-home-index) .btr-planet-core { width: 300px; height: 300px; }
+    :where(body.page-home-index) .btr-planet-ring { width: 400px; height: 400px; }
+    :where(body.page-home-index) .btr-orbit-1,
+    :where(body.page-home-index) .btr-orbit-planet--blue { width: 380px; height: 380px; }
+    :where(body.page-home-index) .btr-orbit-2,
+    :where(body.page-home-index) .btr-orbit-planet--red { width: 430px; height: 430px; }
+    :where(body.page-home-index) .btr-orbit-3,
+    :where(body.page-home-index) .btr-orbit-planet--ringed { width: 480px; height: 480px; }
+    :where(body.page-home-index) .btr-earth-orbit { width: 190px; height: 190px; }
+
+    /* WHO WE ARE: stack hota hai, cards grid mein */
+    :where(body.page-home-index) .btrwho-section {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 100px 5%;
+        gap: 50px;
+    }
+    :where(body.page-home-index) .btrwho-left {
+        width: 100%;
+        max-width: 720px;
+    }
+    :where(body.page-home-index) .btrwho-left h2 {
+        font-size: 44px;
+    }
+    :where(body.page-home-index) .btrwho-layout {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+        width: 100%;
+    }
+    :where(body.page-home-index) .btrwho-column {
+        display: contents;
+    }
+    :where(body.page-home-index) .btrwho-col-1,
+    :where(body.page-home-index) .btrwho-col-2,
+    :where(body.page-home-index) .btrwho-col-3 {
+        margin-top: 0;
+    }
+    :where(body.page-home-index) .btrwho-card {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+    }
+
+    /* Showcase */
+    :where(body.page-home-index) .btr-showcase-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* Section headings */
+    :where(body.page-home-index) .btr-section-title {
+        font-size: 44px;
+    }
+}
+
+/* ====================== 992px: tablet ====================== */
+@media (max-width: 992px) {
+    /* Helpers */
+    :where(body.page-home-index) .btr-container {
+        padding: 0 20px;
+    }
+    :where(body.page-home-index) .btr-section-title {
+        font-size: 38px;
+    }
+    :where(body.page-home-index) .btr-section-subtitle {
+        font-size: 16px;
+    }
+    :where(body.page-home-index) .btr-section-padding,
+    :where(body.page-home-index) .btr-showcase-section,
+    :where(body.page-home-index) .btr-testimonials-section,
+    :where(body.page-home-index) .btr-blog-section,
+    :where(body.page-home-index) .btr-contact-section {
+        padding-top: 90px;
+        padding-bottom: 90px;
+    }
+
+    /* HERO: column layout */
+    :where(body.page-home-index) .btr-hero-section {
+        align-items: flex-start;
+    }
+    :where(body.page-home-index) .btr-hero-container {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 120px 6% 60px;
+        gap: 30px;
+    }
+    :where(body.page-home-index) .btr-hero-copy {
+        max-width: 100%;
+    }
+    :where(body.page-home-index) .btr-hero-title {
+        font-size: 46px !important;
+        max-width: 100%;
+    }
+    :where(body.page-home-index) .btr-hero-text {
+        max-width: 620px;
+    }
+    :where(body.page-home-index) .btr-hero-scene {
+        align-self: center;
+        width: min(460px, 90vw);
+        height: 400px;
+    }
+    :where(body.page-home-index) .btr-planet-core { width: 250px; height: 250px; }
+    :where(body.page-home-index) .btr-planet-ring { width: 330px; height: 330px; }
+    :where(body.page-home-index) .btr-orbit-1,
+    :where(body.page-home-index) .btr-orbit-planet--blue { width: 310px; height: 310px; }
+    :where(body.page-home-index) .btr-orbit-2,
+    :where(body.page-home-index) .btr-orbit-planet--red { width: 360px; height: 360px; }
+    :where(body.page-home-index) .btr-orbit-3,
+    :where(body.page-home-index) .btr-orbit-planet--ringed { width: 410px; height: 410px; }
+    :where(body.page-home-index) .btr-earth-orbit { width: 160px; height: 160px; }
+
+    /* Floating cards scene ke andar */
+    :where(body.page-home-index) .btr-floating-card-top {
+        top: 4%;
+        right: 0;
+        left: auto;
+        bottom: auto;
+        transform: rotate(6deg);
+    }
+    :where(body.page-home-index) .btr-floating-card-bottom {
+        bottom: 2%;
+        left: 0;
+        top: auto;
+        right: auto;
+        transform: rotate(-6deg);
+    }
+
+    /* WHO WE ARE */
+    :where(body.page-home-index) .btrwho-section {
+        padding: 80px 20px;
+    }
+    :where(body.page-home-index) .btrwho-left h2 {
+        font-size: 38px;
+    }
+
+    /* Tech cards */
+    :where(body.page-home-index) .btr-tech-section {
+        padding: 55px 25px;
+    }
+    :where(body.page-home-index) .btr-tech-cards {
+        height: 410px;
+    }
+    :where(body.page-home-index) .btr-tech-card {
+        flex: 0 0 135px;
+        height: 410px;
+    }
+    :where(body.page-home-index) .btr-tech-card:hover,
+    :where(body.page-home-index) .btr-tech-card.is-active {
+        flex-basis: 320px;
+    }
+
+    /* Counters */
+    :where(body.page-home-index) .btr-counter-section {
+        padding: 70px 0;
+    }
+    :where(body.page-home-index) .btr-counter-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 36px 20px;
+    }
+
+    /* Blog */
+    :where(body.page-home-index) .btr-blog-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* Contact */
+    :where(body.page-home-index) .btr-contact-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+
+    /* CTA */
+    :where(body.page-home-index) .btr-cta-section {
+        padding: 70px 0;
+    }
+    :where(body.page-home-index) .btr-cta-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 28px;
+    }
+    :where(body.page-home-index) .btr-cta-text h2 {
+        font-size: 36px;
+    }
+    :where(body.page-home-index) .btr-cta-text p {
+        margin: 0 auto;
+    }
+}
+
+/* ====================== 768px: mobile ====================== */
+@media (max-width: 768px) {
+    /* Headings */
+    :where(body.page-home-index) .btr-section-title {
+        font-size: 30px;
+        line-height: 1.2;
+    }
+    :where(body.page-home-index) .btr-section-title br {
+        display: none;
+    }
+    :where(body.page-home-index) .btr-section-padding,
+    :where(body.page-home-index) .btr-showcase-section,
+    :where(body.page-home-index) .btr-testimonials-section,
+    :where(body.page-home-index) .btr-blog-section,
+    :where(body.page-home-index) .btr-contact-section {
+        padding-top: 70px;
+        padding-bottom: 70px;
+    }
+
+    /* HERO */
+    :where(body.page-home-index) .btr-hero-container {
+        padding: 105px 20px 50px;
+        gap: 24px;
+    }
+    :where(body.page-home-index) .btr-hero-title {
+        font-size: clamp(2rem, 8.5vw, 2.7rem) !important;
+        line-height: 1;
+    }
+    :where(body.page-home-index) .btr-hero-text {
+        font-size: 0.9rem;
+        margin-bottom: 24px;
+    }
+    :where(body.page-home-index) .btr-hero-buttons {
+        gap: 12px;
+        margin-bottom: 22px;
+    }
+    :where(body.page-home-index) .btr-hero-stats {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    :where(body.page-home-index) .btr-hero-stats div {
+        min-width: 92px;
+        flex: 1 1 92px;
+    }
+    :where(body.page-home-index) .btr-hero-scene {
+        width: min(380px, 92vw);
+        height: 320px;
+    }
+    :where(body.page-home-index) .btr-planet-core { width: 200px; height: 200px; }
+    :where(body.page-home-index) .btr-planet-ring { width: 265px; height: 265px; }
+    :where(body.page-home-index) .btr-orbit-1,
+    :where(body.page-home-index) .btr-orbit-planet--blue { width: 245px; height: 245px; }
+    :where(body.page-home-index) .btr-orbit-2,
+    :where(body.page-home-index) .btr-orbit-planet--red { width: 285px; height: 285px; }
+    :where(body.page-home-index) .btr-orbit-3,
+    :where(body.page-home-index) .btr-orbit-planet--ringed { width: 320px; height: 320px; }
+    :where(body.page-home-index) .btr-earth-orbit { width: 130px; height: 130px; }
+    :where(body.page-home-index) .btr-sun-glow { width: 70px; height: 70px; }
+    :where(body.page-home-index) .btr-black-hole { width: 52px; height: 52px; }
+    :where(body.page-home-index) .btr-black-hole--two { width: 40px; height: 40px; }
+    :where(body.page-home-index) .btr-space-planet--saturn { width: 48px; height: 48px; }
+    :where(body.page-home-index) .btr-space-planet--saturn::after { width: 82px; height: 16px; }
+    :where(body.page-home-index) .btr-space-planet--platinum { width: 44px; height: 44px; }
+    :where(body.page-home-index) .btr-space-planet--mars { width: 36px; height: 36px; }
+    :where(body.page-home-index) .btr-floating-card {
+        padding: 8px 12px;
+        border-radius: 14px;
+    }
+    :where(body.page-home-index) .btr-floating-card strong { font-size: 0.95rem; }
+    :where(body.page-home-index) .btr-floating-card span { font-size: 0.6rem; }
+
+    /* WHO WE ARE: 2 columns */
+    :where(body.page-home-index) .btrwho-section {
+        padding: 60px 20px;
+        gap: 36px;
+    }
+    :where(body.page-home-index) .btrwho-left h2 {
+        font-size: 30px;
+    }
+    :where(body.page-home-index) .btrwho-left p {
+        font-size: 15px;
+        line-height: 1.7;
+        margin-bottom: 24px;
+    }
+    :where(body.page-home-index) .btrwho-layout {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+    }
+
+    /* Showcase */
+    :where(body.page-home-index) .btr-showcase-header {
+        margin-bottom: 36px;
+    }
+    :where(body.page-home-index) .btr-showcase-filters {
+        gap: 8px;
+        margin-bottom: 34px;
+    }
+    :where(body.page-home-index) .btr-filter-btn {
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+    :where(body.page-home-index) .btr-showcase-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+    :where(body.page-home-index) .btr-showcase-card {
+        min-height: 0;
+    }
+    :where(body.page-home-index) .btr-showcase-card img {
+        height: 200px;
+    }
+
+    /* Tech cards */
+    :where(body.page-home-index) .btr-tech-section {
+        padding: 45px 18px;
+    }
+    :where(body.page-home-index) .btr-tech-heading h2 {
+        font-size: 30px;
+    }
+    :where(body.page-home-index) .btr-tech-cards {
+        height: 390px;
+        gap: 10px;
+    }
+    :where(body.page-home-index) .btr-tech-card {
+        flex-basis: 110px;
+        height: 390px;
+        border-radius: 18px;
+    }
+    :where(body.page-home-index) .btr-tech-card:hover,
+    :where(body.page-home-index) .btr-tech-card.is-active {
+        flex-basis: 285px;
+    }
+
+    /* Testimonials */
+    :where(body.page-home-index) .btr-testimonials-shell {
+        margin-top: 30px;
+    }
+    :where(body.page-home-index) .btr-testimonials-shell::before,
+    :where(body.page-home-index) .btr-testimonials-shell::after {
+        width: 40px;
+    }
+    :where(body.page-home-index) .btr-testimonial-card {
+        width: 340px;
+        min-height: 0;
+        padding: 22px 20px 18px;
+    }
+    :where(body.page-home-index) .btr-testimonial-avatar {
+        width: 64px;
+        height: 64px;
+    }
+    :where(body.page-home-index) .btr-testimonial-text {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    /* Counters */
+    :where(body.page-home-index) .btr-counter-number {
+        font-size: 40px;
+    }
+    :where(body.page-home-index) .btr-counter-label {
+        font-size: 15px;
+    }
+
+    /* Blog */
+    :where(body.page-home-index) .btr-blog-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+        margin-top: 34px;
+    }
+    :where(body.page-home-index) .btr-blog-image {
+        height: 220px;
+    }
+
+    /* Contact */
+    :where(body.page-home-index) .btr-form-row {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    :where(body.page-home-index) .btr-contact-info {
+        padding: 30px 22px;
+    }
+    :where(body.page-home-index) .btr-contact-form {
+        padding: 28px 20px;
+    }
+    :where(body.page-home-index) .btr-contact-info-value {
+        font-size: 16px;
+        word-break: break-word;
+    }
+
+    /* CTA */
+    :where(body.page-home-index) .btr-cta-text h2 {
+        font-size: 28px;
+    }
+    :where(body.page-home-index) .btr-cta-text p {
+        font-size: 16px;
+    }
+    :where(body.page-home-index) .btr-cta-btn {
+        padding: 15px 32px;
+    }
+
+    /* Clients marquee */
+    :where(body.page-home-index) .btrx-clients-section .section-header h2 {
+        font-size: 28px;
+    }
+}
+
+/* ====================== 480px: chhota phone ====================== */
+@media (max-width: 480px) {
+    :where(body.page-home-index) .btr-container {
+        padding: 0 16px;
+    }
+    :where(body.page-home-index) .btr-section-title {
+        font-size: 26px;
+    }
+
+    /* HERO */
+    :where(body.page-home-index) .btr-hero-container {
+        padding: 95px 16px 40px;
+    }
+    :where(body.page-home-index) .btr-hero-title {
+        font-size: clamp(1.75rem, 9vw, 2.1rem) !important;
+    }
+    :where(body.page-home-index) .btr-hero-tag {
+        font-size: 10px;
+        letter-spacing: 0.16em;
+    }
+    :where(body.page-home-index) .btr-hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    :where(body.page-home-index) .btr-btn {
+        text-align: center;
+    }
+    :where(body.page-home-index) .btr-hero-scene {
+        width: 100%;
+        height: 280px;
+    }
+    :where(body.page-home-index) .btr-planet-core { width: 170px; height: 170px; }
+    :where(body.page-home-index) .btr-planet-ring { width: 225px; height: 225px; }
+    :where(body.page-home-index) .btr-orbit-1,
+    :where(body.page-home-index) .btr-orbit-planet--blue { width: 205px; height: 205px; }
+    :where(body.page-home-index) .btr-orbit-2,
+    :where(body.page-home-index) .btr-orbit-planet--red { width: 240px; height: 240px; }
+    :where(body.page-home-index) .btr-orbit-3,
+    :where(body.page-home-index) .btr-orbit-planet--ringed { width: 270px; height: 270px; }
+    :where(body.page-home-index) .btr-earth-orbit { width: 110px; height: 110px; }
+    :where(body.page-home-index) .btr-orbit-planet::after { width: 18px; height: 18px; }
+    :where(body.page-home-index) .btr-orbit-planet--ringed::after { width: 24px; height: 24px; }
+
+    /* WHO WE ARE: 1 column */
+    :where(body.page-home-index) .btrwho-section {
+        padding: 50px 16px;
+    }
+    :where(body.page-home-index) .btrwho-left h2 {
+        font-size: 26px;
+    }
+    :where(body.page-home-index) .btrwho-layout {
+        grid-template-columns: 1fr;
+    }
+    :where(body.page-home-index) .btrwho-card {
+        aspect-ratio: 4 / 3;
+    }
+
+    /* Tech */
+    :where(body.page-home-index) .btr-tech-heading h2 {
+        font-size: 26px;
+    }
+
+    /* Testimonials */
+    :where(body.page-home-index) .btr-testimonial-card {
+        width: 290px;
+    }
+
+    /* Counters */
+    :where(body.page-home-index) .btr-counter-grid {
+        gap: 28px 12px;
+    }
+    :where(body.page-home-index) .btr-counter-number {
+        font-size: 32px;
+    }
+    :where(body.page-home-index) .btr-counter-label {
+        font-size: 13px;
+    }
+
+    /* CTA */
+    :where(body.page-home-index) .btr-cta-text h2 {
+        font-size: 24px;
+    }
+    :where(body.page-home-index) .btr-cta-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* ====================== Touch devices ====================== */
+/* Mobile par hover nahi hota, is liye "Explore More" buttons hamesha visible */
+@media (hover: none) {
+    :where(body.page-home-index) .btrwho-overlay a {
+        opacity: 1;
+        transform: none;
+    }
+}
