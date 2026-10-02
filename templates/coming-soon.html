@@ -1,41 +1,26 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Coming Soon |Xveralabs{% endblock %}
-
+{% block title %}Coming Soon | Xveralabs{% endblock %}
 {% block body_class %}page-coming-soon{% endblock %}
-
 {% block page_css %}<link rel="stylesheet" href="{% static 'css/pages/coming-soon.css' %}">{% endblock %}
 
 {% block content %}
 
-
-</head>
-<style>
-    .cs-wraps {
-        position: relative;
-        z-index: 1;
-        background: #0c1518 !important;
-    }
-</style>
-<body>
-
 <!-- FLOATING SHAPES -->
-<div class="shape shape1"></div>
-<div class="shape shape2"></div>
-<div class="shape shape3"></div>
+<div class="cs-shapes" aria-hidden="true">
+    <div class="shape shape1"></div>
+    <div class="shape shape2"></div>
+    <div class="shape shape3"></div>
+</div>
 
-<div class="cs-wrap cs-wraps">
+<div class="cs-wrap">
 
-    <!-- LOGO -->
     <div class="cs-logo">
-        <img src="{% static 'images/logos/xvera.png' %}" alt="Logo">
+        <img src="{% static 'images/logos/xvera.png' %}" alt="Xveralabs Logo">
     </div>
 
-    <!-- TITLE -->
-    <h1 class="cs-title">
-        Coming <span>Soon</span>
-    </h1>
+    <h1 class="cs-title">Coming <span>Soon</span></h1>
 
     <p class="cs-text">
         We are working hard to bring you something amazing.
@@ -43,42 +28,20 @@
         with powerful features, modern design and better experience.
     </p>
 
-    <!-- COUNTDOWN -->
     <div class="cs-countdown">
-
-        <div class="cs-box">
-            <h2 id="days">00</h2>
-            <span>Days</span>
-        </div>
-
-        <div class="cs-box">
-            <h2 id="hours">00</h2>
-            <span>Hours</span>
-        </div>
-
-        <div class="cs-box">
-            <h2 id="minutes">00</h2>
-            <span>Minutes</span>
-        </div>
-
-        <div class="cs-box">
-            <h2 id="seconds">00</h2>
-            <span>Seconds</span>
-        </div>
-
+        <div class="cs-box"><h2 id="days">00</h2><span>Days</span></div>
+        <div class="cs-box"><h2 id="hours">00</h2><span>Hours</span></div>
+        <div class="cs-box"><h2 id="minutes">00</h2><span>Minutes</span></div>
+        <div class="cs-box"><h2 id="seconds">00</h2><span>Seconds</span></div>
     </div>
 
-    <!-- EMAIL -->
-    <div class="cs-form">
-        <input type="email" placeholder="Enter your email">
-        <button>Notify Me</button>
-    </div>
+    <form class="cs-form" onsubmit="return false;">
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit">Notify Me</button>
+    </form>
 
 </div>
 
 <script src="{% static 'js/pages/coming-soon-1.js' %}"></script>
-
-</body>
-</html>
 
 {% endblock %}
