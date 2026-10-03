@@ -1,25 +1,27 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Strategy & Consulting · The {M N} Solution{% endblock %}
+{% block title %}Strategy &amp; Consulting · Xvera Labs{% endblock %}
 {% block body_class %}page-services-strategy_-_consulting-strategy_and_consulting{% endblock %}
 
-{% block page_css %}<link rel="stylesheet" href="{% static 'css/pages/services-strategy_-_consulting-strategy_and_consulting.css' %}">
+{% block page_css %}<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/pages/services-strategy_-_consulting-strategy_and_consulting.css' %}">
 {% endblock %}
 
 {% block content %}
 <!-- ===== main container ===== -->
-<div class="container">
+<div class="sc-page">
 
-  <!-- ===== HERO BANNER ===== (Strategy & Consulting) -->
+  <!-- ===== HERO BANNER ===== -->
   <section class="hero-banner">
     <div class="hero-content">
-      <span class="hero-badge"><i class="fas fa-lightbulb page-inline-services-strategy_-_consulting-strategy_and_consulting-1"></i> Strategy & Consulting</span>
+      <span class="hero-badge"><i class="fas fa-lightbulb hero-badge-icon"></i> Strategy &amp; Consulting</span>
       <h1>Navigate <span>Digital Disruption</span> With Confidence</h1>
       <p>We combine deep industry expertise with forward-thinking strategies to help you unlock new revenue streams, streamline operations, and build resilient business models.</p>
       <div class="hero-buttons">
         <a href="#" class="btn-primary"><i class="fas fa-handshake"></i> Start a Project</a>
-        <a href="#" class="btn-secondary"><i class="fas fa-arrow-right"></i> Explore Services</a>
+        <a href="#services" class="btn-secondary"><i class="fas fa-arrow-right"></i> Explore Services</a>
       </div>
       <div class="hero-stats">
         <div><strong>12+</strong><span>Industries Served</span></div>
@@ -28,35 +30,35 @@
       </div>
     </div>
 
-    <!-- consultation form (same style) -->
+    <!-- consultation form -->
     <div class="hero-form">
       <h3>Book a strategy session</h3>
       <p>Let’s align your vision with a data‑driven roadmap.</p>
       <form id="consultationForm">
         <div class="form-row">
           <div class="form-group">
-            <input type="text" placeholder="Full name" required>
+            <input type="text" name="name" placeholder="Full name" aria-label="Full name" required>
           </div>
           <div class="form-group">
-            <input type="email" placeholder="Work email" required>
+            <input type="email" name="email" placeholder="Work email" aria-label="Work email" required>
           </div>
         </div>
         <div class="form-group">
-          <input type="tel" placeholder="Phone (optional)">
+          <input type="tel" name="phone" placeholder="Phone (optional)" aria-label="Phone">
         </div>
         <div class="form-group">
-          <select>
-            <option>Area of interest</option>
+          <select name="interest" aria-label="Area of interest">
+            <option value="">Area of interest</option>
             <option>Digital Strategy</option>
             <option>Business Transformation</option>
             <option>IT Consulting</option>
-            <option>AI & Automation</option>
+            <option>AI &amp; Automation</option>
             <option>Cloud Advisory</option>
           </select>
         </div>
         <div class="form-group">
-          <select>
-            <option>Company size</option>
+          <select name="company_size" aria-label="Company size">
+            <option value="">Company size</option>
             <option>Startup (1-50)</option>
             <option>Mid-size (50-500)</option>
             <option>Enterprise (500+)</option>
@@ -64,15 +66,15 @@
           </select>
         </div>
         <div class="form-group">
-          <textarea placeholder="Tell us about your challenges & goals"></textarea>
+          <textarea name="details" placeholder="Tell us about your challenges &amp; goals" aria-label="Your challenges and goals"></textarea>
         </div>
         <button type="submit" class="btn-submit"><i class="fas fa-calendar-check"></i> Get free consultation →</button>
       </form>
     </div>
   </section>
 
-  <!-- ===== Strategy & Consulting Services (industry level) ===== -->
-  <div class="page-inline-services-strategy_-_consulting-strategy_and_consulting-2">
+  <!-- ===== Strategy & Consulting Services ===== -->
+  <div class="services-head" id="services">
     <h2 class="section-title">Our <span>Consulting</span> Services</h2>
     <p class="section-sub">End‑to‑end advisory that bridges business strategy and technology execution. We deliver actionable insights and measurable outcomes.</p>
   </div>
@@ -85,7 +87,7 @@
     </div>
     <div class="service-card">
       <div class="icon"><i class="fas fa-robot"></i></div>
-      <h4>AI & Automation Advisory</h4>
+      <h4>AI &amp; Automation Advisory</h4>
       <p>Identify high‑impact AI use cases, build intelligent automation frameworks, and future‑proof your operations.</p>
     </div>
     <div class="service-card">
@@ -95,7 +97,7 @@
     </div>
     <div class="service-card">
       <div class="icon"><i class="fas fa-chart-line"></i></div>
-      <h4>Data & Analytics Consulting</h4>
+      <h4>Data &amp; Analytics Consulting</h4>
       <p>Turn data into a strategic asset with modern data platforms, governance, and advanced analytics capabilities.</p>
     </div>
     <div class="service-card">
@@ -105,32 +107,32 @@
     </div>
     <div class="service-card">
       <div class="icon"><i class="fas fa-shield-alt"></i></div>
-      <h4>Risk & Compliance Advisory</h4>
+      <h4>Risk &amp; Compliance Advisory</h4>
       <p>Navigate regulatory landscapes, strengthen cybersecurity posture, and embed resilient governance frameworks.</p>
     </div>
   </div>
 
-  <!-- ===== industry highlight: broad sector coverage ===== -->
+  <!-- ===== industry highlight ===== -->
   <div class="industry-highlight">
     <div>
       <h2>Built for every industry <small>From financial services to healthcare, retail to public sector</small></h2>
       <div class="industry-tags">
-        <span><i class="fas fa-university"></i> Banking & Finance</span>
+        <span><i class="fas fa-university"></i> Banking &amp; Finance</span>
         <span><i class="fas fa-heartbeat"></i> Healthcare</span>
-        <span><i class="fas fa-shopping-cart"></i> Retail & CPG</span>
+        <span><i class="fas fa-shopping-cart"></i> Retail &amp; CPG</span>
         <span><i class="fas fa-industry"></i> Manufacturing</span>
-        <span><i class="fas fa-tachometer-alt"></i> Energy & Utilities</span>
+        <span><i class="fas fa-tachometer-alt"></i> Energy &amp; Utilities</span>
         <span><i class="fas fa-gavel"></i> Public Sector</span>
         <span><i class="fas fa-car"></i> Automotive</span>
-        <span><i class="fas fa-plane"></i> Travel & Logistics</span>
+        <span><i class="fas fa-plane"></i> Travel &amp; Logistics</span>
       </div>
     </div>
-    <div class="page-inline-services-strategy_-_consulting-strategy_and_consulting-3">
-      <a href="#" class="btn-primary page-inline-services-strategy_-_consulting-strategy_and_consulting-4"><i class="fas fa-globe-americas"></i> View industry cases</a>
+    <div class="industry-cta">
+      <a href="#" class="btn-primary btn-dark"><i class="fas fa-globe-americas"></i> View industry cases</a>
     </div>
   </div>
 
-  <!-- ===== CTA / why The {M N} ===== -->
+  <!-- ===== CTA ===== -->
   <div class="cta-block">
     <div>
       <h3>Ready to transform your business?</h3>
@@ -141,14 +143,11 @@
     </div>
   </div>
 
-  <!-- tiny footer note (matching original style) -->
-  <div class="page-inline-services-strategy_-_consulting-strategy_and_consulting-5">
-    <i class="fas fa-flag page-inline-services-strategy_-_consulting-strategy_and_consulting-6"></i> The {M N} Solution — Strategy & Consulting. Industry‑grade advisory for the digital era.
+  <!-- footer note -->
+  <div class="page-note">
+    <i class="fas fa-flag page-note-icon"></i> Xvera Labs — Strategy &amp; Consulting. Industry‑grade advisory for the digital era.
   </div>
 </div>
 
-<!-- (optional) small script to prevent form submission -->
 <script src="{% static 'js/pages/services-strategy_-_consulting-strategy_and_consulting-1.js' %}"></script>
-
-</body>
 {% endblock %}
