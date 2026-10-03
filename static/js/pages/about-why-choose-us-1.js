@@ -1,95 +1,97 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
+    'use strict';
 
-        // ===== CONSULTATION FORM =====
-        const form = document.getElementById('consultationForm');
-        if (form) {
-            form.addEventListener('submit', function(e) {
+    // ===== CONSULTATION FORM =====
+    var form = document.getElementById('consultationForm');
+    if (form) {
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            // TODO: yahan Django view / API pe fetch() se data bhejein
+            alert("Consultation request submitted! We'll contact you within 24 hours.");
+            form.reset();
+        });
+    }
+
+    // ===== PAGE CHATBOX =====
+    var toggle = document.getElementById('chatToggle');
+    var widget = document.getElementById('chatWidget');   // pehle 'ch atWidget' typo tha, is liye chat khulta hi nahi tha
+    var closeBtn = document.getElementById('chatClose');
+    var input = document.getElementById('chatInput');
+    var sendBtn = document.getElementById('chatSend');
+    var messages = document.getElementById('chatMessages');
+
+    function openChat() {
+        if (!widget) return;
+        widget.classList.add('active');
+        if (toggle) toggle.setAttribute('aria-expanded', 'true');
+        if (input) input.focus();
+    }
+
+    function closeChat() {
+        if (!widget) return;
+        widget.classList.remove('active');
+        if (toggle) toggle.setAttribute('aria-expanded', 'false');
+    }
+
+    if (toggle && widget) {
+        toggle.addEventListener('click', function () {
+            if (widget.classList.contains('active')) closeChat();
+            else openChat();
+        });
+    }
+
+    if (closeBtn) closeBtn.addEventListener('click', closeChat);
+
+    // Escape pe band
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && widget && widget.classList.contains('active')) closeChat();
+    });
+
+    // ===== CHAT SEND =====
+    function escapeHtml(text) {
+        var div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    function addMessage(type, html) {
+        var div = document.createElement('div');
+        div.className = 'chat-message ' + type;
+        div.innerHTML =
+            '<div class="chat-avatar' + (type === 'user' ? ' user-avatar' : '') + '">' +
+            (type === 'user' ? '👤' : '🤖') + '</div>' +
+            '<div class="chat-bubble">' + html + '</div>';
+        messages.appendChild(div);
+        messages.scrollTop = messages.scrollHeight;
+    }
+
+    var replies = [
+        'Thanks for your message! Our team will get back to you shortly.',
+        'Great question! Let me connect you with an expert.',
+        'We appreciate your interest! How can we assist you further?',
+        "That's a great point! Would you like to schedule a call?"
+    ];
+
+    function sendMessage() {
+        if (!input || !messages) return;
+        var text = input.value.trim();
+        if (!text) return;
+
+        addMessage('user', escapeHtml(text));
+        input.value = '';
+
+        setTimeout(function () {
+            addMessage('bot', replies[Math.floor(Math.random() * replies.length)]);
+        }, 600);
+    }
+
+    if (sendBtn && input) {
+        sendBtn.addEventListener('click', sendMessage);
+        input.addEventListener('keydown', function (e) {   // keypress deprecated hai
+            if (e.key === 'Enter') {
                 e.preventDefault();
-                alert('✅ Consultation request submitted! We\'ll contact you within 24 hours.');
-                form.reset();
-            });
-        }
-
-        // ===== CHATBOX TOGGLE =====
-        const toggle = document.getElementById('chatToggle');
-        const widget = document.getElementById('chatWidget');
-        const close = document.getElementById('chatClose');
-
-        if (toggle && widget) {
-            toggle.addEventListener('click', function() {
-                widget.classList.toggle('active');
-                if (widget.classList.contains('active')) {
-                    document.getElementById('chatInput').focus();
-                }
-            });
-        }
-        if (close && widget) {
-            close.addEventListener('click', function() {
-                widget.classList.remove('active');
-            });
-        }
-
-        // ===== CHAT SEND =====
-        const input = document.getElementById('chatInput');
-        const sendBtn = document.getElementById('chatSend');
-        const messages = document.getElementById('chatMessages');
-
-        function sendMessage() {
-            if (!input || !messages) return;
-            const text = input.value.trim();
-            if (!text) return;
-
-            const userDiv = document.createElement('div');
-            userDiv.className = 'chat-message user';
-            userDiv.innerHTML = `
-                <div class="chat-avatar user-avatar">👤</div>
-                <div class="chat-bubble">${escapeHtml(text)}</div>
-            `;
-            messages.appendChild(userDiv);
-
-            setTimeout(function() {
-                const replies = [
-                    'Thanks for your message! Our team will get back to you shortly.',
-                    'Great question! Let me connect you with an expert.',
-                    'We appreciate your interest! How can we assist you further?',
-                    'That\'s a great point! Would you like to schedule a call?'
-                ];
-                const reply = replies[Math.floor(Math.random() * replies.length)];
-                const botDiv = document.createElement('div');
-                botDiv.className = 'chat-message bot';
-                botDiv.innerHTML = `
-                    <div class="chat-avatar">🤖</div>
-                    <div class="chat-bubble">${reply}</div>
-                `;
-                messages.appendChild(botDiv);
-                messages.scrollTop = messages.scrollHeight;
-            }, 600);
-
-            input.value = '';
-            messages.scrollTop = messages.scrollHeight;
-        }
-
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
-
-        if (sendBtn && input) {
-            sendBtn.addEventListener('click', sendMessage);
-            input.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    e.preventDefault();
-                    sendMessage();
-                }
-            });
-        }
-
-        // ===== CLOSE CHAT ON ESC =====
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && widget && widget.classList.contains('active')) {
-                widget.classList.remove('active');
+                sendMessage();
             }
         });
-
-    });
+    }
+});

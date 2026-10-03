@@ -438,7 +438,8 @@ body:has(#btrx-preloader:not(.btrx-hide)) { overflow: hidden; }
     .btrx-preloader-brand { letter-spacing: .2em; }
 
     /* Toggle */
-    .btrx-chat-toggle { width: 40px; min-height: 140px; padding: 14px 10px; border-radius: 40px 0 0 40px; }
+    .btrx-chat-toggle { top: auto; bottom: 96px; transform: none; width: 36px; min-height: 124px; padding: 12px 8px; border-radius: 36px 0 0 36px; }
+    .btrx-chat-toggle:hover { transform: translateX(-4px); }
     .btrx-toggle-icon { font-size: 18px; width: 28px; height: 28px; }
     .btrx-toggle-text { font-size: 12px; }
     .btrx-toggle-sub { font-size: 8px; }
