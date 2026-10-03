@@ -75,34 +75,6 @@
 .wcu .btn-submit { width: 100%; padding: 15px; border: none; border-radius: 12px; background: linear-gradient(135deg, #0ebab1, #14cfc1); color: #fff; font-size: 16px; font-weight: 700; cursor: pointer; box-shadow: 0 8px 25px rgba(14,186,177,.25); transition: all .3s ease; }
 .wcu .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 12px 35px rgba(14,186,177,.35); }
 
-/* ========== PAGE CHATBOX ========== */
-.wcu .chat-toggle { position: fixed; bottom: 30px; right: 30px; z-index: 999; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border: none; border-radius: 50%; background: linear-gradient(135deg, #0ebab1, #14cfc1); color: #fff; font-size: 26px; cursor: pointer; box-shadow: 0 8px 30px rgba(14,186,177,.35); transition: all .3s ease; }
-.wcu .chat-toggle:hover { transform: scale(1.05); box-shadow: 0 12px 40px rgba(14,186,177,.45); }
-
-.wcu .chat-widget { position: fixed; bottom: 100px; right: 30px; z-index: 999; display: none; width: 360px; max-width: calc(100vw - 32px); overflow: hidden; border-radius: 20px; background: #fff; box-shadow: 0 20px 60px rgba(0,0,0,.2); animation: wcuSlideUp .3s ease; }
-.wcu .chat-widget.active { display: block; }
-@keyframes wcuSlideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-.wcu .chat-header { display: flex; justify-content: space-between; align-items: center; padding: 18px 24px; background: linear-gradient(135deg, #0a1628, #1a2a4a); color: #fff; }
-.wcu .chat-header h4 { font-size: 16px; font-weight: 700; }
-.wcu .chat-header span { color: #0ebab1; font-size: 12px; font-weight: 500; }
-.wcu .chat-close { border: none; background: none; color: #8899bb; font-size: 20px; cursor: pointer; transition: color .3s; }
-.wcu .chat-close:hover { color: #fff; }
-
-.wcu .chat-messages { height: 280px; max-height: 45vh; max-height: 45dvh; padding: 20px 24px; overflow-y: auto; background: #f8fafc; }
-.wcu .chat-message { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 16px; }
-.wcu .chat-message.user { flex-direction: row-reverse; }
-.wcu .chat-avatar { flex-shrink: 0; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: linear-gradient(135deg, #0ebab1, #14cfc1); color: #fff; font-size: 14px; }
-.wcu .chat-avatar.user-avatar { background: #e8ecf1; color: #1a2332; }
-.wcu .chat-bubble { max-width: 80%; padding: 12px 16px; border-radius: 14px; background: #fff; color: #1a2332; font-size: 14px; line-height: 1.5; box-shadow: 0 2px 8px rgba(0,0,0,.04); overflow-wrap: anywhere; }
-.wcu .chat-message.user .chat-bubble { background: #0ebab1; color: #fff; }
-
-.wcu .chat-input-area { display: flex; gap: 10px; padding: 16px 20px; border-top: 1px solid #eef2f7; background: #fff; }
-.wcu .chat-input-area input { flex: 1; min-width: 0; padding: 10px 16px; border: 1px solid #eef2f7; border-radius: 12px; outline: none; font-size: 14px; transition: all .3s ease; }
-.wcu .chat-input-area input:focus { border-color: #0ebab1; }
-.wcu .chat-input-area button { padding: 10px 20px; border: none; border-radius: 12px; background: linear-gradient(135deg, #0ebab1, #14cfc1); color: #fff; font-weight: 700; cursor: pointer; transition: all .3s ease; }
-.wcu .chat-input-area button:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(14,186,177,.3); }
-
 /* ========== SECTION TITLE ========== */
 .wcu .section-title { max-width: 700px; margin: 0 auto 50px; padding: 0 16px; text-align: center; }
 .wcu .section-title .tag,
@@ -319,11 +291,6 @@
     .wcu .agile-side .benefits-list li { gap: 12px; font-size: 14px; }
     .wcu .agile-tools-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
 
-    /* Page chat */
-    .wcu .chat-toggle { bottom: 20px; right: 20px; width: 52px; height: 52px; font-size: 22px; }
-    .wcu .chat-widget { right: 16px; left: 16px; bottom: 84px; width: auto; max-width: none; }
-    .wcu .chat-messages { height: 240px; }
-    .wcu .chat-input-area input { font-size: 16px; }
 }
 
 /* ---- Small phones ---- */
@@ -339,13 +306,6 @@
     .wcu .section-title h2,
     .wcu .agile-header h2 { font-size: 23px; }
     .wcu .agile-side h3 { font-size: 21px; }
-    .wcu .chat-bubble { max-width: 88%; }
-}
-
-/* ---- Landscape phones ---- */
-@media (max-height: 500px) and (orientation: landscape) {
-    .wcu .chat-widget { bottom: 16px; right: 84px; left: auto; width: 340px; }
-    .wcu .chat-messages { height: 150px; }
 }
 
 /* ---- Touch devices: hover jump nahi ---- */

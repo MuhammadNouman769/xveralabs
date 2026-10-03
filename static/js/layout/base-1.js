@@ -53,6 +53,10 @@
         chatToggle.classList.add('active');
         chatToggle.setAttribute('aria-expanded', 'true');
         if (chatBody) chatBody.scrollTop = 0;
+
+        // Notification badge pehli dafa dekhne ke baad hata do
+        var badge = chatToggle.querySelector('.btrx-chat-badge');
+        if (badge && badge.parentNode) badge.parentNode.removeChild(badge);
     }
 
     function closeChat() {

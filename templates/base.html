@@ -1,31 +1,36 @@
-
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>{% block title %}Xvera Labs{% endblock %}</title>
+    <title>{% block title %}Xverlabs{% endblock %}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="icon" href="{% static 'images/favicon.ico' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     {% block extra_head %}{% endblock %}
+
     <link rel="stylesheet" href="{% static 'css/layout/base.css' %}">
     {% block page_css %}{% endblock %}
     <link rel="stylesheet" href="{% static 'css/layout/header.css' %}">
     <link rel="stylesheet" href="{% static 'css/layout/footer.css' %}">
-    <noscript>
-        <style>
-            #btrx-preloader{display:none!important}
-        </style>
-    </noscript>
+
+    <!-- JS band ho to preloader na dikhe -->
+    <noscript><style>#btrx-preloader{display:none !important;}</style></noscript>
 </head>
+
 <body class="{% block body_class %}{% endblock %}">
+
+    <!-- =====================
+         ENTERPRISE PRELOADER
+    ====================== -->
     <div id="btrx-preloader">
         <div class="btrx-preloader-grid"></div>
         <div class="btrx-bg-glow btrx-bg-glow-1"></div>
         <div class="btrx-bg-glow btrx-bg-glow-2"></div>
         <div class="btrx-bg-glow btrx-bg-glow-3"></div>
+
         <div class="btrx-loader-scene" aria-label="Loading application">
             <div class="btrx-orbit btrx-orbit-one"></div>
             <div class="btrx-orbit btrx-orbit-two"></div>
@@ -35,10 +40,12 @@
                 <span class="btrx-core-dot"></span>
             </div>
         </div>
+
         <div class="btrx-preloader-brand">
             <span class="btrx-brand-btr">X</span>
             <span class="btrx-brand-solution">vera Labs</span>
         </div>
+
         <div class="btrx-preloader-meta">
             <span>Stabilizing orbit</span>
             <div class="btrx-progress">
@@ -47,28 +54,28 @@
         </div>
     </div>
 
-    {% block header %}
-        {% include 'includes/header.html' %}
-    {% endblock %}
+    <!-- HEADER -->
+    {% block header %}{% include 'includes/header.html' %}{% endblock %}
 
+    <!-- CONTENT -->
     {% block content %}{% endblock %}
 
-    {% block footer %}
-        {% include 'includes/footer.html' %}
-    {% endblock %}
+    <!-- FOOTER -->
+    {% block footer %}{% include 'includes/footer.html' %}{% endblock %}
 
+    <!-- CHAT WIDGET - Robot button (kisi page pe nahi chahiye to us page mein chat_widget block khali override karein) -->
     {% block chat_widget %}
     <div class="btrx-chat-widget">
+
+        <!-- Chat Box -->
         <div class="btrx-chat-box" id="btrxChatBox">
+
             <div class="btrx-chat-header">
                 <div class="chat-status">
                     <span class="dot"></span>
                     <span>We're online</span>
                 </div>
-                <h3>
-                    <i class="fas fa-handshake"></i>
-                    Get In Touch
-                </h3>
+                <h3><i class="fas fa-handshake"></i> Get In Touch</h3>
                 <p>Fill in the details and our team will reach out to you.</p>
                 <button type="button" class="btrx-chat-close" id="btrxChatClose" aria-label="Close chat">
                     <i class="fas fa-times"></i>
@@ -76,46 +83,36 @@
             </div>
 
             <div class="btrx-chat-body" id="btrxChatBody">
+
                 <form id="btrxChatForm" novalidate>
+
                     <div class="btrx-chat-form-group">
-                        <label for="cf-name">
-                            Full Name <span class="required">*</span>
-                        </label>
+                        <label for="cf-name">Full Name <span class="required">*</span></label>
                         <input type="text" id="cf-name" name="full_name" class="btrx-chat-input" placeholder="John Doe" required>
                     </div>
 
                     <div class="btrx-chat-form-group">
-                        <label for="cf-email">
-                            Email <span class="required">*</span>
-                        </label>
+                        <label for="cf-email">Email <span class="required">*</span></label>
                         <input type="email" id="cf-email" name="email" class="btrx-chat-input" placeholder="john@company.com" required>
                     </div>
 
                     <div class="btrx-chat-form-group">
-                        <label for="cf-phone">
-                            Phone Number <span class="required">*</span>
-                        </label>
+                        <label for="cf-phone">Phone Number <span class="required">*</span></label>
                         <input type="tel" id="cf-phone" name="phone" class="btrx-chat-input" placeholder="(201) 555-0123" required>
                     </div>
 
                     <div class="btrx-chat-form-group">
-                        <label for="cf-company">
-                            Company Name <span class="required">*</span>
-                        </label>
+                        <label for="cf-company">Company Name <span class="required">*</span></label>
                         <input type="text" id="cf-company" name="company" class="btrx-chat-input" placeholder="Your Company Name" required>
                     </div>
 
                     <div class="btrx-chat-form-group">
-                        <label for="cf-url">
-                            Company URL
-                        </label>
+                        <label for="cf-url">Company URL</label>
                         <input type="url" id="cf-url" name="company_url" class="btrx-chat-input" placeholder="https://yourcompany.com">
                     </div>
 
                     <div class="btrx-chat-form-group">
-                        <label for="cf-region">
-                            Region <span class="required">*</span>
-                        </label>
+                        <label for="cf-region">Region <span class="required">*</span></label>
                         <select id="cf-region" name="region" class="btrx-chat-select" required>
                             <option value="">Select Region</option>
                             <option value="na">North America</option>
@@ -142,46 +139,36 @@
                     </div>
 
                     <div class="btrx-chat-form-group">
-                        <label>
-                            Services you are looking for <span class="required">*</span>
-                        </label>
-
+                        <label>Services you are looking for <span class="required">*</span></label>
                         <div class="btrx-chat-checkbox-group" id="cf-services">
                             <div class="btrx-chat-checkbox-item">
                                 <input type="checkbox" id="service1" name="services" value="remote-it">
                                 <label for="service1">Remote IT Resources</label>
                             </div>
-
                             <div class="btrx-chat-checkbox-item">
                                 <input type="checkbox" id="service2" name="services" value="custom-software">
                                 <label for="service2">Custom Software Development</label>
                             </div>
-
                             <div class="btrx-chat-checkbox-item">
                                 <input type="checkbox" id="service3" name="services" value="web-dev">
                                 <label for="service3">Web Development</label>
                             </div>
-
                             <div class="btrx-chat-checkbox-item">
                                 <input type="checkbox" id="service4" name="services" value="mobile-dev">
                                 <label for="service4">Mobile App Development</label>
                             </div>
-
                             <div class="btrx-chat-checkbox-item">
                                 <input type="checkbox" id="service5" name="services" value="ar-vr">
                                 <label for="service5">AR/VR</label>
                             </div>
-
                             <div class="btrx-chat-checkbox-item">
                                 <input type="checkbox" id="service6" name="services" value="gaming">
                                 <label for="service6">Gaming</label>
                             </div>
-
                             <div class="btrx-chat-checkbox-item">
                                 <input type="checkbox" id="service7" name="services" value="cyber-security">
                                 <label for="service7">Cyber Security</label>
                             </div>
-
                             <div class="btrx-chat-checkbox-item">
                                 <input type="checkbox" id="service8" name="services" value="other-it">
                                 <label for="service8">Other IT Services</label>
@@ -190,10 +177,7 @@
                     </div>
 
                     <div class="btrx-chat-form-group">
-                        <label for="cf-budget">
-                            Budget Range <span class="required">*</span>
-                        </label>
-
+                        <label for="cf-budget">Budget Range <span class="required">*</span></label>
                         <select id="cf-budget" name="budget" class="btrx-chat-select" required>
                             <option value="">Select Budget Range</option>
                             <option value="lt-50k">Less than PKR 50,000</option>
@@ -210,17 +194,12 @@
                     </div>
 
                     <div class="btrx-chat-form-group">
-                        <label for="cf-details">
-                            Project Details <span class="required">*</span>
-                        </label>
+                        <label for="cf-details">Project Details <span class="required">*</span></label>
                         <textarea id="cf-details" name="details" class="btrx-chat-textarea" placeholder="Tell us about your project..." required></textarea>
                     </div>
 
                     <div class="btrx-chat-form-group">
-                        <label for="cf-job">
-                            I am looking for a job at Xvera Labs
-                        </label>
-
+                        <label for="cf-job">I am looking for a job at Xvera Labs</label>
                         <select id="cf-job" name="job" class="btrx-chat-select">
                             <option value="">Please Select</option>
                             <option value="yes">Yes, I'm interested</option>
@@ -230,55 +209,75 @@
                     </div>
 
                     <button type="submit" class="btrx-chat-send">
-                        <i class="fas fa-paper-plane"></i>
-                        Submit
+                        <i class="fas fa-paper-plane"></i> Submit
                     </button>
                 </form>
             </div>
 
             <div class="btrx-chat-footer">
                 <div class="chat-security">
-                    <i class="fas fa-lock"></i>
-                    Encrypted
+                    <i class="fas fa-lock"></i> Encrypted
                 </div>
-
                 <div class="chat-response">
                     <span class="response-text">Response in</span>
-
                     <div class="avatars">
                         <span>T</span>
                         <span>M</span>
                         <span>N</span>
                         <span>S</span>
                     </div>
-
                     <span class="response-text">~2 mins</span>
                 </div>
             </div>
         </div>
 
-        <button type="button" class="btrx-chat-toggle" id="btrxChatToggle" aria-label="Toggle chat" aria-expanded="false">
-            <span class="btrx-toggle-icon">
-                <i class="fas fa-comment-dots"></i>
+        <!-- Robot Button -->
+        <button type="button" class="btrx-chat-toggle" id="btrxChatToggle" aria-label="Chat with us" aria-expanded="false">
+            <span class="btrx-robot-tip">Hi! 👋 Let's talk business</span>
+
+            <span class="btrx-robot" aria-hidden="true">
+                <svg viewBox="0 0 80 96" xmlns="http://www.w3.org/2000/svg" focusable="false">
+                    <ellipse class="rb-shadow" cx="40" cy="93" rx="20" ry="3.2" fill="rgba(10,22,40,.25)"/>
+                    <g class="rb-float">
+                        <!-- antenna -->
+                        <line x1="40" y1="5" x2="40" y2="14" stroke="#0ebab1" stroke-width="3" stroke-linecap="round"/>
+                        <circle class="rb-bulb" cx="40" cy="5" r="4" fill="#ef4444"/>
+                        <!-- ears -->
+                        <rect x="9" y="26" width="8" height="12" rx="4" fill="#0ebab1"/>
+                        <rect x="63" y="26" width="8" height="12" rx="4" fill="#0ebab1"/>
+                        <!-- head + visor + eyes -->
+                        <rect x="15" y="13" width="50" height="36" rx="15" fill="#fff" stroke="#0ebab1" stroke-width="3"/>
+                        <rect x="21" y="21" width="38" height="20" rx="10" fill="#0a1628"/>
+                        <ellipse class="rb-eye" cx="32" cy="31" rx="4" ry="5" fill="#7ef6eb"/>
+                        <ellipse class="rb-eye" cx="48" cy="31" rx="4" ry="5" fill="#7ef6eb"/>
+                        <!-- neck -->
+                        <rect x="34" y="49" width="12" height="5" rx="2" fill="#0ebab1"/>
+                        <!-- arms -->
+                        <rect x="8" y="57" width="9" height="22" rx="4.5" fill="#0ebab1"/>
+                        <g class="rb-arm-r"><rect x="63" y="57" width="9" height="22" rx="4.5" fill="#0ebab1"/></g>
+                        <!-- body + chat dots -->
+                        <rect x="19" y="53" width="42" height="32" rx="13" fill="#fff" stroke="#0ebab1" stroke-width="3"/>
+                        <rect x="27" y="62" width="26" height="14" rx="7" fill="#e6fbf9"/>
+                        <circle class="rb-c1" cx="34" cy="69" r="2.6" fill="#0ebab1"/>
+                        <circle class="rb-c2" cx="40" cy="69" r="2.6" fill="#0ebab1"/>
+                        <circle class="rb-c3" cx="46" cy="69" r="2.6" fill="#0ebab1"/>
+                        <!-- feet -->
+                        <rect x="25" y="85" width="12" height="6" rx="3" fill="#0ebab1"/>
+                        <rect x="43" y="85" width="12" height="6" rx="3" fill="#0ebab1"/>
+                    </g>
+                </svg>
             </span>
 
-            <span class="btrx-toggle-text">
-                Let's Talk Business
-            </span>
-
-            <span class="btrx-toggle-sub">
-                We're online
-            </span>
-
-            <span class="btrx-chat-badge">
-                1
-            </span>
+            <span class="btrx-chat-badge">1</span>
         </button>
+
     </div>
     {% endblock %}
 
+    <!-- SCRIPTS -->
     {% include 'includes/scripts.html' %}
 
     <script src="{% static 'js/layout/base-1.js' %}"></script>
+
 </body>
 </html>
