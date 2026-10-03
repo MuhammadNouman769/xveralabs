@@ -1,191 +1,176 @@
 function initCultureCarousels() {
+    'use strict';
 
-    const culturePage = document.querySelector('.mn-life-page');
+    var culturePage = document.querySelector('.mn-life-page');
     if (!culturePage) return;
-    const cultureImageBase = culturePage.dataset.cultureImageBase;
+    var base = culturePage.dataset.cultureImageBase || '';
 
-    const cultureImages = [
-        {
-            src: `${cultureImageBase}qawali.png`,
-            title: "Qawali Night"
-        },
-        {
-            src: `${cultureImageBase}jashan.png`,
-            title: "Jashn-e-Baharan"
-        },
-        {
-            src: `${cultureImageBase}sportsday.png`,
-            title: "Sports Day"
-        },
-        {
-            src: `${cultureImageBase}revo.png`,
-            title: "Her Revolution"
-        },
-        {
-            src: `${cultureImageBase}khel.png`,
-            title: "Khel ka Janoon"
-        },
-        {
-            src: `${cultureImageBase}basanat.png`,
-            title: "Basanat"
-        }
+    var cultureImages = [
+        { src: base + 'qawali.png',  title: 'Qawali Night' },
+        { src: base + 'jashan.png',  title: 'Jashn-e-Baharan' },
+        { src: base + 'sportsday.png', title: 'Sports Day' },
+        { src: base + 'revo.png',    title: 'Her Revolution' },
+        { src: base + 'khel.png',    title: 'Khel ka Janoon' },
+        { src: base + 'basanat.png', title: 'Basanat' }
     ];
 
-    const dayImages = [
-        {
-            src: `${cultureImageBase}coffe.png`,
-            title: "Morning Coffee",
-            desc: "Starting the day right"
-        },
-        {
-            src: `${cultureImageBase}meeting.png`,
-            title: "Stand-up Meeting",
-            desc: "Aligning with the team"
-        },
-        {
-            src: `${cultureImageBase}pair.png`,
-            title: "Pair Programming",
-            desc: "Collaborative problem-solving"
-        },
-        {
-            src: `${cultureImageBase}deep.png`,
-            title: "Deep Focus",
-            desc: "Heads down, getting things done"
-        },
-        {
-            src: `${cultureImageBase}dinner.png`,
-            title: "Team Dinner",
-            desc: "Good food, great company"
-        },
-        {
-            src: `${cultureImageBase}gyms.png`,
-            title: "Gym Session",
-            desc: "Recharge and stay fit"
-        },
-        {
-            src: `${cultureImageBase}office-space.png`,
-            title: "Office Spaces",
-            desc: "Built for collaboration"
-        },
-        {
-            src: `${cultureImageBase}relax.png`,
-            title: "Relax Area",
-            desc: "Unwind and connect"
-        }
+    var dayImages = [
+        { src: base + 'coffe.png',   title: 'Morning Coffee',   desc: 'Starting the day right' },
+        { src: base + 'meeting.png', title: 'Stand-up Meeting', desc: 'Aligning with the team' },
+        { src: base + 'pair.png',    title: 'Pair Programming', desc: 'Collaborative problem-solving' },
+        { src: base + 'deep.png',    title: 'Deep Focus',       desc: 'Heads down, getting things done' },
+        { src: base + 'dinner.png',  title: 'Team Dinner',      desc: 'Good food, great company' },
+        { src: base + 'gyms.png',    title: 'Gym Session',      desc: 'Recharge and stay fit' },
+        { src: base + 'office-space.png', title: 'Office Spaces', desc: 'Built for collaboration' },
+        { src: base + 'relax.png',   title: 'Relax Area',       desc: 'Unwind and connect' }
     ];
 
-    const cultureTrack = document.getElementById("cultureTrack");
-    const dayTrack = document.getElementById("dayTrack");
-    const culturePrev = document.getElementById("culturePrev");
-    const cultureNext = document.getElementById("cultureNext");
-    const dayPrev = document.getElementById("dayPrev");
-    const dayNext = document.getElementById("dayNext");
+    var cultureTrack = document.getElementById('cultureTrack');
+    var dayTrack = document.getElementById('dayTrack');
+    var culturePrev = document.getElementById('culturePrev');
+    var cultureNext = document.getElementById('cultureNext');
+    var dayPrev = document.getElementById('dayPrev');
+    var dayNext = document.getElementById('dayNext');
 
     if (!cultureTrack || !dayTrack || !culturePrev || !cultureNext || !dayPrev || !dayNext) return;
 
-    function createCultureItems() {
-        const items = [...cultureImages, ...cultureImages];
-
-        cultureTrack.innerHTML = items.map(function (item) {
-            return `
-                <div class="carousel-item">
-                    <img src="${item.src}" alt="${item.title}" loading="lazy">
-                    <div class="carousel-content">
-                        <h4>${item.title}</h4>
-                    </div>
-                </div>
-            `;
-        }).join("");
+    function escapeAttr(text) {
+        return String(text).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
     }
 
-    function createDayItems() {
-        const items = [...dayImages, ...dayImages];
-
-        dayTrack.innerHTML = items.map(function (item) {
-            return `
-                <div class="day-item">
-                    <img src="${item.src}" alt="${item.title}" loading="lazy">
-                    <div class="day-caption">
-                        <h5>${item.title}</h5>
-                        <p>${item.desc}</p>
-                    </div>
-                </div>
-            `;
-        }).join("");
+    // Items do baar banate hain (asli + clone) taake loop beech mein na tootay.
+    // Clone screen readers se chhupa diya hai.
+    function renderCulture() {
+        cultureTrack.innerHTML = cultureImages.concat(cultureImages).map(function (item, i) {
+            var clone = i >= cultureImages.length;
+            return '<div class="carousel-item"' + (clone ? ' aria-hidden="true"' : '') + '>' +
+                '<img src="' + item.src + '" alt="' + (clone ? '' : escapeAttr(item.title)) + '" loading="lazy" draggable="false">' +
+                '<div class="carousel-content"><h4>' + item.title + '</h4></div>' +
+                '</div>';
+        }).join('');
     }
 
-    createCultureItems();
-    createDayItems();
-
-    function getItemWidth(track) {
-        const firstItem = track.children[0];
-
-        if (!firstItem) {
-            return 0;
-        }
-
-        const style = window.getComputedStyle(track);
-        const gap = parseFloat(style.columnGap || style.gap) || 0;
-
-        return firstItem.offsetWidth + gap;
+    function renderDay() {
+        dayTrack.innerHTML = dayImages.concat(dayImages).map(function (item, i) {
+            var clone = i >= dayImages.length;
+            return '<div class="day-item"' + (clone ? ' aria-hidden="true"' : '') + '>' +
+                '<img src="' + item.src + '" alt="' + (clone ? '' : escapeAttr(item.title)) + '" loading="lazy" draggable="false">' +
+                '<div class="day-caption"><h5>' + item.title + '</h5><p>' + item.desc + '</p></div>' +
+                '</div>';
+        }).join('');
     }
+
+    renderCulture();
+    renderDay();
+
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     function setupCarousel(track, prevButton, nextButton, intervalTime) {
-        let position = 0;
-        let timer = null;
+        var wrapper = track.parentElement;
+        var total = Math.floor(track.children.length / 2);
+        var position = 0;
+        var timer = null;
 
-        function move(direction) {
-            const originalCount = Math.floor(track.children.length / 2);
-
-            position += direction;
-
-            if (position >= originalCount) {
-                position = 0;
-            }
-
-            if (position < 0) {
-                position = originalCount - 1;
-            }
-
-            const itemWidth = getItemWidth(track);
-
-            track.style.transform =
-                `translateX(-${position * itemWidth}px)`;
+        function stepWidth() {
+            var first = track.children[0];
+            if (!first) return 0;
+            var style = window.getComputedStyle(track);
+            var gap = parseFloat(style.columnGap || style.gap) || 0;
+            return first.offsetWidth + gap;
         }
 
-        function startAutoSlide() {
-            clearInterval(timer);
+        function apply(animate) {
+            if (!animate) track.style.transition = 'none';
+            track.style.transform = 'translateX(' + (-position * stepWidth()) + 'px)';
+            if (!animate) {
+                void track.offsetWidth;          // reflow
+                track.style.transition = '';
+            }
+        }
 
-            timer = setInterval(function () {
-                move(1);
-            }, intervalTime);
+        // Clone tak pohnch gaye to chupke se asli par wapas (jump nazar nahi aata)
+        track.addEventListener('transitionend', function (e) {
+            if (e.target !== track || e.propertyName !== 'transform') return;
+            if (position >= total) {
+                position = position - total;
+                apply(false);
+            }
+        });
+
+        function move(direction) {
+            if (direction > 0) {
+                if (position >= total) return;   // reset hone tak intezar
+                position += 1;
+                apply(true);
+            } else {
+                if (position <= 0) {
+                    position = total;            // clones ke end par chupke se jao
+                    apply(false);
+                }
+                requestAnimationFrame(function () {
+                    position -= 1;
+                    apply(true);
+                });
+            }
         }
 
         function stopAutoSlide() {
             clearInterval(timer);
+            timer = null;
         }
 
-        nextButton.addEventListener("click", function () {
-            move(1);
+        function startAutoSlide() {
+            stopAutoSlide();
+            if (reduceMotion) return;
+            timer = setInterval(function () { move(1); }, intervalTime);
+        }
+
+        nextButton.addEventListener('click', function () { move(1); startAutoSlide(); });
+        prevButton.addEventListener('click', function () { move(-1); startAutoSlide(); });
+
+        // Hover / focus pe ruk jaye
+        wrapper.addEventListener('mouseenter', stopAutoSlide);
+        wrapper.addEventListener('mouseleave', startAutoSlide);
+        wrapper.addEventListener('focusin', stopAutoSlide);
+        wrapper.addEventListener('focusout', startAutoSlide);
+
+        // Mobile swipe
+        var startX = 0, startY = 0, swiping = false;
+        wrapper.addEventListener('touchstart', function (e) {
+            var t = e.touches[0];
+            startX = t.clientX;
+            startY = t.clientY;
+            swiping = true;
+            stopAutoSlide();
+        }, { passive: true });
+        wrapper.addEventListener('touchend', function (e) {
+            if (swiping) {
+                var t = e.changedTouches[0];
+                var dx = t.clientX - startX;
+                var dy = t.clientY - startY;
+                if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+                    move(dx < 0 ? 1 : -1);
+                }
+            }
+            swiping = false;
             startAutoSlide();
+        }, { passive: true });
+
+        // Tab hide ho to ruk jaye
+        document.addEventListener('visibilitychange', function () {
+            if (document.hidden) stopAutoSlide();
+            else startAutoSlide();
         });
 
-        prevButton.addEventListener("click", function () {
-            move(-1);
-            startAutoSlide();
+        // Resize / rotate pe item width dobara hisab karo
+        var resizeTimer;
+        window.addEventListener('resize', function () {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function () { apply(false); }, 100);
         });
 
-        const wrapper = track.parentElement;
-
-        wrapper.addEventListener("mouseenter", stopAutoSlide);
-        wrapper.addEventListener("mouseleave", startAutoSlide);
-
-        window.addEventListener("resize", function () {
-            const itemWidth = getItemWidth(track);
-
-            track.style.transform =
-                `translateX(-${position * itemWidth}px)`;
-        });
+        // Images load hone ke baad bhi width theek rahe
+        window.addEventListener('load', function () { apply(false); });
 
         startAutoSlide();
     }

@@ -1,18 +1,17 @@
-
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Life at X {Vera} Solutions{% endblock %}
+{% block title %}Life at Xvera Labs{% endblock %}
 
 {% block body_class %}page-about-culture{% endblock %}
 
-{% block page_css %}<link rel="stylesheet" href="{% static 'css/pages/about-culture.css' %}">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+{% block page_css %}<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/pages/about-culture.css' %}">
 {% endblock %}
 
 {% block content %}
-
-
 
 <div class="mn-life-page" data-culture-image-base="{% static 'images/culture/' %}">
 
@@ -21,7 +20,7 @@
     <div class="hero-content">
         <span class="hero-badge">
             <i class="fas fa-heart"></i>
-            Life at X {Vera} Solutions
+            Life at Xvera Labs
         </span>
 
         <h1>Where <span>Culture</span> Meets Innovation</h1>
@@ -29,7 +28,7 @@
         <p>
             We believe great work happens when people feel valued,
             connected, and inspired. From celebrations to collaborations,
-            here's what makes X {Vera} Solutions a place people love to be.
+            here's what makes Xvera Labs a place people love to be.
         </p>
 
         <div class="hero-stats">
@@ -37,12 +36,10 @@
                 <strong>150+</strong>
                 <span>Team Members</span>
             </div>
-
             <div>
                 <strong>20+</strong>
                 <span>Nationalities</span>
             </div>
-
             <div>
                 <strong>85%</strong>
                 <span>Employee Satisfaction</span>
@@ -122,12 +119,8 @@
         <div class="facility-image">
             <img src="{% static 'images/culture/nap.png' %}" alt="Nap Rooms" loading="lazy">
         </div>
-
         <div class="facility-content">
-            <div class="facility-icon">
-                <i class="fas fa-moon"></i>
-            </div>
-
+            <div class="facility-icon"><i class="fas fa-moon"></i></div>
             <div class="facility-text">
                 <div class="facility-title">Nap Rooms</div>
                 <div class="facility-desc">Quiet recharge pods, every floor</div>
@@ -139,12 +132,8 @@
         <div class="facility-image">
             <img src="{% static 'images/culture/rooftop.png' %}" alt="Rooftop Restaurant" loading="lazy">
         </div>
-
         <div class="facility-content">
-            <div class="facility-icon">
-                <i class="fas fa-utensils"></i>
-            </div>
-
+            <div class="facility-icon"><i class="fas fa-utensils"></i></div>
             <div class="facility-text">
                 <div class="facility-title">Rooftop Restaurant</div>
                 <div class="facility-desc">Open-air dining, top floor</div>
@@ -156,12 +145,8 @@
         <div class="facility-image">
             <img src="{% static 'images/culture/care.png' %}" alt="Day Care" loading="lazy">
         </div>
-
         <div class="facility-content">
-            <div class="facility-icon">
-                <i class="fas fa-shield-heart"></i>
-            </div>
-
+            <div class="facility-icon"><i class="fas fa-shield-heart"></i></div>
             <div class="facility-text">
                 <div class="facility-title">Day Care</div>
                 <div class="facility-desc">On-site, for working parents</div>
@@ -173,12 +158,8 @@
         <div class="facility-image">
             <img src="{% static 'images/culture/gaming.png' %}" alt="Gaming Zone" loading="lazy">
         </div>
-
         <div class="facility-content">
-            <div class="facility-icon">
-                <i class="fas fa-gamepad"></i>
-            </div>
-
+            <div class="facility-icon"><i class="fas fa-gamepad"></i></div>
             <div class="facility-text">
                 <div class="facility-title">Gaming Zone</div>
                 <div class="facility-desc">Console + PC setups</div>
@@ -190,12 +171,8 @@
         <div class="facility-image">
             <img src="{% static 'images/culture/saloon.png' %}" alt="Salon" loading="lazy">
         </div>
-
         <div class="facility-content">
-            <div class="facility-icon">
-                <i class="fas fa-scissors"></i>
-            </div>
-
+            <div class="facility-icon"><i class="fas fa-scissors"></i></div>
             <div class="facility-text">
                 <div class="facility-title">Salon</div>
                 <div class="facility-desc">On-campus grooming</div>
@@ -207,12 +184,8 @@
         <div class="facility-image">
             <img src="{% static 'images/culture/gym.png' %}" alt="Gym" loading="lazy">
         </div>
-
         <div class="facility-content">
-            <div class="facility-icon">
-                <i class="fas fa-dumbbell"></i>
-            </div>
-
+            <div class="facility-icon"><i class="fas fa-dumbbell"></i></div>
             <div class="facility-text">
                 <div class="facility-title">Gym</div>
                 <div class="facility-desc">Fully equipped, open all day</div>

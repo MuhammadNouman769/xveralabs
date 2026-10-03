@@ -1,225 +1,110 @@
 /* =========================================================
-   LIFE AT MN SOLUTIONS - SCOPED STYLES
+   LIFE AT XVERA LABS  (css/pages/about-culture.css)
+   Sab rules ".mn-life-page" wrapper ke andar hain (specificity theek).
+   font-family "*" pe nahi lagayi, warna FontAwesome icons toot jate hain.
    ========================================================= */
 
-:where(body.page-about-culture) .mn-life-page {
-    font-family: 'Inter', sans-serif;
+.page-about-culture { background: #f4f7fc; }
+
+.mn-life-page {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background: #f4f7fc;
     color: #1a2332;
     line-height: 1.6;
-    overflow: hidden;
+    overflow-x: clip;
 }
-
-:where(body.page-about-culture) .mn-life-page *,:where(body.page-about-culture) .mn-life-page *::before,:where(body.page-about-culture) .mn-life-page *::after {
-    box-sizing: border-box;
-}
+.mn-life-page *, .mn-life-page *::before, .mn-life-page *::after { box-sizing: border-box; }
+.mn-life-page button { font-family: inherit; }
+.mn-life-page img { max-width: 100%; }
 
 /* =========================================================
    HERO
    ========================================================= */
-
-:where(body.page-about-culture) .mn-life-page .hero-banner {
-    min-height: 500px;
-    margin: 30px 24px;
-    padding: 80px 60px;
-    display: flex;
-    align-items: center;
+.mn-life-page .hero-banner {
     position: relative;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    width: calc(100% - 48px);
+    max-width: 1400px;
+    min-height: 500px;
+    margin: 30px auto;
+    padding: 80px 60px;
     border-radius: 28px;
     background:
-        linear-gradient(
-            to right,
-            #f2f2f2 0%,
-            #d8e8ea 30%,
-            rgba(41, 195, 197, 0.85) 55%,
-            rgba(71, 202, 202, 0.01) 75%,
-            rgba(233, 241, 241, 0) 100%
-        ),
-        url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1400&auto=format&fit=crop');
-    background-size: cover;
-    background-position: center;
+        linear-gradient(to right, #f2f2f2 0%, #d8e8ea 30%, rgba(41,195,197,.85) 55%, rgba(71,202,202,.01) 75%, rgba(233,241,241,0) 100%),
+        url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1400&auto=format&fit=crop') center / cover no-repeat;
 }
+.mn-life-page .hero-content { position: relative; z-index: 2; max-width: 600px; }
 
-:where(body.page-about-culture) .mn-life-page .hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 600px;
-}
+.mn-life-page .hero-badge,
+.mn-life-page .section-tag { display: inline-block; margin-bottom: 14px; padding: 6px 18px; border: 1px solid rgba(14,186,177,.15); border-radius: 50px; background: rgba(14,186,177,.1); color: #0a8f88; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+.mn-life-page .hero-badge i,
+.mn-life-page .section-tag i { margin-right: 6px; }
 
-:where(body.page-about-culture) .mn-life-page .hero-badge,:where(body.page-about-culture) .mn-life-page .section-tag {
-    display: inline-block;
-    padding: 6px 18px;
-    margin-bottom: 14px;
-    border: 1px solid rgba(14, 186, 177, 0.15);
-    border-radius: 50px;
-    background: rgba(14, 186, 177, 0.1);
-    color: #0ebab1;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
+.mn-life-page .hero-content h1 { margin: 0 0 18px; color: #000; font-size: 52px; font-weight: 800; line-height: 1.1; }
+.mn-life-page .hero-content h1 span,
+.mn-life-page .section-header h2 span { color: #0ebab1; }
+.mn-life-page .hero-content > p { max-width: 520px; margin: 0 0 30px; color: #000; font-size: 18px; line-height: 1.8; }
 
-:where(body.page-about-culture) .mn-life-page .hero-badge i {
-    margin-right: 6px;
-}
-
-:where(body.page-about-culture) .mn-life-page .hero-content h1 {
-    margin: 0 0 18px;
-    color: #000;
-    font-size: 52px;
-    font-weight: 800;
-    line-height: 1.1;
-}
-
-:where(body.page-about-culture) .mn-life-page .hero-content h1 span,:where(body.page-about-culture) .mn-life-page .section-header h2 span {
-    color: #0ebab1;
-}
-
-:where(body.page-about-culture) .mn-life-page .hero-content > p {
-    max-width: 520px;
-    margin: 0 0 30px;
-    color: #000;
-    font-size: 18px;
-    line-height: 1.8;
-}
-
-:where(body.page-about-culture) .mn-life-page .hero-stats {
-    display: flex;
-    gap: 40px;
-    margin-top: 30px;
-    padding-top: 30px;
-    border-top: 1px solid rgba(0, 0, 0, 0.06);
-}
-
-:where(body.page-about-culture) .mn-life-page .hero-stats strong {
-    display: block;
-    color: #000;
-    font-size: 28px;
-    font-weight: 800;
-}
-
-:where(body.page-about-culture) .mn-life-page .hero-stats span {
-    color: #000;
-    font-size: 14px;
-    font-weight: 500;
-}
+.mn-life-page .hero-stats { display: flex; flex-wrap: wrap; gap: 40px; margin-top: 30px; padding-top: 30px; border-top: 1px solid rgba(0,0,0,.1); }
+.mn-life-page .hero-stats strong { display: block; color: #000; font-size: 28px; font-weight: 800; }
+.mn-life-page .hero-stats span { color: #000; font-size: 14px; font-weight: 500; }
 
 /* =========================================================
    COMMON SECTION
    ========================================================= */
-
-:where(body.page-about-culture) .mn-life-page .slider-section,:where(body.page-about-culture) .mn-life-page .day-section {
+.mn-life-page .slider-section,
+.mn-life-page .day-section {
     position: relative;
-    margin: 0 24px 40px;
-    padding: 40px 0 60px;
     overflow: hidden;
+    width: calc(100% - 48px);
+    max-width: 1400px;
+    margin: 0 auto 40px;
+    padding: 40px 0 60px;
     border: 1px solid #eef2f7;
     border-radius: 28px;
     background: #fff;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    box-shadow: 0 4px 20px rgba(0,0,0,.02);
 }
 
-:where(body.page-about-culture) .mn-life-page .section-header {
-    max-width: 800px;
-    margin: 0 0 30px;
-    padding: 0 38px;
-    text-align: left;
-}
-
-:where(body.page-about-culture) .mn-life-page .section-header h2 {
-    margin: 0;
-    color: #1a2332;
-    font-size: 38px;
-    font-weight: 800;
-    line-height: 1.2;
-}
-
-:where(body.page-about-culture) .mn-life-page .section-header p {
-    max-width: 700px;
-    margin: 12px 0 0;
-    color: #64748b;
-    font-size: 17px;
-    line-height: 1.8;
-}
+.mn-life-page .section-header { max-width: 800px; margin: 0 0 30px; padding: 0 38px; text-align: left; }
+.mn-life-page .section-header h2 { margin: 0; color: #1a2332; font-size: 38px; font-weight: 800; line-height: 1.2; }
+.mn-life-page .section-header p { max-width: 700px; margin: 12px 0 0; color: #64748b; font-size: 17px; line-height: 1.8; }
 
 /* =========================================================
    CAROUSEL
    ========================================================= */
+.mn-life-page .carousel-wrapper { position: relative; width: 100%; overflow: hidden; padding: 10px 0; touch-action: pan-y; }
 
-:where(body.page-about-culture) .mn-life-page .carousel-wrapper {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    padding: 10px 0;
-}
-
-:where(body.page-about-culture) .mn-life-page .carousel-track {
+.mn-life-page .carousel-track {
     display: flex;
     gap: 24px;
     width: max-content;
+    padding: 0 38px;
     transform: translateX(0);
-    transition: transform 0.5s ease;
+    transition: transform .5s ease;
+    will-change: transform;
 }
 
-:where(body.page-about-culture) .mn-life-page .carousel-item {
+.mn-life-page .carousel-item {
     flex: 0 0 320px;
     overflow: hidden;
     border: 1px solid #eef2f7;
+    border-radius: 16px;
     background: #f8fafc;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    box-shadow: 0 8px 30px rgba(0,0,0,.06);
+    transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
 }
+.mn-life-page .carousel-item:hover { transform: scale(1.03); border-color: #0ebab1; box-shadow: 0 16px 48px rgba(14,186,177,.12); }
+.mn-life-page .carousel-item img { display: block; width: 100%; height: 320px; object-fit: cover; -webkit-user-drag: none; user-select: none; }
+.mn-life-page .carousel-content { padding: 16px 20px 20px; }
+.mn-life-page .carousel-content h4 { margin: 0 0 4px; color: #1a2332; font-size: 16px; font-weight: 700; }
+.mn-life-page .carousel-content p { margin: 0; color: #64748b; font-size: 13px; line-height: 1.6; }
+.mn-life-page .carousel-tag { display: inline-block; margin-top: 8px; padding: 2px 12px; border-radius: 50px; background: rgba(14,186,177,.08); color: #0a8f88; font-size: 10px; font-weight: 700; text-transform: uppercase; }
 
-:where(body.page-about-culture) .mn-life-page .carousel-item:hover {
-    transform: scale(1.03);
-    border-color: #0ebab1;
-    box-shadow: 0 16px 48px rgba(14, 186, 177, 0.12);
-}
-
-:where(body.page-about-culture) .mn-life-page .carousel-item img {
-    display: block;
-    width: 100%;
-    height: 320px;
-    object-fit: cover;
-}
-
-:where(body.page-about-culture) .mn-life-page .carousel-content {
-    padding: 16px 20px 20px;
-}
-
-:where(body.page-about-culture) .mn-life-page .carousel-content h4 {
-    margin: 0 0 4px;
-    color: #1a2332;
-    font-size: 16px;
-    font-weight: 700;
-}
-
-:where(body.page-about-culture) .mn-life-page .carousel-content p {
-    margin: 0;
-    color: #64748b;
-    font-size: 13px;
-    line-height: 1.6;
-}
-
-:where(body.page-about-culture) .mn-life-page .carousel-tag {
-    display: inline-block;
-    margin-top: 8px;
-    padding: 2px 12px;
-    border-radius: 50px;
-    background: rgba(14, 186, 177, 0.08);
-    color: #0ebab1;
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
-/* =========================================================
-   CAROUSEL ARROWS
-   ========================================================= */
-
-:where(body.page-about-culture) .mn-life-page .carousel-arrow {
+/* Arrows */
+.mn-life-page .carousel-arrow {
     position: absolute;
     top: 50%;
     z-index: 20;
@@ -235,355 +120,184 @@
     color: #0ebab1;
     font-size: 17px;
     cursor: pointer;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.18);
-    transition: all 0.25s ease;
+    box-shadow: 0 5px 20px rgba(0,0,0,.18);
+    transition: all .25s ease;
 }
-
-:where(body.page-about-culture) .mn-life-page .carousel-arrow:hover {
-    background: #0ebab1;
-    color: #fff;
-    transform: translateY(-50%) scale(1.08);
-}
-
-:where(body.page-about-culture) .mn-life-page .carousel-arrow:active {
-    transform: translateY(-50%) scale(0.95);
-}
-
-:where(body.page-about-culture) .mn-life-page .carousel-prev {
-    left: 15px;
-}
-
-:where(body.page-about-culture) .mn-life-page .carousel-next {
-    right: 15px;
-}
+.mn-life-page .carousel-arrow:hover { background: #0ebab1; color: #fff; transform: translateY(-50%) scale(1.08); }
+.mn-life-page .carousel-arrow:active { transform: translateY(-50%) scale(.95); }
+.mn-life-page .carousel-prev { left: 15px; }
+.mn-life-page .carousel-next { right: 15px; }
 
 /* =========================================================
    DAY SECTION
    ========================================================= */
+.mn-life-page .day-section { padding: 60px 0; }
+.mn-life-page .day-section .carousel-wrapper { border-radius: 20px; }
+.mn-life-page .day-section .carousel-track { gap: 20px; }
 
-:where(body.page-about-culture) .mn-life-page .day-section {
-    padding: 60px 24px;
-}
-
-:where(body.page-about-culture) .mn-life-page .day-section .carousel-wrapper {
-    border-radius: 20px;
-}
-
-:where(body.page-about-culture) .mn-life-page .day-section .carousel-track {
-    gap: 20px;
-}
-
-:where(body.page-about-culture) .mn-life-page .day-item {
+.mn-life-page .day-item {
     flex: 0 0 280px;
     overflow: hidden;
     border: 1px solid #eef2f7;
     border-radius: 16px;
     background: #fff;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 16px rgba(0,0,0,.04);
+    transition: transform .3s ease, box-shadow .3s ease;
 }
-
-:where(body.page-about-culture) .mn-life-page .day-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-}
-
-:where(body.page-about-culture) .mn-life-page .day-item img {
-    display: block;
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-}
-
-:where(body.page-about-culture) .mn-life-page .day-caption {
-    padding: 14px 18px 18px;
-}
-
-:where(body.page-about-culture) .mn-life-page .day-caption h5 {
-    margin: 0 0 2px;
-    color: #1a2332;
-    font-size: 15px;
-    font-weight: 700;
-}
-
-:where(body.page-about-culture) .mn-life-page .day-caption p {
-    margin: 0;
-    color: #64748b;
-    font-size: 13px;
-    line-height: 1.6;
-}
-
+.mn-life-page .day-item:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,.08); }
+.mn-life-page .day-item img { display: block; width: 100%; height: 180px; object-fit: cover; -webkit-user-drag: none; user-select: none; }
+.mn-life-page .day-caption { padding: 14px 18px 18px; }
+.mn-life-page .day-caption h5 { margin: 0 0 2px; color: #1a2332; font-size: 15px; font-weight: 700; }
+.mn-life-page .day-caption p { margin: 0; color: #64748b; font-size: 13px; line-height: 1.6; }
 
 /* =========================================================
    FACILITIES
    ========================================================= */
-
-:where(body.page-about-culture) .mn-life-page .facilities {
+.mn-life-page .facilities {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 14px;
-    margin: 0 24px 40px;
+    width: calc(100% - 48px);
+    max-width: 1400px;
+    margin: 0 auto 40px;
     padding: 20px 38px 40px;
+    border: 1px solid #eef2f7;
     border-radius: 28px;
     background: #fff;
-    border: 1px solid #eef2f7;
 }
-
-:where(body.page-about-culture) .mn-life-page .facility-card {
-    overflow: hidden;
-    border-radius: 12px;
-    background: #fff;
-}
-
-:where(body.page-about-culture) .mn-life-page .facility-image {
-    width: 100%;
-    height: 390px;
-    overflow: hidden;
-    border-radius: 12px;
-}
-
-:where(body.page-about-culture) .mn-life-page .facility-image img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-}
-
-:where(body.page-about-culture) .mn-life-page .facility-card:hover .facility-image img {
-    transform: scale(1.03);
-}
-
-:where(body.page-about-culture) .mn-life-page .facility-content {
-    min-height: 66px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 9px 12px;
-}
-
-:where(body.page-about-culture) .mn-life-page .facility-icon {
-    width: 28px;
-    height: 28px;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: #eaf8f8;
-    color: #075b70;
-    font-size: 14px;
-}
-
-:where(body.page-about-culture) .mn-life-page .facility-text {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-}
-
-:where(body.page-about-culture) .mn-life-page .facility-title {
-    color: #111827;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 1.1;
-}
-
-:where(body.page-about-culture) .mn-life-page .facility-desc {
-    color: #66808c;
-    font-size: 13px;
-    line-height: 1.2;
-}
+.mn-life-page .facility-card { overflow: hidden; border-radius: 12px; background: #fff; }
+.mn-life-page .facility-image { width: 100%; aspect-ratio: 4 / 5; max-height: 390px; overflow: hidden; border-radius: 12px; }
+.mn-life-page .facility-image img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+.mn-life-page .facility-card:hover .facility-image img { transform: scale(1.03); }
+.mn-life-page .facility-content { min-height: 66px; display: flex; align-items: center; gap: 10px; padding: 9px 12px; }
+.mn-life-page .facility-icon { flex-shrink: 0; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: #eaf8f8; color: #075b70; font-size: 14px; }
+.mn-life-page .facility-text { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.mn-life-page .facility-title { color: #111827; font-size: 16px; font-weight: 600; line-height: 1.2; }
+.mn-life-page .facility-desc { color: #66808c; font-size: 13px; line-height: 1.3; }
 
 /* =========================================================
-   TABLET
+   RESPONSIVE  (bari screen se chhoti screen ki taraf)
    ========================================================= */
 
+/* ---- Large laptops ---- */
+@media (max-width: 1200px) {
+    .mn-life-page .hero-banner { padding: 70px 40px; }
+    .mn-life-page .hero-content h1 { font-size: 46px; }
+    .mn-life-page .section-header h2 { font-size: 34px; }
+}
+
+/* ---- Small laptops / large tablets ---- */
 @media (max-width: 1100px) {
-    :where(body.page-about-culture) .mn-life-page .routine-container {
-        grid-template-columns: repeat(4, 1fr);
-    }
-
-    :where(body.page-about-culture) .mn-life-page .facilities {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    :where(body.page-about-culture) .mn-life-page .facility-image {
-        height: 320px;
-    }
+    .mn-life-page .facilities { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .mn-life-page .facility-image { aspect-ratio: 4 / 3; max-height: 340px; }
 }
 
+/* ---- Tablets ---- */
 @media (max-width: 1024px) {
-    :where(body.page-about-culture) .mn-life-page .hero-banner {
-        margin: 20px 16px;
-        padding: 50px 35px;
-    }
+    /* fixed/floating header ke neeche content na chhupe. Value header ki height ke hisab se badlein */
+    .mn-life-page { padding-top: 88px; }
 
-    :where(body.page-about-culture) .mn-life-page .hero-content h1 {
-        font-size: 38px;
-    }
-
-    :where(body.page-about-culture) .mn-life-page .routine-section {
-        margin: 0 16px 30px;
-    }
+    .mn-life-page .hero-banner { width: calc(100% - 32px); min-height: 420px; margin: 20px auto; padding: 50px 35px; }
+    .mn-life-page .hero-content h1 { font-size: 38px; }
+    .mn-life-page .slider-section,
+    .mn-life-page .day-section,
+    .mn-life-page .facilities { width: calc(100% - 32px); margin-bottom: 30px; }
+    .mn-life-page .facilities { padding: 20px 24px 30px; }
+    .mn-life-page .section-header { padding: 0 28px; }
+    .mn-life-page .carousel-track { padding: 0 28px; }
 }
 
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 700px) {
-    :where(body.page-about-culture) .mn-life-page .hero-banner {
+/* ---- Large phones / small tablets ---- */
+@media (max-width: 768px) {
+    .mn-life-page .hero-banner {
         min-height: auto;
-        margin: 16px 12px;
-        padding: 35px 20px;
-        border-radius: 20px;
+        padding: 40px 28px;
         background:
-            linear-gradient(
-                to bottom,
-                rgba(242, 242, 242, 0.92),
-                rgba(216, 232, 234, 0.88),
-                rgba(41, 195, 197, 0.65)
-            ),
-            url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1000&auto=format&fit=crop');
-        background-size: cover;
-        background-position: center;
+            linear-gradient(to bottom, rgba(242,242,242,.92), rgba(216,232,234,.88), rgba(41,195,197,.65)),
+            url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1000&auto=format&fit=crop') center / cover no-repeat;
     }
+    .mn-life-page .hero-content > p { max-width: 100%; font-size: 16px; }
+    .mn-life-page .hero-stats { gap: 28px; }
 
-    :where(body.page-about-culture) .mn-life-page .hero-content h1 {
-        font-size: 30px;
-    }
-
-    :where(body.page-about-culture) .mn-life-page .hero-content > p {
-        font-size: 15px;
-    }
-
-    :where(body.page-about-culture) .mn-life-page .hero-stats {
-        flex-wrap: wrap;
-        gap: 20px;
-    }
-
-    :where(body.page-about-culture) .mn-life-page .hero-stats strong {
-        font-size: 22px;
-    }
-
-    :where(body.page-about-culture) .mn-life-page .slider-section,:where(body.page-about-culture) .mn-life-page .day-section {
-        margin: 0 12px 24px;
-        border-radius: 20px;
-    }
-
-    :where(body.page-about-culture) .mn-life-page .section-header {
-        padding: 0 20px;
-    }
-
-    :where(body.page-about-culture) .mn-life-page .section-header h2 {
-        font-size: 28px;
-    }
-
-    :where(body.page-about-culture) .mn-life-page .section-header p {
-        font-size: 15px;
-    }
-
-    :where(body.page-about-culture) .mn-life-page .carousel-item {
-        flex-basis: 260px;
-    }
-
-    :where(body.page-about-culture) .mn-life-page .carousel-item img {
-        height: 170px;
-    }
-
-    :where(body.page-about-culture) .mn-life-page .day-section {
-        padding: 35px 12px;
-    }
-
-    :where(body.page-about-culture) .mn-life-page .day-item {
-        flex-basis: 220px;
-    }
-
-    :where(body.page-about-culture) .mn-life-page .day-item img {
-        height: 140px;
-    }
-
-    :where(body.page-about-culture) .mn-life-page .carousel-arrow {
-        width: 36px;
-        height: 36px;
-        font-size: 14px;
-    }
-
-    :where(body.page-about-culture) .mn-life-page .carousel-prev {
-        left: 8px;
-    }
-
-    :where(body.page-about-culture) .mn-life-page .carousel-next {
-        right: 8px;
-    }
-
-    /* Routine */
-    :where(body.page-about-culture) .mn-life-page .routine-section {
-        margin: 0 12px 24px;
-        padding: 35px 15px;
-        border-radius: 20px;
-    }
-
-    :where(body.page-about-culture) .mn-life-page .routine-container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 28px 14px;
-    }
-
-    :where(body.page-about-culture) .mn-life-page .routine-image {
-        height: 170px;
-    }
-
-    /* Facilities */
-    :where(body.page-about-culture) .mn-life-page .facilities {
-        grid-template-columns: 1fr;
-        margin: 0 12px 24px;
-        padding: 15px;
-        border-radius: 20px;
-    }
-
-    :where(body.page-about-culture) .mn-life-page .facility-image {
-        height: 280px;
-    }
+    .mn-life-page .section-header h2 { font-size: 30px; }
+    .mn-life-page .section-header p { font-size: 16px; }
+    .mn-life-page .slider-section { padding: 32px 0 44px; }
+    .mn-life-page .day-section { padding: 44px 0; }
 }
 
-/* =========================================================
-   SMALL MOBILE
-   ========================================================= */
+/* ---- Phones ---- */
+@media (max-width: 640px) {
+    .mn-life-page .hero-banner { width: calc(100% - 24px); margin: 16px auto; padding: 30px 20px; border-radius: 20px; }
+    .mn-life-page .hero-badge,
+    .mn-life-page .section-tag { max-width: 100%; padding: 6px 14px; border-radius: 18px; font-size: 10.5px; letter-spacing: 1px; line-height: 1.4; }
+    .mn-life-page .hero-content h1 { font-size: 28px; }
+    .mn-life-page .hero-content > p { margin-bottom: 24px; font-size: 15px; line-height: 1.7; }
+    .mn-life-page .hero-stats { gap: 20px; margin-top: 24px; padding-top: 22px; }
+    .mn-life-page .hero-stats > div { flex: 1 1 30%; min-width: 90px; }
+    .mn-life-page .hero-stats strong { font-size: 22px; }
+    .mn-life-page .hero-stats span { font-size: 12px; }
 
-@media (max-width: 480px) {
-    :where(body.page-about-culture) .mn-life-page .hero-content h1 {
-        font-size: 27px;
+    .mn-life-page .slider-section,
+    .mn-life-page .day-section,
+    .mn-life-page .facilities { width: calc(100% - 24px); margin-bottom: 24px; border-radius: 20px; }
+
+    .mn-life-page .section-header { margin-bottom: 22px; padding: 0 20px; }
+    .mn-life-page .section-header h2 { font-size: 25px; }
+    .mn-life-page .section-header p { font-size: 15px; line-height: 1.7; }
+
+    /* ===== MOBILE CAROUSEL: ek waqt mein sirf ek card, bilkul center mein =====
+       Layout:  [44px arrow gutter] [ CARD ] [44px arrow gutter]
+       gap = 44px rakha hai taake agla/pichla card gutter mein jhank na sake. */
+    .mn-life-page .slider-section,
+    .mn-life-page .day-section { --card: min(340px, calc(100vw - 112px)); }
+
+    .mn-life-page .carousel-track,
+    .mn-life-page .day-section .carousel-track {
+        gap: 44px;
+        padding: 0 calc((100vw - 24px - var(--card)) / 2);   /* card ko wrapper ke beech mein rakhta hai */
     }
 
-    :where(body.page-about-culture) .mn-life-page .hero-stats {
-        gap: 16px;
-    }
+    .mn-life-page .carousel-item,
+    .mn-life-page .day-item { flex: 0 0 var(--card); width: var(--card); }
 
-    :where(body.page-about-culture) .mn-life-page .hero-stats > div {
-        min-width: 80px;
-    }
+    .mn-life-page .carousel-item img { height: auto; aspect-ratio: 1 / 1; }
+    .mn-life-page .day-item img { height: auto; aspect-ratio: 4 / 3; }
 
-    :where(body.page-about-culture) .mn-life-page .section-header {
-        padding: 0 18px;
-    }
+    /* Arrows: gutter ke beech mein, aur image ke vertical center par */
+    .mn-life-page .carousel-arrow { width: 36px; height: 36px; font-size: 14px; }
+    .mn-life-page .carousel-prev { left: 4px; }
+    .mn-life-page .carousel-next { right: 4px; }
+    .mn-life-page .slider-section .carousel-arrow { top: calc(10px + var(--card) / 2); }
+    .mn-life-page .day-section .carousel-arrow { top: calc(10px + var(--card) * 0.375); }
 
-    :where(body.page-about-culture) .mn-life-page .section-header h2 {
-        font-size: 25px;
-    }
-
-    :where(body.page-about-culture) .mn-life-page .routine-container {
-        grid-template-columns: 1fr;
-    }
-
-    :where(body.page-about-culture) .mn-life-page .routine-item {
-        width: 100%;
-        max-width: 280px;
-        margin: 0 auto;
-    }
-
-    :where(body.page-about-culture) .mn-life-page .routine-image {
-        height: 190px;
-    }
+    .mn-life-page .facilities { grid-template-columns: 1fr; padding: 15px; }
+    .mn-life-page .facility-image { aspect-ratio: 4 / 3; max-height: 300px; }
 }
 
+/* ---- Small phones ---- */
+@media (max-width: 400px) {
+    .mn-life-page .hero-banner { padding: 24px 16px; }
+    .mn-life-page .hero-content h1 { font-size: 24px; }
+    .mn-life-page .hero-stats > div { flex: 1 1 45%; }
+    .mn-life-page .section-header { padding: 0 16px; }
+    .mn-life-page .section-header h2 { font-size: 22px; }
+}
 
+/* ---- Landscape phones ---- */
+@media (max-height: 500px) and (orientation: landscape) {
+    .mn-life-page .hero-banner { min-height: auto; padding: 30px 28px; }
+}
+
+/* ---- Touch devices: hover jump nahi ---- */
+@media (hover: none) {
+    .mn-life-page .carousel-item:hover,
+    .mn-life-page .day-item:hover,
+    .mn-life-page .facility-card:hover .facility-image img { transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .mn-life-page .carousel-track,
+    .mn-life-page .carousel-item,
+    .mn-life-page .day-item,
+    .mn-life-page .facility-image img { transition: none; }
+}
