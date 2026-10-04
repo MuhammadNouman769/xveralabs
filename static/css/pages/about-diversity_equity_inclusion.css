@@ -1,627 +1,297 @@
-/* ============================================================
-     RESET & BASE
-  ============================================================ */
-  body:where(.page-about-diversity_equity_inclusion),:where(body.page-about-diversity_equity_inclusion) * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+/* =====================================================
+   DIVERSITY, EQUITY & INCLUSION
+   (css/pages/about-diversity_equity_inclusion.css)
+   Sab rules ".dei" wrapper ke andar hain (specificity theek).
+   font-family "*" pe nahi lagayi, warna FontAwesome icons toot jate hain.
+===================================================== */
 
-  body:where(.page-about-diversity_equity_inclusion) {
+.page-about-diversity_equity_inclusion { background: #f4f7fc; }
+
+.dei {
+    --teal: #0ebab1;
+    --teal-d: #0a8f88;
+    --teal-l: #e6fbf9;
+    --ink: #1a2332;
+    --muted: #64748b;
+    --line: #eef2f7;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: #f4f7fc;
-    color: #1a2332;
+    color: var(--ink);
     line-height: 1.6;
-  }
+    overflow-x: clip;
+}
+.dei *, .dei *::before, .dei *::after { box-sizing: border-box; }
+.dei h1, .dei h2, .dei h3, .dei p, .dei ul { margin: 0; padding: 0; }
+.dei a, .dei button { font-family: inherit; }
+.dei img { display: block; max-width: 100%; }
+.dei section { scroll-margin-top: 90px; }
 
-  /* ============================================================
-     HERO BANNER
-  ============================================================ */
-  :where(body.page-about-diversity_equity_inclusion) .hero-banner {
-    background: linear-gradient(to right, #f2f2f200 0%, #00000000 30%, rgba(0, 0, 0, 0.03) 55%, rgba(5, 6, 6, 0.01) 75%, rgba(233, 241, 241, 0) 100%),
-                url('/static/images/Diversity/dd.png');
-    border-radius: 28px;
-    margin: 30px 24px;
+.dei .dei-container { width: min(1200px, calc(100% - 48px)); margin-inline: auto; }
+
+/* =====================================================
+   HERO
+===================================================== */
+.dei .hero-banner {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    width: calc(100% - 48px);
+    max-width: 1400px;
+    min-height: 480px;
+    margin: 30px auto;
     padding: 80px 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 50px;
-    position: relative;
-    overflow: hidden;
-    background-size: cover;
-    background-position: center;
-    min-height: 450px;
-  }
+    border-radius: 28px;
+    box-shadow: 0 24px 50px -22px rgba(11,26,46,.3);
+    background:
+        linear-gradient(90deg, rgba(255,255,255,.88) 0%, rgba(255,255,255,.7) 38%, rgba(255,255,255,0) 74%),
+        url('../../images/Diversity/dd.png') center / cover no-repeat,
+        linear-gradient(135deg, #e9faf9, #dfe9f5);
+}
+.dei .hero-banner::before { content: ''; position: absolute; right: -100px; top: -100px; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(14,186,177,.12) 0%, transparent 70%); pointer-events: none; }
+.dei .hero-banner::after { content: ''; position: absolute; left: -50px; bottom: -50px; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(14,186,177,.08) 0%, transparent 70%); pointer-events: none; }
 
-  :where(body.page-about-diversity_equity_inclusion) .hero-banner::before {
-    content: '';
-    position: absolute;
-    right: -100px;
-    top: -100px;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(14, 186, 177, 0.08) 0%, transparent 70%);
-    border-radius: 50%;
-  }
+.dei .hero-content { position: relative; z-index: 2; max-width: 620px; }
+.dei .hero-badge { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 20px; padding: 7px 18px; border: 1px solid rgba(14,186,177,.25); border-radius: 50px; background: rgba(14,186,177,.15); color: var(--teal-d); font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+.dei .hero-content h1 { margin-bottom: 18px; color: #000; font-size: clamp(34px, 4.6vw, 56px); font-weight: 800; line-height: 1.1; letter-spacing: -1px; }
+.dei .hero-content h1 span { color: var(--teal); background: linear-gradient(135deg, var(--teal), #14cfc1); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.dei .hero-content > p { max-width: 540px; margin-bottom: 30px; color: #111; font-size: 19px; line-height: 1.8; }
 
-  :where(body.page-about-diversity_equity_inclusion) .hero-banner::after {
-    content: '';
-    position: absolute;
-    left: -50px;
-    bottom: -50px;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(14, 186, 177, 0.05) 0%, transparent 70%);
-    border-radius: 50%;
-  }
+.dei .hero-stats { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 32px; }
+.dei .hero-stats > div { min-width: 140px; padding: 14px 22px; border: 1px solid rgba(255,255,255,.8); border-radius: 18px; background: rgba(255,255,255,.72); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); box-shadow: 0 10px 26px -12px rgba(11,26,46,.25); }
+.dei .hero-stats strong { display: block; color: #000; font-size: 28px; font-weight: 800; line-height: 1.15; }
+.dei .hero-stats span { color: #1f2937; font-size: 13.5px; font-weight: 500; }
 
-  :where(body.page-about-diversity_equity_inclusion) .hero-content {
-    flex: 1;
-    position: relative;
-    z-index: 2;
-    max-width: 600px;
-  }
+/* =====================================================
+   COMMON SECTION
+===================================================== */
+.dei .dei-sec { padding: 80px 0; }
+.dei .dei-sec-white { background: #fff; }
+.dei .dei-sec-soft { background: #f8fafc; }
 
-  :where(body.page-about-diversity_equity_inclusion) .hero-badge {
-    display: inline-block;
-    background: rgba(14, 186, 177, 0.15);
-    color: #0ebab1;
-    padding: 6px 18px;
-    border-radius: 50px;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    border: 1px solid rgba(14, 186, 177, 0.2);
-  }
+.dei .section-title { max-width: 760px; margin: 0 auto 52px; text-align: center; }
+.dei .section-title .tag { display: inline-block; margin-bottom: 14px; padding: 6px 18px; border: 1px solid rgba(14,186,177,.18); border-radius: 50px; background: rgba(14,186,177,.1); color: var(--teal-d); font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+.dei .section-title h2 { margin-bottom: 14px; color: var(--ink); font-size: clamp(28px, 3.6vw, 42px); font-weight: 800; line-height: 1.15; letter-spacing: -.5px; }
+.dei .section-title h2 span { color: var(--teal); }
+.dei .section-title p { color: var(--muted); font-size: 17px; line-height: 1.8; }
 
-  :where(body.page-about-diversity_equity_inclusion) .hero-content h1 {
-    font-size: 52px;
-    font-weight: 800;
-    color: #000000;
-    line-height: 1.1;
-    margin-bottom: 18px;
-  }
+/* =====================================================
+   DIVERSITY (top image + bottom content)
+===================================================== */
+.dei .diversity-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px; }
+.dei .diversity-card { overflow: hidden; border: 1px solid var(--line); border-radius: 26px; background: #fff; box-shadow: 0 6px 24px rgba(11,26,46,.05); transition: all .4s ease; }
+.dei .diversity-card:hover { transform: translateY(-10px); border-color: var(--teal); box-shadow: 0 26px 56px -22px rgba(14,186,177,.4); }
 
-  :where(body.page-about-diversity_equity_inclusion) .hero-content h1 span {
-    color: #0ebab1;
-    background: linear-gradient(135deg, #0ebab1, #14cfc1);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
+.dei .diversity-card .card-media { position: relative; overflow: hidden; background: linear-gradient(135deg, #0a1628, var(--teal)); }
+.dei .diversity-card .card-image { width: 100%; height: 230px; object-fit: cover; transition: transform .6s ease; }
 
-  :where(body.page-about-diversity_equity_inclusion) .hero-content p {
-    font-size: 20px;
-    color: #000000;
-    max-width: 520px;
-    margin-bottom: 30px;
-    line-height: 1.8;
-  }
 
-  :where(body.page-about-diversity_equity_inclusion) .hero-stats {
-    display: flex;
-    gap: 40px;
-    margin-top: 30px;
-    padding-top: 30px;
-    border-top: 1px solid rgba(0, 0, 0, 0.06);
-  }
+.dei .diversity-card .card-body { position: relative; padding: 0 28px 30px; }
+.dei .diversity-card .icon-badge { display: flex; align-items: center; justify-content: center; width: 58px; height: 58px; margin-top: -29px; margin-bottom: 14px; border: 4px solid #fff; border-radius: 18px; background: linear-gradient(135deg, var(--teal), #14cfc1); color: #fff; font-size: 22px; box-shadow: 0 10px 24px rgba(14,186,177,.35); transition: transform .3s ease; }
+.dei .diversity-card:hover .icon-badge { transform: rotate(-6deg) scale(1.06); }
+.dei .diversity-card h3 { margin-bottom: 4px; color: var(--ink); font-size: 22px; font-weight: 800; }
+.dei .diversity-card .subtitle { margin-bottom: 10px; color: var(--teal-d); font-size: 13px; font-weight: 600; }
+.dei .diversity-card p { margin-bottom: 18px; color: var(--muted); font-size: 14.5px; line-height: 1.75; }
+.dei .stats-mini { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; padding-top: 16px; border-top: 1px solid #f1f5f9; }
+.dei .stats-mini div { display: flex; flex-direction: column; }
+.dei .stats-mini strong { color: var(--ink); font-size: 21px; font-weight: 800; line-height: 1.2; }
+.dei .stats-mini span { color: #94a3b8; font-size: 11.5px; font-weight: 500; }
 
-  :where(body.page-about-diversity_equity_inclusion) .hero-stats div {
-    text-align: left;
-  }
+/* =====================================================
+   EQUITY (image + content, alternate sides)
+===================================================== */
+.dei .equity-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
+.dei .equity-card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); overflow: hidden; border: 1px solid var(--line); border-radius: 28px; background: #fff; box-shadow: 0 6px 24px rgba(11,26,46,.05); transition: all .4s ease; }
+.dei .equity-card:hover { transform: translateY(-6px); border-color: var(--teal); box-shadow: 0 26px 56px -24px rgba(14,186,177,.35); }
+.dei .equity-card:nth-child(even) .card-media { order: 2; }
 
-  :where(body.page-about-diversity_equity_inclusion) .hero-stats div strong {
-    display: block;
-    font-size: 28px;
-    color: #000000;
-    font-weight: 800;
-  }
+.dei .equity-card .card-media { position: relative; overflow: hidden; min-height: 320px; background: linear-gradient(135deg, #0a1628, var(--teal)); }
+.dei .equity-card .card-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
 
-  :where(body.page-about-diversity_equity_inclusion) .hero-stats div span {
-    font-size: 14px;
-    color: #000000;
-    font-weight: 500;
-  }
 
-  /* ============================================================
-     SECTION TITLE (Common)
-  ============================================================ */
-  :where(body.page-about-diversity_equity_inclusion) .section-title {
-    text-align: center;
-    max-width: 760px;
-    margin: 0 auto 50px;
-  }
+.dei .equity-card .card-body { display: flex; flex-direction: column; justify-content: center; padding: 44px 40px; }
+.dei .equity-card .badge { align-self: flex-start; margin-bottom: 14px; padding: 5px 16px; border-radius: 50px; background: rgba(14,186,177,.1); color: var(--teal-d); font-size: 11px; font-weight: 700; letter-spacing: .6px; text-transform: uppercase; }
+.dei .equity-card h3 { margin-bottom: 6px; color: var(--ink); font-size: 28px; font-weight: 800; line-height: 1.2; }
+.dei .equity-card .subtitle { margin-bottom: 14px; color: var(--teal-d); font-size: 14px; font-weight: 600; }
+.dei .equity-card p { margin-bottom: 20px; color: var(--muted); font-size: 15.5px; line-height: 1.85; }
+.dei .feature-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+.dei .feature-tags span { padding: 6px 16px; border-radius: 50px; background: rgba(14,186,177,.07); color: var(--ink); font-size: 13px; font-weight: 500; }
+.dei .feature-tags span i { margin-right: 6px; color: var(--teal); }
 
-  :where(body.page-about-diversity_equity_inclusion) .section-title .tag {
-    display: inline-block;
-    background: rgba(14, 186, 177, 0.1);
-    color: #0ebab1;
-    padding: 6px 18px;
-    border-radius: 50px;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 14px;
-    border: 1px solid rgba(14, 186, 177, 0.15);
-  }
+/* =====================================================
+   INCLUSION (image overlay cards)
+===================================================== */
+.dei .inclusion-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px; }
+.dei .inclusion-card { position: relative; overflow: hidden; aspect-ratio: 4 / 5; border: 1px solid var(--line); border-radius: 26px; background: linear-gradient(135deg, #0a1628, var(--teal)); box-shadow: 0 6px 24px rgba(11,26,46,.08); transition: all .4s ease; }
+.dei .inclusion-card:hover { transform: translateY(-10px); border-color: var(--teal); box-shadow: 0 28px 60px -24px rgba(14,186,177,.5); }
+.dei .inclusion-card .card-image { width: 100%; height: 100%; object-fit: cover; transition: transform .7s ease; }
+.dei .inclusion-card:hover .card-image { transform: scale(1.07); }
 
-  :where(body.page-about-diversity_equity_inclusion) .section-title h2 {
-    font-size: 42px;
-    font-weight: 800;
-    color: #1a2332;
-    line-height: 1.15;
-    margin-bottom: 16px;
-  }
+.dei .card-overlay { position: absolute; left: 0; right: 0; bottom: 0; padding: 90px 26px 26px; background: linear-gradient(to top, rgba(6,14,28,.92) 0%, rgba(6,14,28,.6) 55%, transparent 100%); }
+.dei .card-overlay .icon-circle { display: inline-flex; align-items: center; justify-content: center; width: 46px; height: 46px; margin-bottom: 12px; border-radius: 50%; background: var(--teal); color: #fff; font-size: 18px; box-shadow: 0 6px 18px rgba(14,186,177,.45); transition: transform .3s ease; }
+.dei .inclusion-card:hover .icon-circle { transform: scale(1.12) rotate(-6deg); }
+.dei .card-overlay .card-tag { display: inline-block; margin: 0 0 8px 10px; padding: 3px 14px; border: 1px solid rgba(255,255,255,.2); border-radius: 50px; background: rgba(14,186,177,.28); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: .6px; text-transform: uppercase; vertical-align: middle; }
+.dei .card-overlay h3 { margin-bottom: 2px; color: #fff; font-size: 22px; font-weight: 800; line-height: 1.25; text-shadow: 0 2px 8px rgba(0,0,0,.35); }
+.dei .card-overlay .subtitle { margin-bottom: 8px; color: rgba(255,255,255,.82); font-size: 13px; font-weight: 500; }
+.dei .card-overlay p { max-height: 0; margin-bottom: 0; overflow: hidden; color: rgba(255,255,255,.93); font-size: 14px; line-height: 1.7; opacity: 0; transition: all .45s ease; }
+.dei .inclusion-card:hover .card-overlay p { max-height: 120px; margin-bottom: 12px; opacity: 1; }
+.dei .emoji-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.dei .emoji-row span { padding: 3px 12px; border: 1px solid rgba(255,255,255,.14); border-radius: 50px; background: rgba(255,255,255,.14); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); color: #fff; font-size: 11.5px; font-weight: 500; }
 
-  :where(body.page-about-diversity_equity_inclusion) .section-title h2 span {
-    color: #0ebab1;
-  }
+/* =====================================================
+   CTA
+===================================================== */
+.dei .dei-cta { padding: 0 0 90px; background: #f8fafc; }
+.dei .dei-cta-box { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px; padding: 54px 56px; border-radius: 30px; background: linear-gradient(135deg, #0a1628, #0a8f88); color: #fff; box-shadow: 0 30px 60px -28px rgba(10,22,40,.6); }
+.dei .dei-cta-box h2 { margin-bottom: 8px; font-size: clamp(24px, 3vw, 34px); font-weight: 800; line-height: 1.2; }
+.dei .dei-cta-box p { max-width: 560px; color: #cde7ea; font-size: 16px; }
+.dei .dei-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 32px; border-radius: 50px; background: #fff; color: var(--ink); font-size: 15px; font-weight: 700; text-decoration: none; transition: all .3s ease; }
+.dei .dei-btn:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(0,0,0,.25); }
 
-  :where(body.page-about-diversity_equity_inclusion) .section-title p {
-    font-size: 18px;
-    color: #64748b;
-    line-height: 1.8;
-  }
+/* Reveal on scroll (sirf JS ho tab) */
+.dei.js .dei-reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+.dei.js .dei-reveal.is-in { opacity: 1; transform: none; }
 
-  /* ============================================================
-     SECTION 1: DIVERSITY - Style A: Top Image + Bottom Content
-     (Traditional Card Layout)
-  ============================================================ */
-  :where(body.page-about-diversity_equity_inclusion) .diversity-section {
-    padding: 20px 24px 60px;
-  }
+/* =====================================================
+   RESPONSIVE  (bari screen se chhoti screen ki taraf)
+===================================================== */
 
-  :where(body.page-about-diversity_equity_inclusion) .diversity-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+/* ---- Large laptops ---- */
+@media (max-width: 1280px) {
+    .dei .hero-banner { padding: 70px 44px; }
+    .dei .diversity-grid, .dei .inclusion-grid { gap: 22px; }
+    .dei .equity-card .card-body { padding: 36px 32px; }
+}
 
-  :where(body.page-about-diversity_equity_inclusion) .diversity-card {
-    background: #ffffff;
-    border-radius: 24px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-    transition: all 0.4s ease;
-    border: 1px solid #eef2f7;
-  }
+/* ---- Small laptops ---- */
+@media (max-width: 1100px) {
+    .dei .dei-sec { padding: 70px 0; }
+    .dei .diversity-card .card-body { padding: 0 22px 26px; }
+    .dei .card-overlay { padding: 80px 20px 22px; }
+    .dei .card-overlay h3 { font-size: 20px; }
+}
 
-  :where(body.page-about-diversity_equity_inclusion) .diversity-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 50px rgba(14, 186, 177, 0.12);
-    border-color: #0ebab1;
-  }
+/* ---- Tablets ---- */
+@media (max-width: 1024px) {
+    /* fixed/floating header ke neeche content na chhupe. Value header ki height ke hisab se badlein */
+    .dei { padding-top: 88px; }
 
-  :where(body.page-about-diversity_equity_inclusion) .diversity-card .card-image {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    display: block;
-  }
+    .dei .hero-banner { width: calc(100% - 32px); min-height: auto; margin: 20px auto; padding: 56px 38px; }
+    .dei .hero-content { max-width: 100%; }
+    .dei .hero-content > p { max-width: 640px; }
 
-  :where(body.page-about-diversity_equity_inclusion) .diversity-card .card-body {
-    padding: 24px 26px 28px;
-  }
+    .dei .dei-container { width: min(1200px, calc(100% - 32px)); }
+    .dei .dei-sec { padding: 64px 0; }
+    .dei .section-title { margin-bottom: 40px; }
 
-  :where(body.page-about-diversity_equity_inclusion) .diversity-card .card-body .icon-badge {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-    border-radius: 14px;
-    background: rgba(14, 186, 177, 0.08);
-    color: #0ebab1;
-    font-size: 20px;
-    margin-bottom: 12px;
-    transition: all 0.3s ease;
-  }
+    /* 3 cards = 2 columns, aakhri card poori width */
+    .dei .diversity-grid, .dei .inclusion-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .dei .diversity-card:last-child { display: grid; grid-column: 1 / -1; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+    .dei .diversity-card:last-child .card-media { height: 100%; }
+    .dei .diversity-card:last-child .card-image { height: 100%; min-height: 260px; }
+    .dei .diversity-card:last-child .card-body { display: flex; flex-direction: column; justify-content: center; padding: 28px 28px 30px; }
+    .dei .diversity-card:last-child .icon-badge { margin-top: 0; }
+    .dei .inclusion-card:last-child { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
 
-  :where(body.page-about-diversity_equity_inclusion) .diversity-card:hover .card-body .icon-badge {
-    background: #0ebab1;
-    color: #fff;
-  }
+    /* Touch/tablet pe description hamesha dikhe (hover nahi hota) */
+    .dei .card-overlay p { max-height: 120px; margin-bottom: 12px; opacity: 1; }
 
-  :where(body.page-about-diversity_equity_inclusion) .diversity-card .card-body h3 {
-    font-size: 22px;
-    font-weight: 800;
-    color: #1a2332;
-    margin-bottom: 4px;
-  }
+    .dei .equity-card { grid-template-columns: 1fr; }
+    .dei .equity-card:nth-child(even) .card-media { order: 0; }
+    .dei .equity-card .card-media { min-height: 260px; }
+    .dei .equity-card .card-body { padding: 30px 28px 32px; }
 
-  :where(body.page-about-diversity_equity_inclusion) .diversity-card .card-body .subtitle {
-    font-size: 13px;
-    color: #0ebab1;
-    font-weight: 600;
-    margin-bottom: 10px;
-  }
+    .dei .dei-cta { padding-bottom: 64px; }
+    .dei .dei-cta-box { padding: 44px 36px; }
+}
 
-  :where(body.page-about-diversity_equity_inclusion) .diversity-card .card-body p {
-    font-size: 14px;
-    color: #64748b;
-    line-height: 1.7;
-    margin-bottom: 14px;
-  }
-
-  :where(body.page-about-diversity_equity_inclusion) .diversity-card .card-body .stats-mini {
-    display: flex;
-    gap: 20px;
-    padding-top: 14px;
-    border-top: 1px solid #f1f5f9;
-  }
-
-  :where(body.page-about-diversity_equity_inclusion) .diversity-card .card-body .stats-mini div {
-    display: flex;
-    flex-direction: column;
-  }
-
-  :where(body.page-about-diversity_equity_inclusion) .diversity-card .card-body .stats-mini div strong {
-    font-size: 20px;
-    color: #1a2332;
-    font-weight: 800;
-  }
-
-  :where(body.page-about-diversity_equity_inclusion) .diversity-card .card-body .stats-mini div span {
-    font-size: 11px;
-    color: #94a3b8;
-    font-weight: 500;
-  }
-
-  /* ============================================================
-     SECTION 2: EQUITY - Style B: Left Image + Right Content
-     (Horizontal Split Layout)
-  ============================================================ */
-  :where(body.page-about-diversity_equity_inclusion) .equity-section {
-    padding: 20px 24px 60px;
-    background: #ffffff;
-  }
-
-  :where(body.page-about-diversity_equity_inclusion) .equity-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  :where(body.page-about-diversity_equity_inclusion) .equity-card {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    background: #ffffff;
-    border-radius: 24px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-    transition: all 0.4s ease;
-    border: 1px solid #eef2f7;
-  }
-
-  :where(body.page-about-diversity_equity_inclusion) .equity-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 50px rgba(14, 186, 177, 0.10);
-    border-color: #0ebab1;
-  }
-
-  :where(body.page-about-diversity_equity_inclusion) .equity-card .card-image {
-    width: 100%;
-    height: 100%;
-    min-height: 280px;
-    object-fit: cover;
-    display: block;
-  }
-
-  :where(body.page-about-diversity_equity_inclusion) .equity-card .card-body {
-    padding: 36px 32px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  :where(body.page-about-diversity_equity_inclusion) .equity-card .card-body .badge {
-    display: inline-block;
-    background: rgba(14, 186, 177, 0.08);
-    color: #0ebab1;
-    padding: 4px 14px;
-    border-radius: 50px;
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 12px;
-    align-self: flex-start;
-  }
-
-  :where(body.page-about-diversity_equity_inclusion) .equity-card .card-body h3 {
-    font-size: 26px;
-    font-weight: 800;
-    color: #1a2332;
-    margin-bottom: 6px;
-  }
-
-  :where(body.page-about-diversity_equity_inclusion) .equity-card .card-body .subtitle {
-    font-size: 14px;
-    color: #0ebab1;
-    font-weight: 600;
-    margin-bottom: 12px;
-  }
-
-  :where(body.page-about-diversity_equity_inclusion) .equity-card .card-body p {
-    font-size: 15px;
-    color: #64748b;
-    line-height: 1.8;
-    margin-bottom: 16px;
-  }
-
-  :where(body.page-about-diversity_equity_inclusion) .equity-card .card-body .feature-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  :where(body.page-about-diversity_equity_inclusion) .equity-card .card-body .feature-tags span {
-    background: rgba(14, 186, 177, 0.06);
-    padding: 4px 14px;
-    border-radius: 50px;
-    font-size: 12px;
-    font-weight: 500;
-    color: #1a2332;
-  }
-
-  :where(body.page-about-diversity_equity_inclusion) .equity-card .card-body .feature-tags span i {
-    color: #0ebab1;
-    margin-right: 4px;
-  }
-
-  /* ============================================================
-     SECTION 3: INCLUSION - Style C: Image Overlay Cards
-     (Full Image with Content Overlay)
-  ============================================================ */
-  :where(body.page-about-diversity_equity_inclusion) .inclusion-section {
-    padding: 20px 24px 60px;
-    background: #f8fafc;
-  }
-
-  :where(body.page-about-diversity_equity_inclusion) .inclusion-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  :where(body.page-about-diversity_equity_inclusion) .inclusion-card {
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-    transition: all 0.4s ease;
-    border: 1px solid #eef2f7;
-    aspect-ratio: 4 / 5;
-    background: #ffffff;
-  }
-
-  :where(body.page-about-diversity_equity_inclusion) .inclusion-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 50px rgba(14, 186, 177, 0.12);
-    border-color: #0ebab1;
-  }
-
-  :where(body.page-about-diversity_equity_inclusion) .inclusion-card .card-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.6s ease;
-  }
-
-  :where(body.page-about-diversity_equity_inclusion) .inclusion-card:hover .card-image {
-    transform: scale(1.05);
-  }
-
-  :where(body.page-about-diversity_equity_inclusion) .inclusion-card .card-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 30px 24px 24px;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.1) 60%, transparent 100%);
-    transition: all 0.4s ease;
-  }
-
-  :where(body.page-about-diversity_equity_inclusion) .inclusion-card .card-overlay .icon-circle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: #0ebab1;
-    color: #fff;
-    font-size: 18px;
-    margin-bottom: 10px;
-    box-shadow: 0 4px 15px rgba(14, 186, 177, 0.3);
-    transition: all 0.3s ease;
-  }
-
-  :where(body.page-about-diversity_equity_inclusion) .inclusion-card:hover .card-overlay .icon-circle {
-    transform: scale(1.1);
-  }
-
-  :where(body.page-about-diversity_equity_inclusion) .inclusion-card .card-overlay .card-tag {
-    display: inline-block;
-    background: rgba(14, 186, 177, 0.2);
-    color: #fff;
-    padding: 2px 14px;
-    border-radius: 50px;
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 6px;
-    backdrop-filter: blur(4px);
-  }
-
-  :where(body.page-about-diversity_equity_inclusion) .inclusion-card .card-overlay h3 {
-    font-size: 22px;
-    font-weight: 800;
-    color: #ffffff;
-    margin-bottom: 2px;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  }
-
-  :where(body.page-about-diversity_equity_inclusion) .inclusion-card .card-overlay .subtitle {
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.8);
-    font-weight: 500;
-    margin-bottom: 8px;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-  }
-
-  :where(body.page-about-diversity_equity_inclusion) .inclusion-card .card-overlay p {
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.92);
-    line-height: 1.7;
-    margin-bottom: 10px;
-    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: all 0.4s ease;
-  }
-
-  :where(body.page-about-diversity_equity_inclusion) .inclusion-card:hover .card-overlay p {
-    max-height: 100px;
-    opacity: 1;
-  }
-
-  :where(body.page-about-diversity_equity_inclusion) .inclusion-card .card-overlay .emoji-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  :where(body.page-about-diversity_equity_inclusion) .inclusion-card .card-overlay .emoji-row span {
-    background: rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(4px);
-    padding: 2px 12px;
-    border-radius: 50px;
-    font-size: 11px;
-    font-weight: 500;
-    color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-  }
-
-  /* ============================================================
-     RESPONSIVE
-  ============================================================ */
-  @media (max-width: 1024px) {
-    :where(body.page-about-diversity_equity_inclusion) .hero-banner {
-      flex-direction: column;
-      padding: 50px 35px;
-      margin: 20px 16px;
-      min-height: auto;
+/* ---- Large phones ---- */
+@media (max-width: 768px) {
+    .dei .hero-banner {
+        padding: 44px 28px;
+        background:
+            linear-gradient(rgba(255,255,255,.9), rgba(255,255,255,.78)),
+            url('../../images/Diversity/dd.png') center / cover no-repeat,
+            linear-gradient(135deg, #e9faf9, #dfe9f5);
     }
-    :where(body.page-about-diversity_equity_inclusion) .hero-content {
-      max-width: 100%;
-    }
-    :where(body.page-about-diversity_equity_inclusion) .hero-content h1 {
-      font-size: 38px;
-    }
+    .dei .hero-content > p { font-size: 17px; }
+    .dei .hero-stats { gap: 12px; }
+    .dei .hero-stats > div { min-width: 120px; padding: 12px 18px; }
 
-    :where(body.page-about-diversity_equity_inclusion) .diversity-grid,:where(body.page-about-diversity_equity_inclusion) .inclusion-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
+    .dei .diversity-grid, .dei .inclusion-grid { grid-template-columns: 1fr; gap: 20px; }
+    .dei .diversity-card:last-child { display: block; }
+    .dei .diversity-card:last-child .card-image { height: 230px; min-height: 0; }
+    .dei .diversity-card:last-child .card-body { display: block; padding: 0 24px 28px; }
+    .dei .diversity-card:last-child .icon-badge { margin-top: -29px; }
 
-    :where(body.page-about-diversity_equity_inclusion) .equity-card {
-      grid-template-columns: 1fr;
-    }
-    :where(body.page-about-diversity_equity_inclusion) .equity-card .card-image {
-      min-height: 200px;
-    }
-    :where(body.page-about-diversity_equity_inclusion) .equity-card .card-body {
-      padding: 28px 24px;
-    }
-  }
+    .dei .inclusion-card, .dei .inclusion-card:last-child { aspect-ratio: auto; min-height: 460px; }
+    .dei .equity-grid { gap: 20px; }
+}
 
-  @media (max-width: 640px) {
-    :where(body.page-about-diversity_equity_inclusion) .hero-banner {
-      padding: 30px 20px;
-      margin: 16px 12px;
-      border-radius: 20px;
-    }
-    :where(body.page-about-diversity_equity_inclusion) .hero-content h1 {
-      font-size: 28px;
-    }
-    :where(body.page-about-diversity_equity_inclusion) .hero-content p {
-      font-size: 15px;
-    }
-    :where(body.page-about-diversity_equity_inclusion) .hero-stats {
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-    :where(body.page-about-diversity_equity_inclusion) .hero-stats div strong {
-      font-size: 22px;
-    }
+/* ---- Phones ---- */
+@media (max-width: 640px) {
+    .dei .hero-banner { width: calc(100% - 24px); margin: 16px auto; padding: 32px 20px; border-radius: 22px; }
+    .dei .hero-badge { max-width: 100%; margin-bottom: 16px; padding: 6px 14px; font-size: 11px; letter-spacing: 1.4px; }
+    .dei .hero-content > p { margin-bottom: 22px; font-size: 15.5px; line-height: 1.7; }
+    .dei .hero-stats { margin-top: 24px; }
+    .dei .hero-stats > div { flex: 1 1 28%; min-width: 96px; padding: 12px 14px; border-radius: 16px; }
+    .dei .hero-stats strong { font-size: 22px; }
+    .dei .hero-stats span { font-size: 12px; }
 
-    :where(body.page-about-diversity_equity_inclusion) .diversity-grid,:where(body.page-about-diversity_equity_inclusion) .inclusion-grid {
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
+    .dei .dei-container { width: min(1200px, calc(100% - 24px)); }
+    .dei .dei-sec { padding: 52px 0; }
+    .dei .section-title { margin-bottom: 30px; }
+    .dei .section-title p { font-size: 15.5px; line-height: 1.7; }
 
-    :where(body.page-about-diversity_equity_inclusion) .equity-grid {
-      gap: 20px;
-    }
+    .dei .diversity-card, .dei .equity-card, .dei .inclusion-card { border-radius: 22px; }
+    .dei .diversity-card .card-image, .dei .diversity-card:last-child .card-image { height: 200px; }
+    .dei .diversity-card .card-body, .dei .diversity-card:last-child .card-body { padding: 0 20px 24px; }
+    .dei .diversity-card h3 { font-size: 20px; }
+    .dei .stats-mini strong { font-size: 19px; }
 
-    :where(body.page-about-diversity_equity_inclusion) .diversity-section,:where(body.page-about-diversity_equity_inclusion) .equity-section,:where(body.page-about-diversity_equity_inclusion) .inclusion-section {
-      padding: 0 12px 40px;
-    }
+    .dei .equity-card .card-media { min-height: 210px; }
+    .dei .equity-card .card-body { padding: 24px 20px 26px; }
+    .dei .equity-card h3 { font-size: 22px; }
+    .dei .equity-card p { font-size: 14.5px; line-height: 1.75; }
+    .dei .feature-tags { gap: 8px; }
+    .dei .feature-tags span { padding: 5px 13px; font-size: 12px; }
 
-    :where(body.page-about-diversity_equity_inclusion) .section-title h2 {
-      font-size: 28px;
-    }
-    :where(body.page-about-diversity_equity_inclusion) .section-title {
-      margin: 0 auto 30px;
-      padding: 0 12px;
-    }
+    .dei .inclusion-card, .dei .inclusion-card:last-child { min-height: 440px; }
+    .dei .card-overlay { padding: 90px 18px 20px; }
+    .dei .card-overlay h3 { font-size: 19px; }
+    .dei .card-overlay p { font-size: 13.5px; }
 
-    :where(body.page-about-diversity_equity_inclusion) .diversity-card .card-body {
-      padding: 20px 18px 24px;
-    }
-    :where(body.page-about-diversity_equity_inclusion) .equity-card .card-body {
-      padding: 24px 18px;
-    }
-    :where(body.page-about-diversity_equity_inclusion) .equity-card .card-body h3 {
-      font-size: 22px;
-    }
+    .dei .dei-cta { padding-bottom: 52px; }
+    .dei .dei-cta-box { flex-direction: column; align-items: stretch; padding: 34px 22px; border-radius: 24px; text-align: center; }
+    .dei .dei-cta-box p { max-width: 100%; font-size: 15px; }
+    .dei .dei-btn { width: 100%; }
+}
 
-    :where(body.page-about-diversity_equity_inclusion) .inclusion-card {
-      aspect-ratio: 4 / 3;
-    }
-    :where(body.page-about-diversity_equity_inclusion) .inclusion-card .card-overlay {
-      padding: 20px 16px 16px;
-    }
-    :where(body.page-about-diversity_equity_inclusion) .inclusion-card .card-overlay h3 {
-      font-size: 18px;
-    }
-  }
+/* ---- Small phones ---- */
+@media (max-width: 400px) {
+    .dei .hero-banner { padding: 26px 16px; }
+    .dei .hero-stats > div { flex: 1 1 42%; }
+    .dei .diversity-card .card-image, .dei .diversity-card:last-child .card-image { height: 180px; }
+    .dei .inclusion-card, .dei .inclusion-card:last-child { min-height: 420px; }
+    .dei .card-overlay .card-tag { margin-left: 0; display: block; width: fit-content; }
+    .dei .stats-mini { gap: 6px; }
+    .dei .stats-mini span { font-size: 10.5px; }
+}
 
-  @media (max-width: 480px) {
-    :where(body.page-about-diversity_equity_inclusion) .hero-stats {
-      gap: 16px;
-    }
-    :where(body.page-about-diversity_equity_inclusion) .hero-stats div strong {
-      font-size: 20px;
-    }
-    :where(body.page-about-diversity_equity_inclusion) .diversity-grid,:where(body.page-about-diversity_equity_inclusion) .inclusion-grid {
-      grid-template-columns: 1fr;
-    }
-  }
+/* ---- Landscape phones ---- */
+@media (max-width: 900px) and (max-height: 500px) and (orientation: landscape) {
+    .dei { padding-top: 76px; }
+    .dei .hero-banner { padding: 28px 24px; }
+}
 
+/* ---- Touch devices: hover jump nahi, description hamesha dikhe ---- */
+@media (hover: none) {
+    .dei .diversity-card:hover, .dei .equity-card:hover, .dei .inclusion-card:hover, .dei .dei-btn:hover { transform: none; }
+    .dei .card-image, .dei .inclusion-card:hover .card-image,
+    .dei .diversity-card:hover .card-image, .dei .equity-card:hover .card-image { transform: none; }
+    .dei .card-overlay p { max-height: 120px; margin-bottom: 12px; opacity: 1; }
+}
 
-:where(body.page-about-diversity_equity_inclusion) .page-inline-about-diversity_equity_inclusion-1 { margin-right: 6px; }
-
-
+@media (prefers-reduced-motion: reduce) {
+    .dei.js .dei-reveal { opacity: 1; transform: none; }
+    .dei *, .dei *::before, .dei *::after { transition: none !important; animation: none !important; }
+}

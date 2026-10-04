@@ -1,51 +1,52 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Diversity, Equity & Inclusion · X {Vera} Solutions{% endblock %}
+{% block title %}Diversity, Equity &amp; Inclusion · Xvera Labs{% endblock %}
 
 {% block body_class %}page-about-diversity_equity_inclusion{% endblock %}
 
-{% block page_css %}<link rel="stylesheet" href="{% static 'css/pages/about-diversity_equity_inclusion.css' %}">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+{% block page_css %}<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/pages/about-diversity_equity_inclusion.css' %}">
 {% endblock %}
 
 {% block content %}
-
-<!-- ===== FONTS & ICONS ===== -->
-
-
+<div class="dei">
 
 <!-- ============================================================
      HERO BANNER
-  ============================================================ -->
+============================================================ -->
 <section class="hero-banner">
   <div class="hero-content">
-    <span class="hero-badge"><i class="fas fa-hands-helping page-inline-about-diversity_equity_inclusion-1"></i> DEI</span>
-    <h1>Diversity, <span>Equity</span>& Inclusion</h1>
+    <span class="hero-badge"><i class="fas fa-hands-helping"></i> DEI</span>
+    <h1>Diversity, <span>Equity</span> &amp; Inclusion</h1>
     <p>We believe that diverse perspectives, equitable opportunities, and inclusive cultures drive innovation, creativity, and business success.</p>
     <div class="hero-stats">
-      <div><strong>40%</strong><span>Women in Leadership</span></div>
-      <div><strong>20+</strong><span>Nationalities</span></div>
-      <div><strong>95%</strong><span>Inclusion Score</span></div>
+      <div><strong data-count="40" data-suffix="%">40%</strong><span>Women in Leadership</span></div>
+      <div><strong data-count="20" data-suffix="+">20+</strong><span>Nationalities</span></div>
+      <div><strong data-count="95" data-suffix="%">95%</strong><span>Inclusion Score</span></div>
     </div>
   </div>
 </section>
 
 <!-- ============================================================
-     SECTION 1: DIVERSITY - Style A: Top Image + Bottom Content
-  ============================================================ -->
-<section id="diversity">
-  <div class="section-title">
-    <span class="tag">Diversity</span>
-    <h2>Celebrating <span>Differences</span></h2>
-    <p>We embrace the unique perspectives, backgrounds, and experiences that each individual brings to our organization.</p>
-  </div>
+     SECTION 1: DIVERSITY
+============================================================ -->
+<section id="diversity" class="dei-sec">
+  <div class="dei-container">
+    <div class="section-title dei-reveal">
+      <span class="tag">Diversity</span>
+      <h2>Celebrating <span>Differences</span></h2>
+      <p>We embrace the unique perspectives, backgrounds, and experiences that each individual brings to our organization.</p>
+    </div>
 
-  <div class="diversity-section">
     <div class="diversity-grid">
 
-      <div class="diversity-card">
-        <img class="card-image" src="{% static 'images/Diversity/worlds_cultural_diversity_au.png' %}" alt="Cultural Diversity" loading="lazy">
+      <article class="diversity-card dei-reveal">
+        <div class="card-media">
+          <img class="card-image" src="{% static 'images/Diversity/worlds_cultural_diversity_au.png' %}" alt="Cultural Diversity" loading="lazy" decoding="async">
+        </div>
         <div class="card-body">
           <div class="icon-badge"><i class="fas fa-globe-americas"></i></div>
           <h3>Cultural Diversity</h3>
@@ -57,10 +58,12 @@
             <div><strong>12</strong><span>Languages</span></div>
           </div>
         </div>
-      </div>
+      </article>
 
-      <div class="diversity-card">
-        <img class="card-image" src="{% static 'images/Diversity/gender-diversty.png' %}" alt="Gender Diversity" loading="lazy">
+      <article class="diversity-card dei-reveal">
+        <div class="card-media">
+          <img class="card-image" src="{% static 'images/Diversity/gender-diversty.png' %}" alt="Gender Diversity" loading="lazy" decoding="async">
+        </div>
         <div class="card-body">
           <div class="icon-badge"><i class="fas fa-venus-mars"></i></div>
           <h3>Gender Diversity</h3>
@@ -72,10 +75,12 @@
             <div><strong>100%</strong><span>Equal Pay</span></div>
           </div>
         </div>
-      </div>
+      </article>
 
-      <div class="diversity-card">
-        <img class="card-image" src="{% static 'images/Diversity/gen-d.png' %}" alt="Generational Diversity" loading="lazy">
+      <article class="diversity-card dei-reveal">
+        <div class="card-media">
+          <img class="card-image" src="{% static 'images/Diversity/gen-d.png' %}" alt="Generational Diversity" loading="lazy" decoding="async">
+        </div>
         <div class="card-body">
           <div class="icon-badge"><i class="fas fa-users"></i></div>
           <h3>Generational Diversity</h3>
@@ -87,30 +92,32 @@
             <div><strong>25%</strong><span>Gen Z</span></div>
           </div>
         </div>
-      </div>
+      </article>
 
     </div>
   </div>
 </section>
 
 <!-- ============================================================
-     SECTION 2: EQUITY - Style B: Left Image + Right Content
-  ============================================================ -->
-<section id="equity">
-  <div class="section-title">
-    <span class="tag">Equity</span>
-    <h2>Fairness & <span>Opportunity</span></h2>
-    <p>We are committed to creating equitable systems, processes, and opportunities for everyone to thrive and succeed.</p>
-  </div>
+     SECTION 2: EQUITY
+============================================================ -->
+<section id="equity" class="dei-sec dei-sec-white">
+  <div class="dei-container">
+    <div class="section-title dei-reveal">
+      <span class="tag">Equity</span>
+      <h2>Fairness &amp; <span>Opportunity</span></h2>
+      <p>We are committed to creating equitable systems, processes, and opportunities for everyone to thrive and succeed.</p>
+    </div>
 
-  <div class="equity-section">
     <div class="equity-grid">
 
-      <div class="equity-card">
-        <img class="card-image" src="{% static 'images/Diversity/equal.png' %}" alt="Equal Pay" loading="lazy">
+      <article class="equity-card dei-reveal">
+        <div class="card-media">
+          <img class="card-image" src="{% static 'images/Diversity/equal.png' %}" alt="Equal Pay" loading="lazy" decoding="async">
+        </div>
         <div class="card-body">
           <span class="badge">Fair Pay</span>
-          <h3>Equal Pay & Compensation</h3>
+          <h3>Equal Pay &amp; Compensation</h3>
           <div class="subtitle">Transparent · Fair · Audited</div>
           <p>Regular pay equity audits, transparent salary bands, and performance-based bonuses for all employees regardless of gender or background.</p>
           <div class="feature-tags">
@@ -120,10 +127,12 @@
             <span><i class="fas fa-check-circle"></i> Benchmarking</span>
           </div>
         </div>
-      </div>
+      </article>
 
-      <div class="equity-card">
-        <img class="card-image" src="{% static 'images/Diversity/successful-career-advancement.png' %}" alt="Career Advancement" loading="lazy">
+      <article class="equity-card dei-reveal">
+        <div class="card-media">
+          <img class="card-image" src="{% static 'images/Diversity/successful-career-advancement.png' %}" alt="Career Advancement" loading="lazy" decoding="async">
+        </div>
         <div class="card-body">
           <span class="badge">Growth</span>
           <h3>Career Advancement Equity</h3>
@@ -136,33 +145,33 @@
             <span><i class="fas fa-check-circle"></i> Training</span>
           </div>
         </div>
-      </div>
+      </article>
 
     </div>
   </div>
 </section>
 
 <!-- ============================================================
-     SECTION 3: INCLUSION - Style C: Image Overlay Cards
-  ============================================================ -->
-<section id="inclusion">
-  <div class="section-title">
-    <span class="tag">Inclusion</span>
-    <h2>Belonging & <span>Community</span></h2>
-    <p>We create an environment where everyone feels valued, respected, and empowered to bring their authentic selves to work.</p>
-  </div>
+     SECTION 3: INCLUSION
+============================================================ -->
+<section id="inclusion" class="dei-sec dei-sec-soft">
+  <div class="dei-container">
+    <div class="section-title dei-reveal">
+      <span class="tag">Inclusion</span>
+      <h2>Belonging &amp; <span>Community</span></h2>
+      <p>We create an environment where everyone feels valued, respected, and empowered to bring their authentic selves to work.</p>
+    </div>
 
-  <div class="inclusion-section">
     <div class="inclusion-grid">
 
-      <div class="inclusion-card">
-        <img class="card-image" src="{% static 'images/Diversity/resoure.png' %}" alt="Employee Resource Groups" loading="lazy">
+      <article class="inclusion-card dei-reveal">
+        <img class="card-image" src="{% static 'images/Diversity/resoure.png' %}" alt="Employee Resource Groups" loading="lazy" decoding="async">
         <div class="card-overlay">
           <div class="icon-circle"><i class="fas fa-users-cog"></i></div>
           <span class="card-tag">Community</span>
           <h3>Employee Resource Groups</h3>
           <div class="subtitle">Support · Advocacy · Growth</div>
-          <p>Safe communities for shared identities — fostering connection, advocacy, and professional growth.</p>
+          <p>Safe communities for shared identities, fostering connection, advocacy, and professional growth.</p>
           <div class="emoji-row">
             <span>👩‍💻 Women in Tech</span>
             <span>🏳️‍🌈 LGBTQ+</span>
@@ -170,14 +179,14 @@
             <span>🌍 BIPOC</span>
           </div>
         </div>
-      </div>
+      </article>
 
-      <div class="inclusion-card">
-        <img class="card-image" src="{% static 'images/Diversity/exclusive.png' %}" alt="Inclusive Culture" loading="lazy">
+      <article class="inclusion-card dei-reveal">
+        <img class="card-image" src="{% static 'images/Diversity/exclusive.png' %}" alt="Inclusive Culture" loading="lazy" decoding="async">
         <div class="card-overlay">
           <div class="icon-circle"><i class="fas fa-heart"></i></div>
           <span class="card-tag">Culture</span>
-          <h3>Inclusive Culture & Belonging</h3>
+          <h3>Inclusive Culture &amp; Belonging</h3>
           <div class="subtitle">Seen · Heard · Valued</div>
           <p>Intentional practices, bias training, and accessibility accommodations for true belonging.</p>
           <div class="emoji-row">
@@ -187,14 +196,14 @@
             <span>🤝 Celebration</span>
           </div>
         </div>
-      </div>
+      </article>
 
-      <div class="inclusion-card">
-        <img class="card-image" src="{% static 'images/Diversity/event.png' %}" alt="Inclusive Events" loading="lazy">
+      <article class="inclusion-card dei-reveal">
+        <img class="card-image" src="{% static 'images/Diversity/event.png' %}" alt="Inclusive Events" loading="lazy" decoding="async">
         <div class="card-overlay">
           <div class="icon-circle"><i class="fas fa-calendar-alt"></i></div>
           <span class="card-tag">Events</span>
-          <h3>Inclusive Events & Celebrations</h3>
+          <h3>Inclusive Events &amp; Celebrations</h3>
           <div class="subtitle">Celebrate · Honor · Unite</div>
           <p>Cultural heritage, religious observances, Pride, and global holidays celebrated together.</p>
           <div class="emoji-row">
@@ -204,15 +213,28 @@
             <span>🌎 Global</span>
           </div>
         </div>
-      </div>
+      </article>
 
     </div>
   </div>
 </section>
 
 <!-- ============================================================
-     JAVASCRIPT
-  ============================================================ -->
-<script src="{% static 'js/pages/about-diversity_equity_inclusion-1.js' %}"></script>
+     CTA
+============================================================ -->
+<section class="dei-cta">
+  <div class="dei-container">
+    <div class="dei-cta-box dei-reveal">
+      <div>
+        <h2>Join a workplace where everyone belongs</h2>
+        <p>Explore open roles and become part of a team that celebrates every voice.</p>
+      </div>
+      <a href="#" class="dei-btn"><i class="fas fa-briefcase"></i> View open positions</a>
+    </div>
+  </div>
+</section>
 
+</div>
+
+<script src="{% static 'js/pages/about-diversity_equity_inclusion-1.js' %}"></script>
 {% endblock %}
