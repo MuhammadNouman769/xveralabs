@@ -24,6 +24,7 @@ urlpatterns = [
     path('coming-soon/', views.coming, name='coming'),
     path('about-us/why-choose-us/', views.why_choose_us, name='why_choose_us'),
     path('about/careeer/', views.careeer, name="careeer"),
-    path('about/art/', views.articial_detail, name="careeer")
+    path('about/employee_success/', views.employee_success, name="employee_success"),
+    path('about/art/', views.articial_detail, name="art"),
     
 ]

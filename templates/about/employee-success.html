@@ -1,0 +1,411 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Employee Success | Xvera Labs{% endblock %}
+{% block body_class %}page-about-employee-success{% endblock %}
+
+{% block page_css %}<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/pages/about-employee-success.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="es">
+
+  <!-- ================= HERO ================= -->
+  <section class="es-hero" id="top">
+    <div class="es-container es-hero-inner">
+
+      <div class="es-hero-text">
+        <span class="es-eyebrow"><i class="fas fa-seedling"></i> Employee Success</span>
+        <h1>When our people <span>succeed</span>, everything grows</h1>
+        <p>At Xvera Labs, employee success is not a perk. It is our strategy. From the first day to leadership roles, we invest in careers, wellbeing and belonging so every person can do the best work of their life.</p>
+
+        <div class="es-hero-btns">
+          <a href="#stories" class="es-btn es-btn-primary"><i class="fas fa-play"></i> Read success stories</a>
+          <a href="#programs" class="es-btn es-btn-outline">Explore our programs</a>
+        </div>
+
+        <div class="es-trust">
+          <div class="es-trust-faces">
+            <span class="es-avatar" data-initials="AK"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=160&h=160&q=80" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'"></span>
+            <span class="es-avatar" data-initials="SM"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=160&h=160&q=80" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'"></span>
+            <span class="es-avatar" data-initials="RF"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=160&h=160&q=80" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'"></span>
+            <span class="es-avatar" data-initials="HA"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=160&h=160&q=80" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'"></span>
+          </div>
+          <p><i class="fas fa-star"></i> <strong>4.8 / 5</strong> average employee rating from 200+ team members</p>
+        </div>
+      </div>
+
+      <div class="es-media">
+        <figure class="es-img"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Team collaborating on laptops" referrerpolicy="no-referrer" onerror="this.style.display='none'"></figure>
+        <figure class="es-img"><img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80" alt="Team meeting around a table" referrerpolicy="no-referrer" onerror="this.style.display='none'"></figure>
+        <figure class="es-img"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80" alt="Colleagues celebrating together" referrerpolicy="no-referrer" onerror="this.style.display='none'"></figure>
+        <figure class="es-img"><img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80" alt="Team brainstorming ideas" referrerpolicy="no-referrer" onerror="this.style.display='none'"></figure>
+
+        <div class="es-float es-float-1">
+          <i class="fas fa-arrow-trend-up"></i>
+          <div><strong>120+ promotions</strong><span>Grown from within</span></div>
+        </div>
+        <div class="es-float es-float-2">
+          <i class="fas fa-heart-pulse"></i>
+          <div><strong>94% retention</strong><span>People who stay &amp; grow</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= STATS ================= -->
+  <section class="es-stats" aria-label="Employee success in numbers">
+    <div class="es-container">
+      <div class="es-stats-grid es-reveal">
+        <div class="es-stat"><strong data-count="94" data-suffix="%">94%</strong><span>Employee retention</span></div>
+        <div class="es-stat"><strong data-count="4.8" data-decimals="1">4.8</strong><span>Engagement score (out of 5)</span></div>
+        <div class="es-stat"><strong data-count="120" data-suffix="+">120+</strong><span>Internal promotions last year</span></div>
+        <div class="es-stat"><strong data-count="40" data-suffix="+">40+</strong><span>Learning hours per person</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PILLARS ================= -->
+  <section class="es-section" id="pillars">
+    <div class="es-container">
+      <div class="es-head es-reveal">
+        <span class="es-eyebrow">What it means</span>
+        <h2>Six pillars of <span>employee success</span></h2>
+        <p>Everything we build for our people stands on these foundations.</p>
+      </div>
+
+      <div class="es-pillars-grid">
+        <article class="es-pillar es-reveal">
+          <div class="es-icon"><i class="fas fa-door-open"></i></div>
+          <h3>Great onboarding</h3>
+          <p>A structured first 90 days with a buddy, clear goals and every tool ready on day one.</p>
+        </article>
+        <article class="es-pillar es-reveal">
+          <div class="es-icon"><i class="fas fa-graduation-cap"></i></div>
+          <h3>Learning &amp; growth</h3>
+          <p>Certifications, conferences and personal learning budgets that keep your skills ahead.</p>
+        </article>
+        <article class="es-pillar es-reveal">
+          <div class="es-icon"><i class="fas fa-people-arrows"></i></div>
+          <h3>Mentorship</h3>
+          <p>Pair up with senior leaders who guide your career path and help you reach the next level.</p>
+        </article>
+        <article class="es-pillar es-reveal">
+          <div class="es-icon"><i class="fas fa-heart-pulse"></i></div>
+          <h3>Wellbeing first</h3>
+          <p>Health cover, mental health support and flexible time off, because great work needs a healthy you.</p>
+        </article>
+        <article class="es-pillar es-reveal">
+          <div class="es-icon"><i class="fas fa-trophy"></i></div>
+          <h3>Recognition</h3>
+          <p>Monthly awards, peer shout-outs and performance rewards that celebrate real impact.</p>
+        </article>
+        <article class="es-pillar es-reveal">
+          <div class="es-icon"><i class="fas fa-house-laptop"></i></div>
+          <h3>Flexibility</h3>
+          <p>Remote-first work, flexible hours and trust. You own your outcomes and your schedule.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= JOURNEY ================= -->
+  <section class="es-section es-journey" id="journey">
+    <div class="es-container">
+      <div class="es-head es-reveal">
+        <span class="es-eyebrow">Your journey</span>
+        <h2>From day one to <span>leadership</span></h2>
+        <p>A clear path with support at every milestone.</p>
+      </div>
+
+      <ol class="es-timeline">
+        <li class="es-tstep es-reveal">
+          <div class="es-tdot"><i class="fas fa-handshake"></i></div>
+          <small>Day 1</small>
+          <h3>Welcome</h3>
+          <p>Meet your team and buddy. Laptop, access and goals all set.</p>
+        </li>
+        <li class="es-tstep es-reveal">
+          <div class="es-tdot"><i class="fas fa-compass"></i></div>
+          <small>Day 30</small>
+          <h3>Find your feet</h3>
+          <p>First project delivered, with regular check-ins and feedback.</p>
+        </li>
+        <li class="es-tstep es-reveal">
+          <div class="es-tdot"><i class="fas fa-rocket"></i></div>
+          <small>Day 90</small>
+          <h3>Make an impact</h3>
+          <p>Own a deliverable and set your personal growth plan.</p>
+        </li>
+        <li class="es-tstep es-reveal">
+          <div class="es-tdot"><i class="fas fa-stairs"></i></div>
+          <small>Year 1</small>
+          <h3>Level up</h3>
+          <p>Performance review, new skills and a clear promotion path.</p>
+        </li>
+        <li class="es-tstep es-reveal">
+          <div class="es-tdot"><i class="fas fa-crown"></i></div>
+          <small>Year 3+</small>
+          <h3>Lead the way</h3>
+          <p>Mentor others, lead teams and shape the company's future.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ================= PROGRAMS ================= -->
+  <section class="es-section" id="programs">
+    <div class="es-container">
+      <div class="es-head es-reveal">
+        <span class="es-eyebrow">Programs</span>
+        <h2>Programs built for <span>real people</span></h2>
+        <p>Choose a track to see how we support you.</p>
+      </div>
+
+      <div class="es-tabs" role="tablist" aria-label="Employee programs">
+        <button type="button" class="es-tab is-active" role="tab" id="tab-growth" aria-selected="true" aria-controls="panel-growth" data-tab="growth"><i class="fas fa-chart-line"></i> Growth</button>
+        <button type="button" class="es-tab" role="tab" id="tab-wellbeing" aria-selected="false" aria-controls="panel-wellbeing" data-tab="wellbeing" tabindex="-1"><i class="fas fa-spa"></i> Wellbeing</button>
+        <button type="button" class="es-tab" role="tab" id="tab-rewards" aria-selected="false" aria-controls="panel-rewards" data-tab="rewards" tabindex="-1"><i class="fas fa-gift"></i> Rewards</button>
+        <button type="button" class="es-tab" role="tab" id="tab-community" aria-selected="false" aria-controls="panel-community" data-tab="community" tabindex="-1"><i class="fas fa-users"></i> Community</button>
+      </div>
+
+      <div class="es-panels es-reveal">
+
+        <div class="es-panel" role="tabpanel" id="panel-growth" aria-labelledby="tab-growth">
+          <div class="es-panel-img"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1000&q=80" alt="Team learning session" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'"></div>
+          <div class="es-panel-body">
+            <h3>Grow faster, with support</h3>
+            <p>Personalised learning paths and real opportunities to step up.</p>
+            <ul class="es-checks">
+              <li><i class="fas fa-check"></i> Yearly learning budget for courses and certifications</li>
+              <li><i class="fas fa-check"></i> 1:1 mentorship with senior leaders</li>
+              <li><i class="fas fa-check"></i> Internal mobility across teams and projects</li>
+              <li><i class="fas fa-check"></i> Leadership academy for future managers</li>
+            </ul>
+            <div class="es-panel-chip"><strong>40+</strong> learning hours per person every year</div>
+          </div>
+        </div>
+
+        <div class="es-panel" role="tabpanel" id="panel-wellbeing" aria-labelledby="tab-wellbeing" hidden>
+          <div class="es-panel-img"><img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=1000&q=80" alt="Friends laughing together" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'"></div>
+          <div class="es-panel-body">
+            <h3>Healthy people, healthy company</h3>
+            <p>We look after the whole person, not just the work they do.</p>
+            <ul class="es-checks">
+              <li><i class="fas fa-check"></i> Health insurance for you and your family</li>
+              <li><i class="fas fa-check"></i> Confidential counselling and mental health days</li>
+              <li><i class="fas fa-check"></i> Gym, fitness and wellness allowance</li>
+              <li><i class="fas fa-check"></i> Flexible hours and generous paid time off</li>
+            </ul>
+            <div class="es-panel-chip"><strong>100%</strong> of team members covered by health benefits</div>
+          </div>
+        </div>
+
+        <div class="es-panel" role="tabpanel" id="panel-rewards" aria-labelledby="tab-rewards" hidden>
+          <div class="es-panel-img"><img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1000&q=80" alt="Team celebrating success" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'"></div>
+          <div class="es-panel-body">
+            <h3>Recognised for real impact</h3>
+            <p>When you deliver, we make sure it is seen and rewarded.</p>
+            <ul class="es-checks">
+              <li><i class="fas fa-check"></i> Competitive salary reviewed every year</li>
+              <li><i class="fas fa-check"></i> Performance bonuses and spot awards</li>
+              <li><i class="fas fa-check"></i> Monthly peer-nominated Star of the Month</li>
+              <li><i class="fas fa-check"></i> Service milestones and referral rewards</li>
+            </ul>
+            <div class="es-panel-chip"><strong>12</strong> recognition awards given every year</div>
+          </div>
+        </div>
+
+        <div class="es-panel" role="tabpanel" id="panel-community" aria-labelledby="tab-community" hidden>
+          <div class="es-panel-img"><img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1000&q=80" alt="Community meetup" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'"></div>
+          <div class="es-panel-body">
+            <h3>Belong to something bigger</h3>
+            <p>Connection across teams, cities and time zones.</p>
+            <ul class="es-checks">
+              <li><i class="fas fa-check"></i> Team offsites, hackathons and game nights</li>
+              <li><i class="fas fa-check"></i> Employee resource groups and clubs</li>
+              <li><i class="fas fa-check"></i> Volunteering and giving-back days</li>
+              <li><i class="fas fa-check"></i> Open town halls with leadership</li>
+            </ul>
+            <div class="es-panel-chip"><strong>20+</strong> countries, one connected team</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SUCCESS STORIES ================= -->
+  <section class="es-section es-stories" id="stories">
+    <div class="es-container">
+      <div class="es-head es-reveal">
+        <span class="es-eyebrow">Success stories</span>
+        <h2>Real people, <span>real growth</span></h2>
+        <p>Meet some of the team members who grew their careers with us.</p>
+      </div>
+
+      <div class="es-stories-grid">
+
+        <article class="es-story es-reveal">
+          <div class="es-story-photo">
+            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80" alt="Portrait of Ayesha Khan" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+            <span><i class="fas fa-arrow-trend-up"></i> 3 years at Xvera</span>
+          </div>
+          <div class="es-story-body">
+            <h3>Ayesha Khan</h3>
+            <p class="es-story-role">Engineering Lead</p>
+            <blockquote>“I joined as a junior developer and found mentors who believed in me before I did. Today I lead a team of twelve.”</blockquote>
+            <div class="es-path"><span>Junior Dev</span><i class="fas fa-arrow-right"></i><span>Senior Dev</span><i class="fas fa-arrow-right"></i><span>Lead</span></div>
+          </div>
+        </article>
+
+        <article class="es-story es-reveal">
+          <div class="es-story-photo">
+            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=80" alt="Portrait of Hamza Ali" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+            <span><i class="fas fa-arrow-trend-up"></i> 4 years at Xvera</span>
+          </div>
+          <div class="es-story-body">
+            <h3>Hamza Ali</h3>
+            <p class="es-story-role">Cloud Solutions Architect</p>
+            <blockquote>“The learning budget let me earn three cloud certifications. The company backed every step of my switch into architecture.”</blockquote>
+            <div class="es-path"><span>DevOps</span><i class="fas fa-arrow-right"></i><span>Cloud Engineer</span><i class="fas fa-arrow-right"></i><span>Architect</span></div>
+          </div>
+        </article>
+
+        <article class="es-story es-reveal">
+          <div class="es-story-photo">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80" alt="Portrait of Sara Malik" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+            <span><i class="fas fa-arrow-trend-up"></i> 2 years at Xvera</span>
+          </div>
+          <div class="es-story-body">
+            <h3>Sara Malik</h3>
+            <p class="es-story-role">Product Design Manager</p>
+            <blockquote>“Flexible hours and a culture of trust helped me balance family and ambition. I never had to choose one over the other.”</blockquote>
+            <div class="es-path"><span>UI Designer</span><i class="fas fa-arrow-right"></i><span>UX Lead</span><i class="fas fa-arrow-right"></i><span>Manager</span></div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= VOICES ================= -->
+  <section class="es-section es-voices" id="voices">
+    <div class="es-container">
+      <div class="es-head es-reveal">
+        <span class="es-eyebrow">In their words</span>
+        <h2>What our team <span style="color:#0ebab1">says</span></h2>
+        <p>Honest feedback from the people who build Xvera Labs every day.</p>
+      </div>
+
+      <div class="es-slider es-reveal" id="esSlider" aria-roledescription="carousel" aria-label="Employee testimonials">
+        <div class="es-slides" aria-live="polite">
+
+          <div class="es-slide is-active">
+            <i class="fas fa-quote-left"></i>
+            <blockquote>Here I am trusted to make decisions and given room to grow. It is the first place where I feel my work truly matters.</blockquote>
+            <div class="es-person">
+              <span class="es-avatar" data-initials="RF"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&h=200&q=80" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'"></span>
+              <div><strong>Rabia Farooq</strong><span>QA Lead</span></div>
+            </div>
+          </div>
+
+          <div class="es-slide">
+            <i class="fas fa-quote-left"></i>
+            <blockquote>The mentorship program changed my career. My mentor opened doors I did not know existed and helped me prepare for each one.</blockquote>
+            <div class="es-person">
+              <span class="es-avatar" data-initials="SM"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=200&h=200&q=80" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'"></span>
+              <div><strong>Saad Mehmood</strong><span>Senior Backend Engineer</span></div>
+            </div>
+          </div>
+
+          <div class="es-slide">
+            <i class="fas fa-quote-left"></i>
+            <blockquote>Remote-first really means remote-first. I work from my hometown, stay close to family, and still collaborate with a world-class team.</blockquote>
+            <div class="es-person">
+              <span class="es-avatar" data-initials="AK"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&h=200&q=80" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'"></span>
+              <div><strong>Areeba Kamal</strong><span>Data Analyst</span></div>
+            </div>
+          </div>
+
+          <div class="es-slide">
+            <i class="fas fa-quote-left"></i>
+            <blockquote>Every win is celebrated, big or small. That recognition keeps me motivated and makes me want to help the whole team succeed.</blockquote>
+            <div class="es-person">
+              <span class="es-avatar" data-initials="HA"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&h=200&q=80" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'"></span>
+              <div><strong>Haris Ahmed</strong><span>DevOps Engineer</span></div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="es-slider-nav">
+          <button type="button" class="es-arrow" id="esPrev" aria-label="Previous testimonial"><i class="fas fa-chevron-left"></i></button>
+          <div class="es-dots" id="esDots"></div>
+          <button type="button" class="es-arrow" id="esNext" aria-label="Next testimonial"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="es-section" id="faq">
+    <div class="es-container es-faq-wrap">
+
+      <div class="es-side es-reveal">
+        <span class="es-eyebrow">FAQ</span>
+        <h2>Questions about <span>life here?</span></h2>
+        <p>Here are quick answers to what people ask us most. Need more? Our team is happy to chat.</p>
+        <a href="#" class="es-btn es-btn-primary"><i class="fas fa-envelope"></i> Contact HR</a>
+      </div>
+
+      <div class="es-faq-list es-reveal" id="esFaq">
+        <details open>
+          <summary>What does the first 90 days look like?</summary>
+          <p>You get a structured onboarding plan with a dedicated buddy, clear 30/60/90-day goals and regular check-ins with your manager so you ramp up with confidence.</p>
+        </details>
+        <details>
+          <summary>How do promotions and career growth work?</summary>
+          <p>We have transparent career levels for each role. Reviews happen twice a year, and your manager and mentor help you build a plan with the skills and impact needed for the next step.</p>
+        </details>
+        <details>
+          <summary>Is there a learning budget?</summary>
+          <p>Yes. Every team member gets a yearly learning budget for courses, certifications and conferences, plus paid time to study.</p>
+        </details>
+        <details>
+          <summary>Do you support remote and flexible work?</summary>
+          <p>We are remote-first. You can work from anywhere with flexible hours, as long as you collaborate well with your team and deliver on your goals.</p>
+        </details>
+        <details>
+          <summary>What wellbeing benefits do you offer?</summary>
+          <p>Health insurance, mental health support, wellness allowance and generous paid leave are available to every team member.</p>
+        </details>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= CTA ================= -->
+  <section class="es-cta" id="join">
+    <div class="es-container">
+      <div class="es-cta-box es-reveal">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1400&q=80" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <div class="es-cta-content">
+          <h2>Ready to grow your career with us?</h2>
+          <p>Join a team that invests in you. Explore open roles and take the next step.</p>
+          <div class="es-cta-btns">
+            <a href="#" class="es-btn es-btn-light"><i class="fas fa-briefcase"></i> View open positions</a>
+            <a href="#" class="es-btn es-btn-outline"><i class="fas fa-paper-plane"></i> Send your CV</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script src="{% static 'js/pages/about-employee-success-1.js' %}"></script>
+{% endblock %}

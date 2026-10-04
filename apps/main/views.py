@@ -65,3 +65,6 @@ def careeer(request):
 
 def articial_detail(request):
     return render(request, 'artificial_intelligence/ariticial_itelligence_detail.html')
+
+def employee_success(request):
+    return render(request, 'about/employee-success.html')
