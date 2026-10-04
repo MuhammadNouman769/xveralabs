@@ -196,6 +196,7 @@ body:has(#btrx-preloader:not(.btrx-hide)) { overflow: hidden; }
    CHAT WIDGET - ROBOT BUTTON
 ================================================== */
 .btrx-chat-widget {
+    --btrx-bottom: 90px;   /* robot neeche se kitna upar rahe (back-to-top arrow ke upar) */
     position: fixed;
     right: 0;
     bottom: 0;
@@ -209,7 +210,7 @@ body:has(#btrx-preloader:not(.btrx-hide)) { overflow: hidden; }
 .btrx-chat-toggle {
     position: fixed;
     right: 24px;
-    bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+    bottom: calc(var(--btrx-bottom) + env(safe-area-inset-bottom, 0px));
     z-index: 1;
     width: 76px;
     padding: 0;
@@ -303,13 +304,13 @@ body:has(#btrx-preloader:not(.btrx-hide)) { overflow: hidden; }
 .btrx-chat-box {
     position: fixed;
     right: 24px;
-    bottom: 128px;
+    bottom: calc(var(--btrx-bottom) + 104px);
     transform: translateY(16px) scale(.96);
     transform-origin: bottom right;
     width: 440px;
     max-width: calc(100vw - 32px);
-    max-height: calc(100vh - 150px);
-    max-height: calc(100dvh - 150px);
+    max-height: calc(100vh - var(--btrx-bottom) - 126px);
+    max-height: calc(100dvh - var(--btrx-bottom) - 126px);
     display: flex;
     flex-direction: column;
     background: #fff;
@@ -455,7 +456,8 @@ body:has(#btrx-preloader:not(.btrx-hide)) { overflow: hidden; }
     .btrx-preloader-brand { letter-spacing: .2em; }
 
     /* Robot button */
-    .btrx-chat-toggle { right: 14px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); width: 62px; }
+    .btrx-chat-widget { --btrx-bottom: 84px; }
+    .btrx-chat-toggle { right: 14px; width: 62px; }
     .btrx-robot-tip { bottom: 30px; padding: 8px 12px; font-size: 12px; }
     .btrx-chat-badge { width: 18px; height: 18px; font-size: 9px; }
 
