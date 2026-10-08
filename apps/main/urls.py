@@ -22,10 +22,6 @@ urlpatterns = [
     path('staff-augmentation/', views.staff_aug, name='staff_aug'),
    # path('about/leadership-&-team/', views.leadship, name='leadership-&-team'),
     path('coming-soon/', views.coming, name='coming'),
-    path('why-choose-us/', views.why_choose_us, name='why_choose_us'),
-    path('careeer/', views.careeer, name="careeer"),
-    path('employee_success/', views.employee_success, name="employee_success"),
     path('art/', views.articial_detail, name="art"),
-    path('banefits/', views.banefits, name="banefits"),
     
 ]

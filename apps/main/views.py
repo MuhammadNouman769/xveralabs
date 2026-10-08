@@ -5,9 +5,6 @@ from django.shortcuts import render
 def home(request):
     return render(request, 'home/index.html')
 
-def why_choose_us(request):
-    return render(request, 'about/why-choose-us.html')
-
 def contact(request):
     return render(request, 'home/contact-us.html')
 
@@ -60,14 +57,6 @@ def staff_aug(request):
 def coming(request):
     return render(request, 'coming-soon.html')
 
-def careeer(request):
-    return render(request, 'about/careers.html')
 
 def articial_detail(request):
     return render(request, 'artificial_intelligence/ariticial_itelligence_detail.html')
-
-def employee_success(request):
-    return render(request, 'about/employee-success.html')
-
-def banefits(request):
-    return render(request, 'about/banefits.html')

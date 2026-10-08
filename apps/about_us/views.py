@@ -4,11 +4,11 @@ from rest_framework.renderers import TemplateHTMLRenderer
 from django.shortcuts import render
 from .models import Team
 
-""" =============== Team ApiView ================ """
+""" =============== Company View ================ """
 
-class TeamView(APIView):
+class CompanyView(APIView):
     renderer_classes = [TemplateHTMLRenderer]
-    template_name = 'about/about.html'
+    template_name = 'about/company/company.html'
 
     def get(self, request):
         teams = Team.objects.filter(
@@ -20,8 +20,25 @@ class TeamView(APIView):
         })
 
 
-def life_at_mn_solutions(request):
-    return render(request, 'about/culture.html')       
+""" =============== Why Choose Us View ================ """
+
+
+def why_choose_us(request):
+    return render(request, 'about/why-choose-us/why-choose-us.html')
+
+""" =============== Join Xvera labs View ================ """
+
+def careeers(request):
+    return render(request, 'about/join-xvera-labs/careers.html')
+
+def life_at_xvera_labs(request):
+    return render(request, 'about/join-xvera-labs/life-at-xvera-labs.html')       
 
 def diversity_equity_inclusion(request):
-    return render(request, 'about/diversity_equity_inclusion.html')
+    return render(request, 'about/join-xvera-labs/diversity-equity-inclusion.html')
+
+def employee_success(request):
+    return render(request, 'about/join-xvera-labs/employee-success.html')
+
+def benefits(request):
+    return render(request, 'about/join-xvera-labs/benefits.html')
