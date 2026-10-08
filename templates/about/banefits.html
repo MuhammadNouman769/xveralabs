@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Xvera Labs | Employee Benefits{% endblock %}
+
+
+{% block content %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Separate CSS file -->
+
+{% block page_css %}<link rel="stylesheet" href="{% static 'css/pages/benefits.css' %}">
+{% endblock %}
+  <!-- =============================================
+       HERO BANNER - employee benefits main visual
+  ============================================== -->
+  <header class="xb-hero">
+    <div class="xb-hero-overlay"></div>
+    <div class="xb-hero-content">
+      <span class="xb-hero-badge">Xvera Labs · People First</span>
+      <h1>Benefits that <span>empower</span> our team</h1>
+      <p>We invest in your growth, health, and future — because great work starts with great care.</p>
+      <div class="xb-hero-stats">
+        <div><i class="fas fa-heart"></i> <strong>100%</strong> health coverage</div>
+        <div><i class="fas fa-graduation-cap"></i> <strong>$2k+</strong> learning budget</div>
+        <div><i class="fas fa-clock"></i> <strong>Flexible</strong> hours</div>
+      </div>
+    </div>
+    <div class="xb-hero-wave">
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+        <path d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z" fill="#ffffff"></path>
+      </svg>
+    </div>
+  </header>
+
+  <!-- =============================================
+       SECTION 1 – HEALTH & WELLNESS (online image)
+  ============================================== -->
+  <section class="xb-benefits xb-benefits--health">
+    <div class="xb-container">
+      <div class="xb-benefits-grid">
+        <div class="xb-benefits-text">
+          <span class="xb-section-tag">Health & Wellness</span>
+          <h2>Your well‑being comes first</h2>
+          <p>Comprehensive medical, dental, and vision plans for you and your family. Plus mental health support, wellness stipends, and gym memberships.</p>
+          <ul class="xb-benefits-list">
+            <li><i class="fas fa-check-circle"></i> Premium health insurance</li>
+            <li><i class="fas fa-check-circle"></i> 24/7 telemedicine</li>
+            <li><i class="fas fa-check-circle"></i> Annual wellness retreat</li>
+          </ul>
+        </div>
+        <div class="xb-benefits-image">
+          <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80" alt="Healthy lifestyle and wellness">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       SECTION 2 – GROWTH & LEARNING (online image)
+  ============================================== -->
+  <section class="xb-benefits xb-benefits--growth xb-reverse">
+    <div class="xb-container">
+      <div class="xb-benefits-grid">
+        <div class="xb-benefits-image">
+          <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80" alt="Learning and development">
+        </div>
+        <div class="xb-benefits-text">
+          <span class="xb-section-tag">Growth & Learning</span>
+          <h2>Grow your career, your way</h2>
+          <p>We fund certifications, conferences, and courses. Access to mentorship, internal workshops, and a dedicated learning budget every year.</p>
+          <ul class="xb-benefits-list">
+            <li><i class="fas fa-check-circle"></i> $2,000 annual learning stipend</li>
+            <li><i class="fas fa-check-circle"></i> Free access to premium courses</li>
+            <li><i class="fas fa-check-circle"></i> 1:1 mentorship program</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       SECTION 3 – FLEXIBILITY & TIME OFF (online image)
+  ============================================== -->
+  <section class="xb-benefits xb-benefits--flex">
+    <div class="xb-container">
+      <div class="xb-benefits-grid">
+        <div class="xb-benefits-text">
+          <span class="xb-section-tag">Flexibility & Time Off</span>
+          <h2>Work‑life balance, redefined</h2>
+          <p>Remote‑friendly, flexible hours, and generous paid time off. We also offer paid volunteer days and parental leave for all parents.</p>
+          <ul class="xb-benefits-list">
+            <li><i class="fas fa-check-circle"></i> 25 days PTO + holidays</li>
+            <li><i class="fas fa-check-circle"></i> Remote & hybrid options</li>
+            <li><i class="fas fa-check-circle"></i> 16 weeks parental leave</li>
+          </ul>
+        </div>
+        <div class="xb-benefits-image">
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80" alt="Flexible work and team collaboration">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       SECTION 4 – PERKS & COMMUNITY (online image)
+  ============================================== -->
+  <section class="xb-benefits xb-benefits--perks xb-reverse">
+    <div class="xb-container">
+      <div class="xb-benefits-grid">
+        <div class="xb-benefits-image">
+          <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&q=80" alt="Team perks and community">
+        </div>
+        <div class="xb-benefits-text">
+          <span class="xb-section-tag">Perks & Community</span>
+          <h2>More than just a job</h2>
+          <p>From team retreats to home office upgrades and commuter benefits — we make sure you feel valued and connected.</p>
+          <ul class="xb-benefits-list">
+            <li><i class="fas fa-check-circle"></i> Home office setup allowance</li>
+            <li><i class="fas fa-check-circle"></i> Annual team retreats</li>
+            <li><i class="fas fa-check-circle"></i> Commuter & meal benefits</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       SIMPLE FOOTER / CTA (optional)
+  ============================================== -->
+  <div class="xb-cta-strip">
+    <p>Ready to join a team that invests in you?</p>
+    <a href="#" class="xb-cta-btn">See open roles <i class="fas fa-arrow-right"></i></a>
+  </div>
+
+  <!-- Separate JS file -->
+  
+<script src="{% static 'js/pages/benefits-1.js' %}"></script>
+{% endblock %}

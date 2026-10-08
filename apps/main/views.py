@@ -68,3 +68,6 @@ def articial_detail(request):
 
 def employee_success(request):
     return render(request, 'about/employee-success.html')
+
+def banefits(request):
+    return render(request, 'about/banefits.html')
