@@ -362,6 +362,80 @@
           </div>
         </li>
 
+        <!-- GENERATIVE AI -->
+        <li class="btrx-mega-parent">
+          <a class="btr-nav__link has-mega {% if request.resolver_match.url_name == 'generative_ai' %}active{% endif %}" href="#">
+            Generative AI
+            <span class="btr-nav__chevron">
+              <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </a>
+          <div class="btrx-mega-menu genai-menu">
+            <div class="btrx-mega-left">
+
+              <!-- Column 1: Generative AI Development -->
+              <div class="btrx-mega-col">
+                <h4>Generative AI Development</h4>
+                <ul class="btrx-mega-links">
+                  <li><a href="{% url 'coming' %}">LLM Application Development</a></li>
+                  <li><a href="{% url 'coming' %}">Custom Chatbot Development</a></li>
+                  <li><a href="{% url 'coming' %}">AI Content Generation</a></li>
+                  <li><a href="{% url 'coming' %}">Fine-Tuning & Model Customization</a></li>
+                </ul>
+              </div>
+
+              <!-- Column 2: RAG & Knowledge Systems -->
+              <div class="btrx-mega-col">
+                <h4>RAG & Knowledge Systems</h4>
+                <ul class="btrx-mega-links">
+                  <li><a href="{% url 'coming' %}">RAG Solutions</a></li>
+                  <li><a href="{% url 'coming' %}">Enterprise Knowledge Assistants</a></li>
+                  <li><a href="{% url 'coming' %}">AI Document Intelligence</a></li>
+                  <li><a href="{% url 'coming' %}">Vector Database Integration</a></li>
+                </ul>
+              </div>
+
+              <!-- Column 3: Agentic AI -->
+              <div class="btrx-mega-col">
+                <h4>Agentic AI</h4>
+                <ul class="btrx-mega-links">
+                  <li><a href="{% url 'coming' %}">AI Agent Development</a></li>
+                  <li><a href="{% url 'coming' %}">Multi-Agent Workflows</a></li>
+                  <li><a href="{% url 'coming' %}">AI Workflow Automation</a></li>
+                  <li><a href="{% url 'coming' %}">Voice & Conversational Agents</a></li>
+                </ul>
+              </div>
+
+              <!-- Column 4: GenAI Integration & Services -->
+              <div class="btrx-mega-col">
+                <h4>GenAI Integration & Services</h4>
+                <ul class="btrx-mega-links">
+                  <li><a href="{% url 'coming' %}">OpenAI / Claude / Gemini Integration</a></li>
+                  <li><a href="{% url 'coming' %}">Prompt Engineering Services</a></li>
+                  <li><a href="{% url 'coming' %}">AI Copilots for Business</a></li>
+                  <li><a href="{% url 'coming' %}">GenAI MVP Development</a></li>
+                </ul>
+              </div>
+
+            </div>
+            <div class="btrx-mega-right">
+              <div class="btrx-company-logo">
+                <a href="{% url 'home' %}" class="btrx-brand-switch">
+                  <img src="{% static 'images/logos/xvera.png' %}" class="btrx-brand-default" alt="Logo">
+                  <img src="{% static 'images/logos/xvera.png' %}" class="btrx-brand-hover" alt="Logo Hover">
+                </a>
+              </div>
+              <h3 class="btrx-company-title">Generative AI Solutions</h3>
+              <p class="btrx-company-desc">Build intelligent chatbots, AI agents and knowledge systems that automate work and unlock new ways to serve your customers.</p>
+              <div class="btrx-case-highlight">
+                <strong>What We Build</strong>
+                <p>RAG assistants, AI agents, LLM-powered apps and workflow automation, from MVP to production.</p>
+              </div>
+              <a href="{% url 'contact_us' %}" class="btrx-company-btn">Build Your GenAI Solution</a>
+            </div>
+          </div>
+        </li>
+
         <!-- SOLUTIONS -->
         <li class="btrx-mega-parent">
           <a class="btr-nav__link has-mega {% if request.resolver_match.url_name == 'solutions' %}active{% endif %}" href="#!">
@@ -738,4 +812,4 @@
 </header>
 
 <!-- ================= JS ================= -->
-<script src="{% static 'js/layout/header-1.js' %}?v=2"></script>
+<script src="{% static 'js/layout/header-1.js' %}?v=3"></script>

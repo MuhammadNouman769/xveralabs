@@ -311,7 +311,8 @@ body {
 }
 
 .btrx-mega-menu.services-menu .btrx-mega-right,
-.btrx-mega-menu.ai-menu .btrx-mega-right {
+.btrx-mega-menu.ai-menu .btrx-mega-right,
+.btrx-mega-menu.genai-menu .btrx-mega-right {
   width: 250px;
   padding-left: 30px;
 }
@@ -573,6 +574,12 @@ body {
   .btrx-mega-menu.ai-menu .btrx-mega-left {
     row-gap: 12px;
   }
+
+  /* Generative AI menu: hamesha 4 columns */
+  .btrx-mega-menu.genai-menu .btrx-mega-left {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    row-gap: 12px;
+  }
 }
 
 @media (min-width: 1500px) {
@@ -723,5 +730,16 @@ body {
   .btr-logo-switch {
     width: 100px;
     height: 32px;
+  }
+}
+
+/* =====================================================================
+   NAVBAR TIGHT FIT (1281px - 1440px)
+   Ab navbar mein 10 items hain, is range mein jagah kam padti hai
+   ===================================================================== */
+@media (min-width: 1281px) and (max-width: 1440px) {
+  .btr-nav__link {
+    padding: 9px 7px;
+    font-size: 11px;
   }
 }
