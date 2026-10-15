@@ -42,3 +42,6 @@ def employee_success(request):
 
 def benefits(request):
     return render(request, 'about/join-xvera-labs/benefits.html')
+
+def campus_ambassador_program(request):
+    return render(request, 'about/join-xvera-labs/campus-ambassador-program.html')    

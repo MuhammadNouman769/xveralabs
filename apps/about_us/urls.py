@@ -6,7 +6,8 @@ from .views import (
     life_at_xvera_labs,
     diversity_equity_inclusion,
     employee_success,
-    benefits
+    benefits,
+    campus_ambassador_program
 )       
 urlpatterns = [
     # company url
@@ -19,5 +20,6 @@ urlpatterns = [
     path('join-xvera-labs/diversity-equity-inclusion/', diversity_equity_inclusion, name='diversity-equity-inclusion'),
     path('join-xvera-labs/employee-success/',employee_success, name="employee_success"),
     path('join-xvera-labs/benefits/',benefits, name="benefits"),
+    path('join-xvera-labs/campus-ambassador-program/',campus_ambassador_program, name="campus_ambassador_program"),
     
 ]

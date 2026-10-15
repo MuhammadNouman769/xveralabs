@@ -1,0 +1,286 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Campus Ambassador Program | Xvera Labs{% endblock %}
+{% block body_class %}page-about-campuses{% endblock %}
+
+{% block page_css %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="{% static 'css/pages/campus-ambassador-program.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- ============ 1. HERO BANNER ============ -->
+<header class="cap-banner">
+  <div class="cap-banner-content">
+    <span class="cap-badge"><i class="fas fa-star"></i> Applications Open — 2025 Cohort</span>
+    <h1>Campus Ambassador Program</h1>
+    <p>Represent your campus. Build your network. Earn rewards. Become the leader your peers look up to.</p>
+    <div class="cap-banner-actions">
+      <a href="#cap-apply" class="cap-btn-primary">Apply Now <i class="fas fa-arrow-right"></i></a>
+      <a href="#cap-about" class="cap-btn-ghost">Learn More <i class="fas fa-chevron-down"></i></a>
+    </div>
+    <div class="cap-banner-stats">
+      <div><strong>500+</strong><span>Ambassadors</span></div>
+      <div><strong>120+</strong><span>Campuses</span></div>
+      <div><strong>₹5L+</strong><span>Rewards Given</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="cap-main">
+
+  <!-- ============ 2. ABOUT ============ -->
+  <section id="cap-about" class="cap-section cap-about">
+    <div class="cap-container">
+      <div class="cap-section-head">
+        <span class="cap-eyebrow">Who We Are</span>
+        <h2>Why Become an Ambassador?</h2>
+        <p class="cap-subtitle">Join a community of passionate student leaders shaping the future of technology on their campuses.</p>
+      </div>
+      <div class="cap-about-grid">
+        <div class="cap-about-text">
+          <p>As a Campus Ambassador, you'll be the face of Xvera Labs on your campus — organizing events, driving engagement, and building a vibrant community of learners and innovators.</p>
+          <p>This isn't just a title. It's a launchpad for your career. You'll gain hands-on experience in marketing, community building, event management, and leadership — all while earning rewards and recognition.</p>
+          <ul class="cap-check-list">
+            <li><i class="fas fa-check-circle"></i> Boost your resume with real-world marketing experience</li>
+            <li><i class="fas fa-check-circle"></i> Access exclusive workshops, mentorship & certifications</li>
+            <li><i class="fas fa-check-circle"></i> Earn certificates, swag, and performance-based rewards</li>
+            <li><i class="fas fa-check-circle"></i> Get a LinkedIn recommendation from our leadership team</li>
+          </ul>
+          <a href="#cap-apply" class="cap-btn-primary">Start Your Journey <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="cap-about-images">
+          <img class="cap-img-main" src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&auto=format&fit=crop&q=70" alt="Students collaborating">
+          <img class="cap-img-float" src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&auto=format&fit=crop&q=70" alt="Team meeting">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3. BENEFITS ============ -->
+  <section class="cap-section cap-benefits">
+    <div class="cap-container">
+      <div class="cap-section-head">
+        <span class="cap-eyebrow">What You Get</span>
+        <h2>Perks &amp; Benefits</h2>
+        <p class="cap-subtitle">We invest in our ambassadors because they're the future. Here's what you'll receive.</p>
+      </div>
+      <div class="cap-benefits-grid">
+        <div class="cap-benefit-card">
+          <div class="cap-icon-wrap"><i class="fas fa-medal"></i></div>
+          <h3>Certificate &amp; Recognition</h3>
+          <p>Receive an official certificate and a personalised LinkedIn recommendation.</p>
+        </div>
+        <div class="cap-benefit-card">
+          <div class="cap-icon-wrap"><i class="fas fa-gift"></i></div>
+          <h3>Exclusive Swag</h3>
+          <p>Get branded merchandise, hoodies, goodies, and surprise gift boxes.</p>
+        </div>
+        <div class="cap-benefit-card">
+          <div class="cap-icon-wrap"><i class="fas fa-chart-line"></i></div>
+          <h3>Skill Development</h3>
+          <p>Workshops on marketing, leadership, public speaking, and communication.</p>
+        </div>
+        <div class="cap-benefit-card">
+          <div class="cap-icon-wrap"><i class="fas fa-network-wired"></i></div>
+          <h3>Networking</h3>
+          <p>Connect with ambassadors from top campuses across the nation.</p>
+        </div>
+        <div class="cap-benefit-card">
+          <div class="cap-icon-wrap"><i class="fas fa-briefcase"></i></div>
+          <h3>Internship Priority</h3>
+          <p>Top performers get fast-tracked to paid internships at Xvera Labs.</p>
+        </div>
+        <div class="cap-benefit-card">
+          <div class="cap-icon-wrap"><i class="fas fa-trophy"></i></div>
+          <h3>Cash Rewards</h3>
+          <p>Monthly leaderboards with cash prizes and Amazon vouchers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 4. HOW IT WORKS ============ -->
+  <section class="cap-section cap-how">
+    <div class="cap-container">
+      <div class="cap-section-head">
+        <span class="cap-eyebrow">The Process</span>
+        <h2>How It Works</h2>
+        <p class="cap-subtitle">From application to ambassador in four simple steps.</p>
+      </div>
+      <div class="cap-steps">
+        <div class="cap-step">
+          <span class="cap-step-number">1</span>
+          <h3>Apply Online</h3>
+          <p>Fill out a simple 5-minute application form telling us why you're a great fit.</p>
+        </div>
+        <div class="cap-step">
+          <span class="cap-step-number">2</span>
+          <h3>Get Selected</h3>
+          <p>Our team reviews applications and shortlists ambassadors within 7 days.</p>
+        </div>
+        <div class="cap-step">
+          <span class="cap-step-number">3</span>
+          <h3>Onboard</h3>
+          <p>Attend the virtual orientation, receive your welcome kit, and meet your cohort.</p>
+        </div>
+        <div class="cap-step">
+          <span class="cap-step-number">4</span>
+          <h3>Lead &amp; Earn</h3>
+          <p>Run campus activities, hit milestones, and unlock rewards every month.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5. RESPONSIBILITIES (split layout) ============ -->
+  <section class="cap-section cap-responsibilities">
+    <div class="cap-container">
+      <div class="cap-split">
+        <div class="cap-split-image">
+          <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=800&auto=format&fit=crop&q=70" alt="Students presenting">
+        </div>
+        <div class="cap-split-text">
+          <span class="cap-eyebrow">Your Role</span>
+          <h2>What You'll Actually Do</h2>
+          <p>Being an ambassador is about action. Here's what a typical month looks like:</p>
+          <div class="cap-responsibility-list">
+            <div class="cap-resp-item">
+              <i class="fas fa-bullhorn"></i>
+              <div>
+                <h4>Promote on Campus</h4>
+                <p>Share campaigns, workshops, and opportunities with your peers.</p>
+              </div>
+            </div>
+            <div class="cap-resp-item">
+              <i class="fas fa-users"></i>
+              <div>
+                <h4>Host Events</h4>
+                <p>Organize 1–2 meetups, workshops, or hackathons per month.</p>
+              </div>
+            </div>
+            <div class="cap-resp-item">
+              <i class="fas fa-share-nodes"></i>
+              <div>
+                <h4>Create Content</h4>
+                <p>Post reels, stories, and blogs about your ambassador journey.</p>
+              </div>
+            </div>
+            <div class="cap-resp-item">
+              <i class="fas fa-comments"></i>
+              <div>
+                <h4>Be the Voice</h4>
+                <p>Collect feedback from students and relay it to our team.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 6. TESTIMONIALS ============ -->
+  <section class="cap-section cap-testimonials">
+    <div class="cap-container">
+      <div class="cap-section-head">
+        <span class="cap-eyebrow">Real Stories</span>
+        <h2>Hear From Our Ambassadors</h2>
+        <p class="cap-subtitle">Don't take our word for it. Here's what past ambassadors have to say.</p>
+      </div>
+      <div class="cap-testimonial-grid">
+        <div class="cap-testimonial">
+          <div class="cap-quote"><i class="fas fa-quote-left"></i></div>
+          <p>"Being an ambassador completely changed my college experience. I learned more in 3 months than I did in 3 semesters."</p>
+          <div class="cap-testimonial-author">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=70" alt="Priya Sharma">
+            <div>
+              <strong>Priya Sharma</strong>
+              <span>IIT Delhi • 2024 Cohort</span>
+            </div>
+          </div>
+        </div>
+        <div class="cap-testimonial">
+          <div class="cap-quote"><i class="fas fa-quote-left"></i></div>
+          <p>"The mentorship and networking alone are worth it. I landed my first internship through a connection I made here."</p>
+          <div class="cap-testimonial-author">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=70" alt="Arjun Mehta">
+            <div>
+              <strong>Arjun Mehta</strong>
+              <span>BITS Pilani • 2024 Cohort</span>
+            </div>
+          </div>
+        </div>
+        <div class="cap-testimonial">
+          <div class="cap-quote"><i class="fas fa-quote-left"></i></div>
+          <p>"I was shy before joining. Now I've hosted 6 events and led a team of 15 students. This program builds leaders."</p>
+          <div class="cap-testimonial-author">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&auto=format&fit=crop&q=70" alt="Sneha Reddy">
+            <div>
+              <strong>Sneha Reddy</strong>
+              <span>VIT Vellore • 2024 Cohort</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 7. FAQ ============ -->
+  <section class="cap-section cap-faq">
+    <div class="cap-container">
+      <div class="cap-section-head">
+        <span class="cap-eyebrow">Questions</span>
+        <h2>Frequently Asked Questions</h2>
+        <p class="cap-subtitle">Everything you need to know before applying.</p>
+      </div>
+      <div class="cap-faq-list">
+        <details class="cap-faq-item" open>
+          <summary>Who can apply for the program? <i class="fas fa-chevron-down"></i></summary>
+          <p>Any currently enrolled undergraduate or postgraduate student in India with a valid college ID can apply. We welcome students from all streams — engineering, business, design, arts, and sciences.</p>
+        </details>
+        <details class="cap-faq-item">
+          <summary>Is there any application fee? <i class="fas fa-chevron-down"></i></summary>
+          <p>No, applying is completely free. We never charge ambassadors for participation, training, or kits.</p>
+        </details>
+        <details class="cap-faq-item">
+          <summary>How much time do I need to commit? <i class="fas fa-chevron-down"></i></summary>
+          <p>Expect 5–8 hours per week. This includes event hosting, content creation, and attending bi-weekly virtual meetups.</p>
+        </details>
+        <details class="cap-faq-item">
+          <summary>Is this a paid role? <i class="fas fa-chevron-down"></i></summary>
+          <p>It's a volunteer program with performance-based rewards. Top ambassadors earn cash prizes, vouchers, and priority internship offers.</p>
+        </details>
+        <details class="cap-faq-item">
+          <summary>Will I get a certificate? <i class="fas fa-chevron-down"></i></summary>
+          <p>Yes. Every ambassador who completes the 3-month term receives an official certificate and a LinkedIn recommendation letter.</p>
+        </details>
+        <details class="cap-faq-item">
+          <summary>Can I apply if I'm in my first year? <i class="fas fa-chevron-down"></i></summary>
+          <p>Absolutely! We love first-year energy. Around 30% of our ambassadors are in their first year of college.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 8. FINAL CTA ============ -->
+  <section id="cap-apply" class="cap-section cap-cta">
+    <div class="cap-container">
+      <div class="cap-cta-inner">
+        <span class="cap-badge cap-badge-light"><i class="fas fa-hourglass-half"></i> Deadline: March 31, 2025</span>
+        <h2>Ready to Lead Your Campus?</h2>
+        <p>Join 500+ student leaders who are already building the future. Applications for the 2025 cohort close soon.</p>
+        <div class="cap-cta-actions">
+          <a href="#" class="cap-btn-primary">Apply as Ambassador <i class="fas fa-arrow-right"></i></a>
+          <a href="#" class="cap-btn-ghost cap-btn-ghost-light">Download Brochure <i class="fas fa-download"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+{% endblock %}
