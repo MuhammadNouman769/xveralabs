@@ -130,7 +130,7 @@
         height: 42px;
         border-radius: 50%;
         background: var(--btr-ft-white);
-        border: 2px solid rgba(14, 186, 177, 0.15);
+        border: 2px solid rgb(9, 219, 208);
         color: var(--btr-ft-primary);
         transition: var(--btr-ft-transition);
         text-decoration: none;
