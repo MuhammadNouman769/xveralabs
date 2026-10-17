@@ -957,117 +957,231 @@
         }
     }
 
-/* ===================== WHO WE ARE ===================== */
+/* =====================================================================
+   WHO WE ARE  —  "FEATURED INSIGHTS" STYLE
+   Left: tag + gradient heading + subtitle + button
+   Right: 3 staggered columns of image cards (2 / 3 / 3)
+   Cyan glow at bottom-right of the section
+   ===================================================================== */
 :where(body.page-home-index) .btrwho-section {
-    padding: 180px 4%;
-    background: #f7f8fa;
+    --btrwho-card: 190px;
+    --btrwho-step: 47px;
+    --btrwho-gap: 14px;
+    position: relative;
+    padding: 70px 4% 80px;
+    background:
+        radial-gradient(ellipse 40% 70% at 100% 100%, rgba(0, 255, 255, 1) 0%, rgba(0, 255, 255, 0.45) 38%, rgba(0, 255, 255, 0) 100%),
+        #ffffff;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    gap: 70px;
+    align-items: flex-start;
+    gap: 60px;
     overflow: hidden;
 }
-:where(body.page-home-index) .btrwho-left { width: 420px; flex-shrink: 0; }
+:where(body.page-home-index) .btrwho-left {
+    width: 500px;
+    flex-shrink: 0;
+    padding-top: 40px;
+    font-family: "Avenir Next", "Century Gothic", "URW Gothic", "Questrial", "Segoe UI", Arial, sans-serif;
+    position: relative;
+    z-index: 2;
+}
 :where(body.page-home-index) .btrwho-tag {
     display: block;
-    color: #0ebab1;
-    font-size: 20px;
-    font-weight: 800;
-    letter-spacing: 4px;
-    margin-bottom: 20px;
+    color: #17b3b0;
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
 }
 :where(body.page-home-index) .btrwho-left h2 {
-    font-size: 58px;
-    line-height: 1.08;
-    font-weight: 800;
-    margin-bottom: 25px;
-    background: linear-gradient(to right, #111827 0%, #111827 40%, #0ebab1 55%, #0ebab1 70%, #111827 100%);
+    font-size: 42px;
+    line-height: 1.12;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    margin-bottom: 14px;
+    background: linear-gradient(100deg, #0c4a66 0%, #0e6f80 45%, #13b3ab 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-:where(body.page-home-index) .btrwho-left p {
-    font-size: 18px;
-    line-height: 1.9;
-    color: black;
-    margin-bottom: 35px;
+:where(body.page-home-index) .btrwho-sub {
+    font-size: 28px;
+    font-weight: 300;
+    line-height: 1.25;
+    color: #0a0a0a;
+    margin-bottom: 16px;
+}
+:where(body.page-home-index) .btrwho-text {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: #334155;
+    max-width: 430px;
+    margin-bottom: 22px;
 }
 :where(body.page-home-index) .btrwho-main-btn {
     display: inline-block;
-    padding: 16px 34px;
+    padding: 9px 20px;
     background: #0ebab1;
     color: #fff;
     text-decoration: none;
     border-radius: 50px;
     font-weight: 700;
+    font-size: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+:where(body.page-home-index) .btrwho-main-btn:hover {
+    background: #0a8a82;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(14, 186, 177, 0.35);
 }
 
-/* Staggered Cards */
-:where(body.page-home-index) .btrwho-layout { display: flex; gap: 25px; align-items: center; }
-:where(body.page-home-index) .btrwho-column { display: flex; flex-direction: column; gap: 25px; }
-:where(body.page-home-index) .btrwho-col-1 { margin-top: 170px; }
-:where(body.page-home-index) .btrwho-col-2 { margin-top: 20px; }
-:where(body.page-home-index) .btrwho-col-3 { margin-top: -150px; }
-
-:where(body.page-home-index) .btrwho-card {
-    width: 260px;
-    height: 260px;
+/* Staggered columns */
+:where(body.page-home-index) .btrwho-layout {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-left: auto;
     position: relative;
+    z-index: 2;
+}
+:where(body.page-home-index) .btrwho-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--btrwho-gap);
+}
+:where(body.page-home-index) .btrwho-col-1 { margin-top: calc(var(--btrwho-step) * 2); }
+:where(body.page-home-index) .btrwho-col-2 { margin-top: var(--btrwho-step); }
+:where(body.page-home-index) .btrwho-col-3 { margin-top: 0; }
+
+/* ---------- Card ---------- */
+:where(body.page-home-index) .btrwho-card {
+    display: block;
+    position: relative;
+    width: var(--btrwho-card);
+    height: var(--btrwho-card);
     overflow: hidden;
-    border-radius: 24px;
-    box-shadow: 0 20px 40px rgba(0,0,0,.12);
-    transition: all 0.4s ease;
+    border-radius: 5px;
+    background: #0b1d2e;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+    cursor: pointer;
+    transition: opacity 0.7s ease, transform 0.45s ease, box-shadow 0.4s ease;
 }
 :where(body.page-home-index) .btrwho-card img {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease;
+    display: block;
+    transition: transform 0.7s ease, filter 0.5s ease;
 }
 :where(body.page-home-index) .btrwho-overlay {
     position: absolute;
     inset: 0;
-    padding: 32px 24px 70px 24px;
+    padding: 16px 16px 14px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    background: linear-gradient(to top, rgba(0,0,0,.85), rgba(0,0,0,.25));
+    justify-content: flex-start;
+    background: linear-gradient(180deg, rgba(8, 30, 52, 0.78) 0%, rgba(8, 30, 52, 0.5) 60%, rgba(8, 30, 52, 0.35) 100%);
+}
+/* hover par neeche se gehra gradient taake button saaf dikhe */
+:where(body.page-home-index) .btrwho-overlay::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(4, 18, 34, 0.35) 0%, rgba(4, 18, 34, 0.88) 100%);
+    opacity: 0;
+    transition: opacity 0.45s ease;
+    pointer-events: none;
+}
+:where(body.page-home-index) .btrwho-overlay h3,
+:where(body.page-home-index) .btrwho-overlay p {
+    position: relative;
+    z-index: 1;
+    font-family: "Avenir Next", "Century Gothic", "URW Gothic", "Questrial", "Segoe UI", Arial, sans-serif !important;
+    text-align: left !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
 }
 :where(body.page-home-index) .btrwho-overlay h3 {
-    color: #fff !important;
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 8px;
+    color: #ffffff !important;
+    font-size: 18px;
+    font-weight: 500 !important;
+    line-height: 1.2;
+    margin: 0 0 6px !important;
 }
 :where(body.page-home-index) .btrwho-overlay p {
-    color: #fff;
-    font-size: 15px;
-    opacity: .95;
-    margin-bottom: 18px;
+    color: rgba(255, 255, 255, 0.94) !important;
+    font-size: 13px;
+    font-weight: 300 !important;
+    line-height: 1.25;
+    margin: 0 !important;
+    transition: transform 0.45s ease;
 }
-:where(body.page-home-index) .btrwho-overlay a {
+
+/* ---------- Explore More button (card ke andar) ---------- */
+:where(body.page-home-index) .btrwho-card .btrwho-card-btn {
+    position: absolute;
+    left: 16px;
+    bottom: 14px;
+    z-index: 3;
     display: inline-block;
     width: max-content;
-    padding: 11px 24px;
-    background: #0ebab1;
-    color: #fff;
+    padding: 8px 18px;
+    background: #0ebab1 !important;
+    color: #ffffff !important;
     border-radius: 40px;
-    text-decoration: none;
-    font-weight: 600;
+    font-family: "Avenir Next", "Century Gothic", "URW Gothic", "Questrial", "Segoe UI", Arial, sans-serif !important;
+    font-size: 10px;
+    font-weight: 700 !important;
+    letter-spacing: 0.02em;
+    text-decoration: none !important;
     opacity: 0;
-    transform: translateY(35px);
-    transition: all 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+    visibility: hidden;
+    transform: translateY(26px);
+    transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), visibility 0.4s ease, background 0.3s ease, box-shadow 0.3s ease;
 }
-:where(body.page-home-index) .btrwho-card:hover .btrwho-overlay a {
+:where(body.page-home-index) .btrwho-card .btrwho-card-btn:hover {
+    background: #0a8a82 !important;
+    box-shadow: 0 8px 20px rgba(14, 186, 177, 0.45);
+    transform: translateY(-2px) scale(1.05);
+}
+
+/* ---------- Card hover motion ---------- */
+:where(body.page-home-index) .btrwho-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 34px rgba(0, 0, 0, 0.45);
+}
+:where(body.page-home-index) .btrwho-card:hover img {
+    transform: scale(1.08);
+    filter: saturate(1.15);
+}
+:where(body.page-home-index) .btrwho-card:hover .btrwho-overlay::after {
+    opacity: 1;
+}
+:where(body.page-home-index) .btrwho-card:hover .btrwho-card-btn,
+:where(body.page-home-index) .btrwho-card:focus-within .btrwho-card-btn {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Scroll reveal (JS .btrwho-js class lagata hai, JS na chale to cards dikhte rahenge) */
+:where(body.page-home-index) .btrwho-section.btrwho-js .btrwho-card {
+    opacity: 0;
+    transform: translateY(40px);
+}
+:where(body.page-home-index) .btrwho-section.btrwho-js .btrwho-card.is-visible {
     opacity: 1;
     transform: translateY(0);
 }
-:where(body.page-home-index) .btrwho-card:hover {
-    box-shadow: 0 30px 60px rgba(0,0,0,.18);
+:where(body.page-home-index) .btrwho-section.btrwho-js .btrwho-card.is-visible:hover {
+    transform: translateY(-8px);
 }
-:where(body.page-home-index) .btrwho-card:hover img {
-    transform: scale(1.04);
-}
+
     /* ================================================
        TESTIMONIALS SECTION - card-by-card (JS controlled)
        ================================================ */
@@ -2124,42 +2238,32 @@
 /* ====================== 1450px ====================== */
 @media (max-width: 1450px) {
     :where(body.page-home-index) .btrwho-section {
-        padding: 150px 3%;
-        gap: 50px;
+        --btrwho-card: 165px;
+        --btrwho-step: 41px;
+        --btrwho-gap: 12px;
+        padding: 60px 3% 70px;
+        gap: 40px;
     }
     :where(body.page-home-index) .btrwho-left {
-        width: 340px;
+        width: 430px;
     }
     :where(body.page-home-index) .btrwho-left h2 {
-        font-size: 46px;
+        font-size: 36px;
     }
-    :where(body.page-home-index) .btrwho-left p {
-        font-size: 16px;
+    :where(body.page-home-index) .btrwho-sub {
+        font-size: 24px;
     }
-    :where(body.page-home-index) .btrwho-layout,
-    :where(body.page-home-index) .btrwho-column {
-        gap: 20px;
+    :where(body.page-home-index) .btrwho-text {
+        font-size: 14px;
     }
-    :where(body.page-home-index) .btrwho-card {
-        width: 220px;
-        height: 220px;
-    }
-    :where(body.page-home-index) .btrwho-col-1 { margin-top: 145px; }
-    :where(body.page-home-index) .btrwho-col-2 { margin-top: 17px; }
-    :where(body.page-home-index) .btrwho-col-3 { margin-top: -125px; }
     :where(body.page-home-index) .btrwho-overlay {
-        padding: 24px 18px 56px;
+        padding: 14px 13px 12px;
     }
     :where(body.page-home-index) .btrwho-overlay h3 {
-        font-size: 20px;
+        font-size: 16px;
     }
     :where(body.page-home-index) .btrwho-overlay p {
-        font-size: 13px;
-        margin-bottom: 12px;
-    }
-    :where(body.page-home-index) .btrwho-overlay a {
-        padding: 9px 18px;
-        font-size: 13px;
+        font-size: 12px;
     }
 }
 
@@ -2206,24 +2310,27 @@
     :where(body.page-home-index) .btr-orbit-planet--ringed { width: 480px; height: 480px; }
     :where(body.page-home-index) .btr-earth-orbit { width: 190px; height: 190px; }
 
+    /* WHO WE ARE: stack — text upar, cards neeche 3-column grid */
     :where(body.page-home-index) .btrwho-section {
         flex-direction: column;
         align-items: stretch;
-        padding: 100px 5%;
-        gap: 50px;
+        padding: 80px 5% 90px;
+        gap: 40px;
     }
     :where(body.page-home-index) .btrwho-left {
         width: 100%;
         max-width: 720px;
+        padding-top: 0;
     }
     :where(body.page-home-index) .btrwho-left h2 {
-        font-size: 44px;
+        font-size: 42px;
     }
     :where(body.page-home-index) .btrwho-layout {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 20px;
+        gap: 16px;
         width: 100%;
+        margin-left: 0;
     }
     :where(body.page-home-index) .btrwho-column {
         display: contents;
@@ -2319,10 +2426,10 @@
     }
 
     :where(body.page-home-index) .btrwho-section {
-        padding: 80px 20px;
+        padding: 70px 20px 80px;
     }
     :where(body.page-home-index) .btrwho-left h2 {
-        font-size: 38px;
+        font-size: 36px;
     }
 
     :where(body.page-home-index) .btr-tech-section {
@@ -2444,16 +2551,19 @@
     :where(body.page-home-index) .btr-floating-card span { font-size: 0.6rem; }
 
     :where(body.page-home-index) .btrwho-section {
-        padding: 60px 20px;
-        gap: 36px;
+        padding: 60px 20px 70px;
+        gap: 32px;
     }
     :where(body.page-home-index) .btrwho-left h2 {
         font-size: 30px;
     }
-    :where(body.page-home-index) .btrwho-left p {
-        font-size: 15px;
+    :where(body.page-home-index) .btrwho-sub {
+        font-size: 22px;
+    }
+    :where(body.page-home-index) .btrwho-text {
+        font-size: 14px;
         line-height: 1.7;
-        margin-bottom: 24px;
+        margin-bottom: 20px;
     }
     :where(body.page-home-index) .btrwho-layout {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2612,16 +2722,19 @@
     :where(body.page-home-index) .btr-orbit-planet--ringed::after { width: 24px; height: 24px; }
 
     :where(body.page-home-index) .btrwho-section {
-        padding: 50px 16px;
+        padding: 50px 16px 60px;
     }
     :where(body.page-home-index) .btrwho-left h2 {
         font-size: 26px;
+    }
+    :where(body.page-home-index) .btrwho-sub {
+        font-size: 20px;
     }
     :where(body.page-home-index) .btrwho-layout {
         grid-template-columns: 1fr;
     }
     :where(body.page-home-index) .btrwho-card {
-        aspect-ratio: 4 / 3;
+        aspect-ratio: 16 / 10;
     }
 
     :where(body.page-home-index) .btr-tech-heading h2 {
@@ -2648,14 +2761,6 @@
     :where(body.page-home-index) .btr-cta-btn {
         width: 100%;
         text-align: center;
-    }
-}
-
-/* ====================== Touch devices ====================== */
-@media (hover: none) {
-    :where(body.page-home-index) .btrwho-overlay a {
-        opacity: 1;
-        transform: none;
     }
 }
 
@@ -2756,5 +2861,44 @@
 @media (max-width: 480px) {
     :where(body.page-home-index) .btr-testimonial-card {
         width: 86vw;
+    }
+}
+
+/* =====================================================================
+   WHO WE ARE cards: responsive + touch (file ke aakhir mein rakhein)
+   ===================================================================== */
+@media (max-width: 1450px) {
+    :where(body.page-home-index) .btrwho-card .btrwho-card-btn {
+        left: 13px;
+        bottom: 12px;
+        padding: 7px 15px;
+        font-size: 9px;
+    }
+}
+@media (max-width: 768px) {
+    :where(body.page-home-index) .btrwho-card {
+        aspect-ratio: 4 / 3;
+    }
+    :where(body.page-home-index) .btrwho-overlay h3 {
+        font-size: 16px;
+    }
+    :where(body.page-home-index) .btrwho-overlay p {
+        font-size: 12px;
+    }
+}
+@media (max-width: 480px) {
+    :where(body.page-home-index) .btrwho-card {
+        aspect-ratio: 16 / 10;
+    }
+}
+/* touch screens par hover nahi hota — button hamesha dikhe */
+@media (hover: none) {
+    :where(body.page-home-index) .btrwho-card .btrwho-card-btn {
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+    }
+    :where(body.page-home-index) .btrwho-overlay::after {
+        opacity: 1;
     }
 }

@@ -54,6 +54,43 @@ document.addEventListener("DOMContentLoaded", function () {
     counters.forEach(function (counter) { observer.observe(counter); });
 });
 
+// ===== Who We Are: staggered cards reveal on scroll =====
+document.addEventListener("DOMContentLoaded", function () {
+    const section = document.querySelector(".btrwho-section");
+    if (!section) return;
+
+    const cards = Array.from(section.querySelectorAll(".btrwho-card"));
+    if (!cards.length) return;
+
+    // IntersectionObserver na ho to cards waise hi dikhte rahenge
+    if (!("IntersectionObserver" in window)) return;
+
+    section.classList.add("btrwho-js");
+
+    function reveal(card) {
+        // column ke hisaab se halka sa delay (1st col -> 2nd col -> 3rd col)
+        const col = card.closest(".btrwho-column");
+        const colIndex = col ? Array.from(col.parentElement.children).indexOf(col) : 0;
+        const rowIndex = col ? Array.from(col.children).indexOf(card) : 0;
+        card.style.transitionDelay = (colIndex * 120 + rowIndex * 90) + "ms";
+        card.classList.add("is-visible");
+
+        // delay hover animation ko slow na kare, isliye reveal ke baad hata do
+        setTimeout(function () { card.style.transitionDelay = ""; }, 1200);
+    }
+
+    const io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                reveal(entry.target);
+                io.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    cards.forEach(function (card) { io.observe(card); });
+});
+
 // ===== Tech Cards Interaction (desktop accordion) =====
 document.addEventListener("DOMContentLoaded", function () {
     const cards = document.querySelectorAll(".btr-tech-card");
