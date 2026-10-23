@@ -1,25 +1,31 @@
 (function () {
   'use strict';
 
-  var BREAKPOINT = 1280; // CSS ke 1280px se match hona chahiye
+  var BREAKPOINT = 1280;   // must match the CSS 1280px breakpoint
+  var CLOSE_DELAY = 150;   // ms, so the menu doesn't flicker on hover
 
   var header = document.getElementById('btrHeader');
   var openBtn = document.getElementById('btrMenuBtn');
   var nav = document.getElementById('btrPrimaryNav');
-  var megaParents = document.querySelectorAll('.btrx-mega-parent');
+  var parents = Array.prototype.slice.call(document.querySelectorAll('.btrx-mega-parent'));
 
   function isDesktop() {
     return window.innerWidth > BREAKPOINT;
   }
 
-  function resetParent(parent) {
-    parent.classList.remove('is-open');
-    parent.dataset.clicked = '';
+  function setOpen(parent, open) {
+    var trigger = parent.querySelector('.has-mega');
+    parent.classList.toggle('is-open', open);
+    if (trigger) trigger.setAttribute('aria-expanded', String(open));
+    if (!open) parent.dataset.pinned = '';
   }
 
-  function closeAllMega(except) {
-    megaParents.forEach(function (parent) {
-      if (parent !== except) resetParent(parent);
+  function closeAll(except) {
+    parents.forEach(function (p) {
+      if (p !== except) {
+        clearTimeout(p._timer);
+        setOpen(p, false);
+      }
     });
   }
 
@@ -27,112 +33,109 @@
     if (!header || !openBtn) return;
     header.classList.toggle('mobile-menu-open', isOpen);
     openBtn.setAttribute('aria-expanded', String(isOpen));
-    if (!isOpen) closeAllMega(null);
+    if (!isOpen) closeAll(null);
   }
 
-  function toggleParent(parent) {
-    var wasOpen = parent.classList.contains('is-open');
-    var wasClicked = parent.dataset.clicked === 'true';
+  parents.forEach(function (parent) {
+    var trigger = parent.querySelector('.has-mega');
+    if (!trigger) return;
 
-    closeAllMega(parent);
-
-    if (!wasOpen || !wasClicked) {
-      parent.classList.add('is-open');
-      parent.dataset.clicked = 'true';
-    } else {
-      resetParent(parent);
-    }
-  }
-
-  megaParents.forEach(function (parent) {
-    var link = parent.querySelector('.btr-nav__link.has-mega');
-    if (!link) return;
-
-    // Desktop: hover se open/close
+    // Desktop: hover opens, small delay on leave
     parent.addEventListener('mouseenter', function () {
       if (!isDesktop()) return;
-      closeAllMega(parent);
-      parent.classList.add('is-open');
+      clearTimeout(parent._timer);
+      closeAll(parent);
+      setOpen(parent, true);
     });
 
     parent.addEventListener('mouseleave', function () {
-      if (isDesktop() && parent.dataset.clicked !== 'true') {
-        parent.classList.remove('is-open');
-      }
+      if (!isDesktop() || parent.dataset.pinned === 'true') return;
+      parent._timer = setTimeout(function () {
+        setOpen(parent, false);
+      }, CLOSE_DELAY);
     });
 
-    link.addEventListener('click', function (e) {
-      var href = link.getAttribute('href');
-      var isDummy = !href || href === '#' || href === '#!';
+    // Click / Enter / Space (buttons fire click for keyboard too)
+    trigger.addEventListener('click', function () {
+      var isOpen = parent.classList.contains('is-open');
 
       if (!isDesktop()) {
-        // Mobile: tap par submenu khulta/band hota hai
-        e.preventDefault();
-        toggleParent(parent);
+        // Mobile: accordion
+        closeAll(parent);
+        setOpen(parent, !isOpen);
         return;
       }
 
-      // Desktop: sirf dummy links par preventDefault, real links normal navigate karein
-      if (isDummy) {
-        e.preventDefault();
-        toggleParent(parent);
+      // Desktop: first click pins a hover-opened menu, second click closes it
+      closeAll(parent);
+      if (isOpen && parent.dataset.pinned !== 'true') {
+        parent.dataset.pinned = 'true';
+      } else if (isOpen) {
+        setOpen(parent, false);
+      } else {
+        setOpen(parent, true);
+        parent.dataset.pinned = 'true';
       }
     });
   });
 
-  // Hamburger toggle
+  // Hamburger
   if (openBtn) {
     openBtn.addEventListener('click', function (e) {
       e.stopPropagation();
-      if (!nav) return;
       var isOpen = header && header.classList.contains('mobile-menu-open');
       setMobileMenuOpen(!isOpen);
     });
   }
 
-  // Mobile menu mein kisi final link par click karne se menu band ho
+  // Close the mobile menu after tapping a real link
   if (nav) {
     nav.addEventListener('click', function (e) {
       var a = e.target.closest('a');
-      if (!a || isDesktop()) return;
-      if (a.classList.contains('has-mega')) return; // yeh accordion toggle hai
-      setMobileMenuOpen(false);
+      if (a && !isDesktop()) setMobileMenuOpen(false);
     });
   }
 
-  // Bahar click par sab band
+  // Click outside closes everything
   document.addEventListener('click', function (e) {
-    if (!e.target.closest('.btr-header')) {
-      setMobileMenuOpen(false);
-    }
-    if (!e.target.closest('.btrx-mega-parent')) {
-      megaParents.forEach(resetParent);
-    }
+    if (!e.target.closest('.btr-header')) setMobileMenuOpen(false);
+    if (!e.target.closest('.btrx-mega-parent')) closeAll(null);
   });
 
-  // Escape key
+  // Escape closes and returns focus to the trigger
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') {
-      setMobileMenuOpen(false);
-      megaParents.forEach(resetParent);
+    if (e.key !== 'Escape') return;
+    var openParent = parents.filter(function (p) { return p.classList.contains('is-open'); })[0];
+    var focusInside = openParent && openParent.contains(document.activeElement);
+    setMobileMenuOpen(false);
+    closeAll(null);
+    if (focusInside) {
+      var t = openParent.querySelector('.has-mega');
+      if (t) t.focus();
     }
   });
 
-  // Resize: desktop par aate hi mobile state reset
+  // Keyboard: close the menu when focus leaves it
+  parents.forEach(function (parent) {
+    parent.addEventListener('focusout', function (e) {
+      if (!isDesktop()) return;
+      if (e.relatedTarget && parent.contains(e.relatedTarget)) return;
+      if (parent.dataset.pinned === 'true') {
+        // pinned menus close when focus moves elsewhere
+        setOpen(parent, false);
+      }
+    });
+  });
+
+  // Reset state when crossing the breakpoint
   window.addEventListener('resize', function () {
-    if (isDesktop()) {
-      setMobileMenuOpen(false);
-      megaParents.forEach(resetParent);
-    }
+    setMobileMenuOpen(false);
+    closeAll(null);
   });
 
   // Sticky header
   window.addEventListener('scroll', function () {
     if (!header) return;
-    if (window.pageYOffset > 50) {
-      header.classList.add('is-sticky');
-    } else {
-      header.classList.remove('is-sticky');
-    }
+    header.classList.toggle('is-sticky', window.pageYOffset > 50);
   }, { passive: true });
 })();

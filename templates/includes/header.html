@@ -1,35 +1,25 @@
 {% load static %}
 
-
 <!-- ================= HEADER ================= -->
 <header class="btr-header" id="btrHeader">
-
   <div class="btr-header__inner">
 
     <!-- LOGO -->
-    <a href="{% url 'home' %}" class="btr-logo-switch">
-      <img src="{% static 'images/logos/xvera.png' %}" class="btr-logo-default" alt="Logo">
-      <img src="{% static 'images/logos/xvera.png' %}" class="btr-logo-hover" alt="Logo Hover">
+    <a href="{% url 'home' %}" class="btr-logo-switch" aria-label="Xvera Labs home">
+      <img src="{% static 'images/logos/xvera.png' %}" alt="Xvera Labs">
     </a>
 
     <!-- NAV -->
     <nav class="btr-nav" id="btrPrimaryNav" aria-label="Main navigation">
       <ul class="btr-nav__list">
 
-        <!-- HOME -->
-        <li class="btr-nav__item">
-          <a class="btr-nav__link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'home' %}">Company</a>
-        </li>
-
         <!-- ABOUT -->
         <li class="btrx-mega-parent">
-          <a class="btr-nav__link has-mega {% if request.resolver_match.url_name == 'about-us' or request.resolver_match.url_name == 'why_choose_us' %}active{% endif %}">
+          <button type="button" class="btr-nav__link has-mega {% if request.resolver_match.url_name == 'about-us' or request.resolver_match.url_name == 'why_choose_us' %}active{% endif %}" aria-haspopup="true" aria-expanded="false" aria-controls="mega-about">
             About
-            <span class="btr-nav__chevron">
-              <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-            </span>
-          </a>
-          <div class="btrx-mega-menu">
+            <span class="btr-nav__chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
+          </button>
+          <div class="btrx-mega-menu" id="mega-about">
             <div class="btrx-mega-left">
               <div class="btrx-mega-col">
                 <h4>Company</h4>
@@ -51,7 +41,7 @@
                 </ul>
               </div>
               <div class="btrx-mega-col">
-                <h4>Join Xvera labs</h4>
+                <h4>Join Xvera Labs</h4>
                 <ul class="btrx-mega-links">
                   <li><a href="{% url 'careeers' %}">Careers</a></li>
                   <li><a href="{% url 'life_at_xvera_labs' %}">Life at Xvera Labs</a></li>
@@ -64,43 +54,24 @@
             </div>
             <div class="btrx-mega-right">
               <div class="btrx-company-logo">
-                <a href="{% url 'home' %}" class="btrx-brand-switch">
-                  <img src="{% static 'images/logos/xvera.png' %}" class="btrx-brand-default" alt="Logo">
-                  <img src="{% static 'images/logos/xvera.png' %}" class="btrx-brand-hover" alt="Logo Hover">
-                </a>
+                <a href="{% url 'home' %}" class="btrx-brand-switch"><img src="{% static 'images/logos/xvera.png' %}" alt="Xvera Labs"></a>
               </div>
               <h3 class="btrx-company-title">About Xvera Labs</h3>
               <p class="btrx-company-desc">Xvera Labs is a technology partner helping startups, SMEs and enterprises build innovative software products, scalable cloud infrastructure and AI-powered digital solutions.</p>
-              <div class="btrx-about-stats">
-                <div class="btrx-about-stat">
-                  <h5>50+</h5>
-                  <span>Projects Delivered</span>
-                </div>
-                <div class="btrx-about-stat">
-                  <h5>20+</h5>
-                  <span>Technology Experts</span>
-                </div>
-                <div class="btrx-about-stat">
-                  <h5>100%</h5>
-                  <span>Client Focused</span>
-                </div>
-              </div>
+              <a href="{% url 'about-us' %}" class="btrx-company-btn">Know Us Better</a>
             </div>
           </div>
         </li>
 
         <!-- SERVICES -->
         <li class="btrx-mega-parent">
-          <a class="btr-nav__link has-mega {% if request.resolver_match.url_name == 'services' %}active{% endif %}" href="#">
+          <button type="button" class="btr-nav__link has-mega {% if request.resolver_match.url_name == 'services' %}active{% endif %}" aria-haspopup="true" aria-expanded="false" aria-controls="mega-services">
             Services
-            <span class="btr-nav__chevron">
-              <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-            </span>
-          </a>
-          <div class="btrx-mega-menu services-menu">
+            <span class="btr-nav__chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
+          </button>
+          <div class="btrx-mega-menu services-menu" id="mega-services">
             <div class="btrx-mega-left">
-              
-              <!-- Column 1: Strategy & Consulting -->
+
               <div class="btrx-mega-col">
                 <h4>Strategy & Consulting</h4>
                 <ul class="btrx-mega-links">
@@ -112,7 +83,6 @@
                 </ul>
               </div>
 
-              <!-- Column 2: Advanced Technology -->
               <div class="btrx-mega-col">
                 <h4>Advanced Technology</h4>
                 <ul class="btrx-mega-links">
@@ -124,7 +94,6 @@
                 </ul>
               </div>
 
-              <!-- Column 3: Cloud Services -->
               <div class="btrx-mega-col">
                 <h4>Cloud Services</h4>
                 <ul class="btrx-mega-links">
@@ -136,7 +105,6 @@
                 </ul>
               </div>
 
-              <!-- Column 4: AI Solutions & Engineering -->
               <div class="btrx-mega-col">
                 <h4>AI Solutions & Engineering</h4>
                 <ul class="btrx-mega-links">
@@ -148,7 +116,6 @@
                 </ul>
               </div>
 
-              <!-- Column 5: Innovation -->
               <div class="btrx-mega-col">
                 <h4>Innovation</h4>
                 <ul class="btrx-mega-links">
@@ -160,7 +127,6 @@
                 </ul>
               </div>
 
-              <!-- Column 6: Quality Assurance -->
               <div class="btrx-mega-col">
                 <h4>Quality Assurance</h4>
                 <ul class="btrx-mega-links">
@@ -172,7 +138,6 @@
                 </ul>
               </div>
 
-              <!-- Column 7: AI Strategy, Enablement & Governance -->
               <div class="btrx-mega-col">
                 <h4>AI Strategy & Governance</h4>
                 <ul class="btrx-mega-links">
@@ -184,7 +149,6 @@
                 </ul>
               </div>
 
-              <!-- Column 8: Digital Implementation & Delivery -->
               <div class="btrx-mega-col">
                 <h4>Digital Implementation</h4>
                 <ul class="btrx-mega-links">
@@ -196,7 +160,6 @@
                 </ul>
               </div>
 
-              <!-- Column 9: Modernization -->
               <div class="btrx-mega-col">
                 <h4>Modernization</h4>
                 <ul class="btrx-mega-links">
@@ -208,7 +171,6 @@
                 </ul>
               </div>
 
-              <!-- Column 10: Software Development -->
               <div class="btrx-mega-col">
                 <h4>Software Development</h4>
                 <ul class="btrx-mega-links">
@@ -220,7 +182,6 @@
                 </ul>
               </div>
 
-              <!-- Column 11: Data & Analytics -->
               <div class="btrx-mega-col">
                 <h4>Data & Analytics</h4>
                 <ul class="btrx-mega-links">
@@ -232,7 +193,6 @@
                 </ul>
               </div>
 
-              <!-- Column 12: Privacy & Security -->
               <div class="btrx-mega-col">
                 <h4>Privacy & Security</h4>
                 <ul class="btrx-mega-links">
@@ -247,30 +207,24 @@
             </div>
             <div class="btrx-mega-right">
               <div class="btrx-company-logo">
-                <a href="{% url 'home' %}" class="btrx-brand-switch">
-                  <img src="{% static 'images/logos/xvera.png' %}" class="btrx-brand-default" alt="Logo">
-                  <img src="{% static 'images/logos/xvera.png' %}" class="btrx-brand-hover" alt="Logo Hover">
-                </a>
+                <a href="{% url 'home' %}" class="btrx-brand-switch"><img src="{% static 'images/logos/xvera.png' %}" alt="Xvera Labs"></a>
               </div>
               <h3 class="btrx-company-title">Intelligent Business Solutions</h3>
-              <p class="btrx-company-desc">Transforming businesses through modern software engineering, cloud solutions, DevOps automation, AI innovation and scalable digital products.</p>
+              <p class="btrx-company-desc">Modern software engineering, cloud solutions, DevOps automation, AI innovation and scalable digital products.</p>
               <a href="{% url 'contact_us' %}" class="btrx-company-btn">Get Free Consultation</a>
             </div>
           </div>
         </li>
 
-        <!-- ARTIFICIAL INTELLIGENCE -->
+        <!-- AI (Artificial Intelligence + Generative AI merged) -->
         <li class="btrx-mega-parent">
-          <a class="btr-nav__link has-mega {% if request.resolver_match.url_name == 'ai' %}active{% endif %}" href="#">
-            Artificial Intelligence
-            <span class="btr-nav__chevron">
-              <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-            </span>
-          </a>
-          <div class="btrx-mega-menu ai-menu">
+          <button type="button" class="btr-nav__link has-mega {% if request.resolver_match.url_name == 'ai' or request.resolver_match.url_name == 'generative_ai' %}active{% endif %}" aria-haspopup="true" aria-expanded="false" aria-controls="mega-ai">
+            AI
+            <span class="btr-nav__chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
+          </button>
+          <div class="btrx-mega-menu ai-menu" id="mega-ai">
             <div class="btrx-mega-left">
-              
-              <!-- Column 1: AI Consulting & Strategy -->
+
               <div class="btrx-mega-col">
                 <h4>AI Consulting & Strategy</h4>
                 <ul class="btrx-mega-links">
@@ -281,7 +235,6 @@
                 </ul>
               </div>
 
-              <!-- Column 2: AI Development & Engineering -->
               <div class="btrx-mega-col">
                 <h4>AI Development & Engineering</h4>
                 <ul class="btrx-mega-links">
@@ -292,7 +245,6 @@
                 </ul>
               </div>
 
-              <!-- Column 3: Enterprise AI & Governance -->
               <div class="btrx-mega-col">
                 <h4>Enterprise AI & Governance</h4>
                 <ul class="btrx-mega-links">
@@ -303,18 +255,6 @@
                 </ul>
               </div>
 
-              <!-- Column 4: Generative & Agentic AI -->
-              <div class="btrx-mega-col">
-                <h4>Generative & Agentic AI</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">Generative AI Development</a></li>
-                  <li><a href="{% url 'coming' %}">Agentic AI Systems</a></li>
-                  <li><a href="{% url 'coming' %}">Generative AI Integration</a></li>
-                  <li><a href="{% url 'coming' %}">AI MVP Development</a></li>
-                </ul>
-              </div>
-               
-              <!-- Column 5: AI Training & Enablement -->
               <div class="btrx-mega-col">
                 <h4>AI Training & Enablement</h4>
                 <ul class="btrx-mega-links">
@@ -324,56 +264,7 @@
                   <li><a href="{% url 'coming' %}">AI Enablement Workshops</a></li>
                 </ul>
               </div>
-              
-              <!-- Column 6: AI Transformation with ValuePath -->
-              <div class="btrx-mega-col">
-                <h4>AI Transformation with ValuePath</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">Explore our AI framework →</a></li>
-                </ul>
-              </div>
 
-            </div>
-            <div class="btrx-mega-right">
-              <div class="btrx-company-logo">
-                <a href="{% url 'home' %}" class="btrx-brand-switch">
-                  <img src="{% static 'images/logos/xvera.png' %}" class="btrx-brand-default" alt="Logo">
-                  <img src="{% static 'images/logos/xvera.png' %}" class="btrx-brand-hover" alt="Logo Hover">
-                </a>
-              </div>
-              <h3 class="btrx-company-title">AI-Powered Innovation</h3>
-              <p class="btrx-company-desc">Transform your business with cutting-edge artificial intelligence solutions, from strategy and consulting to custom development, enterprise governance, and generative AI.</p>
-              <div class="btrx-about-stats">
-                <div class="btrx-about-stat">
-                  <h5>100+</h5>
-                  <span>AI Models Deployed</span>
-                </div>
-                <div class="btrx-about-stat">
-                  <h5>50+</h5>
-                  <span>AI Experts</span>
-                </div>
-                <div class="btrx-about-stat">
-                  <h5>95%</h5>
-                  <span>Accuracy Rate</span>
-                </div>
-              </div>
-              <a href="{% url 'contact_us' %}" class="btrx-company-btn">Start Your AI Journey</a>
-            </div>
-          </div>
-        </li>
-
-        <!-- GENERATIVE AI -->
-        <li class="btrx-mega-parent">
-          <a class="btr-nav__link has-mega {% if request.resolver_match.url_name == 'generative_ai' %}active{% endif %}" href="#">
-            Generative AI
-            <span class="btr-nav__chevron">
-              <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-            </span>
-          </a>
-          <div class="btrx-mega-menu genai-menu">
-            <div class="btrx-mega-left">
-
-              <!-- Column 1: Generative AI Development -->
               <div class="btrx-mega-col">
                 <h4>Generative AI Development</h4>
                 <ul class="btrx-mega-links">
@@ -384,7 +275,6 @@
                 </ul>
               </div>
 
-              <!-- Column 2: RAG & Knowledge Systems -->
               <div class="btrx-mega-col">
                 <h4>RAG & Knowledge Systems</h4>
                 <ul class="btrx-mega-links">
@@ -395,7 +285,6 @@
                 </ul>
               </div>
 
-              <!-- Column 3: Agentic AI -->
               <div class="btrx-mega-col">
                 <h4>Agentic AI</h4>
                 <ul class="btrx-mega-links">
@@ -406,7 +295,6 @@
                 </ul>
               </div>
 
-              <!-- Column 4: GenAI Integration & Services -->
               <div class="btrx-mega-col">
                 <h4>GenAI Integration & Services</h4>
                 <ul class="btrx-mega-links">
@@ -420,31 +308,23 @@
             </div>
             <div class="btrx-mega-right">
               <div class="btrx-company-logo">
-                <a href="{% url 'home' %}" class="btrx-brand-switch">
-                  <img src="{% static 'images/logos/xvera.png' %}" class="btrx-brand-default" alt="Logo">
-                  <img src="{% static 'images/logos/xvera.png' %}" class="btrx-brand-hover" alt="Logo Hover">
-                </a>
+                <a href="{% url 'home' %}" class="btrx-brand-switch"><img src="{% static 'images/logos/xvera.png' %}" alt="Xvera Labs"></a>
               </div>
-              <h3 class="btrx-company-title">Generative AI Solutions</h3>
-              <p class="btrx-company-desc">Build intelligent chatbots, AI agents and knowledge systems that automate work and unlock new ways to serve your customers.</p>
-              <div class="btrx-case-highlight">
-                <strong>What We Build</strong>
-                <p>RAG assistants, AI agents, LLM-powered apps and workflow automation, from MVP to production.</p>
-              </div>
-              <a href="{% url 'contact_us' %}" class="btrx-company-btn">Build Your GenAI Solution</a>
+              <h3 class="btrx-company-title">AI-Powered Innovation</h3>
+              <p class="btrx-company-desc">From strategy and custom development to chatbots, AI agents and knowledge systems that automate work and serve your customers.</p>
+              <a href="{% url 'contact_us' %}" class="btrx-company-btn">Start Your AI Journey</a>
+              <a href="{% url 'coming' %}" class="btrx-company-btn btrx-company-btn--ghost">AI Transformation with ValuePath</a>
             </div>
           </div>
         </li>
 
         <!-- SOLUTIONS -->
         <li class="btrx-mega-parent">
-          <a class="btr-nav__link has-mega {% if request.resolver_match.url_name == 'solutions' %}active{% endif %}" href="#!">
+          <button type="button" class="btr-nav__link has-mega {% if request.resolver_match.url_name == 'solutions' %}active{% endif %}" aria-haspopup="true" aria-expanded="false" aria-controls="mega-solutions">
             Solutions
-            <span class="btr-nav__chevron">
-              <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-            </span>
-          </a>
-          <div class="btrx-mega-menu">
+            <span class="btr-nav__chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
+          </button>
+          <div class="btrx-mega-menu" id="mega-solutions">
             <div class="btrx-mega-left">
               <div class="btrx-mega-col">
                 <h4>Data Solutions</h4>
@@ -458,18 +338,6 @@
                 </ul>
               </div>
               <div class="btrx-mega-col">
-                <h4>Artificial Intelligence</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">Agentic AI</a></li>
-                  <li><a href="{% url 'coming' %}">Generative AI</a></li>
-                  <li><a href="{% url 'coming' %}">Deep Learning</a></li>
-                  <li><a href="{% url 'coming' %}">Predictive Analytics</a></li>
-                  <li><a href="{% url 'coming' %}">Sentiment Analysis</a></li>
-                  <li><a href="{% url 'coming' %}">Data Science</a></li>
-                  <li><a href="{% url 'coming' %}">AI Consulting</a></li>
-                </ul>
-              </div>
-              <div class="btrx-mega-col">
                 <h4>E-Commerce</h4>
                 <ul class="btrx-mega-links">
                   <li><a href="{% url 'coming' %}">AI Chatbots & Support</a></li>
@@ -480,16 +348,23 @@
                   <li><a href="{% url 'coming' %}">Recommendation Engines</a></li>
                 </ul>
               </div>
+              <div class="btrx-mega-col">
+                <h4>Applied AI</h4>
+                <ul class="btrx-mega-links">
+                  <li><a href="{% url 'coming' %}">Deep Learning</a></li>
+                  <li><a href="{% url 'coming' %}">Predictive Analytics</a></li>
+                  <li><a href="{% url 'coming' %}">Sentiment Analysis</a></li>
+                  <li><a href="{% url 'coming' %}">Data Science</a></li>
+                  <li><a href="{% url 'coming' %}">AI Consulting</a></li>
+                </ul>
+              </div>
             </div>
             <div class="btrx-mega-right">
               <div class="btrx-company-logo">
-                <a href="{% url 'home' %}" class="btrx-brand-switch">
-                  <img src="{% static 'images/logos/xvera.png' %}" class="btrx-brand-default" alt="Logo">
-                  <img src="{% static 'images/logos/xvera.png' %}" class="btrx-brand-hover" alt="Logo Hover">
-                </a>
+                <a href="{% url 'home' %}" class="btrx-brand-switch"><img src="{% static 'images/logos/xvera.png' %}" alt="Xvera Labs"></a>
               </div>
               <h3 class="btrx-company-title">Intelligent Business Solutions</h3>
-              <p class="btrx-company-desc">Leverage the power of Artificial Intelligence, Data Engineering, Analytics and Enterprise Automation to unlock new opportunities.</p>
+              <p class="btrx-company-desc">Artificial Intelligence, data engineering, analytics and enterprise automation to unlock new opportunities.</p>
               <a href="{% url 'contact_us' %}" class="btrx-company-btn">Discuss Your Project</a>
             </div>
           </div>
@@ -497,13 +372,11 @@
 
         <!-- INDUSTRIES -->
         <li class="btrx-mega-parent">
-          <a class="btr-nav__link has-mega {% if request.resolver_match.url_name == 'industries' %}active{% endif %}" href="#!">
+          <button type="button" class="btr-nav__link has-mega {% if request.resolver_match.url_name == 'industries' %}active{% endif %}" aria-haspopup="true" aria-expanded="false" aria-controls="mega-industries">
             Industries
-            <span class="btr-nav__chevron">
-              <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-            </span>
-          </a>
-          <div class="btrx-mega-menu">
+            <span class="btr-nav__chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
+          </button>
+          <div class="btrx-mega-menu" id="mega-industries">
             <div class="btrx-mega-left">
               <div class="btrx-mega-col">
                 <h4>Core Industries</h4>
@@ -539,17 +412,10 @@
             </div>
             <div class="btrx-mega-right">
               <div class="btrx-company-logo">
-                <a href="{% url 'home' %}" class="btrx-brand-switch">
-                  <img src="{% static 'images/logos/xvera.png' %}" class="btrx-brand-default" alt="Logo">
-                  <img src="{% static 'images/logos/xvera.png' %}" class="btrx-brand-hover" alt="Logo Hover">
-                </a>
+                <a href="{% url 'home' %}" class="btrx-brand-switch"><img src="{% static 'images/logos/xvera.png' %}" alt="Xvera Labs"></a>
               </div>
               <h3 class="btrx-company-title">Industries We Serve</h3>
-              <p class="btrx-company-desc">We deliver tailored digital solutions across multiple industries, helping businesses transform, automate and scale with modern technology.</p>
-              <div class="btrx-case-highlight">
-                <strong>Our Impact</strong>
-                <p>From startups to enterprises, we build scalable systems for healthcare, education, fintech, ecommerce and government sectors.</p>
-              </div>
+              <p class="btrx-company-desc">Tailored digital solutions across industries, from healthcare and education to fintech, e-commerce and government.</p>
               <a href="{% url 'contact_us' %}" class="btrx-company-btn">Explore Solutions</a>
             </div>
           </div>
@@ -557,18 +423,16 @@
 
         <!-- OUR PRODUCTS -->
         <li class="btrx-mega-parent">
-          <a class="btr-nav__link has-mega {% if request.resolver_match.url_name == 'products' %}active{% endif %}" href="#!">
+          <button type="button" class="btr-nav__link has-mega {% if request.resolver_match.url_name == 'products' %}active{% endif %}" aria-haspopup="true" aria-expanded="false" aria-controls="mega-products">
             Our Products
-            <span class="btr-nav__chevron">
-              <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-            </span>
-          </a>
-          <div class="btrx-mega-menu">
+            <span class="btr-nav__chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
+          </button>
+          <div class="btrx-mega-menu" id="mega-products">
             <div class="btrx-mega-left">
               <div class="btrx-mega-col">
                 <h4>Social Impact</h4>
                 <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">Xvera Mall</a></li>
+                  <li><a href="{% url 'coming' %}">Xvera Care Foundation</a></li>
                   <li><a href="{% url 'coming' %}">Xvera Home (Orphan Care Homes)</a></li>
                   <li><a href="{% url 'coming' %}">Xvera Care Foundation</a></li>
                   <li><a href="{% url 'coming' %}">Xvera Welfare Projects</a></li>
@@ -592,37 +456,39 @@
                   <li><a href="{% url 'coming' %}">Xvera Retail Network</a></li>
                 </ul>
               </div>
+              <div class="btrx-mega-col">
+                <h4>Technology Products</h4>
+                <ul class="btrx-mega-links">
+                  <li><a href="{% url 'coming' %}">BTR Mall — eCommerce Marketplace</a></li>
+                  <li><a href="{% url 'coming' %}">Dinex POS — Subscription-Based System</a></li>
+                </ul>
+              </div>
             </div>
             <div class="btrx-mega-right">
               <div class="btrx-company-logo">
-                <a href="{% url 'home' %}" class="btrx-brand-switch">
-                  <img src="{% static 'images/logos/xvera.png' %}" class="btrx-brand-default" alt="Logo">
-                  <img src="{% static 'images/logos/xvera.png' %}" class="btrx-brand-hover" alt="Logo Hover">
-                </a>
+                <a href="{% url 'home' %}" class="btrx-brand-switch"><img src="{% static 'images/logos/xvera.png' %}" alt="Xvera Labs"></a>
               </div>
               <h3 class="btrx-company-title">Xvera Ecosystem</h3>
-              <p class="btrx-company-desc">Xvera Ecosystem is a multi-sector initiative focused on education, social welfare, orphan care, housing support, food services, and sustainable business development.</p>
+              <p class="btrx-company-desc">A multi-sector initiative focused on education, social welfare, orphan care, housing support, food services and sustainable business development.</p>
               <div class="btrx-case-highlight">
                 <strong>Our Mission</strong>
-                <p>To build a self-sustaining ecosystem where business success directly supports social upliftment and community development.</p>
+                <p>A self-sustaining ecosystem where business success directly supports social upliftment.</p>
               </div>
-              <a href="#" class="btrx-company-btn">Explore Ecosystem</a>
+              <a href="{% url 'coming' %}" class="btrx-company-btn">Explore Ecosystem</a>
             </div>
           </div>
         </li>
 
-        <!-- CASE STUDIES -->
+        <!-- RESOURCES (Case Studies + Blogs merged) -->
         <li class="btrx-mega-parent">
-          <a class="btr-nav__link has-mega {% if request.resolver_match.url_name == 'case_studies' %}active{% endif %}" href="{% url 'case_studies' %}">
-            Case Studies
-            <span class="btr-nav__chevron">
-              <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-            </span>
-          </a>
-          <div class="btrx-mega-menu">
+          <button type="button" class="btr-nav__link has-mega {% if request.resolver_match.url_name == 'case_studies' or request.resolver_match.url_name == 'blogs' %}active{% endif %}" aria-haspopup="true" aria-expanded="false" aria-controls="mega-resources">
+            Resources
+            <span class="btr-nav__chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
+          </button>
+          <div class="btrx-mega-menu" id="mega-resources">
             <div class="btrx-mega-left">
               <div class="btrx-mega-col">
-                <h4>Industries</h4>
+                <h4>Case Studies by Industry</h4>
                 <ul class="btrx-mega-links">
                   <li><a href="{% url 'coming' %}">Healthcare</a></li>
                   <li><a href="{% url 'coming' %}">FinTech</a></li>
@@ -648,40 +514,11 @@
                   <li><a href="{% url 'coming' %}">Digital Transformation</a></li>
                   <li><a href="{% url 'coming' %}">AI Implementations</a></li>
                   <li><a href="{% url 'coming' %}">Product Scaling</a></li>
-                  <li><a href="{% url 'coming' %}">View All Case Studies</a></li>
+                  <li><a href="{% url 'case_studies' %}">View All Case Studies</a></li>
                 </ul>
               </div>
-            </div>
-            <div class="btrx-mega-right">
-              <div class="btrx-company-logo">
-                <a href="{% url 'home' %}" class="btrx-brand-switch">
-                  <img src="{% static 'images/logos/xvera.png' %}" class="btrx-brand-default" alt="Logo">
-                  <img src="{% static 'images/logos/xvera.png' %}" class="btrx-brand-hover" alt="Logo Hover">
-                </a>
-              </div>
-              <h3 class="btrx-company-title">Proven Results</h3>
-              <p class="btrx-company-desc">Explore how Xvera Labs has helped startups and enterprises build scalable digital products, optimize operations and achieve measurable business growth.</p>
-              <div class="btrx-case-highlight">
-                <strong>Featured Success</strong>
-                <p>Delivered a cloud-native SaaS platform that reduced operational costs by 40% and improved deployment speed by 5x.</p>
-              </div>
-              <a href="{% url 'case_studies' %}" class="btrx-company-btn">Explore Case Studies</a>
-            </div>
-          </div>
-        </li>
-
-        <!-- BLOGS -->
-        <li class="btrx-mega-parent">
-          <a class="btr-nav__link has-mega {% if request.resolver_match.url_name == 'blogs' %}active{% endif %}" href="{% url 'blogs' %}">
-            Blogs
-            <span class="btr-nav__chevron">
-              <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-            </span>
-          </a>
-          <div class="btrx-mega-menu">
-            <div class="btrx-mega-left">
               <div class="btrx-mega-col">
-                <h4>Technology</h4>
+                <h4>Blog: Technology</h4>
                 <ul class="btrx-mega-links">
                   <li><a href="{% url 'coming' %}">Software Development</a></li>
                   <li><a href="{% url 'coming' %}">Cloud Computing</a></li>
@@ -691,7 +528,7 @@
                 </ul>
               </div>
               <div class="btrx-mega-col">
-                <h4>Business Insights</h4>
+                <h4>Blog: Business Insights</h4>
                 <ul class="btrx-mega-links">
                   <li><a href="{% url 'coming' %}">Digital Transformation</a></li>
                   <li><a href="{% url 'coming' %}">Startup Growth</a></li>
@@ -701,115 +538,88 @@
                 </ul>
               </div>
               <div class="btrx-mega-col">
-                <h4>Resources</h4>
+                <h4>Guides & Reports</h4>
                 <ul class="btrx-mega-links">
                   <li><a href="{% url 'blogs' %}">Latest Articles</a></li>
                   <li><a href="{% url 'coming' %}">Guides</a></li>
                   <li><a href="{% url 'coming' %}">White Papers</a></li>
                   <li><a href="{% url 'coming' %}">Industry Reports</a></li>
-                  <li><a href="{% url 'coming' %}">All Blogs</a></li>
+                  <li><a href="{% url 'blogs' %}">All Blogs</a></li>
                 </ul>
               </div>
             </div>
             <div class="btrx-mega-right">
               <div class="btrx-company-logo">
-                <a href="{% url 'home' %}" class="btrx-brand-switch">
-                  <img src="{% static 'images/logos/xvera.png' %}" class="btrx-brand-default" alt="Logo">
-                  <img src="{% static 'images/logos/xvera.png' %}" class="btrx-brand-hover" alt="Logo Hover">
-                </a>
+                <a href="{% url 'home' %}" class="btrx-brand-switch"><img src="{% static 'images/logos/xvera.png' %}" alt="Xvera Labs"></a>
               </div>
-              <h3 class="btrx-company-title">Insights & Innovation</h3>
-              <p class="btrx-company-desc">Stay updated with the latest trends in software engineering, cloud technologies, artificial intelligence, product development and digital transformation.</p>
-              <div class="btrx-case-highlight">
-                <strong>Latest Update</strong>
-                <p>Explore expert insights, technology guides and real-world success stories from our engineering teams.</p>
-              </div>
-              <a href="{% url 'blogs' %}" class="btrx-company-btn">Read Articles</a>
+              <h3 class="btrx-company-title">Insights & Proven Work</h3>
+              <p class="btrx-company-desc">Read our case studies and expert articles on software engineering, cloud, AI and digital transformation.</p>
+              <a href="{% url 'case_studies' %}" class="btrx-company-btn">Explore Case Studies</a>
+              <a href="{% url 'blogs' %}" class="btrx-company-btn btrx-company-btn--ghost">Read Articles</a>
             </div>
           </div>
         </li>
 
-        <!-- CONTACT US -->
+        <!-- PARTNERS (NEW) -->
         <li class="btrx-mega-parent">
-          <a class="btr-nav__link has-mega {% if request.resolver_match.url_name == 'contact_us' %}active{% endif %}" href="{% url 'contact_us' %}">
-            Contact Us
-            <span class="btr-nav__chevron">
-              <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-            </span>
-          </a>
-          <div class="btrx-mega-menu">
+          <button type="button" class="btr-nav__link btr-nav__link--partner has-mega {% if request.resolver_match.url_name == 'partners' %}active{% endif %}" aria-haspopup="true" aria-expanded="false" aria-controls="mega-partners">
+            Partners
+            <span class="btr-nav__badge">New</span>
+            <span class="btr-nav__chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
+          </button>
+          <div class="btrx-mega-menu" id="mega-partners">
             <div class="btrx-mega-left">
-              <div class="btrx-mega-col">
-                <h4>Get In Touch</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="mailto:btrsolution.contact@gmail.com">Email Us</a></li>
-                  <li><a href="tel:+923248699647">Call Us</a></li>
-                  <li><a href="{% url 'coming' %}">Schedule Meeting</a></li>
-                  <li><a href="{% url 'coming' %}">Request Proposal</a></li>
-                </ul>
-              </div>
-              <div class="btrx-mega-col">
-                <h4>Services Inquiry</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">Software Development</a></li>
-                  <li><a href="{% url 'coming' %}">Mobile Apps</a></li>
-                  <li><a href="{% url 'coming' %}">DevOps & Cloud</a></li>
-                  <li><a href="{% url 'coming' %}">Staff Augmentation</a></li>
-                </ul>
-              </div>
-              <div class="btrx-mega-col">
-                <h4>Office Location</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">Lahore, Pakistan</a></li>
-                  <li><a href="{% url 'coming' %}">Remote Collaboration</a></li>
-                  <li><a href="{% url 'coming' %}">Global Clients</a></li>
-                  <li><a href="{% url 'coming' %}">24/7 Support</a></li>
-                </ul>
-              </div>
+            <div class="btrx-mega-col">
+              <h4>Investment & Business Alliances</h4>
+              <ul class="btrx-mega-links">
+                <li><a href="{% url 'coming' %}">Become an Investor Partner</a></li>
+                <li><a href="{% url 'coming' %}">Product Investment Opportunities</a></li>
+                <li><a href="{% url 'coming' %}">Strategic & Corporate Partnerships</a></li>
+                <li><a href="{% url 'coming' %}">Distribution Partners</a></li>
+              </ul>
             </div>
-            <div class="btrx-mega-right">
-              <div class="btrx-company-logo">
-                <a href="{% url 'home' %}" class="btrx-brand-switch">
-                  <img src="{% static 'images/logos/xvera.png' %}" class="btrx-brand-default" alt="Logo">
-                  <img src="{% static 'images/logos/xvera.png' %}" class="btrx-brand-hover" alt="Logo Hover">
-                </a>
-              </div>
-              <h3 class="btrx-company-title">Let's Build Something Great</h3>
-              <p class="btrx-company-desc">Whether you're launching a startup, scaling a product, or modernizing enterprise systems, our experts are ready to help you achieve your goals.</p>
-              <div class="btrx-case-highlight">
-                <strong>Contact Information</strong>
-                <div class="btrx-contact-row">
-                  <i class="fas fa-envelope"></i>
-                  <span>btrsolution.contact@gmail.com</span>
-                </div>
-                <div class="btrx-contact-row">
-                  <i class="fas fa-phone-alt"></i>
-                  <span>+92 324 8699647</span>
-                </div>
-                <div class="btrx-contact-row">
-                  <i class="fas fa-location-dot"></i>
-                  <span>297-C, PIA Main Boulevard Road, Lahore</span>
-                </div>
-              </div>
-              <a href="{% url 'contact_us' %}" class="btrx-company-btn">Contact Our Team</a>
+            <div class="btrx-mega-col">
+              <h4>Sales & Client Acquisition</h4>
+              <ul class="btrx-mega-links">
+                <li><a href="{% url 'coming' %}">Referral Partner (Bring a Client)</a></li>
+                <li><a href="{% url 'coming' %}">Sales Partner Program</a></li>
+                <li><a href="{% url 'coming' %}">Reseller Program</a></li>
+                <li><a href="{% url 'coming' %}">Affiliate Program</a></li>
+              </ul>
+            </div>
+            <div class="btrx-mega-col">
+              <h4>Marketing & Product Growth</h4>
+              <ul class="btrx-mega-links">
+                <li><a href="{% url 'coming' %}">Marketing Partners</a></li>
+                <li><a href="{% url 'coming' %}">Promote Our Products</a></li>
+                <li><a href="{% url 'campus_ambassador_program' %}">Campus Ambassador Program</a></li>
+                <li><a href="{% url 'coming' %}">Market Expansion Program</a></li>
+              </ul>
             </div>
           </div>
+        </li>
+
+        <!-- Mobile-only CTA (desktop CTA lives in .btr-actions) -->
+        <li class="btr-nav__mobile-cta">
+          <a href="{% url 'contact_us' %}" class="btr-cta">Contact Us</a>
         </li>
 
       </ul>
     </nav>
 
-    <!-- MENU BUTTON (sirf mobile/tablet par show hota hai, CSS se) -->
-    <button class="btr-menu" id="btrMenuBtn" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="btrPrimaryNav">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-        <path d="M3 6H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        <path d="M3 12H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        <path d="M9 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      </svg>
-    </button>
+    <!-- CTA + MENU BUTTON -->
+    <div class="btr-actions">
+      <a href="{% url 'contact_us' %}" class="btr-cta">Contact Us</a>
+      <button class="btr-menu" id="btrMenuBtn" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="btrPrimaryNav">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M3 6H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M3 12H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M9 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
 
   </div>
 </header>
 
-<!-- ================= JS ================= -->
-<script src="{% static 'js/layout/header-1.js' %}?v=3"></script>
+<script src="{% static 'js/layout/header-1.js' %}?v=4"></script>
