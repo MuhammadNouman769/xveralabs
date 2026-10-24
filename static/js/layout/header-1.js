@@ -88,11 +88,17 @@
     });
   }
 
-  // Close the mobile menu after tapping a real link
+  // After clicking a link: close the mobile menu, or the open desktop mega menu
+  // (useful for same-page links like About #who-we-are)
   if (nav) {
     nav.addEventListener('click', function (e) {
       var a = e.target.closest('a');
-      if (a && !isDesktop()) setMobileMenuOpen(false);
+      if (!a) return;
+      if (isDesktop()) {
+        closeAll(null);
+      } else {
+        setMobileMenuOpen(false);
+      }
     });
   }
 
@@ -115,15 +121,12 @@
     }
   });
 
-  // Keyboard: close the menu when focus leaves it
+  // Keyboard: close a pinned menu when focus leaves it
   parents.forEach(function (parent) {
     parent.addEventListener('focusout', function (e) {
       if (!isDesktop()) return;
       if (e.relatedTarget && parent.contains(e.relatedTarget)) return;
-      if (parent.dataset.pinned === 'true') {
-        // pinned menus close when focus moves elsewhere
-        setOpen(parent, false);
-      }
+      if (parent.dataset.pinned === 'true') setOpen(parent, false);
     });
   });
 
