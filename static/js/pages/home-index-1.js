@@ -1,20 +1,30 @@
-// ===== Showcase Filter =====
+// ===== Cloud & DevOps: filter =====
 document.addEventListener("DOMContentLoaded", function () {
-    const buttons = document.querySelectorAll(".btr-filter-btn");
-    const cards = document.querySelectorAll(".btr-showcase-card");
+    var root = document.querySelector(".btrsc");
+    if (!root) return;
+
+    var buttons = Array.prototype.slice.call(root.querySelectorAll(".btrsc__filter"));
+    var cards = Array.prototype.slice.call(root.querySelectorAll(".btrsc__card"));
 
     buttons.forEach(function (button) {
         button.addEventListener("click", function () {
-            buttons.forEach(function (btn) { btn.classList.remove("active"); });
-            this.classList.add("active");
+            buttons.forEach(function (b) {
+                b.classList.remove("is-active");
+                b.setAttribute("aria-pressed", "false");
+            });
+            button.classList.add("is-active");
+            button.setAttribute("aria-pressed", "true");
 
-            const filter = this.getAttribute("data-filter");
+            var filter = button.getAttribute("data-filter");
 
             cards.forEach(function (card) {
-                if (filter === "all" || card.dataset.category === filter) {
-                    card.classList.remove("btr-showcase-hidden");
-                } else {
-                    card.classList.add("btr-showcase-hidden");
+                var show = filter === "all" || card.getAttribute("data-category") === filter;
+                card.classList.toggle("is-hidden", !show);
+                if (show) {
+                    // restart the fade-in animation
+                    card.classList.remove("is-entering");
+                    void card.offsetWidth;
+                    card.classList.add("is-entering");
                 }
             });
         });
@@ -228,70 +238,114 @@ document.addEventListener("DOMContentLoaded", function () {
     start();
 });
 
-// ===== Testimonials: card-by-card, right → left =====
+// ===== Client Voices: featured testimonial carousel =====
 document.addEventListener("DOMContentLoaded", function () {
-    const track = document.querySelector(".btr-testimonials-track");
-    if (!track) return;
+    var root = document.querySelector(".btrtm");
+    if (!root) return;
 
-    const originals = Array.from(track.children);
-    const total = originals.length;
-    if (total < 2) return;
+    var slides = Array.prototype.slice.call(root.querySelectorAll(".btrtm__slide"));
+    var prev = document.getElementById("btrtmPrev");
+    var next = document.getElementById("btrtmNext");
+    var count = document.getElementById("btrtmCount");
+    var bar = document.getElementById("btrtmBar");
+    if (slides.length < 2) return;
 
-    // seamless loop ke liye clones (screen par jitne cards dikhte hain unse zyada hone chahiye)
-    originals.forEach(function (card) {
-        const clone = card.cloneNode(true);
-        clone.setAttribute("aria-hidden", "true");
-        track.appendChild(clone);
+    var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var index = 0;
+
+    function pad(n) { return n < 10 ? "0" + n : String(n); }
+
+    function restartBar() {
+        if (!bar) return;
+        bar.classList.remove("is-running");
+        void bar.offsetWidth;
+        if (!reduceMotion) bar.classList.add("is-running");
+    }
+
+    function show(i) {
+        index = (i + slides.length) % slides.length;
+        slides.forEach(function (slide, n) {
+            var active = n === index;
+            slide.classList.toggle("is-active", active);
+            slide.setAttribute("aria-hidden", active ? "false" : "true");
+        });
+        if (count) count.textContent = pad(index + 1) + " / " + pad(slides.length);
+        restartBar();
+    }
+
+    // the progress bar finishing = time for the next slide (pausing the bar pauses autoplay)
+    if (bar) {
+        bar.addEventListener("animationend", function () { show(index + 1); });
+    }
+
+    if (prev) prev.addEventListener("click", function () { show(index - 1); });
+    if (next) next.addEventListener("click", function () { show(index + 1); });
+
+    function pause() { root.classList.add("is-paused"); }
+    function resume() { root.classList.remove("is-paused"); }
+
+    root.addEventListener("mouseenter", pause);
+    root.addEventListener("mouseleave", resume);
+    root.addEventListener("focusin", pause);
+    root.addEventListener("focusout", resume);
+    root.addEventListener("touchstart", pause, { passive: true });
+    root.addEventListener("touchend", resume, { passive: true });
+
+    root.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowLeft") { show(index - 1); }
+        if (e.key === "ArrowRight") { show(index + 1); }
     });
 
-    const cards = track.children;
-    const DELAY = 3000;
-    const SPEED = 800;
-    let index = 0;
-    let timer = null;
-    let jumpTimer = null;
+    // do not rotate while the tab is hidden
+    document.addEventListener("visibilitychange", function () {
+        if (document.hidden) { pause(); } else { resume(); }
+    });
 
-    function stepSize() {
-        return cards[1].offsetLeft - cards[0].offsetLeft;
+    show(0);
+});
+
+// ===== Contact form: validation (no fake success, the server handles the submit) =====
+document.addEventListener("DOMContentLoaded", function () {
+    var form = document.getElementById("btrctForm");
+    if (!form) return;
+
+    var services = form.querySelector(".btrct__services");
+    var boxes = Array.prototype.slice.call(form.querySelectorAll('input[name="services"]'));
+    if (!services || !boxes.length) return;
+
+    var error = document.createElement("p");
+    error.className = "btrct__services-error";
+    error.setAttribute("role", "alert");
+    error.hidden = true;
+    error.textContent = "Please choose at least one service.";
+    services.appendChild(error);
+
+    function servicesOk() {
+        return boxes.some(function (b) { return b.checked; });
+    }
+    function showServices() {
+        var ok = servicesOk();
+        services.classList.toggle("is-invalid", !ok);
+        error.hidden = ok;
     }
 
-    function move(animate) {
-        track.style.transition = animate
-            ? "transform " + SPEED + "ms cubic-bezier(.22,.61,.36,1)"
-            : "none";
-        track.style.transform = "translateX(" + (-index * stepSize()) + "px)";
-    }
+    boxes.forEach(function (b) {
+        b.addEventListener("change", function () {
+            if (form.classList.contains("was-validated")) showServices();
+        });
+    });
 
-    function next() {
-        index++;
-        move(true);
-        if (index >= total) {
-            // clone par pohanch gaye -> animation ke baad chupke se asli pehle card par jump
-            clearTimeout(jumpTimer);
-            jumpTimer = setTimeout(function () {
-                index = 0;
-                move(false);
-            }, SPEED + 50);
+    form.addEventListener("submit", function (e) {
+        form.classList.add("was-validated");
+        var fieldsOk = form.checkValidity();
+        var svcOk = servicesOk();
+        showServices();
+        if (!fieldsOk || !svcOk) {
+            e.preventDefault();
+            var firstBad = form.querySelector(":invalid");
+            if (firstBad) { firstBad.focus(); } else { boxes[0].focus(); }
         }
-    }
-
-    function stop() {
-        if (timer) { clearInterval(timer); timer = null; }
-    }
-
-    function start() {
-        stop();
-        timer = setInterval(next, DELAY);
-    }
-
-    track.addEventListener("mouseenter", stop);
-    track.addEventListener("mouseleave", start);
-    track.addEventListener("touchstart", stop, { passive: true });
-    track.addEventListener("touchend", start, { passive: true });
-
-    window.addEventListener("resize", function () { move(false); });
-
-    start();
+    });
 });
 
 // ===== Client Logos: Pause/Resume on Click =====
