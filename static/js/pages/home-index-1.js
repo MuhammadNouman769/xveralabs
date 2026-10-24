@@ -1,3 +1,39 @@
+// ===== Hero: pause animations off screen + subtle pointer tilt =====
+document.addEventListener("DOMContentLoaded", function () {
+    var hero = document.querySelector(".btrhero");
+    if (!hero) return;
+
+    // save CPU/battery: pause the hero animations when it is not visible
+    if ("IntersectionObserver" in window) {
+        new IntersectionObserver(function (entries) {
+            hero.classList.toggle("is-offscreen", !entries[0].isIntersecting);
+        }, { threshold: 0 }).observe(hero);
+    }
+
+    var tilt = document.getElementById("btrheroTilt");
+    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    if (!tilt || reduceMotion || !finePointer) return;
+
+    var raf = null;
+    function setTilt(rx, ry) {
+        tilt.style.setProperty("--rx", rx + "deg");
+        tilt.style.setProperty("--ry", ry + "deg");
+    }
+
+    hero.addEventListener("mousemove", function (e) {
+        if (raf) return;
+        raf = requestAnimationFrame(function () {
+            raf = null;
+            var r = hero.getBoundingClientRect();
+            var x = (e.clientX - r.left) / r.width - 0.5;
+            var y = (e.clientY - r.top) / r.height - 0.5;
+            setTilt((-y * 6).toFixed(2), (x * 8).toFixed(2));
+        });
+    });
+    hero.addEventListener("mouseleave", function () { setTilt(0, 0); });
+});
+
 // ===== Cloud & DevOps: filter =====
 document.addEventListener("DOMContentLoaded", function () {
     var root = document.querySelector(".btrsc");
@@ -348,14 +384,50 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// ===== Client Logos: Pause/Resume on Click =====
-document.querySelectorAll(".btrx-scroll-track").forEach(function (track) {
-    track.addEventListener("click", function (e) {
-        if (e.target.closest(".btrx-client-item")) return;
-        const container = this.querySelector(".btrx-scroll-container");
-        if (container) {
-            const isPaused = container.style.animationPlayState === "paused";
-            container.style.animationPlayState = isPaused ? "running" : "paused";
-        }
-    });
+// ===== Clients: build the two-way logo marquee =====
+document.addEventListener("DOMContentLoaded", function () {
+    var section = document.querySelector(".btrcl");
+    var track1 = document.getElementById("btrclTrack1");
+    var track2 = document.getElementById("btrclTrack2");
+    var row2 = document.getElementById("btrclRow2");
+    var toggle = document.getElementById("btrclToggle");
+    if (!section || !track1 || !track2 || !row2) return;
+
+    var items = Array.prototype.slice.call(track1.children);
+    if (!items.length) return;
+
+    // decorative copy of a logo (hidden from screen readers)
+    function copy(li) {
+        var c = li.cloneNode(true);
+        c.setAttribute("aria-hidden", "true");
+        var img = c.querySelector("img");
+        if (img) img.setAttribute("alt", "");
+        return c;
+    }
+
+    // row 1: original logos + one decorative copy (seamless loop)
+    items.forEach(function (li) { track1.appendChild(copy(li)); });
+
+    // row 2: same logos in reverse order, twice
+    var reversed = items.slice().reverse();
+    reversed.forEach(function (li) { track2.appendChild(copy(li)); });
+    reversed.forEach(function (li) { track2.appendChild(copy(li)); });
+    row2.hidden = false;
+
+    section.classList.add("is-ready");
+
+    // pause / play button
+    if (toggle) {
+        toggle.addEventListener("click", function () {
+            var paused = section.classList.toggle("is-paused");
+            toggle.setAttribute("aria-pressed", paused ? "true" : "false");
+        });
+    }
+
+    // do not animate while the section is off screen
+    if ("IntersectionObserver" in window) {
+        new IntersectionObserver(function (entries) {
+            section.classList.toggle("is-offscreen", !entries[0].isIntersecting);
+        }, { threshold: 0 }).observe(section);
+    }
 });

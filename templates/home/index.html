@@ -7,176 +7,180 @@
 
 {% block content %}
 
-<!-- ================================================
-   HERO SECTION - 3D FUTURISTIC PLANET BANNER
-   ================================================ -->
-<section class="btr-hero-section">
-    <div class="btr-hero-container">
-        <div class="btr-hero-copy">
-            <span class="btr-hero-tag">Future Systems</span>
-            <h1 class="btr-hero-title">
-                Building the future <span>of human potential.</span>
+<!-- =================================================================
+   HERO  (redesigned: clear message + product-style visual)
+================================================================== -->
+<section class="btrhero" id="top" aria-labelledby="btrheroTitle">
+
+    <div class="btrhero__bg" aria-hidden="true">
+        <span class="btrhero__glow btrhero__glow--a"></span>
+        <span class="btrhero__glow btrhero__glow--b"></span>
+        <span class="btrhero__glow btrhero__glow--c"></span>
+        <span class="btrhero__grid"></span>
+    </div>
+
+    <div class="btrhero__wrap">
+
+        <!-- LEFT: message -->
+        <div class="btrhero__copy">
+            <a href="#services" class="btrhero__pill btrhero__reveal" style="--d:.05s">
+                <span class="btrhero__pill-dot" aria-hidden="true"></span>
+                Software, AI &amp; Cloud engineering
+                <span class="btrhero__pill-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+
+            <h1 class="btrhero__title btrhero__reveal" id="btrheroTitle" style="--d:.15s">
+                Software, AI and cloud solutions <span class="btrhero__grad">built to scale your business</span>
             </h1>
-            <p class="btr-hero-text">
-                We build immersive digital experiences, AI-powered ecosystems, and high-performance technology platforms for brands ready to lead the future.
+
+            <p class="btrhero__lead btrhero__reveal" style="--d:.25s">
+                Xvera Labs designs and builds custom software, AI-powered products and cloud platforms for startups, SMEs and enterprises, from the first idea to production.
             </p>
-            <div class="btr-hero-buttons">
-                <a href="{% url 'contact_us' %}" class="btr-btn btr-btn-primary">Book a Demo</a>
-                <a href="#services" class="btr-btn btr-btn-secondary">Explore Solutions</a>
+
+            <div class="btrhero__actions btrhero__reveal" style="--d:.35s">
+                <a href="{% url 'contact_us' %}" class="btrhero__btn btrhero__btn--primary">Book a Demo <span aria-hidden="true">&rarr;</span></a>
+                <a href="#services" class="btrhero__btn btrhero__btn--ghost">Explore Solutions</a>
             </div>
-            <div class="btr-hero-stats">
-                <div><b>AI</b><span>Driven</span></div>
-                <div><b>Cloud</b><span>Ready</span></div>
-                <div><b>3D</b><span>Vision</span></div>
+
+            <ul class="btrhero__caps btrhero__reveal" style="--d:.45s" aria-label="What we do">
+                <li>Custom software</li>
+                <li>AI &amp; Generative AI</li>
+                <li>Cloud &amp; DevOps</li>
+                <li>Data &amp; Analytics</li>
+            </ul>
+
+            <p class="btrhero__partner btrhero__reveal" style="--d:.55s">
+                Looking to partner or invest? <a href="{% url 'coming' %}">Partner with us &rarr;</a>
+            </p>
+        </div>
+
+        <!-- RIGHT: product-style visual (decorative) -->
+        <div class="btrhero__visual btrhero__reveal" id="btrheroVisual" style="--d:.3s" role="img" aria-label="Illustration of a cloud release pipeline and an AI assistant">
+            <div class="btrhero__stage" aria-hidden="true">
+                <div class="btrhero__tilt" id="btrheroTilt">
+
+                    <span class="btrhero__ring btrhero__ring--one"></span>
+                    <span class="btrhero__ring btrhero__ring--two"></span>
+
+                    <!-- main window -->
+                    <div class="btrhero__panel">
+                        <div class="btrhero__bar">
+                            <span class="btrhero__dots"><i></i><i></i><i></i></span>
+                            <span class="btrhero__bar-title">release pipeline</span>
+                            <span class="btrhero__live"><b></b>Live</span>
+                        </div>
+
+                        <ul class="btrhero__steps">
+                            <li style="--i:0"><span class="btrhero__ico btrhero__ico--ok"></span><span class="btrhero__step">Build</span><span class="btrhero__track"><span class="btrhero__fill"></span></span></li>
+                            <li style="--i:1"><span class="btrhero__ico btrhero__ico--ok"></span><span class="btrhero__step">Automated tests</span><span class="btrhero__track"><span class="btrhero__fill"></span></span></li>
+                            <li style="--i:2"><span class="btrhero__ico btrhero__ico--ok"></span><span class="btrhero__step">Security scan</span><span class="btrhero__track"><span class="btrhero__fill"></span></span></li>
+                            <li style="--i:3"><span class="btrhero__ico btrhero__ico--run"></span><span class="btrhero__step">Deploy to cloud</span><span class="btrhero__track"><span class="btrhero__fill"></span></span></li>
+                        </ul>
+
+                        <div class="btrhero__chart">
+                            <span class="btrhero__chart-label">Performance</span>
+                            <svg viewBox="0 0 360 84" preserveAspectRatio="none" fill="none">
+                                <defs>
+                                    <linearGradient id="btrheroLine" x1="0" y1="0" x2="1" y2="0">
+                                        <stop offset="0" stop-color="#0ebab1"/>
+                                        <stop offset="1" stop-color="#38bdf8"/>
+                                    </linearGradient>
+                                    <linearGradient id="btrheroArea" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0" stop-color="#0ebab1" stop-opacity=".32"/>
+                                        <stop offset="1" stop-color="#0ebab1" stop-opacity="0"/>
+                                    </linearGradient>
+                                </defs>
+                                <path d="M0 66 C30 62 50 44 80 48 S130 70 160 44 S220 18 250 34 S320 12 360 14 L360 84 L0 84 Z" fill="url(#btrheroArea)"/>
+                                <path class="btrhero__line" d="M0 66 C30 62 50 44 80 48 S130 70 160 44 S220 18 250 34 S320 12 360 14" stroke="url(#btrheroLine)" stroke-width="2.4" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- AI assistant card -->
+                    <div class="btrhero__ai">
+                        <div class="btrhero__ai-head">
+                            <span class="btrhero__spark"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.2 6.3L20.5 10l-6.3 1.7L12 18l-2.2-6.3L3.5 10l6.3-1.7L12 2z"/></svg></span>
+                            AI assistant
+                            <span class="btrhero__ai-tag">Online</span>
+                        </div>
+                        <p class="btrhero__bubble">Summarise this week's support tickets</p>
+                        <div class="btrhero__reply">
+                            <span class="btrhero__sk" style="--w:92%"></span>
+                            <span class="btrhero__sk" style="--w:78%"></span>
+                            <span class="btrhero__sk" style="--w:56%"></span>
+                            <span class="btrhero__typing"><i></i><i></i><i></i></span>
+                        </div>
+                    </div>
+
+                    <!-- floating chips -->
+                    <span class="btrhero__chip btrhero__chip--a"><i></i>Cloud-native</span>
+                    <span class="btrhero__chip btrhero__chip--b"><i></i>Secure by design</span>
+                    <span class="btrhero__chip btrhero__chip--c"><i></i>AI-ready</span>
+                </div>
             </div>
         </div>
 
-        <div class="btr-hero-scene" aria-label="3D futuristic planet banner">
-            <div class="btr-planet-holder">
-                <div class="btr-sun-glow"></div>
-                <div class="btr-orbit btr-orbit-1"></div>
-                <div class="btr-orbit btr-orbit-2"></div>
-                <div class="btr-orbit btr-orbit-3"></div>
-                <div class="btr-orbit-planet btr-orbit-planet--blue" aria-hidden="true"></div>
-                <div class="btr-orbit-planet btr-orbit-planet--red" aria-hidden="true"></div>
-                <div class="btr-orbit-planet btr-orbit-planet--ringed" aria-hidden="true"></div>
-                <div class="btr-earth-orbit"><div class="btr-moon"></div></div>
-                <div class="btr-planet-ring"></div>
-                <div class="btr-planet-core"></div>
-                <div class="btr-planet-sat btr-sat-a"></div>
-                <div class="btr-planet-sat btr-sat-b"></div>
-                <div class="btr-space-planet btr-space-planet--moon"></div>
-                <div class="btr-space-planet btr-space-planet--mars"></div>
-                <div class="btr-space-planet btr-space-planet--platinum"></div>
-                <div class="btr-space-planet btr-space-planet--saturn"></div>
-                <div class="btr-black-hole btr-black-hole--one" aria-label="Black hole"></div>
-                <div class="btr-black-hole btr-black-hole--two" aria-label="Black hole"></div>
-                <span class="btr-gravity-particle btr-gravity-particle--one"></span>
-                <span class="btr-gravity-particle btr-gravity-particle--two"></span>
-                <span class="btr-gravity-particle btr-gravity-particle--three"></span>
-                <span class="btr-infall-planet"></span>
-                <div class="btr-comet"></div>
-            </div>
-
-            <div class="btr-floating-card btr-floating-card-top">
-                <strong>24/7</strong>
-                <span>Global Ops</span>
-            </div>
-            <div class="btr-floating-card btr-floating-card-bottom">
-                <strong>99.9%</strong>
-                <span>System Scale</span>
-            </div>
-        </div>
     </div>
 </section>
 
 <!-- ==================================================
-     CLIENT LOGOS SCROLL SECTION
-     (each row = 21 logos + the same 21 again for a seamless loop)
+     CLIENTS  (redesigned: heading + two-way logo marquee)
+     Only keep logos of real clients here.
+     The second row and the loop copies are built by JS from this list.
 ================================================== -->
-<section class="btrx-clients-section">
-    <!-- ROW 1: Right to Left (Normal) -->
-    <div class="btrx-scroll-track">
-        <div class="btrx-scroll-container">
-            <div class="btrx-client-item"><img src="{% static 'images/brands/Adore-clube.png' %}" alt="Adore Clube"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/beta-start.png' %}" alt="Beta Start"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/expert.png' %}" alt="Expert"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/green-soft.png' %}" alt="Green Soft"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/hadi.png' %}" alt="Hadi Sports"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/k-t-soft.png' %}" alt="KT Soft"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/kadam.png' %}" alt="KADAM"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/kidco.png' %}" alt="Kidco"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/mozay.png' %}" alt="Mozay"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/orfit.png' %}" alt="Orfit"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/parley.png' %}" alt="Parley"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/promax.png' %}" alt="Promax"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/ruby.png' %}" alt="Ruby"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/supermain.png' %}" alt="Supermain"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/tr.png' %}" alt="Tahir Rafique"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/trand-brand.png' %}" alt="Trand Brand"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/welcome.png' %}" alt="Welcome"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/welto.png' %}" alt="Welto"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/xara-soft.png' %}" alt="Xara Soft"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/z-star.png' %}" alt="Z Start"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/elechmech.png' %}" alt="Elech Mech"></div>
-            <!-- DUPLICATE for seamless loop -->
-            <div class="btrx-client-item"><img src="{% static 'images/brands/Adore-clube.png' %}" alt="Adore Clube"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/beta-start.png' %}" alt="Beta Start"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/expert.png' %}" alt="Expert"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/green-soft.png' %}" alt="Green Soft"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/hadi.png' %}" alt="Hadi Sports"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/k-t-soft.png' %}" alt="KT Soft"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/kadam.png' %}" alt="KADAM"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/kidco.png' %}" alt="Kidco"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/mozay.png' %}" alt="Mozay"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/orfit.png' %}" alt="Orfit"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/parley.png' %}" alt="Parley"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/promax.png' %}" alt="Promax"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/ruby.png' %}" alt="Ruby"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/supermain.png' %}" alt="Supermain"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/tr.png' %}" alt="Tahir Rafique"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/trand-brand.png' %}" alt="Trand Brand"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/welcome.png' %}" alt="Welcome"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/welto.png' %}" alt="Welto"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/xara-soft.png' %}" alt="Xara Soft"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/z-star.png' %}" alt="Z Start"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/elechmech.png' %}" alt="Elech Mech"></div>
+<section class="btrcl" id="clients" aria-labelledby="btrclTitle">
+    <div class="btrcl__bg" aria-hidden="true"></div>
+
+    <div class="btrcl__head">
+        <span class="btrcl__eyebrow">Our clients</span>
+        <h2 class="btrcl__title" id="btrclTitle">Brands that build with <em>Xvera Labs</em></h2>
+        <p class="btrcl__lead">From startups to established companies, teams across industries work with us on software, cloud and AI.</p>
+    </div>
+
+    <div class="btrcl__marquee" role="group" aria-label="Client logos">
+        <div class="btrcl__row">
+            <ul class="btrcl__track" id="btrclTrack1">
+                <li class="btrcl__item"><img src="{% static 'images/brands/Adore-clube.png' %}" alt="Adore Clube" decoding="async"></li>
+                <li class="btrcl__item"><img src="{% static 'images/brands/beta-start.png' %}" alt="Beta Start" decoding="async"></li>
+                <li class="btrcl__item"><img src="{% static 'images/brands/expert.png' %}" alt="Expert" decoding="async"></li>
+                <li class="btrcl__item"><img src="{% static 'images/brands/green-soft.png' %}" alt="Green Soft" decoding="async"></li>
+                <li class="btrcl__item"><img src="{% static 'images/brands/hadi.png' %}" alt="Hadi Sports" decoding="async"></li>
+                <li class="btrcl__item"><img src="{% static 'images/brands/k-t-soft.png' %}" alt="KT Soft" decoding="async"></li>
+                <li class="btrcl__item"><img src="{% static 'images/brands/kadam.png' %}" alt="KADAM" decoding="async"></li>
+                <li class="btrcl__item"><img src="{% static 'images/brands/kidco.png' %}" alt="Kidco" decoding="async"></li>
+                <li class="btrcl__item"><img src="{% static 'images/brands/mozay.png' %}" alt="Mozay" decoding="async"></li>
+                <li class="btrcl__item"><img src="{% static 'images/brands/orfit.png' %}" alt="Orfit" decoding="async"></li>
+                <li class="btrcl__item"><img src="{% static 'images/brands/parley.png' %}" alt="Parley" decoding="async"></li>
+                <li class="btrcl__item"><img src="{% static 'images/brands/promax.png' %}" alt="Promax" decoding="async"></li>
+                <li class="btrcl__item"><img src="{% static 'images/brands/ruby.png' %}" alt="Ruby" decoding="async"></li>
+                <li class="btrcl__item"><img src="{% static 'images/brands/supermain.png' %}" alt="Supermain" decoding="async"></li>
+                <li class="btrcl__item"><img src="{% static 'images/brands/tr.png' %}" alt="Tahir Rafique" decoding="async"></li>
+                <li class="btrcl__item"><img src="{% static 'images/brands/trand-brand.png' %}" alt="Trand Brand" decoding="async"></li>
+                <li class="btrcl__item"><img src="{% static 'images/brands/welcome.png' %}" alt="Welcome" decoding="async"></li>
+                <li class="btrcl__item"><img src="{% static 'images/brands/welto.png' %}" alt="Welto" decoding="async"></li>
+                <li class="btrcl__item"><img src="{% static 'images/brands/xara-soft.png' %}" alt="Xara Soft" decoding="async"></li>
+                <li class="btrcl__item"><img src="{% static 'images/brands/z-star.png' %}" alt="Z Start" decoding="async"></li>
+                <li class="btrcl__item"><img src="{% static 'images/brands/elechmech.png' %}" alt="Elech Mech" decoding="async"></li>
+            </ul>
+        </div>
+
+        <div class="btrcl__row btrcl__row--reverse" id="btrclRow2" hidden>
+            <ul class="btrcl__track" id="btrclTrack2" aria-hidden="true"></ul>
         </div>
     </div>
-    <!-- ROW 2: Left to Right (Reverse) -->
-    <div class="btrx-scroll-track">
-        <div class="btrx-scroll-container reverse">
-            <div class="btrx-client-item"><img src="{% static 'images/brands/Adore-clube.png' %}" alt="Adore Clube"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/beta-start.png' %}" alt="Beta Start"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/expert.png' %}" alt="Expert"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/green-soft.png' %}" alt="Green Soft"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/hadi.png' %}" alt="Hadi Sports"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/k-t-soft.png' %}" alt="KT Soft"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/kadam.png' %}" alt="KADAM"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/kidco.png' %}" alt="Kidco"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/mozay.png' %}" alt="Mozay"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/orfit.png' %}" alt="Orfit"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/parley.png' %}" alt="Parley"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/promax.png' %}" alt="Promax"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/ruby.png' %}" alt="Ruby"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/supermain.png' %}" alt="Supermain"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/tr.png' %}" alt="Tahir Rafique"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/trand-brand.png' %}" alt="Trand Brand"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/welcome.png' %}" alt="Welcome"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/welto.png' %}" alt="Welto"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/xara-soft.png' %}" alt="Xara Soft"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/z-star.png' %}" alt="Z Start"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/elechmech.png' %}" alt="Elech Mech"></div>
-            <!-- DUPLICATE for seamless loop -->
-            <div class="btrx-client-item"><img src="{% static 'images/brands/Adore-clube.png' %}" alt="Adore Clube"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/beta-start.png' %}" alt="Beta Start"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/expert.png' %}" alt="Expert"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/green-soft.png' %}" alt="Green Soft"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/hadi.png' %}" alt="Hadi Sports"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/k-t-soft.png' %}" alt="KT Soft"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/kadam.png' %}" alt="KADAM"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/kidco.png' %}" alt="Kidco"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/mozay.png' %}" alt="Mozay"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/orfit.png' %}" alt="Orfit"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/parley.png' %}" alt="Parley"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/promax.png' %}" alt="Promax"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/ruby.png' %}" alt="Ruby"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/supermain.png' %}" alt="Supermain"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/tr.png' %}" alt="Tahir Rafique"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/trand-brand.png' %}" alt="Trand Brand"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/welcome.png' %}" alt="Welcome"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/welto.png' %}" alt="Welto"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/xara-soft.png' %}" alt="Xara Soft"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/z-star.png' %}" alt="Z Start"></div>
-            <div class="btrx-client-item"><img src="{% static 'images/brands/elechmech.png' %}" alt="Elech Mech"></div>
-        </div>
+
+    <div class="btrcl__foot">
+        <button type="button" class="btrcl__toggle" id="btrclToggle" aria-pressed="false">
+            <span class="btrcl__toggle-pause"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>Pause</span>
+            <span class="btrcl__toggle-play"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15a1 1 0 001.5.86l12-7.5a1 1 0 000-1.72l-12-7.5A1 1 0 007 4.5z"/></svg>Play</span>
+        </button>
     </div>
 </section>
 
 <!-- =========================================================
      TECH SECTION (Engineering Enterprise Technology Solutions)
 ========================================================= -->
-<section class="btr-tech-section">
+<section class="btr-tech-section" id="services">
     <div class="btr-tech-container">
         <!-- HEADING -->
         <div class="btr-tech-heading">
