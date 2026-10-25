@@ -1681,13 +1681,13 @@ body:where(.page-home-index),:where(body.page-home-index) * {
 .btrct__social a:hover { color: #fff; background: #0ebab1; border-color: #0ebab1; transform: translateY(-3px); }
 
 /* ---------- right: form card ---------- */
-.btrct__card {
+/* .btrct__card {
     padding: 44px 44px 38px;
     background: #fff;
     border: 1px solid rgba(15, 42, 39, 0.08);
     border-radius: 28px;
     box-shadow: 0 30px 70px rgba(15, 42, 39, 0.1);
-}
+} */
 
 .btrct__card-title {
     margin-bottom: 30px;
@@ -1720,7 +1720,6 @@ body:where(.page-home-index),:where(body.page-home-index) * {
     color: #0f2a27;
     background: #f4f8fa;
     border: 1.5px solid rgba(15, 42, 39, 0.1);
-    border-radius: 12px;
     outline: none;
     transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
@@ -1760,9 +1759,6 @@ body:where(.page-home-index),:where(body.page-home-index) * {
     font-weight: 500;
     line-height: 1.3;
     color: #3d5256;
-    background: #f4f8fa;
-    border: 1.5px solid rgba(15, 42, 39, 0.1);
-    border-radius: 12px;
     transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
 }
 .btrct__chip span::before {
