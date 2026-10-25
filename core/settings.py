@@ -80,6 +80,7 @@ INSTALLED_APPS = [
     'apps.contact',
     'apps.services',
     'apps.blogs',
+    'apps.partners',
 ]
 
 MIDDLEWARE = [

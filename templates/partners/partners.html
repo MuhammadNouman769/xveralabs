@@ -1,0 +1,295 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Partner Programs - Xvera Labs{% endblock %}
+{% block body_class %}page-partners{% endblock %}
+
+{% block page_css %}<link rel="stylesheet" href="{% static 'css/pages/partners.css' %}">{% endblock %}
+
+{% block content %}
+{% comment %}
+  Terms shown on this page come from the view (PARTNER_TERMS). If the view does not pass
+  "terms", the defaults after |default: are used. Change them in ONE place: views.py.
+{% endcomment %}
+<main class="btrp btrpo" id="btrpMain">
+
+  <!-- ================= HERO ================= -->
+  <section class="btrp-hero" aria-labelledby="btrpoTitle">
+    <div class="btrp-wrap btrp-hero__wrap">
+
+      <div class="btrp-hero__copy">
+        <nav class="btrp-crumbs" aria-label="Breadcrumb">
+          <a href="{% url 'home' %}">Home</a><span aria-hidden="true">/</span><span aria-current="page">Partners</span>
+        </nav>
+        <span class="btrp-eyebrow"><i></i>Partner programs</span>
+        <h1 class="btrp-title" id="btrpoTitle">Grow with Xvera Labs <span class="btrp-grad">as a partner</span></h1>
+        <p class="btrp-lead">Refer clients, resell our solutions, promote our products or back a product module. Every partnership runs under a clear written agreement.</p>
+        <div class="btrp-actions">
+          <a href="{% url 'partner_apply' %}" class="btrp-btn btrp-btn--primary">Become a Partner <span aria-hidden="true">&rarr;</span></a>
+          <a href="{% url 'partners_investors' %}" class="btrp-btn btrp-btn--ghost">Investor options</a>
+        </div>
+        <ul class="btrp-trust" aria-label="Our approach">
+          <li>Written agreement</li>
+          <li>Clear terms</li>
+          <li>Transparent reporting</li>
+        </ul>
+      </div>
+
+      <!-- partner network (each node is a link) -->
+      <nav class="btrpo-net" aria-label="Partner programs">
+        <svg class="btrpo-net__lines" viewBox="0 0 100 90" preserveAspectRatio="none" aria-hidden="true">
+          <line x1="50" y1="45" x2="50" y2="10"/>
+          <line x1="50" y1="45" x2="82" y2="30"/>
+          <line x1="50" y1="45" x2="74" y2="80"/>
+          <line x1="50" y1="45" x2="26" y2="80"/>
+          <line x1="50" y1="45" x2="18" y2="30"/>
+        </svg>
+        <span class="btrpo-net__ring btrpo-net__ring--a" aria-hidden="true"></span>
+        <span class="btrpo-net__ring btrpo-net__ring--b" aria-hidden="true"></span>
+        <span class="btrpo-net__hub"><img src="{% static 'images/logos/xvera.png' %}" alt="Xvera Labs"></span>
+        <a href="{% url 'partners_investors' %}" class="btrpo-node" style="left:50%;top:11%">Investors</a>
+        <a href="#referral" class="btrpo-node" style="left:82%;top:33%">Referral</a>
+        <a href="#reseller" class="btrpo-node" style="left:74%;top:88%">Reseller</a>
+        <a href="#marketing" class="btrpo-node" style="left:26%;top:88%">Marketing</a>
+        <a href="#strategic" class="btrpo-node" style="left:18%;top:33%">Strategic</a>
+      </nav>
+
+    </div>
+  </section>
+
+  <!-- ================= SUB NAV ================= -->
+  <nav class="btrpo-sub" id="btrpoSub" aria-label="On this page">
+    <div class="btrp-wrap btrpo-sub__in">
+      <a href="#referral" data-spy="referral">Referral &amp; Sales</a>
+      <a href="#reseller" data-spy="reseller">Reseller</a>
+      <a href="#marketing" data-spy="marketing">Marketing &amp; Growth</a>
+      <a href="#strategic" data-spy="strategic">Strategic</a>
+      <a href="{% url 'partners_investors' %}" class="btrpo-sub__ext">Investors &rarr;</a>
+    </div>
+  </nav>
+
+  <!-- ================= REFERRAL ================= -->
+  <section class="btrp-section" id="referral" aria-labelledby="refTitle">
+    <div class="btrp-wrap btrpo-prog">
+      <div class="btrpo-prog__text btrp-reveal">
+        <span class="btrp-kicker">Referral &amp; Sales partners</span>
+        <h2 class="btrp-h2" id="refTitle">Bring a client, earn a commission</h2>
+        <p class="btrp-sub">Know a business that needs software, AI or cloud work? Introduce them to us. If the project goes ahead, you earn a commission. This program includes sales partners and affiliates.</p>
+        <ul class="btrpo-points">
+          <li>Freelancers, consultants and agencies</li>
+          <li>Business owners with a strong network</li>
+          <li>Sales professionals who want performance-based income</li>
+        </ul>
+        <a href="{% url 'partner_apply' %}?type=referral" class="btrp-btn btrp-btn--dark">Apply as a referral partner <span aria-hidden="true">&rarr;</span></a>
+      </div>
+      <div class="btrpo-box btrp-reveal" style="--d:.12s">
+        <div class="btrpo-reward">
+          <span class="btrpo-reward__num">{{ terms.referral_commission|default:"5%" }}</span>
+          <span class="btrpo-reward__txt">commission on the net revenue of every project you bring</span>
+        </div>
+        <h3 class="btrpo-box__title">How it works</h3>
+        <ol class="btrpo-list">
+          <li><b>Apply</b> and sign the partner agreement.</li>
+          <li><b>Introduce</b> a client. We handle the proposal and delivery.</li>
+          <li><b>Project signed:</b> we confirm it with you.</li>
+          <li><b>You earn</b> your commission after the client's payment reaches us, as set out in the agreement.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= RESELLER ================= -->
+  <section class="btrp-section btrp-section--tint" id="reseller" aria-labelledby="resTitle">
+    <div class="btrp-wrap btrpo-prog btrpo-prog--flip">
+      <div class="btrpo-prog__text btrp-reveal">
+        <span class="btrp-kicker">Reseller program</span>
+        <h2 class="btrp-h2" id="resTitle">Resell our products to your customers</h2>
+        <p class="btrp-sub">Offer Xvera Labs products and solutions, such as our eCommerce marketplace and subscription-based POS system, to your own customers. You keep a margin, we handle the product and technical support.</p>
+        <ul class="btrpo-points">
+          <li>IT shops and system integrators</li>
+          <li>Agencies with an existing customer base</li>
+          <li>Local partners who can onboard and support customers</li>
+        </ul>
+        <a href="{% url 'partner_apply' %}?type=reseller" class="btrp-btn btrp-btn--dark">Apply as a reseller <span aria-hidden="true">&rarr;</span></a>
+      </div>
+      <div class="btrpo-box btrp-reveal" style="--d:.12s">
+        <div class="btrpo-reward">
+          <span class="btrpo-reward__num btrpo-reward__num--sm">Margin</span>
+          <span class="btrpo-reward__txt">set per product and written into your reseller agreement</span>
+        </div>
+        <h3 class="btrpo-box__title">How it works</h3>
+        <ol class="btrpo-list">
+          <li><b>Choose</b> the products you want to sell.</li>
+          <li><b>Get onboarded:</b> demos, material and technical training.</li>
+          <li><b>Sell</b> to your customers under your own relationship.</li>
+          <li><b>Earn</b> your margin as agreed, with support from our team.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MARKETING ================= -->
+  <section class="btrp-section" id="marketing" aria-labelledby="mktTitle">
+    <div class="btrp-wrap btrpo-prog">
+      <div class="btrpo-prog__text btrp-reveal">
+        <span class="btrp-kicker">Marketing &amp; growth partners</span>
+        <h2 class="btrp-h2" id="mktTitle">Promote our products, grow new markets</h2>
+        <p class="btrp-sub">Help us reach new audiences. Promote our products, run campaigns in your community or city, or help us enter a new market. Students can join through the Campus Ambassador Program.</p>
+        <ul class="btrpo-points">
+          <li>Marketers, creators and community leaders</li>
+          <li>Agencies that want to add our products to their offer</li>
+          <li>Partners who can open a new city, region or industry</li>
+        </ul>
+        <div class="btrpo-btnrow">
+          <a href="{% url 'partner_apply' %}?type=marketing" class="btrp-btn btrp-btn--dark">Apply as a marketing partner <span aria-hidden="true">&rarr;</span></a>
+          <a href="{% url 'campus_ambassador_program' %}" class="btrp-btn btrp-btn--line">Campus Ambassador Program</a>
+        </div>
+      </div>
+      <div class="btrpo-box btrp-reveal" style="--d:.12s">
+        <div class="btrpo-reward">
+          <span class="btrpo-reward__num btrpo-reward__num--sm">Performance</span>
+          <span class="btrpo-reward__txt">based rewards, agreed in writing before you start</span>
+        </div>
+        <h3 class="btrpo-box__title">How it works</h3>
+        <ol class="btrpo-list">
+          <li><b>Apply</b> and tell us how you would promote.</li>
+          <li><b>Agree</b> goals and rewards in writing.</li>
+          <li><b>Promote</b> with our brand material and support.</li>
+          <li><b>Get rewarded</b> for the results you deliver.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= STRATEGIC ================= -->
+  <section class="btrp-section btrp-section--tint" id="strategic" aria-labelledby="strTitle">
+    <div class="btrp-wrap btrpo-prog btrpo-prog--flip">
+      <div class="btrpo-prog__text btrp-reveal">
+        <span class="btrp-kicker">Strategic &amp; corporate partners</span>
+        <h2 class="btrp-h2" id="strTitle">Build bigger things together</h2>
+        <p class="btrp-sub">For companies that want a deeper relationship: technology partnerships, joint solutions, or distribution of our products in new regions and industries.</p>
+        <ul class="btrpo-points">
+          <li>Technology and platform companies</li>
+          <li>Corporates that want a long-term engineering partner</li>
+          <li>Distributors who can take our products to a new region</li>
+        </ul>
+        <a href="{% url 'partner_apply' %}?type=strategic" class="btrp-btn btrp-btn--dark">Start a conversation <span aria-hidden="true">&rarr;</span></a>
+      </div>
+      <div class="btrpo-box btrp-reveal" style="--d:.12s">
+        <div class="btrpo-reward">
+          <span class="btrpo-reward__num btrpo-reward__num--sm">Per deal</span>
+          <span class="btrpo-reward__txt">terms are agreed for each partnership in a written agreement</span>
+        </div>
+        <h3 class="btrpo-box__title">How it works</h3>
+        <ol class="btrpo-list">
+          <li><b>Introduce</b> your company and your goals.</li>
+          <li><b>Explore</b> the fit in a call with our team.</li>
+          <li><b>Define</b> scope, responsibilities and terms.</li>
+          <li><b>Start</b> working together under the agreement.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= INVESTORS BAND ================= -->
+  <section class="btrp-section btrp-section--dark btrpo-inv" aria-labelledby="invTitle">
+    <div class="btrp-wrap btrpo-inv__in btrp-reveal">
+      <div>
+        <span class="btrp-kicker">Investor partners</span>
+        <h2 class="btrp-h2" id="invTitle">Prefer to back a product module?</h2>
+        <p class="btrp-sub">Choose a product we are building, invest alongside us and share in its profit under a written agreement, with clear reporting. Returns are not guaranteed.</p>
+      </div>
+      <a href="{% url 'partners_investors' %}" class="btrp-btn btrp-btn--primary">See investor options <span aria-hidden="true">&rarr;</span></a>
+    </div>
+  </section>
+
+  <!-- ================= PROCESS ================= -->
+  <section class="btrp-section" aria-labelledby="procTitle">
+    <div class="btrp-wrap">
+      <div class="btrp-head btrp-head--center btrp-reveal">
+        <span class="btrp-kicker">How partnering works</span>
+        <h2 class="btrp-h2" id="procTitle">From application to first project</h2>
+      </div>
+      <ol class="btrp-steps btrp-reveal" style="--n:4">
+        <li class="btrp-step"><h3>Apply</h3><p>Tell us who you are and how you would like to partner.</p></li>
+        <li class="btrp-step"><h3>Intro call</h3><p>We review your application and talk to find the right fit.</p></li>
+        <li class="btrp-step"><h3>Agreement</h3><p>We put the scope, rewards and responsibilities in writing.</p></li>
+        <li class="btrp-step"><h3>Start together</h3><p>You get onboarded and we start working side by side.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ================= TERMS TABLE ================= -->
+  <section class="btrp-section btrp-section--tint" aria-labelledby="termsTitle">
+    <div class="btrp-wrap">
+      <div class="btrp-head btrp-reveal">
+        <span class="btrp-kicker">Terms at a glance</span>
+        <h2 class="btrp-h2" id="termsTitle">Compare the programs</h2>
+        <p class="btrp-sub">Final terms are always set in your written partner agreement.</p>
+      </div>
+      <div class="btrpo-tablewrap btrp-reveal">
+        <table class="btrpo-table">
+          <thead>
+            <tr><th scope="col">Program</th><th scope="col">Best for</th><th scope="col">How you earn</th><th scope="col">What you do</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Referral &amp; Sales</th><td>Consultants, networkers</td><td>{{ terms.referral_commission|default:"5%" }} of net project revenue</td><td>Introduce clients</td></tr>
+            <tr><th scope="row">Reseller</th><td>IT shops, agencies</td><td>Margin per product</td><td>Sell to your customers</td></tr>
+            <tr><th scope="row">Marketing &amp; Growth</th><td>Marketers, communities</td><td>Performance-based rewards</td><td>Promote and generate leads</td></tr>
+            <tr><th scope="row">Strategic</th><td>Companies, distributors</td><td>Agreed per deal</td><td>Work jointly under agreement</td></tr>
+            <tr><th scope="row"><a href="{% url 'partners_investors' %}">Investor</a></th><td>Investors</td><td>Share of module profit (not guaranteed)</td><td>Invest in a chosen module</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="btrp-section" id="faq" aria-labelledby="faqTitle">
+    <div class="btrp-wrap">
+      <div class="btrp-head btrp-head--center btrp-reveal">
+        <span class="btrp-kicker">FAQ</span>
+        <h2 class="btrp-h2" id="faqTitle">Questions partners ask</h2>
+      </div>
+      <div class="btrp-faq btrp-reveal" id="btrpoFaq">
+        <details>
+          <summary>Who can become a partner?</summary>
+          <p>Individuals, agencies and companies. Choose the program that fits you in the application form, and we will tell you if another one suits you better.</p>
+        </details>
+        <details>
+          <summary>Do I need a registered company?</summary>
+          <p>It depends on the program. Referral and marketing partners can often start as individuals. Reseller, strategic and investor partnerships may need a registered business. We will confirm this during the intro call.</p>
+        </details>
+        <details>
+          <summary>When and how is the commission paid?</summary>
+          <p>Commission is paid after we receive the client's payment, as set out in your agreement. The exact basis and timing are written down before you start.</p>
+        </details>
+        <details>
+          <summary>Is there a written agreement?</summary>
+          <p>Yes. Every partnership starts with a written agreement that covers scope, rewards and responsibilities. We recommend reading it carefully and getting your own advice if you need it.</p>
+        </details>
+        <details>
+          <summary>Are investor returns guaranteed?</summary>
+          <p>No. A share of profit depends on how the product module performs, and capital is at risk. Please read the investor page for details.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CTA ================= -->
+  <section class="btrp-cta" aria-labelledby="ctaTitle">
+    <div class="btrp-wrap btrp-cta__in">
+      <div>
+        <h2 id="ctaTitle">Ready to partner with Xvera Labs?</h2>
+        <p>Tell us how you would like to work with us. It takes a few minutes to apply.</p>
+      </div>
+      <div class="btrp-cta__btns">
+        <a href="{% url 'partner_apply' %}" class="btrp-btn btrp-btn--primary">Become a Partner <span aria-hidden="true">&rarr;</span></a>
+        <a href="{% url 'contact_us' %}" class="btrp-btn btrp-btn--ghost">Talk to us first</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="{% static 'js/pages/partners-1.js' %}"></script>
+{% endblock %}

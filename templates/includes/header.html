@@ -570,10 +570,9 @@
             </div>
           </div>
         </li>
-
         <!-- PARTNERS (NEW) -->
         <li class="btrx-mega-parent">
-          <button type="button" class="btr-nav__link btr-nav__link--partner has-mega {% if request.resolver_match.url_name == 'partners' %}active{% endif %}" aria-haspopup="true" aria-expanded="false" aria-controls="mega-partners">
+          <button type="button" class="btr-nav__link btr-nav__link--partner has-mega {% if request.resolver_match.url_name == 'partners' or request.resolver_match.url_name == 'partners_investors' or request.resolver_match.url_name == 'partner_apply' %}active{% endif %}" aria-haspopup="true" aria-expanded="false" aria-controls="mega-partners">
             Partners
             <span class="btr-nav__badge">New</span>
             <span class="btr-nav__chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
@@ -583,29 +582,28 @@
               <div class="btrx-mega-col">
                 <h4>Investment & Business Alliances</h4>
                 <ul class="btrx-mega-links">
-                  <!-- TODO: replace 'coming' with real URLs once the partner pages exist -->
-                  <li><a href="{% url 'coming' %}">Become an Investor Partner</a></li>
-                  <li><a href="{% url 'coming' %}">Product Investment Modules</a></li>
-                  <li><a href="{% url 'coming' %}">Strategic & Corporate Partnerships</a></li>
-                  <li><a href="{% url 'coming' %}">Distribution Partners</a></li>
+                  <li><a href="{% url 'partners_investors' %}">Become an Investor Partner</a></li>
+                  <li><a href="{% url 'partners_investors' %}#opportunities">Product Investment Modules</a></li>
+                  <li><a href="{% url 'partners' %}#strategic">Strategic & Corporate Partnerships</a></li>
+                  <li><a href="{% url 'partners' %}#strategic">Distribution Partners</a></li>
                 </ul>
               </div>
               <div class="btrx-mega-col">
                 <h4>Sales & Client Acquisition</h4>
                 <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">Referral Partner (Bring a Client)</a></li>
-                  <li><a href="{% url 'coming' %}">Sales Partner Program</a></li>
-                  <li><a href="{% url 'coming' %}">Reseller Program</a></li>
-                  <li><a href="{% url 'coming' %}">Affiliate Program</a></li>
+                  <li><a href="{% url 'partners' %}#referral">Referral Partner (Bring a Client)</a></li>
+                  <li><a href="{% url 'partners' %}#referral">Sales Partner Program</a></li>
+                  <li><a href="{% url 'partners' %}#reseller">Reseller Program</a></li>
+                  <li><a href="{% url 'partners' %}#referral">Affiliate Program</a></li>
                 </ul>
               </div>
               <div class="btrx-mega-col">
                 <h4>Marketing & Product Growth</h4>
                 <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">Marketing Partners</a></li>
-                  <li><a href="{% url 'coming' %}">Promote Our Products</a></li>
+                  <li><a href="{% url 'partners' %}#marketing">Marketing Partners</a></li>
+                  <li><a href="{% url 'partners' %}#marketing">Promote Our Products</a></li>
                   <li><a href="{% url 'campus_ambassador_program' %}">Campus Ambassador Program</a></li>
-                  <li><a href="{% url 'coming' %}">Market Expansion Program</a></li>
+                  <li><a href="{% url 'partners' %}#marketing">Market Expansion Program</a></li>
                 </ul>
               </div>
             </div>
@@ -616,7 +614,8 @@
                 <p>Partner with us to build technology, education and community projects together, under a clear written agreement.</p>
               </div>
               <div class="btrx-promo__actions">
-                <a href="{% url 'coming' %}" class="btrx-btn">Become a Partner</a>
+                <a href="{% url 'partners' %}" class="btrx-btn btrx-btn--ghost">All programs</a>
+                <a href="{% url 'partner_apply' %}" class="btrx-btn">Become a Partner</a>
               </div>
             </div>
           </div>

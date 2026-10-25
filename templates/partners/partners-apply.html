@@ -1,0 +1,191 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Become a Partner - Xvera Labs{% endblock %}
+{% block body_class %}page-partners-apply{% endblock %}
+
+{% block page_css %}<link rel="stylesheet" href="{% static 'css/pages/partners-apply.css' %}">{% endblock %}
+
+{% block content %}
+<main class="btrp btrpa" id="btrpMain">
+
+  <!-- ================= HERO (compact) ================= -->
+  <section class="btrp-hero btrpa-hero" aria-labelledby="btrpaTitle">
+    <div class="btrp-wrap">
+      <nav class="btrp-crumbs" aria-label="Breadcrumb">
+        <a href="{% url 'home' %}">Home</a><span aria-hidden="true">/</span><a href="{% url 'partners' %}">Partners</a><span aria-hidden="true">/</span><span aria-current="page">Apply</span>
+      </nav>
+      <span class="btrp-eyebrow"><i></i>Partner application</span>
+      <h1 class="btrp-title" id="btrpaTitle">Become a Xvera Labs <span class="btrp-grad">partner</span></h1>
+      <p class="btrp-lead">Tell us how you would like to work with us. We will review your application and get in touch to talk it through.</p>
+      <ol class="btrpa-mini" aria-label="Application steps">
+        <li><b>1</b>Apply</li>
+        <li><b>2</b>Intro call</li>
+        <li><b>3</b>Agreement</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ================= FORM ================= -->
+  <section class="btrp-section btrpa-main" aria-labelledby="formTitle">
+    <div class="btrp-wrap btrpa-grid">
+
+      <!-- aside -->
+      <aside class="btrpa-aside btrp-reveal" aria-label="What happens next">
+        <h2 class="btrpa-aside__title" id="asideTitle">What happens next</h2>
+        <ol class="btrpa-tl">
+          <li><b>We review</b><span>Our team reads your application and checks the fit with the program you chose.</span></li>
+          <li><b>We get in touch</b><span>We contact you by email or phone to arrange an intro call.</span></li>
+          <li><b>We agree terms</b><span>Scope, rewards and responsibilities are written in a partner agreement.</span></li>
+          <li><b>We start together</b><span>You are onboarded and we begin working side by side.</span></li>
+        </ol>
+
+        <div class="btrpa-contact">
+          <h3>Prefer to talk first?</h3>
+          <a href="mailto:xveralabs.contact@gmail.com">xveralabs.contact@gmail.com</a>
+          <a href="tel:+923248699647">+92 324 8699 647</a>
+          <a href="https://wa.me/923248699647" target="_blank" rel="noopener noreferrer">WhatsApp: 0324 8699647</a>
+        </div>
+
+        <p class="btrpa-safe">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.4 8-8 9-4.6-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+          Applying does not commit you to anything. Every partnership starts with a written agreement.
+        </p>
+      </aside>
+
+      <!-- form card -->
+      <div class="btrpa-card btrp-reveal" style="--d:.1s">
+        <h2 class="btrpa-card__title" id="formTitle">Partner application</h2>
+
+        {% if messages %}
+          {% for message in messages %}
+            <div class="btrpa-alert btrpa-alert--{{ message.tags|default:'info' }}" role="status">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+
+        <form class="btrpa-form" id="btrpaForm" method="post" action="{% url 'partner_apply' %}" novalidate>
+          {% csrf_token %}
+
+          <!-- spam trap: real users never see or fill this -->
+          <div class="btrpa-hp" aria-hidden="true">
+            <label for="paWebsite">Leave this field empty</label>
+            <input type="text" id="paWebsite" name="website" tabindex="-1" autocomplete="off">
+          </div>
+
+          <fieldset class="btrpa-types">
+            <legend>I want to join as<span class="btrpa-req" aria-hidden="true">*</span></legend>
+            <div class="btrpa-types__grid">
+              <label class="btrpa-type"><input type="radio" name="partner_type" value="investor" required><span><b>Investor partner</b><small>Back a product module</small></span></label>
+              <label class="btrpa-type"><input type="radio" name="partner_type" value="referral"><span><b>Referral &amp; sales</b><small>Bring clients, earn commission</small></span></label>
+              <label class="btrpa-type"><input type="radio" name="partner_type" value="reseller"><span><b>Reseller</b><small>Sell our products</small></span></label>
+              <label class="btrpa-type"><input type="radio" name="partner_type" value="marketing"><span><b>Marketing &amp; growth</b><small>Promote and expand</small></span></label>
+              <label class="btrpa-type"><input type="radio" name="partner_type" value="strategic"><span><b>Strategic &amp; corporate</b><small>Technology, distribution</small></span></label>
+            </div>
+            <p class="btrpa-error" id="paTypeError" role="alert" hidden>Please choose how you would like to partner.</p>
+          </fieldset>
+
+          <div class="btrpa-field">
+            <label for="paName">Full name<span class="btrpa-req" aria-hidden="true">*</span></label>
+            <input type="text" id="paName" name="full_name" autocomplete="name" required>
+          </div>
+
+          <div class="btrpa-field">
+            <label for="paEmail">Email<span class="btrpa-req" aria-hidden="true">*</span></label>
+            <input type="email" id="paEmail" name="email" autocomplete="email" required>
+          </div>
+
+          <div class="btrpa-field">
+            <label for="paPhone">Phone number<span class="btrpa-req" aria-hidden="true">*</span></label>
+            <div class="btrpa-phone">
+              <select name="phone_code" aria-label="Country code">
+                <option value="+92" selected>PK +92</option>
+                <option value="+1">US/CA +1</option>
+                <option value="+44">UK +44</option>
+                <option value="+971">UAE +971</option>
+                <option value="+966">KSA +966</option>
+                <option value="+61">AU +61</option>
+                <option value="+49">DE +49</option>
+              </select>
+              <input type="tel" id="paPhone" name="phone" autocomplete="tel-national" placeholder="300 1234567" required>
+            </div>
+          </div>
+
+          <div class="btrpa-field">
+            <label for="paCompany">Company or organisation</label>
+            <input type="text" id="paCompany" name="company" autocomplete="organization">
+          </div>
+
+          <div class="btrpa-field">
+            <label for="paRegion">Region<span class="btrpa-req" aria-hidden="true">*</span></label>
+            <select id="paRegion" name="region" required>
+              <option value="" selected disabled>Select region</option>
+              <option>Pakistan</option>
+              <option>Middle East</option>
+              <option>Europe</option>
+              <option>North America</option>
+              <option>Asia Pacific</option>
+              <option>Africa</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <!-- shown only for investor partners -->
+          <div class="btrpa-investor" id="paInvestor" hidden>
+            <div class="btrpa-field">
+              <label for="paModule">Module you are interested in</label>
+              <select id="paModule" name="module">
+                <option value="" selected>Not sure yet</option>
+                <option value="btr-mall">BTR Mall</option>
+                <option value="dinex-pos">Dinex POS</option>
+                <option value="skills-academy">Xvera Skills Academy</option>
+                <option value="other">Other ventures</option>
+              </select>
+            </div>
+            <div class="btrpa-field">
+              <label for="paRange">Approximate investment range (optional)</label>
+              <select id="paRange" name="investment_range">
+                <option value="" selected>Prefer to discuss</option>
+                <option>Under PKR 500,000</option>
+                <option>PKR 500,000 to 2,000,000</option>
+                <option>PKR 2,000,000 to 10,000,000</option>
+                <option>Above PKR 10,000,000</option>
+              </select>
+            </div>
+            <p class="btrpa-hint">Investing involves risk and returns are not guaranteed. You will receive the investor pack and a written agreement before any commitment.</p>
+          </div>
+
+          <div class="btrpa-field">
+            <label for="paMessage">Tell us about yourself and your idea<span class="btrpa-req" aria-hidden="true">*</span></label>
+            <textarea id="paMessage" name="message" rows="5" maxlength="1500" placeholder="Who you are, what you do, and how you would like to work with us..." required></textarea>
+            <span class="btrpa-count" id="paCount" aria-live="off">0 / 1500</span>
+          </div>
+
+          <div class="btrpa-field">
+            <label for="paHeard">How did you hear about us? (optional)</label>
+            <select id="paHeard" name="heard_from">
+              <option value="" selected>Select</option>
+              <option>Search engine</option>
+              <option>Social media</option>
+              <option>Friend or colleague</option>
+              <option>Event</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <label class="btrpa-consent">
+            <input type="checkbox" name="consent" id="paConsent" required>
+            <span>I agree that Xvera Labs may contact me about this application, and I have read the <a href="{% url 'privacy_policy' %}">Privacy Policy</a>.<span class="btrpa-req" aria-hidden="true">*</span></span>
+          </label>
+
+          <div class="btrpa-foot">
+            <button type="submit" class="btrp-btn btrp-btn--dark btrpa-submit">Submit application <span aria-hidden="true">&rarr;</span></button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<script src="{% static 'js/pages/partners-apply-1.js' %}"></script>
+{% endblock %}
