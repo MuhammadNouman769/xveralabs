@@ -189,6 +189,7 @@
 .btr-ft-col ul a {
   display: inline-block;
   font-size: 14px;
+  line-height: normal;
   color: var(--btr-ft-text);
   text-decoration: none;
   transition: color var(--btr-ft-transition), transform var(--btr-ft-transition);
