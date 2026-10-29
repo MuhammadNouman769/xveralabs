@@ -1,179 +1,232 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Xeralabs | About Us{% endblock %}
+{% block title %}Xvera Labs | About Us{% endblock %}
 
 {% block body_class %}page-about-about{% endblock %}
 
-{% block page_css %}<link rel="stylesheet" href="{% static 'css/pages/about-about.css' %}">{% endblock %}
+{% block page_css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="{% static 'css/pages/about-about.css' %}">
+{% endblock %}
 
 {% block content %}
+<main class="ab">
 
-<!-- HERO -->
-<section class="btrlx-hero">
-    <span class="btrlx-tag">Let’s work together</span>
-    <h1>Empowering businesses for the modern age</h1>
-    <p>Specializing in integrated software, data management, and development services, that enable businesses to take the digital leap to growth and success.</p>
-</section>
+  <!-- ================= HERO ================= -->
+  <section class="ab-hero" aria-labelledby="abTitle">
+    <div class="ab-hero__glow" aria-hidden="true"></div>
+    <div class="ab-wrap ab-hero__in">
+      <div class="ab-hero__copy">
+        <span class="ab-pill"><span class="ab-pill__dot" aria-hidden="true"></span> Let’s work together</span>
+        <h1 class="ab-title" id="abTitle">Empowering businesses for the <em>modern age</em></h1>
+        <p class="ab-lead">Specializing in integrated software, data management, and development services, that enable businesses to take the digital leap to growth and success.</p>
+        <div class="ab-actions">
+          <a href="{% url 'contact_us' %}" class="ab-btn ab-btn--light">Start a project <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+          <a href="#who-we-are" class="ab-btn ab-btn--ghost">Who we are</a>
+        </div>
+      </div>
 
-<!-- OUR MISSION -->
-<section id="our-mission" class="btrx-choose-section">
-    <div class="btrx-choose-left">
-        <span class="btrx-choose-tag">OUR MISSION</span>
-        <h2>Driving <span>Digital Innovation</span> for Modern Businesses</h2>
-        <p>Our mission is to deliver scalable, reliable, and high-performance digital solutions that empower businesses to grow faster and smarter. We focus on combining engineering excellence, innovation, and strategic thinking to build world-class software products.</p>
-        <a href="#" class="btrx-choose-btn">Learn More</a>
-    </div>
-    <div class="btrx-floating-area">
-        <!-- Column 1 -->
-        <div class="btrx-column btrx-up">
-            <div class="btrx-card"><img src="{% static 'images/clients/parley.png' %}" alt="Parley client logo"></div>
-            <div class="btrx-card"><img src="{% static 'images/clients/green-soft.png' %}" alt="Green Soft client logo"></div>
-            <div class="btrx-card"><img src="{% static 'images/clients/xara-soft.png' %}" alt="Xara Soft client logo"></div>
-            <div class="btrx-card"><img src="{% static 'images/clients/trand-brand.png' %}" alt="Trand Brand client logo"></div>
-            <div class="btrx-card"><img src="{% static 'images/clients/welto.png' %}" alt="Welto client logo"></div>
-        </div>
-        <!-- Column 2 -->
-        <div class="btrx-column btrx-down">
-            <div class="btrx-card"><img src="{% static 'images/clients/welcome.png' %}" alt="Welcome client logo"></div>
-            <div class="btrx-card"><img src="{% static 'images/clients/beta-start.png' %}" alt="Beta Start client logo"></div>
-            <div class="btrx-card"><img src="{% static 'images/clients/promax.png' %}" alt="Promax client logo"></div>
-            <div class="btrx-card"><img src="{% static 'images/clients/Adore-clube.png' %}" alt="Adore Clube client logo"></div>
-            <div class="btrx-card"><img src="{% static 'images/clients/aldo-soft.png' %}" alt="Aldo Soft client logo"></div>
-        </div>
-        <!-- Column 3 -->
-        <div class="btrx-column btrx-up">
-            <div class="btrx-card"><img src="{% static 'images/clients/kidco.png' %}" alt="Kidco client logo"></div>
-            <div class="btrx-card"><img src="{% static 'images/clients/expert.png' %}" alt="Expert client logo"></div>
-            <div class="btrx-card"><img src="{% static 'images/clients/orfit.png' %}" alt="Orfit client logo"></div>
-            <div class="btrx-card"><img src="{% static 'images/clients/kadam.png' %}" alt="Kadam client logo"></div>
-            <div class="btrx-card"><img src="{% static 'images/clients/k-t-soft.png' %}" alt="KT Soft client logo"></div>
-        </div>
-        <!-- Column 4 -->
-        <div class="btrx-column btrx-down">
-            <div class="btrx-card"><img src="{% static 'images/clients/ruby.png' %}" alt="Ruby client logo"></div>
-            <div class="btrx-card"><img src="{% static 'images/clients/z-star.png' %}" alt="Z Star client logo"></div>
-            <div class="btrx-card"><img src="{% static 'images/clients/mozay.png' %}" alt="Mozay client logo"></div>
-            <div class="btrx-card"><img src="{% static 'images/clients/tr.png' %}" alt="Tahir Rafique client logo"></div>
-            <div class="btrx-card"><img src="{% static 'images/clients/supermain.png' %}" alt="Supermain client logo"></div>
-            <div class="btrx-card"><img src="{% static 'images/clients/hadi.png' %}" alt="Hadi Sports client logo"></div>
-        </div>
-    </div>
-</section>
-
-<!-- OUR VISION -->
-<section id="our-vision" class="vision-section">
-    <div class="vision-left">
-        <span class="vision-tag">OUR VISION</span>
-        <h2>Building The <span>Future Of Digital</span> Innovation</h2>
-        <p>Our vision is to become a globally trusted technology partner by delivering intelligent software, scalable cloud platforms, AI-powered products and exceptional digital experiences that help organizations innovate faster, operate smarter and achieve sustainable business growth.</p>
-
-        <div class="vision-grid">
-            <div class="vision-box">
-                <div class="vision-icon"><i class="fas fa-rocket" aria-hidden="true"></i></div>
-                <h4>Innovation First</h4>
-                <p>Creating future-ready solutions using modern technologies.</p>
-            </div>
-            <div class="vision-box">
-                <div class="vision-icon"><i class="fas fa-globe" aria-hidden="true"></i></div>
-                <h4>Global Impact</h4>
-                <p>Helping businesses compete confidently in worldwide markets.</p>
-            </div>
-            <div class="vision-box">
-                <div class="vision-icon"><i class="fas fa-shield-alt" aria-hidden="true"></i></div>
-                <h4>Reliable Systems</h4>
-                <p>Secure, scalable and enterprise-grade software engineering.</p>
-            </div>
-            <div class="vision-box">
-                <div class="vision-icon"><i class="fas fa-brain" aria-hidden="true"></i></div>
-                <h4>AI Driven Future</h4>
-                <p>Leveraging Artificial Intelligence for smarter business.</p>
-            </div>
-        </div>
+      <div class="ab-hero__visual" aria-hidden="true">
+        <figure class="ab-photo ab-photo--main"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900&q=80" alt="" loading="eager" decoding="async" onerror="this.remove()"></figure>
+        <figure class="ab-photo ab-photo--small"><img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=600&q=80" alt="" loading="lazy" decoding="async" onerror="this.remove()"></figure>
+        <div class="ab-glass ab-glass--1"><span><i class="fas fa-code"></i></span><div><b>Software engineering</b><small>Web, mobile, enterprise</small></div></div>
+        <div class="ab-glass ab-glass--2"><span><i class="fas fa-brain"></i></span><div><b>AI &amp; data</b><small>Smarter decisions</small></div></div>
+        <div class="ab-glass ab-glass--3"><span><i class="fas fa-cloud"></i></span><div><b>Cloud &amp; DevOps</b><small>Secure and scalable</small></div></div>
+      </div>
     </div>
 
-    <div class="vision-right">
-        <div class="vision-main-card">
-            <div class="vision-stats">
-                <div class="vision-stat"><h3>250+</h3><span>Projects Delivered</span></div>
-                <div class="vision-stat"><h3>50+</h3><span>Happy Clients</span></div>
-                <div class="vision-stat"><h3>99%</h3><span>Client Satisfaction</span></div>
-                <div class="vision-stat"><h3>24/7</h3><span>Support</span></div>
-            </div>
-
-            <div class="vision-divider"></div>
-
-            <h3>Empowering Businesses Through Technology</h3>
-            <p>We envision a future where every organization has access to intelligent software solutions that simplify operations, enhance customer experiences and unlock long-term growth.</p>
-
-            <a href="#" class="vision-btn">
-                Learn More
-                <i class="fas fa-arrow-right" aria-hidden="true"></i>
-            </a>
-        </div>
-
-        <div class="float-card float-top"><strong>10+</strong><span>Years Experience</span></div>
-        <div class="float-card float-bottom"><strong>35+</strong><span>Expert Engineers</span></div>
+    <div class="ab-marquee" aria-hidden="true">
+      <div class="ab-marquee__track" id="abMarquee">
+        <span>Custom software</span><span>AI &amp; machine learning</span><span>Cloud &amp; DevOps</span><span>Data &amp; analytics</span><span>Web &amp; mobile apps</span><span>Cyber security</span>
+      </div>
     </div>
-</section>
+  </section>
 
-<!-- TEAM -->
-<section id="leadership-team" class="btrlx-team">
-    <div class="btrlx-team-top">
-        <h2>Xvera Labs Leadership &amp; Team</h2>
-        <div class="btrlx-arrows">
-            <button type="button" class="btrlx-arrow" id="leftBtn" aria-label="Previous team member">
-                <i class="fas fa-arrow-left" aria-hidden="true"></i>
-            </button>
-            <button type="button" class="btrlx-arrow" id="rightBtn" aria-label="Next team member">
-                <i class="fas fa-arrow-right" aria-hidden="true"></i>
-            </button>
-        </div>
+  {% comment %}
+  OPTIONAL: numbers strip. Add it back ONLY with numbers you can prove, then remove the comment tags.
+  <section class="ab-facts" aria-label="Xvera Labs in numbers">
+    <div class="ab-wrap ab-facts__in">
+      <div class="ab-fact"><b><span data-count="10">10</span>+</b><span>Years of experience</span></div>
+      <div class="ab-fact"><b><span data-count="35">35</span>+</b><span>Engineers</span></div>
     </div>
-    <div class="btrlx-slider" id="btrlxSlider">
-        {% for team in teams %}
-        <div class="btrlx-card">
-            <div class="btrlx-image">
-                {% if team.image %}
-                <img src="{{ team.image.url }}" alt="{{ team.first_name }} {{ team.last_name }}" loading="lazy" decoding="async">
-                {% endif %}
-            </div>
-            <div class="btrlx-info">
-                <h3>
-                    {{ team.first_name }}
-                    <span>{{ team.last_name }}</span>
-                </h3>
-                <p>{{ team.designation }}</p>
-                <a href="{{ team.linkedin_link }}" class="btrlx-link" target="_blank" rel="noopener noreferrer" aria-label="{{ team.first_name }} {{ team.last_name }} on LinkedIn">
-                    <i class="fab fa-linkedin-in" aria-hidden="true"></i>
-                </a>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-</section>
+  </section>
+  {% endcomment %}
 
-<!-- VALUES -->
-<section class="btrlx-values">
-    <h2>Leadership Principles</h2>
-    <p>We foster a culture of innovation, accountability and continuous learning, enabling our teams to deliver transformative solutions and exceptional value.</p>
-    <div class="btrlx-grid">
-        <div class="btrlx-box">
-            <i class="fas fa-lightbulb" aria-hidden="true"></i>
-            <h4>Innovation</h4>
-            <p>Driving new ideas and breakthrough solutions.</p>
-        </div>
-        <div class="btrlx-box">
-            <i class="fas fa-users" aria-hidden="true"></i>
-            <h4>Collaboration</h4>
-            <p>Building strong partnerships with clients and teams.</p>
-        </div>
-        <div class="btrlx-box">
-            <i class="fas fa-chart-line" aria-hidden="true"></i>
-            <h4>Growth</h4>
-            <p>Creating sustainable success through technology.</p>
-        </div>
+  <!-- ================= WHO WE ARE ================= -->
+  <section class="ab-sec" id="who-we-are" aria-labelledby="whoTitle">
+    <div class="ab-wrap ab-who">
+      <div class="ab-who__head ab-reveal">
+        <span class="ab-kicker">Who we are</span>
+        <h2 class="ab-h2" id="whoTitle">Engineers, designers and problem solvers building for growth</h2>
+        <p class="ab-sub">We are a technology partner for startups, SMEs and enterprises. We combine strong engineering with clear communication, so your idea becomes a product people use every day.</p>
+        <a href="{% url 'why_choose_us' %}" class="ab-link">Why teams choose us <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+      </div>
+      <ol class="ab-pillars">
+        <li class="ab-reveal">
+          <span class="ab-pillars__n">01</span>
+          <div><h3>Software engineering</h3><p>Custom web, mobile and enterprise software, built to last and easy to grow.</p></div>
+        </li>
+        <li class="ab-reveal" style="--d:.1s">
+          <span class="ab-pillars__n">02</span>
+          <div><h3>Data &amp; AI</h3><p>Data management, analytics and AI features that turn information into decisions.</p></div>
+        </li>
+        <li class="ab-reveal" style="--d:.2s">
+          <span class="ab-pillars__n">03</span>
+          <div><h3>Cloud &amp; DevOps</h3><p>Secure, scalable infrastructure and delivery pipelines that keep releases calm.</p></div>
+        </li>
+      </ol>
     </div>
-</section>
+  </section>
+
+  <!-- ================= MISSION & VISION ================= -->
+  <section class="ab-sec ab-sec--tint ab-mv" aria-label="Mission and vision">
+    <div class="ab-wrap">
+
+      <article class="ab-row ab-reveal" id="our-mission">
+        <div class="ab-row__text">
+          <span class="ab-kicker">Our mission</span>
+          <h2 class="ab-h2">Driving <span class="ab-grad">digital innovation</span> for modern businesses</h2>
+          <p class="ab-sub">Our mission is to deliver scalable, reliable, and high-performance digital solutions that empower businesses to grow faster and smarter. We focus on combining engineering excellence, innovation, and strategic thinking to build world-class software products.</p>
+          <ul class="ab-ticks">
+            <li>Scalable, reliable and high-performance solutions</li>
+            <li>Engineering excellence in everything we ship</li>
+            <li>Strategic thinking before technology choices</li>
+          </ul>
+        </div>
+        <figure class="ab-row__img">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1000&q=80" alt="Our team working on a product together" loading="lazy" decoding="async" onerror="this.remove()">
+          <span class="ab-row__badge"><i class="fas fa-bullseye" aria-hidden="true"></i> Mission</span>
+        </figure>
+      </article>
+
+      <article class="ab-row ab-row--flip ab-reveal" id="our-vision">
+        <div class="ab-row__text">
+          <span class="ab-kicker">Our vision</span>
+          <h2 class="ab-h2">Building the <span class="ab-grad">future of digital</span> innovation</h2>
+          <p class="ab-sub">Our vision is to become a globally trusted technology partner by delivering intelligent software, scalable cloud platforms, AI-powered products and exceptional digital experiences that help organizations innovate faster, operate smarter and achieve sustainable business growth.</p>
+          <ul class="ab-ticks">
+            <li>Intelligent software and AI-powered products</li>
+            <li>Scalable cloud platforms organisations can rely on</li>
+            <li>Sustainable growth for the businesses we serve</li>
+          </ul>
+        </div>
+        <figure class="ab-row__img">
+          <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1000&q=80" alt="A connected global network" loading="lazy" decoding="async" onerror="this.remove()">
+          <span class="ab-row__badge"><i class="fas fa-binoculars" aria-hidden="true"></i> Vision</span>
+        </figure>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ================= PRINCIPLES ================= -->
+  <section class="ab-sec ab-sec--dark" aria-labelledby="prTitle">
+    <div class="ab-wrap">
+      <div class="ab-head ab-head--center ab-reveal">
+        <span class="ab-kicker">How we work</span>
+        <h2 class="ab-h2" id="prTitle">Leadership principles</h2>
+        <p class="ab-sub">We foster a culture of innovation, accountability and continuous learning, enabling our teams to deliver transformative solutions and exceptional value.</p>
+      </div>
+      <div class="ab-principles">
+        <article class="ab-principle ab-reveal"><span><i class="fas fa-lightbulb" aria-hidden="true"></i></span><h3>Innovation</h3><p>Driving new ideas and breakthrough solutions.</p></article>
+        <article class="ab-principle ab-reveal" style="--d:.08s"><span><i class="fas fa-users" aria-hidden="true"></i></span><h3>Collaboration</h3><p>Building strong partnerships with clients and teams.</p></article>
+        <article class="ab-principle ab-reveal" style="--d:.16s"><span><i class="fas fa-circle-check" aria-hidden="true"></i></span><h3>Accountability</h3><p>Owning outcomes, from the first estimate to the final release.</p></article>
+        <article class="ab-principle ab-reveal" style="--d:.24s"><span><i class="fas fa-chart-line" aria-hidden="true"></i></span><h3>Growth</h3><p>Creating sustainable success through technology and learning.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ECOSYSTEM ================= -->
+  <section class="ab-sec" id="our-ecosystem" aria-labelledby="ecoTitle">
+    <div class="ab-wrap">
+      <div class="ab-head ab-reveal">
+        <span class="ab-kicker">Our ecosystem</span>
+        <h2 class="ab-h2" id="ecoTitle">More than a services company</h2>
+        <p class="ab-sub">Xvera Labs sits at the centre of a wider ecosystem, where business success supports education, products and community development.</p>
+      </div>
+
+      <div class="ab-eco ab-reveal" id="abEco">
+        <div class="ab-eco__tabs" role="tablist" aria-label="Our ecosystem">
+          <button type="button" role="tab" id="ecoT1" aria-controls="ecoP1" aria-selected="true" class="is-active"><i class="fas fa-laptop-code" aria-hidden="true"></i><span><b>Technology</b><small>Xvera Labs</small></span></button>
+          <button type="button" role="tab" id="ecoT2" aria-controls="ecoP2" aria-selected="false" tabindex="-1"><i class="fas fa-store" aria-hidden="true"></i><span><b>Products</b><small>Our own platforms</small></span></button>
+          <button type="button" role="tab" id="ecoT3" aria-controls="ecoP3" aria-selected="false" tabindex="-1"><i class="fas fa-graduation-cap" aria-hidden="true"></i><span><b>Education</b><small>Skills and learning</small></span></button>
+          <button type="button" role="tab" id="ecoT4" aria-controls="ecoP4" aria-selected="false" tabindex="-1"><i class="fas fa-hand-holding-heart" aria-hidden="true"></i><span><b>Community</b><small>Welfare projects</small></span></button>
+        </div>
+
+        <div class="ab-eco__panels">
+          <div role="tabpanel" id="ecoP1" aria-labelledby="ecoT1" class="ab-eco__panel is-active">
+            <figure><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80" alt="" loading="lazy" decoding="async" onerror="this.remove()"></figure>
+            <div><h3>Technology &amp; engineering</h3><p>Our software, AI and cloud engineering practice builds products for startups, SMEs and enterprises. It is the engine that powers everything else in the ecosystem.</p>
+            <ul class="ab-tags"><li>Software</li><li>AI &amp; data</li><li>Cloud &amp; DevOps</li></ul></div>
+          </div>
+          <div role="tabpanel" id="ecoP2" aria-labelledby="ecoT2" class="ab-eco__panel" hidden>
+            <figure><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80" alt="" loading="lazy" decoding="async" onerror="this.remove()"></figure>
+            <div><h3>Our own products</h3><p>Beyond client work, we build and grow our own platforms, from an eCommerce marketplace to subscription-based business systems.</p>
+            <ul class="ab-tags"><li>Marketplace</li><li>Business systems</li></ul></div>
+          </div>
+          <div role="tabpanel" id="ecoP3" aria-labelledby="ecoT3" class="ab-eco__panel" hidden>
+            <figure><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=900&q=80" alt="" loading="lazy" decoding="async" onerror="this.remove()"></figure>
+            <div><h3>Education &amp; skills</h3><p>Learning programs and training that help the next generation build careers in technology, and help us find tomorrow's talent.</p>
+            <ul class="ab-tags"><li>Skills programs</li><li>Learning</li><li>Campus ambassadors</li></ul></div>
+          </div>
+          <div role="tabpanel" id="ecoP4" aria-labelledby="ecoT4" class="ab-eco__panel" hidden>
+            <figure><img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=900&q=80" alt="" loading="lazy" decoding="async" onerror="this.remove()"></figure>
+            <div><h3>Community &amp; welfare</h3><p>Our goal is a self-sustaining ecosystem where the success of the business directly supports social upliftment and community development.</p>
+            <ul class="ab-tags"><li>Welfare projects</li><li>Community</li></ul></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TEAM (unchanged: same markup, styles and script; data comes from the backend as `teams`) ================= -->
+  <section id="leadership-team" class="btrlx-team">
+      <div class="btrlx-team-top">
+          <h2>Xvera Labs Leadership &amp; Team</h2>
+          <div class="btrlx-arrows">
+              <button type="button" class="btrlx-arrow" id="leftBtn" aria-label="Previous team member">
+                  <i class="fas fa-arrow-left" aria-hidden="true"></i>
+              </button>
+              <button type="button" class="btrlx-arrow" id="rightBtn" aria-label="Next team member">
+                  <i class="fas fa-arrow-right" aria-hidden="true"></i>
+              </button>
+          </div>
+      </div>
+      <div class="btrlx-slider" id="btrlxSlider">
+          {% for team in teams %}
+          <div class="btrlx-card">
+              <div class="btrlx-image">
+                  {% if team.image %}
+                  <img src="{{ team.image.url }}" alt="{{ team.first_name }} {{ team.last_name }}" loading="lazy" decoding="async">
+                  {% endif %}
+              </div>
+              <div class="btrlx-info">
+                  <h3>
+                      {{ team.first_name }}
+                      <span>{{ team.last_name }}</span>
+                  </h3>
+                  <p>{{ team.designation }}</p>
+                  <a href="{{ team.linkedin_link }}" class="btrlx-link" target="_blank" rel="noopener noreferrer" aria-label="{{ team.first_name }} {{ team.last_name }} on LinkedIn">
+                      <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                  </a>
+              </div>
+          </div>
+          {% endfor %}
+      </div>
+  </section>
+
+  <!-- ================= CTA ================= -->
+  <section class="ab-cta" aria-labelledby="abCta">
+    <div class="ab-wrap ab-cta__in">
+      <div><h2 id="abCta">Let's build something together</h2><p>Tell us about your idea. We will get back to you to talk it through.</p></div>
+      <div class="ab-cta__btns">
+        <a href="{% url 'contact_us' %}" class="ab-btn ab-btn--light">Contact us <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+        <a href="{% url 'careeers' %}" class="ab-btn ab-btn--ghost">Join our team</a>
+      </div>
+    </div>
+  </section>
+
+</main>
 
 <script src="{% static 'js/pages/about-about-1.js' %}"></script>
 {% endblock %}
