@@ -149,7 +149,7 @@ body:where(.page-about-about) { background: #f6f7f9; overflow-x: hidden; }
 .ab-hero__visual { position: relative; width: min(100%, 500px); aspect-ratio: 1 / 1.05; justify-self: center; }
 .ab-photo { position: absolute; margin: 0; overflow: hidden; background: linear-gradient(135deg, #0f6e78, #2f3fb5); border: 6px solid rgba(255, 255, 255, 0.92); box-shadow: 0 40px 80px rgba(0, 0, 0, 0.45); }
 .ab-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.ab-photo--main { right: 0; top: 0; width: 78%; height: 72%; border-radius: 32px 140px 32px 32px; transform: rotate(2deg); animation: abFloat 9s ease-in-out infinite; }
+.ab-photo--main { right: 0; top: 0; width: 78%; height: 72%; border-radius: 32px 90px 32px 32px; transform: rotate(2deg); animation: abFloat 9s ease-in-out infinite; }
 .ab-photo--small { left: 4%; bottom: 2%; width: 44%; height: 34%; border-radius: 28px 28px 28px 90px; transform: rotate(-3deg); animation: abFloat2 8s ease-in-out infinite; }
 .ab-glass { position: absolute; display: flex; align-items: center; gap: 12px; padding: 12px 18px 12px 12px; color: #fff; background: rgba(8, 20, 32, 0.78); border: 1px solid rgba(94, 234, 212, 0.32); border-radius: 18px; box-shadow: 0 20px 44px rgba(0, 0, 0, 0.4); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
 .ab-glass > span { display: grid; place-items: center; width: 40px; height: 40px; color: #04201e; background: linear-gradient(135deg, #5eead4, #38bdf8); border-radius: 12px; }
