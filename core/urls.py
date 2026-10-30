@@ -1,3 +1,7 @@
+from django.contrib.sitemaps.views import sitemap
+from django.urls import path, include, re_path
+from .sitemaps import StaticViewSitemap
+from .seo import robots_txt
 from django.contrib import admin
 from django.urls import path, include, re_path
 from django.conf import settings
@@ -5,6 +9,9 @@ from django.conf.urls.static import static
 from django.views.static import serve
 
 urlpatterns = [
+    path("sitemap.xml",sitemap,
+        {"sitemaps": {"static": StaticViewSitemap}},name="sitemap",),
+    path("robots.txt", robots_txt, name="robots_txt"),
     path('admin/', admin.site.urls),
     path('', include('apps.main.urls')),
     path('about/', include('apps.about_us.urls')),
