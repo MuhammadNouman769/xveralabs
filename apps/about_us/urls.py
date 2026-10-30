@@ -1,12 +1,12 @@
 from django.urls import path
+from . import views
 from .views import (
     CompanyView,
     why_choose_us,
     careeers,
     life_at_xvera_labs,
-    diversity_equity_inclusion,
-    employee_success,
-    benefits,
+    PeopleView,
+    PeopleAnchorRedirect,
     campus_ambassador_program
 )       
 urlpatterns = [
@@ -17,9 +17,15 @@ urlpatterns = [
     # join xvera labs    
     path('join-xvera-labs/careeers/',careeers, name="careeers"), 
     path('join-xvera-labs/life-at-xveralabs/', life_at_xvera_labs, name='life_at_xvera_labs'),
-    path('join-xvera-labs/diversity-equity-inclusion/', diversity_equity_inclusion, name='diversity-equity-inclusion'),
-    path('join-xvera-labs/employee-success/',employee_success, name="employee_success"),
-    path('join-xvera-labs/benefits/',benefits, name="benefits"),
+   
+    path("people/", views.PeopleView.as_view(), name="people"),
+
+    # the three old names keep working (menu links, footer, bookmarks):
+    path("employee-success/",           views.PeopleAnchorRedirect.as_view(anchor="success"),   name="employee_success"),
+    path("benefits/",                   views.PeopleAnchorRedirect.as_view(anchor="benefits"),  name="benefits"),
+    path("diversity-equity-inclusion/", views.PeopleAnchorRedirect.as_view(anchor="inclusion"), name="diversity-equity-inclusion"),
+
+
     path('join-xvera-labs/campus-ambassador-program/',campus_ambassador_program, name="campus_ambassador_program"),
     
 ]

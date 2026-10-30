@@ -1,0 +1,191 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}People at Xvera Labs | Employee Success, Benefits & Inclusion{% endblock %}
+{% block body_class %}page-about-people{% endblock %}
+
+{% block page_css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="{% static 'css/pages/about-people.css' %}">
+{% endblock %}
+
+{% block content %}
+{% comment %}
+  ONE PAGE, THREE LINES  (Employee Success = Line S, Benefits = Line B, Inclusion = Line I)
+  The copy below is written as honest, general commitments. Replace any stop with what is
+  really true for your company (look for the EDIT notes), and delete stops you cannot stand behind.
+{% endcomment %}
+<main class="pm">
+
+  <!-- ================= HERO: the map ================= -->
+  <section class="pm-hero" id="top" aria-labelledby="pmTitle">
+    <div class="pm-wrap pm-hero__in">
+      <div class="pm-hero__copy">
+        <span class="pm-tag"><i class="fas fa-train-subway" aria-hidden="true"></i> People at Xvera Labs</span>
+        <h1 class="pm-title" id="pmTitle">Your journey here, <span>mapped out</span></h1>
+        <p class="pm-lead">Three lines run through every career at Xvera Labs: how we help you succeed, how we look after you, and how we make sure everyone belongs. Pick a line and ride along.</p>
+        <div class="pm-actions">
+          <a href="#success" class="pm-btn pm-btn--ink">Start the journey <i class="fas fa-arrow-down" aria-hidden="true"></i></a>
+          <a href="#benefits" class="pm-btn pm-btn--line">Jump to benefits</a>
+        </div>
+      </div>
+
+      <svg class="pm-map" viewBox="0 0 560 460" role="img" aria-label="A transit-style map with three lines, Employee Success, Benefits and Inclusion, all meeting at a station called Day one">
+        <g fill="none" stroke-width="14" stroke-linecap="round" stroke-linejoin="round">
+          <path class="pm-ln pm-ln--s" pathLength="1" d="M40 380H150L230 300L280 250L380 150H520"/>
+          <path class="pm-ln pm-ln--b" pathLength="1" d="M40 100H130L280 250L380 350H520"/>
+          <path class="pm-ln pm-ln--i" pathLength="1" d="M280 20V430"/>
+        </g>
+        <g class="pm-train" aria-hidden="true">
+          <circle r="9" class="pm-train--s"><animateMotion dur="9s" repeatCount="indefinite" path="M40 380H150L230 300L280 250L380 150H520"/></circle>
+          <circle r="9" class="pm-train--b"><animateMotion dur="10s" begin="1.5s" repeatCount="indefinite" path="M40 100H130L280 250L380 350H520"/></circle>
+          <circle r="9" class="pm-train--i"><animateMotion dur="8s" begin="3s" repeatCount="indefinite" path="M280 20V430"/></circle>
+        </g>
+        <g class="pm-stations" stroke="#12161c" stroke-width="5" fill="#f6f1e7">
+          <circle class="pm-st" style="--k:1" cx="150" cy="380" r="11"/><circle class="pm-st" style="--k:2" cx="230" cy="300" r="11"/>
+          <circle class="pm-st" style="--k:3" cx="380" cy="150" r="11"/><circle class="pm-st" style="--k:4" cx="520" cy="150" r="11"/>
+          <circle class="pm-st" style="--k:5" cx="130" cy="100" r="11"/><circle class="pm-st" style="--k:6" cx="205" cy="175" r="11"/>
+          <circle class="pm-st" style="--k:7" cx="380" cy="350" r="11"/><circle class="pm-st" style="--k:8" cx="520" cy="350" r="11"/>
+          <circle class="pm-st" style="--k:9" cx="280" cy="70" r="11"/><circle class="pm-st" style="--k:10" cx="280" cy="160" r="11"/>
+          <circle class="pm-st" style="--k:11" cx="280" cy="340" r="11"/><circle class="pm-st" style="--k:12" cx="280" cy="430" r="11"/>
+          <circle class="pm-st pm-hub" style="--k:0" cx="280" cy="250" r="20" stroke-width="7"/>
+        </g>
+        <g class="pm-labels" font-weight="700" font-size="15" fill="#12161c">
+          <text x="150" y="414" text-anchor="middle">Learn</text><text x="208" y="326" text-anchor="end">Grow</text>
+          <text x="380" y="122" text-anchor="middle">Lead</text><text x="540" y="122" text-anchor="end">Thrive</text>
+          <text x="130" y="72" text-anchor="middle">Health</text><text x="188" y="168" text-anchor="end">Learning</text>
+          <text x="380" y="386" text-anchor="middle">Time off</text><text x="540" y="386" text-anchor="end">Work setup</text>
+          <text x="302" y="76">Respect</text><text x="302" y="166">Equity</text>
+          <text x="302" y="346">Belonging</text><text x="302" y="436">Voice</text>
+          <text x="308" y="256" font-size="17" font-weight="800">Day one</text>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ================= LINE SELECTOR (sticky) ================= -->
+  <nav class="pm-bar" aria-label="Choose a line">
+    <div class="pm-wrap pm-bar__in">
+      <a href="#success" data-spy="success" class="pm-pill pm-pill--s"><b>S</b> Employee Success</a>
+      <a href="#benefits" data-spy="benefits" class="pm-pill pm-pill--b"><b>B</b> Benefits</a>
+      <a href="#inclusion" data-spy="inclusion" class="pm-pill pm-pill--i"><b>I</b> Diversity, Equity &amp; Inclusion</a>
+    </div>
+  </nav>
+
+  <!-- ================= LINE S: EMPLOYEE SUCCESS ================= -->
+  <section class="pm-line pm-line--s" id="success" aria-labelledby="sTitle">
+    <div class="pm-wrap">
+      <header class="pm-head">
+        <span class="pm-badge" aria-hidden="true">S</span>
+        <div>
+          <span class="pm-kicker">Line S · 5 stops</span>
+          <h2 id="sTitle">Employee success</h2>
+          <p>We succeed when you do. Here is how we try to help every person do the best work of their career.</p>
+        </div>
+      </header>
+
+      <ol class="pm-track">
+        <li class="pm-stop"><span class="pm-dot" aria-hidden="true"></span>
+          <article class="pm-ticket"><div class="pm-stub"><span>S1</span><small>Stop</small></div>
+            <div class="pm-body"><h3>A proper welcome</h3><p>Onboarding that introduces the team, the tools and what good work looks like, so your first weeks feel clear instead of confusing.</p></div></article></li>
+        <li class="pm-stop"><span class="pm-dot" aria-hidden="true"></span>
+          <article class="pm-ticket"><div class="pm-stub"><span>S2</span><small>Stop</small></div>
+            <div class="pm-body"><h3>Mentorship and feedback</h3><p>Code reviews, pairing and regular conversations with people who have done the work before, in a culture where questions are welcome.</p></div></article></li>
+        <li class="pm-stop"><span class="pm-dot" aria-hidden="true"></span>
+          <article class="pm-ticket"><div class="pm-stub"><span>S3</span><small>Stop</small></div>
+            <div class="pm-body"><h3>Room to learn</h3><p>Support for building new skills that matter to your role, on real projects and beyond them. {# EDIT: add your learning budget or courses if you have them #}</p></div></article></li>
+        <li class="pm-stop"><span class="pm-dot" aria-hidden="true"></span>
+          <article class="pm-ticket"><div class="pm-stub"><span>S4</span><small>Stop</small></div>
+            <div class="pm-body"><h3>A clear path forward</h3><p>You should always know what the next level looks like and what it takes to get there, and have someone to talk it through with.</p></div></article></li>
+        <li class="pm-stop"><span class="pm-dot" aria-hidden="true"></span>
+          <article class="pm-ticket"><div class="pm-stub"><span>S5</span><small>Stop</small></div>
+            <div class="pm-body"><h3>Recognition that is real</h3><p>Good work gets noticed and acknowledged, within the team and in front of the people who matter.</p></div></article></li>
+      </ol>
+
+      <a href="#benefits" class="pm-transfer pm-transfer--b"><span class="pm-badge pm-badge--sm" aria-hidden="true">B</span> Transfer to Line B: Benefits <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+    </div>
+  </section>
+
+  <!-- ================= LINE B: BENEFITS ================= -->
+  <section class="pm-line pm-line--b" id="benefits" aria-labelledby="bTitle">
+    <div class="pm-wrap">
+      <header class="pm-head">
+        <span class="pm-badge" aria-hidden="true">B</span>
+        <div>
+          <span class="pm-kicker">Line B · 5 stops</span>
+          <h2 id="bTitle">Benefits</h2>
+          <p>The things that look after you outside of the work itself. Details can differ by role, and your offer letter always confirms what applies to you.</p>
+        </div>
+      </header>
+
+      <ol class="pm-track">
+        <li class="pm-stop"><span class="pm-dot" aria-hidden="true"></span>
+          <article class="pm-ticket"><div class="pm-stub"><span>B1</span><small>Stop</small></div>
+            <div class="pm-body"><h3>Health and wellbeing</h3><p>Support for your physical and mental wellbeing. {# EDIT: describe the health cover or support you really provide #}</p></div></article></li>
+        <li class="pm-stop"><span class="pm-dot" aria-hidden="true"></span>
+          <article class="pm-ticket"><div class="pm-stub"><span>B2</span><small>Stop</small></div>
+            <div class="pm-body"><h3>Time and flexibility</h3><p>Rest matters. Leave and working-hour arrangements are explained clearly before you join. {# EDIT: add your leave and flexibility policy #}</p></div></article></li>
+        <li class="pm-stop"><span class="pm-dot" aria-hidden="true"></span>
+          <article class="pm-ticket"><div class="pm-stub"><span>B3</span><small>Stop</small></div>
+            <div class="pm-body"><h3>Learning support</h3><p>Resources and encouragement to keep growing your skills. {# EDIT: courses, certifications or books you support #}</p></div></article></li>
+        <li class="pm-stop"><span class="pm-dot" aria-hidden="true"></span>
+          <article class="pm-ticket"><div class="pm-stub"><span>B4</span><small>Stop</small></div>
+            <div class="pm-body"><h3>A good place to work</h3><p>The tools and workspace you need to do your job properly. {# EDIT: equipment, workspace or remote setup #}</p></div></article></li>
+        <li class="pm-stop"><span class="pm-dot" aria-hidden="true"></span>
+          <article class="pm-ticket"><div class="pm-stub"><span>B5</span><small>Stop</small></div>
+            <div class="pm-body"><h3>Team moments</h3><p>Time together that is more than meetings: celebrations, gatherings and shared meals.</p></div></article></li>
+      </ol>
+
+      <p class="pm-note"><i class="fas fa-circle-info" aria-hidden="true"></i> Not sure what applies to your role? Ask us during the interview. We would rather you know up front.</p>
+
+      <a href="#inclusion" class="pm-transfer pm-transfer--i"><span class="pm-badge pm-badge--sm" aria-hidden="true">I</span> Transfer to Line I: Inclusion <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+    </div>
+  </section>
+
+  <!-- ================= LINE I: INCLUSION ================= -->
+  <section class="pm-line pm-line--i" id="inclusion" aria-labelledby="iTitle">
+    <div class="pm-wrap">
+      <header class="pm-head">
+        <span class="pm-badge" aria-hidden="true">I</span>
+        <div>
+          <span class="pm-kicker">Line I · 4 stops</span>
+          <h2 id="iTitle">Diversity, equity &amp; inclusion</h2>
+          <p>Good teams are made of different people who feel safe to speak up. These are the commitments we hold ourselves to.</p>
+        </div>
+      </header>
+
+      <ol class="pm-track">
+        <li class="pm-stop"><span class="pm-dot" aria-hidden="true"></span>
+          <article class="pm-ticket"><div class="pm-stub"><span>I1</span><small>Stop</small></div>
+            <div class="pm-body"><h3>Respect for everyone</h3><p>People are treated with dignity, whatever their background, beliefs or role. Disrespect has no place in our team.</p></div></article></li>
+        <li class="pm-stop"><span class="pm-dot" aria-hidden="true"></span>
+          <article class="pm-ticket"><div class="pm-stub"><span>I2</span><small>Stop</small></div>
+            <div class="pm-body"><h3>Fair opportunity</h3><p>We aim to hire, reward and promote on skill and contribution, and to keep our processes open to anyone who is qualified. {# EDIT: only keep specifics you can prove #}</p></div></article></li>
+        <li class="pm-stop"><span class="pm-dot" aria-hidden="true"></span>
+          <article class="pm-ticket"><div class="pm-stub"><span>I3</span><small>Stop</small></div>
+            <div class="pm-body"><h3>A voice for every person</h3><p>Different perspectives make our work better. Everyone is encouraged to share ideas, concerns and feedback.</p></div></article></li>
+        <li class="pm-stop"><span class="pm-dot" aria-hidden="true"></span>
+          <article class="pm-ticket"><div class="pm-stub"><span>I4</span><small>Stop</small></div>
+            <div class="pm-body"><h3>Support when you need it</h3><p>If you need something to do your best work, tell us. We will work with you to find a reasonable way forward.</p></div></article></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ================= TERMINAL ================= -->
+  <section class="pm-terminal" aria-labelledby="tmTitle">
+    <div class="pm-wrap pm-terminal__in">
+      <div>
+        <span class="pm-kicker pm-kicker--light">Last stop</span>
+        <h2 id="tmTitle">Your first day starts here</h2>
+        <p>All three lines meet at one station. If this is the kind of place you want to work, we would love to meet you.</p>
+      </div>
+      <div class="pm-terminal__btns">
+        <a href="{% url 'careeers' %}" class="pm-btn pm-btn--paper">See open roles <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+        <a href="{% url 'contact_us' %}" class="pm-btn pm-btn--ghost">Contact us</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="{% static 'js/pages/about-people-1.js' %}"></script>
+{% endblock %}
