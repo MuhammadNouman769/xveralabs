@@ -1,190 +1,396 @@
+
 (function () {
     'use strict';
 
     // =============================================
-    // PRELOADER
+    // PRELOADER  (shown once per visit; later pages skip it)
     // =============================================
     (function initPreloader() {
-        var preloader = document.getElementById('btrx-preloader');
-        if (!preloader) return;
+        var pre = document.getElementById('btrx-preloader');
+        if (!pre) return;
 
-        var MIN_SHOW = 800;    // kam az kam itni der dikhao (ms)
-        var MAX_WAIT = 3000;   // is ke baad zabardasti hata do
-        var startedAt = Date.now();
-        var done = false;
+        var KEY = 'btrx_seen';
+        function remove() { if (pre && pre.parentNode) pre.parentNode.removeChild(pre); }
 
-        function hide() {
+        var seen = false;
+        try { seen = sessionStorage.getItem(KEY) === '1'; } catch (e) { /* private mode */ }
+        if (seen) { remove(); return; }
+
+        var MIN_SHOW = 900;     // never flash: show at least this long (ms)
+        var MAX_WAIT = 3500;    // never block: remove after this long
+        var pct = document.getElementById('btrxPct');
+        var fill = pre.querySelector('.btrx-pl__bar span');
+        var start = Date.now();
+        var shown = 0, target = 8, done = false, raf = 0;
+
+        function paint(v) {
+            if (pct) pct.textContent = Math.round(v) + '%';
+            if (fill) fill.style.transform = 'scaleX(' + (v / 100) + ')';
+        }
+
+        (function tick() {
             if (done) return;
-            done = true;
-            preloader.classList.add('btrx-hide');
+            target = Math.min(target + (target < 70 ? 1.1 : 0.2), 92);   // creeps up, never reaches 100 by itself
+            shown += (target - shown) * 0.1;
+            paint(shown);
+            raf = requestAnimationFrame(tick);
+        })();
+
+        function finish() {
+            if (done) return;
+            var wait = Math.max(0, MIN_SHOW - (Date.now() - start));
             setTimeout(function () {
-                if (preloader.parentNode) preloader.parentNode.removeChild(preloader);
-            }, 900);
+                done = true;
+                cancelAnimationFrame(raf);
+                paint(100);
+                try { sessionStorage.setItem(KEY, '1'); } catch (e) { /* ignore */ }
+                setTimeout(function () {
+                    pre.classList.add('btrx-hide');
+                    setTimeout(remove, 800);
+                }, 260);
+            }, wait);
         }
 
-        function onReady() {
-            var wait = Math.max(0, MIN_SHOW - (Date.now() - startedAt));
-            setTimeout(hide, wait);
-        }
+        if (document.readyState === 'complete') finish();
+        else window.addEventListener('load', finish);
 
-        if (document.readyState === 'complete') {
-            onReady();
-        } else {
-            window.addEventListener('load', onReady);
-        }
-
-        setTimeout(hide, MAX_WAIT); // safety net
+        setTimeout(finish, MAX_WAIT);   // safety net
     })();
 
     // =============================================
-    // CHAT WIDGET
+    // CHAT SIDEBAR
     // =============================================
     var widget = document.querySelector('.btrx-chat-widget');
-    var chatToggle = document.getElementById('btrxChatToggle');
-    var chatBox = document.getElementById('btrxChatBox');
-    var chatBody = document.getElementById('btrxChatBody');
-    var chatClose = document.getElementById('btrxChatClose');
-    var chatForm = document.getElementById('btrxChatForm');
+    var toggle = document.getElementById('btrxChatToggle');
+    var box = document.getElementById('btrxChatBox');
+    var backdrop = document.getElementById('btrxChatBackdrop');
+    var closeBtn = document.getElementById('btrxChatClose');
+    var form = document.getElementById('btrxChatForm');
+    if (!widget || !toggle || !box || !form) return;
 
-    if (!widget || !chatToggle || !chatBox) return; // is page pe widget nahi hai
+    var body = document.getElementById('btrxChatBody');
+    var steps = Array.prototype.slice.call(form.querySelectorAll('.btrx-step'));
+    var stepper = Array.prototype.slice.call(document.querySelectorAll('#btrxStepper li'));
+    var stepperEl = document.getElementById('btrxStepper');
+    var backBtn = document.getElementById('btrxBack');
+    var nextBtn = document.getElementById('btrxNext');
+    var sendBtn = document.getElementById('btrxSend');
+    var formErr = document.getElementById('btrxFormErr');
+    var foot = document.getElementById('btrxFoot');
+    var done = document.getElementById('btrxDone');
+    var doneClose = document.getElementById('btrxDoneClose');
+    var refEl = document.getElementById('btrxRef');
+    var current = 1;
+    var lastFocus = null;
+
+    var BUDGETS = [
+        ['lt-50k', 'Less than PKR 50,000'], ['50-100k', 'PKR 50,000 - 100,000'], ['100-150k', 'PKR 100,000 - 150,000'],
+        ['150-200k', 'PKR 150,000 - 200,000'], ['200-250k', 'PKR 200,000 - 250,000'], ['250-300k', 'PKR 250,000 - 300,000'],
+        ['300-350k', 'PKR 300,000 - 350,000'], ['350-400k', 'PKR 350,000 - 400,000'], ['400-500k', 'PKR 400,000 - 500,000'],
+        ['gt-500k', 'More than PKR 500,000']
+    ];
+
+    // ---------- open / close ----------
+    function isOpen() { return box.classList.contains('active'); }
 
     function openChat() {
-        chatBox.classList.add('active');
-        chatToggle.classList.add('active');
-        chatToggle.setAttribute('aria-expanded', 'true');
-        if (chatBody) chatBody.scrollTop = 0;
-
-        // Notification badge pehli dafa dekhne ke baad hata do
-        var badge = chatToggle.querySelector('.btrx-chat-badge');
+        if (isOpen()) return;
+        lastFocus = document.activeElement;
+        document.getElementById('cf-page').value = location.href;
+        box.classList.add('active');
+        backdrop.classList.add('active');
+        toggle.classList.add('active');
+        box.setAttribute('aria-hidden', 'false');
+        toggle.setAttribute('aria-expanded', 'true');
+        document.documentElement.classList.add('btrx-lock');
+        var badge = toggle.querySelector('.btrx-chat-badge');
         if (badge && badge.parentNode) badge.parentNode.removeChild(badge);
+        restoreDraft();
+        setTimeout(function () {
+            var first = form.querySelector('.btrx-step.is-active input, .btrx-step.is-active select, .btrx-step.is-active textarea');
+            if (first && !done.hidden === false) first.focus({ preventScroll: true });
+        }, 350);
     }
 
     function closeChat() {
-        chatBox.classList.remove('active');
-        chatToggle.classList.remove('active');
-        chatToggle.setAttribute('aria-expanded', 'false');
+        if (!isOpen()) return;
+        box.classList.remove('active');
+        backdrop.classList.remove('active');
+        toggle.classList.remove('active');
+        box.setAttribute('aria-hidden', 'true');
+        toggle.setAttribute('aria-expanded', 'false');
+        document.documentElement.classList.remove('btrx-lock');
+        if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
     }
 
-    chatToggle.addEventListener('click', function (e) {
-        e.stopPropagation();
-        e.preventDefault();
-        if (chatBox.classList.contains('active')) closeChat();
-        else openChat();
-    });
+    toggle.addEventListener('click', function (e) { e.preventDefault(); isOpen() ? closeChat() : openChat(); });
+    if (closeBtn) closeBtn.addEventListener('click', closeChat);
+    if (backdrop) backdrop.addEventListener('click', closeChat);
+    if (doneClose) doneClose.addEventListener('click', closeChat);
 
-    if (chatClose) {
-        chatClose.addEventListener('click', function (e) {
-            e.stopPropagation();
-            closeChat();
-        });
-    }
-
-    // Bahar click pe band
+    // any element with data-open-chat opens the sidebar; also window.btrxChat.open()
     document.addEventListener('click', function (e) {
-        if (!widget.contains(e.target)) closeChat();
+        var t = e.target.closest ? e.target.closest('[data-open-chat]') : null;
+        if (t) { e.preventDefault(); openChat(); }
     });
+    window.btrxChat = { open: openChat, close: closeChat };
 
-    // Escape pe band
     document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && chatBox.classList.contains('active')) closeChat();
+        if (!isOpen()) return;
+        if (e.key === 'Escape') { closeChat(); return; }
+        if (e.key === 'Tab') {                         // keep focus inside the drawer
+            var f = Array.prototype.slice.call(box.querySelectorAll('a[href], button:not([disabled]):not([hidden]), input:not([type=hidden]):not([tabindex="-1"]):not([disabled]), select, textarea'))
+                .filter(function (el) { return el.offsetParent !== null; });
+            if (!f.length) return;
+            var first = f[0], last = f[f.length - 1];
+            if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+            else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
     });
 
-    // =============================================
-    // FORM VALIDATION + SUBMIT
-    // =============================================
-    function isValidEmail(email) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    // ---------- steps ----------
+    function showStep(n) {
+        current = n;
+        steps.forEach(function (s) {
+            var on = Number(s.getAttribute('data-step')) === n;
+            s.hidden = !on;
+            s.classList.toggle('is-active', on);
+        });
+        stepper.forEach(function (li) {
+            var s = Number(li.getAttribute('data-s'));
+            li.classList.toggle('is-active', s === n);
+            li.classList.toggle('is-done', s < n);
+        });
+        if (stepperEl) stepperEl.style.setProperty('--prog', String((n - 1) / (steps.length - 1)));
+        backBtn.hidden = n === 1;
+        nextBtn.hidden = n === steps.length;
+        sendBtn.hidden = n !== steps.length;
+        formErr.hidden = true;
+        body.scrollTop = 0;
     }
 
-    function setInvalid(el, invalid) {
-        if (el) el.classList.toggle('is-invalid', invalid);
+    // ---------- validation ----------
+    var RULES = {
+        full_name: function (v) { return v.trim().length >= 2 ? '' : 'Please enter your name.'; },
+        email: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) ? '' : 'Enter a valid email address.'; },
+        phone: function (v) { return v.replace(/\D/g, '').length >= 7 ? '' : 'Enter a valid phone number.'; },
+        company: function (v) { return v.trim() ? '' : 'Please enter your company name.'; },
+        company_url: function (v) { return !v.trim() || /^(https?:\/\/)?[^\s.]+\.[^\s]{2,}$/i.test(v.trim()) ? '' : 'Enter a valid website address.'; },
+        region: function (v) { return v ? '' : 'Please choose your region.'; },
+        details: function (v) { return v.trim().length >= 10 ? '' : 'Please add a few details (at least 10 characters).'; }
+    };
+    var STEP_FIELDS = { 1: ['full_name', 'email', 'phone', 'company', 'company_url', 'region'], 2: ['services', 'budget'], 3: ['details', 'consent'] };
+
+    function wrapperOf(el) { return el.closest('.btrx-f') || el.parentNode; }
+
+    function setError(name, message) {
+        var el = form.elements[name];
+        if (name === 'services') {
+            var fs = document.getElementById('cf-services');
+            fs.classList.toggle('is-invalid', !!message);
+            showMsg(fs, message);
+            return;
+        }
+        if (name === 'budget') {
+            var bb = document.getElementById('cf-budgetbox');
+            bb.classList.toggle('is-invalid', !!message);
+            showMsg(bb, message);
+            return;
+        }
+        if (name === 'consent') {
+            var label = el.closest('.btrx-consent');
+            label.classList.toggle('is-invalid', !!message);
+            showMsg(label, message);
+            return;
+        }
+        if (!el) return;
+        var w = wrapperOf(el);
+        w.classList.toggle('is-invalid', !!message);
+        showMsg(w, message);
     }
 
-    if (chatForm) {
-        var f = chatForm.elements;
-        var requiredFields = [f['full_name'], f['phone'], f['company'], f['region'], f['budget'], f['details']];
+    function showMsg(container, message) {
+        var p = container.nextElementSibling && container.nextElementSibling.classList.contains('btrx-err') ? container.nextElementSibling : null;
+        if (!message) { if (p) p.remove(); return; }
+        if (!p) {
+            p = document.createElement('p');
+            p.className = 'btrx-err';
+            p.setAttribute('role', 'alert');
+            container.parentNode.insertBefore(p, container.nextSibling);
+        }
+        p.textContent = message;
+    }
 
-        // Type karte hi error hata do
-        chatForm.addEventListener('input', function (e) {
-            if (e.target.classList) e.target.classList.remove('is-invalid');
-            if (e.target.name === 'services') {
-                var group = document.getElementById('cf-services');
-                if (group) group.classList.remove('is-invalid');
+    function checkField(name) {
+        var msg = '';
+        if (name === 'services') {
+            msg = form.querySelector('input[name="services"]:checked') ? '' : 'Choose at least one service.';
+        } else if (name === 'budget') {
+            msg = form.elements.budget.value ? '' : 'Choose a budget range, or tick "Not sure yet".';
+        } else if (name === 'consent') {
+            msg = form.elements.consent.checked ? '' : 'Please confirm to continue.';
+        } else if (RULES[name]) {
+            msg = RULES[name](form.elements[name].value || '');
+        }
+        setError(name, msg);
+        return !msg;
+    }
+
+    function validateStep(n) {
+        var ok = true, firstBad = null;
+        STEP_FIELDS[n].forEach(function (name) {
+            if (!checkField(name)) {
+                ok = false;
+                if (!firstBad) firstBad = name;
             }
         });
-        chatForm.addEventListener('change', function (e) {
-            if (e.target.classList) e.target.classList.remove('is-invalid');
-        });
+        if (!ok) {
+            var el = firstBad === 'services' ? form.querySelector('input[name="services"]') :
+                     firstBad === 'budget' ? document.getElementById('cf-budget') : form.elements[firstBad];
+            if (el && el.focus) el.focus({ preventScroll: false });
+        }
+        return ok;
+    }
 
-        chatForm.addEventListener('submit', function (e) {
+    // clear an error as soon as the user fixes it
+    form.addEventListener('input', function (e) {
+        var n = e.target.name;
+        if (n && STEP_FIELDS[1].concat(STEP_FIELDS[3]).indexOf(n) !== -1 && n !== 'consent') {
+            if (wrapperOf(e.target).classList.contains('is-invalid')) checkField(n);
+        }
+        saveDraft();
+    });
+    form.addEventListener('change', function (e) {
+        var n = e.target.name;
+        if (n === 'services' && document.getElementById('cf-services').classList.contains('is-invalid')) checkField('services');
+        if (n === 'consent' && e.target.closest('.btrx-consent').classList.contains('is-invalid')) checkField('consent');
+        if (n === 'region') checkField('region');
+    });
+
+    nextBtn.addEventListener('click', function () { if (validateStep(current)) showStep(current + 1); });
+    backBtn.addEventListener('click', function () { if (current > 1) showStep(current - 1); });
+
+    // Enter moves forward instead of submitting early
+    form.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA' && current < steps.length) {
             e.preventDefault();
-            var isValid = true;
+            nextBtn.click();
+        }
+    });
 
-            requiredFields.forEach(function (field) {
-                var bad = !field || !field.value.trim();
-                setInvalid(field, bad);
-                if (bad) isValid = false;
-            });
+    // ---------- budget slider ----------
+    var slider = document.getElementById('cf-budget');
+    var out = document.getElementById('cf-budget-out');
+    var val = document.getElementById('cf-budget-val');
+    var skip = document.getElementById('cf-budget-skip');
 
-            var emailBad = !f['email'].value.trim() || !isValidEmail(f['email'].value.trim());
-            setInvalid(f['email'], emailBad);
-            if (emailBad) isValid = false;
+    function setBudgetFromSlider() {
+        var b = BUDGETS[Number(slider.value)];
+        val.value = b[0];
+        out.textContent = b[1];
+        slider.setAttribute('aria-valuetext', b[1]);
+        if (document.getElementById('cf-budgetbox').classList.contains('is-invalid')) checkField('budget');
+    }
+    slider.addEventListener('input', setBudgetFromSlider);
+    skip.addEventListener('change', function () {
+        slider.disabled = skip.checked;
+        if (skip.checked) { val.value = 'not-sure'; out.textContent = 'Not sure yet'; }
+        else { val.value = ''; out.textContent = 'Slide to choose'; }
+        checkField('budget');
+    });
 
-            var servicesGroup = document.getElementById('cf-services');
-            var anyService = chatForm.querySelector('input[name="services"]:checked');
-            if (servicesGroup) servicesGroup.classList.toggle('is-invalid', !anyService);
-            if (!anyService) isValid = false;
+    // ---------- details counter ----------
+    var details = document.getElementById('cf-details');
+    var counter = document.getElementById('cf-count');
+    function updateCount() { counter.textContent = details.value.length + ' / ' + details.getAttribute('maxlength'); }
+    details.addEventListener('input', updateCount);
 
-            if (!isValid) {
-                var firstBad = chatForm.querySelector('.is-invalid');
-                if (firstBad && firstBad.scrollIntoView) {
-                    firstBad.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
+    // ---------- keep a draft while the visitor browses (session only, no budget/consent) ----------
+    var DRAFT_KEY = 'btrx_chat_draft';
+    var DRAFT_FIELDS = ['full_name', 'email', 'phone', 'company', 'company_url', 'region', 'details'];
+    function saveDraft() {
+        try {
+            var d = {};
+            DRAFT_FIELDS.forEach(function (n) { d[n] = form.elements[n].value; });
+            sessionStorage.setItem(DRAFT_KEY, JSON.stringify(d));
+        } catch (e) { /* ignore */ }
+    }
+    function restoreDraft() {
+        try {
+            var d = JSON.parse(sessionStorage.getItem(DRAFT_KEY) || 'null');
+            if (!d) return;
+            DRAFT_FIELDS.forEach(function (n) { if (d[n] && !form.elements[n].value) form.elements[n].value = d[n]; });
+            updateCount();
+        } catch (e) { /* ignore */ }
+    }
+
+    // ---------- submit ----------
+    function csrfToken() {
+        var f = form.querySelector('input[name="csrfmiddlewaretoken"]');
+        if (f) return f.value;
+        var m = document.cookie.match(/(?:^|;\s*)csrftoken=([^;]+)/);
+        return m ? decodeURIComponent(m[1]) : '';
+    }
+
+    function showFormError(text) { formErr.textContent = text; formErr.hidden = false; }
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        // validate every step; jump to the first one with a problem
+        for (var n = 1; n <= steps.length; n++) {
+            if (!validateStep(n)) { if (current !== n) showStep(n); validateStep(n); return; }
+        }
+
+        var endpoint = form.getAttribute('data-endpoint');
+        if (!endpoint) {
+            showFormError('Sending is not available right now. Please use WhatsApp or call us.');
+            return;
+        }
+
+        sendBtn.disabled = true;
+        var label = sendBtn.innerHTML;
+        sendBtn.textContent = 'Sending...';
+        formErr.hidden = true;
+
+        fetch(endpoint, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFToken': csrfToken() },
+            credentials: 'same-origin'
+        }).then(function (res) {
+            return res.json().catch(function () { return {}; }).then(function (data) { return { status: res.status, data: data }; });
+        }).then(function (r) {
+            if (r.data && r.data.ok) {
+                try { sessionStorage.removeItem(DRAFT_KEY); } catch (err) { /* ignore */ }
+                form.reset();
+                updateCount();
+                slider.disabled = false; val.value = ''; out.textContent = 'Slide to choose';
+                refEl.textContent = r.data.ref || '-';
+                form.hidden = true;
+                foot.querySelector('.btrx-nav').hidden = true;
+                stepperEl.hidden = true;
+                done.hidden = false;
                 return;
             }
-
-            // TODO: yahan Django view / API pe fetch() se data bhejein
-            // var data = new FormData(chatForm);
-
-            var btn = chatForm.querySelector('.btrx-chat-send');
-            var originalHTML = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-check"></i> Sent!';
-            btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
-            btn.disabled = true;
-
-            setTimeout(function () {
-                btn.innerHTML = originalHTML;
-                btn.style.background = '';
-                btn.disabled = false;
-                chatForm.reset();
-                closeChat();
-                alert("Message sent successfully! We'll get back to you within 24 hours.");
-            }, 1500);
-        });
-
-        // Ctrl+Enter se submit
-        var textarea = chatForm.querySelector('textarea');
-        if (textarea) {
-            textarea.addEventListener('keydown', function (e) {
-                if (e.ctrlKey && e.key === 'Enter') {
-                    e.preventDefault();
-                    if (chatForm.requestSubmit) chatForm.requestSubmit();
-                    else chatForm.dispatchEvent(new Event('submit', { cancelable: true }));
-                }
-            });
-        }
-    }
-
-    // Focus pe label ka rang
-    document.querySelectorAll('.btrx-chat-input, .btrx-chat-textarea, .btrx-chat-select').forEach(function (input) {
-        input.addEventListener('focus', function () {
-            var label = this.parentElement.querySelector('label');
-            if (label) label.style.color = '#0ebab1';
-        });
-        input.addEventListener('blur', function () {
-            var label = this.parentElement.querySelector('label');
-            if (label) label.style.color = '';
+            // field errors from the server: show them and go to the right step
+            if (r.data && r.data.errors) {
+                var firstStep = 4;
+                Object.keys(r.data.errors).forEach(function (name) {
+                    setError(name, r.data.errors[name]);
+                    for (var s = 1; s <= 3; s++) if (STEP_FIELDS[s].indexOf(name) !== -1) firstStep = Math.min(firstStep, s);
+                });
+                if (firstStep <= 3) showStep(firstStep);
+            }
+            showFormError((r.data && r.data.error) || 'We could not send your message. Please check the form and try again.');
+        }).catch(function () {
+            showFormError('Network problem. Please try again, or message us on WhatsApp.');
+        }).then(function () {
+            sendBtn.disabled = false;
+            sendBtn.innerHTML = label;
         });
     });
 
+    // initial state
+    showStep(1);
+    updateCount();
 })();

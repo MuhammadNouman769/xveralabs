@@ -1,4 +1,3 @@
-
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -38,6 +37,9 @@
     <link rel="stylesheet" href="{% static 'css/layout/header.css' %}">
     <link rel="stylesheet" href="{% static 'css/layout/footer.css' %}">
 
+    <!-- Preloader: show it once per visit, skip it on the next pages (runs before first paint) -->
+    <script>try{if(sessionStorage.getItem('btrx_seen')==='1')document.documentElement.classList.add('btrx-skip')}catch(e){}</script>
+
     <!-- JS band ho to preloader na dikhe -->
     <noscript>
         <style>
@@ -49,31 +51,33 @@
 </head>
 <body class="{% block body_class %}{% endblock %}">
     <!-- =====================
-         ENTERPRISE PRELOADER
+         PRELOADER
     ====================== -->
-    <div id="btrx-preloader">
-        <div class="btrx-preloader-grid"></div>
-        <div class="btrx-bg-glow btrx-bg-glow-1"></div>
-        <div class="btrx-bg-glow btrx-bg-glow-2"></div>
-        <div class="btrx-bg-glow btrx-bg-glow-3"></div>
-        <div class="btrx-loader-scene" aria-label="Loading application">
-            <div class="btrx-orbit btrx-orbit-one"></div>
-            <div class="btrx-orbit btrx-orbit-two"></div>
-            <div class="btrx-loader-plate"></div>
-            <div class="btrx-loader-core">
-                <span class="btrx-core-ring"></span>
-                <span class="btrx-core-dot"></span>
-            </div>
+    <div id="btrx-preloader" role="status" aria-live="polite" aria-label="Loading">
+        <div class="btrx-pl__grid"></div>
+        <div class="btrx-pl__glow btrx-pl__glow--a"></div>
+        <div class="btrx-pl__glow btrx-pl__glow--b"></div>
+
+        <div class="btrx-pl__core">
+            <svg class="btrx-pl__mark" viewBox="0 0 120 120" aria-hidden="true">
+                <defs>
+                    <linearGradient id="btrxPlGrad" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0" stop-color="#5eead4"/>
+                        <stop offset="1" stop-color="#38bdf8"/>
+                    </linearGradient>
+                </defs>
+                <circle class="btrx-pl__track" cx="60" cy="60" r="52"/>
+                <circle class="btrx-pl__orbit" cx="60" cy="60" r="52"/>
+                <path class="btrx-pl__x" d="M38 38 L82 82"/>
+                <path class="btrx-pl__x btrx-pl__x--2" d="M82 38 L38 82"/>
+            </svg>
+            <span class="btrx-pl__dot" aria-hidden="true"></span>
         </div>
-        <div class="btrx-preloader-brand">
-            <span class="btrx-brand-btr">X</span>
-            <span class="btrx-brand-solution">vera Labs</span>
-        </div>
-        <div class="btrx-preloader-meta">
-            <span>Stabilizing orbit</span>
-            <div class="btrx-progress">
-                <span class="btrx-progress-fill"></span>
-            </div>
+
+        <div class="btrx-pl__brand"><b>X</b>vera Labs</div>
+        <div class="btrx-pl__meta">
+            <div class="btrx-pl__bar"><span></span></div>
+            <div class="btrx-pl__line"><span>Preparing your experience</span><b id="btrxPct">0%</b></div>
         </div>
     </div>
     <!-- HEADER -->
@@ -88,158 +92,142 @@
     {% endblock %}
     <!-- CHAT WIDGET -->
     {% block chat_widget %}
+    {% url 'lead_create' as lead_endpoint %}
+    {% url 'privacy_policy' as privacy_url %}
     <div class="btrx-chat-widget">
-        <!-- Chat Box -->
-        <div class="btrx-chat-box" id="btrxChatBox">
-            <div class="btrx-chat-header">
-                <div class="chat-status">
-                    <span class="dot"></span>
-                    <span>We're online</span>
-                </div>
-                <h3>
-                    <i class="fas fa-handshake"></i> Get In Touch
-                </h3>
-                <p>Fill in the details and our team will reach out to you.</p>
-                <button type="button" class="btrx-chat-close" id="btrxChatClose" aria-label="Close chat">
-                    <i class="fas fa-times"></i>
+        <!-- Backdrop -->
+        <div class="btrx-chat-backdrop" id="btrxChatBackdrop"></div>
+
+        <!-- Sidebar drawer -->
+        <aside class="btrx-chat-box" id="btrxChatBox" role="dialog" aria-modal="true" aria-labelledby="btrxChatTitle" aria-hidden="true">
+            <header class="btrx-dr-head">
+                <button type="button" class="btrx-chat-close" id="btrxChatClose" aria-label="Close panel">
+                    <i class="fas fa-xmark" aria-hidden="true"></i>
                 </button>
-            </div>
+                <span class="btrx-dr-status"><i aria-hidden="true"></i> Our team is online</span>
+                <h2 id="btrxChatTitle">Let's build something great</h2>
+                <p>Tell us about your project in three quick steps.</p>
+
+                <ol class="btrx-stepper" id="btrxStepper" aria-label="Progress">
+                    <li class="is-active" data-s="1"><span>1</span><b>You</b></li>
+                    <li data-s="2"><span>2</span><b>Project</b></li>
+                    <li data-s="3"><span>3</span><b>Details</b></li>
+                </ol>
+            </header>
+
             <div class="btrx-chat-body" id="btrxChatBody">
-                <form id="btrxChatForm" novalidate>
-                    <div class="btrx-chat-form-group">
-                        <label for="cf-name">Full Name <span class="required">*</span></label>
-                        <input type="text" id="cf-name" name="full_name" class="btrx-chat-input" placeholder="John Doe" required>
-                    </div>
-                    <div class="btrx-chat-form-group">
-                        <label for="cf-email">Email <span class="required">*</span></label>
-                        <input type="email" id="cf-email" name="email" class="btrx-chat-input" placeholder="john@company.com" required>
-                    </div>
-                    <div class="btrx-chat-form-group">
-                        <label for="cf-phone">Phone Number <span class="required">*</span></label>
-                        <input type="tel" id="cf-phone" name="phone" class="btrx-chat-input" placeholder="(201) 555-0123" required>
-                    </div>
-                    <div class="btrx-chat-form-group">
-                        <label for="cf-company">Company Name <span class="required">*</span></label>
-                        <input type="text" id="cf-company" name="company" class="btrx-chat-input" placeholder="Your Company Name" required>
-                    </div>
-                    <div class="btrx-chat-form-group">
-                        <label for="cf-url">Company URL</label>
-                        <input type="url" id="cf-url" name="company_url" class="btrx-chat-input" placeholder="https://yourcompany.com">
-                    </div>
-                    <div class="btrx-chat-form-group">
-                        <label for="cf-region">Region <span class="required">*</span></label>
-                        <select id="cf-region" name="region" class="btrx-chat-select" required>
-                            <option value="">Select Region</option>
-                            <option value="na">North America</option>
-                            <option value="eu">Europe</option>
-                            <option value="uk">United Kingdom</option>
-                            <option value="me">Middle East</option>
-                            <option value="af">Africa</option>
-                            <option value="ap">Asia Pacific</option>
-                            <option value="sam">South America</option>
-                            <option value="au">Australia</option>
-                            <option value="in">India</option>
-                            <option value="cn">China</option>
-                            <option value="jp">Japan</option>
-                            <option value="sg">Singapore</option>
-                            <option value="ae">UAE</option>
-                            <option value="sa">Saudi Arabia</option>
-                            <option value="qa">Qatar</option>
-                            <option value="kw">Kuwait</option>
-                            <option value="eg">Egypt</option>
-                            <option value="ng">Nigeria</option>
-                            <option value="za">South Africa</option>
-                            <option value="ke">Kenya</option>
-                        </select>
-                    </div>
-                    <div class="btrx-chat-form-group">
-                        <label>Services you are looking for <span class="required">*</span></label>
-                        <div class="btrx-chat-checkbox-group" id="cf-services">
-                            <div class="btrx-chat-checkbox-item">
-                                <input type="checkbox" id="service1" name="services" value="remote-it">
-                                <label for="service1">Remote IT Resources</label>
-                            </div>
-                            <div class="btrx-chat-checkbox-item">
-                                <input type="checkbox" id="service2" name="services" value="custom-software">
-                                <label for="service2">Custom Software Development</label>
-                            </div>
-                            <div class="btrx-chat-checkbox-item">
-                                <input type="checkbox" id="service3" name="services" value="web-dev">
-                                <label for="service3">Web Development</label>
-                            </div>
-                            <div class="btrx-chat-checkbox-item">
-                                <input type="checkbox" id="service4" name="services" value="mobile-dev">
-                                <label for="service4">Mobile App Development</label>
-                            </div>
-                            <div class="btrx-chat-checkbox-item">
-                                <input type="checkbox" id="service5" name="services" value="ar-vr">
-                                <label for="service5">AR/VR</label>
-                            </div>
-                            <div class="btrx-chat-checkbox-item">
-                                <input type="checkbox" id="service6" name="services" value="gaming">
-                                <label for="service6">Gaming</label>
-                            </div>
-                            <div class="btrx-chat-checkbox-item">
-                                <input type="checkbox" id="service7" name="services" value="cyber-security">
-                                <label for="service7">Cyber Security</label>
-                            </div>
-                            <div class="btrx-chat-checkbox-item">
-                                <input type="checkbox" id="service8" name="services" value="other-it">
-                                <label for="service8">Other IT Services</label>
-                            </div>
+                <form id="btrxChatForm" data-endpoint="{{ lead_endpoint }}" novalidate>
+                    {% csrf_token %}
+                    <input type="hidden" name="page_url" id="cf-page" value="">
+                    <div class="btrx-hp" aria-hidden="true"><label for="cf-website">Leave this empty</label><input type="text" id="cf-website" name="website" tabindex="-1" autocomplete="off"></div>
+
+                    <!-- STEP 1 -->
+                    <section class="btrx-step is-active" data-step="1" aria-labelledby="btrxS1">
+                        <h3 id="btrxS1">First, who are we talking to?</h3>
+                        <div class="btrx-f"><input type="text" id="cf-name" name="full_name" placeholder=" " autocomplete="name" required><label for="cf-name">Full name *</label></div>
+                        <div class="btrx-f"><input type="email" id="cf-email" name="email" placeholder=" " autocomplete="email" required><label for="cf-email">Work email *</label></div>
+                        <div class="btrx-f"><input type="tel" id="cf-phone" name="phone" placeholder=" " autocomplete="tel" required><label for="cf-phone">Phone number *</label></div>
+                        <div class="btrx-f"><input type="text" id="cf-company" name="company" placeholder=" " autocomplete="organization" required><label for="cf-company">Company name *</label></div>
+                        <div class="btrx-f"><input type="url" id="cf-url" name="company_url" placeholder=" " autocomplete="url"><label for="cf-url">Company website (optional)</label></div>
+                        <div class="btrx-f btrx-f--select">
+                            <select id="cf-region" name="region" required>
+                                <option value="" selected disabled>Select your region *</option>
+                                <option value="na">North America</option>
+                                <option value="eu">Europe</option>
+                                <option value="uk">United Kingdom</option>
+                                <option value="me">Middle East</option>
+                                <option value="af">Africa</option>
+                                <option value="ap">Asia Pacific</option>
+                                <option value="sam">South America</option>
+                                <option value="au">Australia</option>
+                                <option value="in">India</option>
+                                <option value="cn">China</option>
+                                <option value="jp">Japan</option>
+                                <option value="sg">Singapore</option>
+                                <option value="ae">UAE</option>
+                                <option value="sa">Saudi Arabia</option>
+                                <option value="qa">Qatar</option>
+                                <option value="kw">Kuwait</option>
+                                <option value="eg">Egypt</option>
+                                <option value="ng">Nigeria</option>
+                                <option value="za">South Africa</option>
+                                <option value="ke">Kenya</option>
+                                <option value="pk">Pakistan</option>
+                            </select>
+                            <label for="cf-region" class="btrx-visually-hidden">Region</label>
                         </div>
-                    </div>
-                    <div class="btrx-chat-form-group">
-                        <label for="cf-budget">Budget Range <span class="required">*</span></label>
-                        <select id="cf-budget" name="budget" class="btrx-chat-select" required>
-                            <option value="">Select Budget Range</option>
-                            <option value="lt-50k">Less than PKR 50,000</option>
-                            <option value="50-100k">PKR 50,000 - PKR 100,000</option>
-                            <option value="100-150k">PKR 100,000 - PKR 150,000</option>
-                            <option value="150-200k">PKR 150,000 - PKR 200,000</option>
-                            <option value="200-250k">PKR 200,000 - PKR 250,000</option>
-                            <option value="250-300k">PKR 250,000 - PKR 300,000</option>
-                            <option value="300-350k">PKR 300,000 - PKR 350,000</option>
-                            <option value="350-400k">PKR 350,000 - PKR 400,000</option>
-                            <option value="400-500k">PKR 400,000 - PKR 500,000</option>
-                            <option value="gt-500k">Greater than PKR 500,000</option>
-                        </select>
-                    </div>
-                    <div class="btrx-chat-form-group">
-                        <label for="cf-details">Project Details <span class="required">*</span></label>
-                        <textarea id="cf-details" name="details" class="btrx-chat-textarea" placeholder="Tell us about your project..." required></textarea>
-                    </div>
-                    <div class="btrx-chat-form-group">
-                        <label for="cf-job">I am looking for a job at Xvera Labs</label>
-                        <select id="cf-job" name="job" class="btrx-chat-select">
-                            <option value="">Please Select</option>
-                            <option value="yes">Yes, I'm interested</option>
-                            <option value="no">No, not at this time</option>
-                            <option value="maybe">Maybe later</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btrx-chat-send">
-                        <i class="fas fa-paper-plane"></i> Submit
-                    </button>
+                    </section>
+
+                    <!-- STEP 2 -->
+                    <section class="btrx-step" data-step="2" aria-labelledby="btrxS2" hidden>
+                        <h3 id="btrxS2">What do you need?</h3>
+                        <fieldset class="btrx-chips" id="cf-services">
+                            <legend>Services you are looking for *</legend>
+                            <label class="btrx-chip"><input type="checkbox" name="services" value="remote-it"><span><i class="fas fa-users-gear" aria-hidden="true"></i>Remote IT Resources</span></label>
+                            <label class="btrx-chip"><input type="checkbox" name="services" value="custom-software"><span><i class="fas fa-code" aria-hidden="true"></i>Custom Software</span></label>
+                            <label class="btrx-chip"><input type="checkbox" name="services" value="web-dev"><span><i class="fas fa-globe" aria-hidden="true"></i>Web Development</span></label>
+                            <label class="btrx-chip"><input type="checkbox" name="services" value="mobile-dev"><span><i class="fas fa-mobile-screen" aria-hidden="true"></i>Mobile Apps</span></label>
+                            <label class="btrx-chip"><input type="checkbox" name="services" value="ar-vr"><span><i class="fas fa-vr-cardboard" aria-hidden="true"></i>AR/VR</span></label>
+                            <label class="btrx-chip"><input type="checkbox" name="services" value="gaming"><span><i class="fas fa-gamepad" aria-hidden="true"></i>Gaming</span></label>
+                            <label class="btrx-chip"><input type="checkbox" name="services" value="cyber-security"><span><i class="fas fa-shield-halved" aria-hidden="true"></i>Cyber Security</span></label>
+                            <label class="btrx-chip"><input type="checkbox" name="services" value="other-it"><span><i class="fas fa-ellipsis" aria-hidden="true"></i>Other IT Services</span></label>
+                        </fieldset>
+
+                        <div class="btrx-budget" id="cf-budgetbox">
+                            <div class="btrx-budget__top">
+                                <label for="cf-budget">Budget range *</label>
+                                <label class="btrx-budget__skip"><input type="checkbox" id="cf-budget-skip"> Not sure yet</label>
+                            </div>
+                            <output class="btrx-budget__out" id="cf-budget-out" for="cf-budget">Slide to choose</output>
+                            <input type="range" id="cf-budget" min="0" max="9" step="1" value="0" aria-describedby="cf-budget-out">
+                            <div class="btrx-budget__scale" aria-hidden="true"><span>&lt; 50k</span><span>PKR</span><span>500k+</span></div>
+                            <input type="hidden" name="budget" id="cf-budget-val" value="">
+                        </div>
+                    </section>
+
+                    <!-- STEP 3 -->
+                    <section class="btrx-step" data-step="3" aria-labelledby="btrxS3" hidden>
+                        <h3 id="btrxS3">Tell us a little more</h3>
+                        <div class="btrx-f btrx-f--area"><textarea id="cf-details" name="details" placeholder=" " rows="5" maxlength="2000" required></textarea><label for="cf-details">Project details *</label><small class="btrx-count" id="cf-count">0 / 2000</small></div>
+                        <div class="btrx-f btrx-f--select">
+                            <select id="cf-job" name="job">
+                                <option value="" selected>Looking for a job at Xvera Labs? (optional)</option>
+                                <option value="yes">Yes, I'm interested</option>
+                                <option value="no">No, not at this time</option>
+                                <option value="maybe">Maybe later</option>
+                            </select>
+                            <label for="cf-job" class="btrx-visually-hidden">Job interest</label>
+                        </div>
+                        <label class="btrx-consent"><input type="checkbox" id="cf-consent" name="consent" required><span>I agree that Xvera Labs may contact me about this enquiry.{% if privacy_url %} <a href="{{ privacy_url }}">Privacy Policy</a>{% endif %}</span></label>
+                    </section>
                 </form>
-            </div>
-            <div class="btrx-chat-footer">
-                <div class="chat-security">
-                    <i class="fas fa-lock"></i> Encrypted
-                </div>
-                <div class="chat-response">
-                    <span class="response-text">Response in</span>
-                    <div class="avatars">
-                        <span>X</span>
-                        <span>V</span>
-                        <span>L</span>
-                    </div>
-                    <span class="response-text">~2 mins</span>
+
+                <!-- success state -->
+                <div class="btrx-done" id="btrxDone" hidden>
+                    <span class="btrx-done__ring"><svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24"/><path d="M15 27l8 8 14-16"/></svg></span>
+                    <h3>Message received</h3>
+                    <p>Thank you. Our team will review your enquiry and get back to you.</p>
+                    <p class="btrx-done__ref">Your reference: <b id="btrxRef">-</b></p>
+                    <button type="button" class="btrx-btn btrx-btn--ghost" id="btrxDoneClose">Close</button>
                 </div>
             </div>
-        </div>
-        <!-- Robot Button -->
-        <button type="button" class="btrx-chat-toggle" id="btrxChatToggle" aria-label="Chat with us" aria-expanded="false">
+
+            <footer class="btrx-dr-foot" id="btrxFoot">
+                <div class="btrx-nav">
+                    <button type="button" class="btrx-btn btrx-btn--ghost" id="btrxBack" hidden><i class="fas fa-arrow-left" aria-hidden="true"></i> Back</button>
+                    <button type="button" class="btrx-btn btrx-btn--main" id="btrxNext">Continue <i class="fas fa-arrow-right" aria-hidden="true"></i></button>
+                    <button type="submit" form="btrxChatForm" class="btrx-btn btrx-btn--main" id="btrxSend" hidden><i class="fas fa-paper-plane" aria-hidden="true"></i> Send message</button>
+                </div>
+                <p class="btrx-formerr" id="btrxFormErr" role="alert" hidden></p>
+                <div class="btrx-alt">
+                    <span><i class="fas fa-lock" aria-hidden="true"></i> Your details stay private</span>
+                    <span class="btrx-alt__links"><a href="https://wa.me/923248699647" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp</a><a href="tel:+923248699647"><i class="fas fa-phone" aria-hidden="true"></i> Call</a></span>
+                </div>
+            </footer>
+        </aside>
+
+        <!-- Robot launcher -->
+        <button type="button" class="btrx-chat-toggle" id="btrxChatToggle" aria-label="Chat with us" aria-expanded="false" aria-controls="btrxChatBox">
             <span class="btrx-robot-tip">Hi! 👋 Let's talk business</span>
             <span class="btrx-robot" aria-hidden="true">
                 <svg viewBox="0 0 80 96" xmlns="http://www.w3.org/2000/svg" focusable="false">
