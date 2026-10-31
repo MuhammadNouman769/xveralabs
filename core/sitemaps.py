@@ -1,3 +1,4 @@
+
 from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
 
@@ -48,6 +49,9 @@ class StaticViewSitemap(Sitemap):
         "partners",
         "partners_investors",
     ]
+
+    def get_domain(self, site=None):
+        return "xveralabs.pythonanywhere.com"
 
     def items(self):
         return self.page_names
