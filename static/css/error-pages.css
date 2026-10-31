@@ -29,6 +29,7 @@
 .xvera-error-content {
   width: min(100%, 680px);
   text-align: center;
+  overflow-wrap: break-word;
 }
 
 .xvera-error-kicker {
@@ -42,14 +43,14 @@
 
 .xvera-error-code {
   margin: 0;
-  color: #087f79;
+  color: #087f79!important;
   font-size: 148px;
   font-weight: 800;
   line-height: 0.9;
 }
 
 .xvera-error-page[data-error="500"] .xvera-error-code {
-  color: #a44f3e;
+  color: #087f79;
 }
 
 .xvera-error-title {
@@ -92,9 +93,16 @@
   transition: background-color 160ms ease, color 160ms ease;
 }
 
-.xvera-error-action:hover {
-  background: #066b66;
-  color: #fff;
+.xvera-error-action:focus-visible {
+  outline: 3px solid rgba(8, 127, 121, 0.35);
+  outline-offset: 2px;
+}
+
+@media (hover: hover) {
+  .xvera-error-action:hover {
+    background: #066b66;
+    color: #fff;
+  }
 }
 
 .xvera-error-action--secondary {
@@ -102,11 +110,83 @@
   color: #087f79;
 }
 
-.xvera-error-action--secondary:hover {
-  background: rgba(8, 127, 121, 0.08);
-  color: #066b66;
+@media (hover: hover) {
+  .xvera-error-action--secondary:hover {
+    background: rgba(8, 127, 121, 0.08);
+    color: #066b66;
+  }
 }
 
+/* ==========================================================
+   Responsive breakpoints (desktop design above is unchanged)
+   Order: large screens -> small screens
+   ========================================================== */
+
+/* Extra large screens */
+@media (min-width: 1600px) {
+  .xvera-error-page {
+    min-height: 720px;
+  }
+}
+
+/* Laptops / small desktops */
+@media (max-width: 1199px) {
+  .xvera-error-page {
+    min-height: 600px;
+  }
+}
+
+/* Tablets (landscape) */
+@media (max-width: 991px) {
+  .xvera-error-page {
+    min-height: 580px;
+    padding: 140px 24px 80px;
+  }
+
+  .xvera-error-page::before {
+    width: 480px;
+    height: 480px;
+  }
+
+  .xvera-error-code {
+    font-size: 132px;
+  }
+
+  .xvera-error-title {
+    font-size: 34px;
+  }
+}
+
+/* Tablets (portrait) */
+@media (max-width: 767px) {
+  .xvera-error-page {
+    min-height: 560px;
+    padding: 132px 24px 72px;
+  }
+
+  .xvera-error-page::before {
+    width: 400px;
+    height: 400px;
+  }
+
+  .xvera-error-kicker {
+    margin-bottom: 16px;
+  }
+
+  .xvera-error-code {
+    font-size: 116px;
+  }
+
+  .xvera-error-title {
+    font-size: 31px;
+  }
+
+  .xvera-error-actions {
+    margin-top: 24px;
+  }
+}
+
+/* Phones (original 600px breakpoint, values kept) */
 @media (max-width: 600px) {
   .xvera-error-page {
     min-height: 520px;
@@ -128,5 +208,128 @@
 
   .xvera-error-copy {
     font-size: 15px;
+  }
+}
+
+/* Small phones: buttons stack full width */
+@media (max-width: 480px) {
+  .xvera-error-page {
+    min-height: 500px;
+    padding: 120px 18px 56px;
+  }
+
+  .xvera-error-page::before {
+    width: 300px;
+    height: 300px;
+  }
+
+  .xvera-error-code {
+    font-size: 92px;
+  }
+
+  .xvera-error-title {
+    margin-top: 18px;
+    font-size: 26px;
+  }
+
+  .xvera-error-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: min(100%, 320px);
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .xvera-error-action {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 48px;
+  }
+}
+
+/* Very small phones (320-360px) */
+@media (max-width: 360px) {
+  .xvera-error-page {
+    min-height: 460px;
+    padding: 108px 16px 48px;
+  }
+
+  .xvera-error-page::before {
+    width: 260px;
+    height: 260px;
+  }
+
+  .xvera-error-kicker {
+    font-size: 11px;
+  }
+
+  .xvera-error-code {
+    font-size: 78px;
+  }
+
+  .xvera-error-title {
+    font-size: 23px;
+  }
+
+  .xvera-error-copy {
+    font-size: 14px;
+  }
+}
+
+/* Short landscape screens (phones turned sideways) */
+@media (max-height: 520px) and (orientation: landscape) {
+  .xvera-error-page {
+    min-height: 0;
+    padding: 104px 24px 48px;
+  }
+
+  .xvera-error-page::before {
+    width: 360px;
+    height: 360px;
+  }
+
+  .xvera-error-code {
+    font-size: 80px;
+  }
+
+  .xvera-error-title {
+    margin-top: 14px;
+    font-size: 24px;
+  }
+
+  .xvera-error-copy {
+    font-size: 14px;
+  }
+
+  .xvera-error-actions {
+    flex-direction: row;
+    width: auto;
+    margin-top: 18px;
+  }
+
+  .xvera-error-action {
+    width: auto;
+    min-height: 42px;
+  }
+}
+
+/* Respect reduced-motion setting */
+@media (prefers-reduced-motion: reduce) {
+  .xvera-error-action {
+    transition: none;
+  }
+}
+
+/* Print */
+@media print {
+  .xvera-error-page {
+    min-height: 0;
+    padding: 24px;
+    background: none;
+  }
+
+  .xvera-error-page::before,
+  .xvera-error-actions {
+    display: none;
   }
 }
