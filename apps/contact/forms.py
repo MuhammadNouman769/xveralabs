@@ -2,7 +2,7 @@ import re
 
 from django import forms
 
-from .models import ContactMessage, CountryCode, Region, Service, Topic
+from .models import Budget, ContactMessage, CountryCode, Region, Service, Topic
 
 
 class ContactForm(forms.ModelForm):
@@ -35,3 +35,16 @@ class ContactForm(forms.ModelForm):
         if not re.fullmatch(r"\d{6,15}", digits):
             raise forms.ValidationError("Enter a valid phone number.")
         return digits
+
+
+class ChatForm(ContactForm):
+    """Same data as the contact page, plus the optional budget and the page it was sent from."""
+    budget = forms.ChoiceField(choices=Budget.choices, required=False)
+    consent = forms.BooleanField(error_messages={"required": "Please confirm to continue."})
+
+    class Meta(ContactForm.Meta):
+        fields = ContactForm.Meta.fields + ["budget", "page_url"]
+        widgets = {
+            **ContactForm.Meta.widgets,
+            "details": forms.Textarea(attrs={"rows": 5, "maxlength": 2000}),
+        }

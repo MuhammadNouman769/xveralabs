@@ -1,14 +1,12 @@
-
 (function () {
     'use strict';
 
     // =============================================
-    // PRELOADER  (shown once per visit; later pages skip it)
+    // PRELOADER (shown once per visit; later pages skip it)
     // =============================================
     (function initPreloader() {
         var pre = document.getElementById('btrx-preloader');
         if (!pre) return;
-
         var KEY = 'btrx_seen';
         function remove() { if (pre && pre.parentNode) pre.parentNode.removeChild(pre); }
 
@@ -16,31 +14,28 @@
         try { seen = sessionStorage.getItem(KEY) === '1'; } catch (e) { /* private mode */ }
         if (seen) { remove(); return; }
 
-        var MIN_SHOW = 900;     // never flash: show at least this long (ms)
-        var MAX_WAIT = 3500;    // never block: remove after this long
+        var MIN_SHOW = 900, MAX_WAIT = 3500;
         var pct = document.getElementById('btrxPct');
         var fill = pre.querySelector('.btrx-pl__bar span');
         var start = Date.now();
-        var shown = 0, target = 8, done = false, raf = 0;
+        var shown = 0, target = 8, finished = false, raf = 0;
 
         function paint(v) {
             if (pct) pct.textContent = Math.round(v) + '%';
             if (fill) fill.style.transform = 'scaleX(' + (v / 100) + ')';
         }
-
         (function tick() {
-            if (done) return;
-            target = Math.min(target + (target < 70 ? 1.1 : 0.2), 92);   // creeps up, never reaches 100 by itself
+            if (finished) return;
+            target = Math.min(target + (target < 70 ? 1.1 : 0.2), 92);
             shown += (target - shown) * 0.1;
             paint(shown);
             raf = requestAnimationFrame(tick);
         })();
 
         function finish() {
-            if (done) return;
-            var wait = Math.max(0, MIN_SHOW - (Date.now() - start));
+            if (finished) return;
             setTimeout(function () {
-                done = true;
+                finished = true;
                 cancelAnimationFrame(raf);
                 paint(100);
                 try { sessionStorage.setItem(KEY, '1'); } catch (e) { /* ignore */ }
@@ -48,17 +43,14 @@
                     pre.classList.add('btrx-hide');
                     setTimeout(remove, 800);
                 }, 260);
-            }, wait);
+            }, Math.max(0, MIN_SHOW - (Date.now() - start)));
         }
-
-        if (document.readyState === 'complete') finish();
-        else window.addEventListener('load', finish);
-
-        setTimeout(finish, MAX_WAIT);   // safety net
+        if (document.readyState === 'complete') finish(); else window.addEventListener('load', finish);
+        setTimeout(finish, MAX_WAIT);
     })();
 
     // =============================================
-    // CHAT SIDEBAR
+    // CHAT SIDEBAR (posts to the contact_us backend)
     // =============================================
     var widget = document.querySelector('.btrx-chat-widget');
     var toggle = document.getElementById('btrxChatToggle');
@@ -69,33 +61,35 @@
     if (!widget || !toggle || !box || !form) return;
 
     var body = document.getElementById('btrxChatBody');
-    var steps = Array.prototype.slice.call(form.querySelectorAll('.btrx-step'));
-    var stepper = Array.prototype.slice.call(document.querySelectorAll('#btrxStepper li'));
+    var steps = [].slice.call(form.querySelectorAll('.btrx-step'));
+    var stepper = [].slice.call(document.querySelectorAll('#btrxStepper li'));
     var stepperEl = document.getElementById('btrxStepper');
     var backBtn = document.getElementById('btrxBack');
     var nextBtn = document.getElementById('btrxNext');
     var sendBtn = document.getElementById('btrxSend');
     var formErr = document.getElementById('btrxFormErr');
-    var foot = document.getElementById('btrxFoot');
+    var nav = document.querySelector('#btrxFoot .btrx-nav');
     var done = document.getElementById('btrxDone');
     var doneClose = document.getElementById('btrxDoneClose');
     var refEl = document.getElementById('btrxRef');
-    var current = 1;
-    var lastFocus = null;
+    var current = 1, lastFocus = null;
 
-    var BUDGETS = [
-        ['lt-50k', 'Less than PKR 50,000'], ['50-100k', 'PKR 50,000 - 100,000'], ['100-150k', 'PKR 100,000 - 150,000'],
-        ['150-200k', 'PKR 150,000 - 200,000'], ['200-250k', 'PKR 200,000 - 250,000'], ['250-300k', 'PKR 250,000 - 300,000'],
-        ['300-350k', 'PKR 300,000 - 350,000'], ['350-400k', 'PKR 350,000 - 400,000'], ['400-500k', 'PKR 400,000 - 500,000'],
-        ['gt-500k', 'More than PKR 500,000']
-    ];
+    // budget steps come from the backend (json_script in base.html)
+    var BUDGETS = [];
+    try { BUDGETS = JSON.parse(document.getElementById('cf-budget-steps').textContent); } catch (e) { /* ignore */ }
 
     // ---------- open / close ----------
     function isOpen() { return box.classList.contains('active'); }
 
+    function resetUI() {
+        form.hidden = false; done.hidden = true; stepperEl.hidden = false; nav.hidden = false;
+        showStep(1);
+    }
+
     function openChat() {
         if (isOpen()) return;
         lastFocus = document.activeElement;
+        if (!done.hidden) resetUI();
         document.getElementById('cf-page').value = location.href;
         box.classList.add('active');
         backdrop.classList.add('active');
@@ -103,12 +97,10 @@
         box.setAttribute('aria-hidden', 'false');
         toggle.setAttribute('aria-expanded', 'true');
         document.documentElement.classList.add('btrx-lock');
-        var badge = toggle.querySelector('.btrx-chat-badge');
-        if (badge && badge.parentNode) badge.parentNode.removeChild(badge);
         restoreDraft();
         setTimeout(function () {
             var first = form.querySelector('.btrx-step.is-active input, .btrx-step.is-active select, .btrx-step.is-active textarea');
-            if (first && !done.hidden === false) first.focus({ preventScroll: true });
+            if (first) first.focus({ preventScroll: true });
         }, 350);
     }
 
@@ -138,8 +130,8 @@
     document.addEventListener('keydown', function (e) {
         if (!isOpen()) return;
         if (e.key === 'Escape') { closeChat(); return; }
-        if (e.key === 'Tab') {                         // keep focus inside the drawer
-            var f = Array.prototype.slice.call(box.querySelectorAll('a[href], button:not([disabled]):not([hidden]), input:not([type=hidden]):not([tabindex="-1"]):not([disabled]), select, textarea'))
+        if (e.key === 'Tab') {   // keep focus inside the drawer
+            var f = [].slice.call(box.querySelectorAll('a[href], button:not([disabled]):not([hidden]), input:not([type=hidden]):not([tabindex="-1"]):not([disabled]), select, textarea'))
                 .filter(function (el) { return el.offsetParent !== null; });
             if (!f.length) return;
             var first = f[0], last = f[f.length - 1];
@@ -161,7 +153,7 @@
             li.classList.toggle('is-active', s === n);
             li.classList.toggle('is-done', s < n);
         });
-        if (stepperEl) stepperEl.style.setProperty('--prog', String((n - 1) / (steps.length - 1)));
+        stepperEl.style.setProperty('--prog', String((n - 1) / (steps.length - 1)));
         backBtn.hidden = n === 1;
         nextBtn.hidden = n === steps.length;
         sendBtn.hidden = n !== steps.length;
@@ -169,69 +161,50 @@
         body.scrollTop = 0;
     }
 
-    // ---------- validation ----------
+    // ---------- validation (the server checks everything again) ----------
     var RULES = {
         full_name: function (v) { return v.trim().length >= 2 ? '' : 'Please enter your name.'; },
         email: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) ? '' : 'Enter a valid email address.'; },
-        phone: function (v) { return v.replace(/\D/g, '').length >= 7 ? '' : 'Enter a valid phone number.'; },
+        phone: function (v) { return /^\d{6,15}$/.test(v.replace(/[\s\-()]/g, '')) ? '' : 'Enter a valid phone number.'; },
         company: function (v) { return v.trim() ? '' : 'Please enter your company name.'; },
         company_url: function (v) { return !v.trim() || /^(https?:\/\/)?[^\s.]+\.[^\s]{2,}$/i.test(v.trim()) ? '' : 'Enter a valid website address.'; },
         region: function (v) { return v ? '' : 'Please choose your region.'; },
+        topic: function (v) { return v ? '' : 'Please choose a topic.'; },
         details: function (v) { return v.trim().length >= 10 ? '' : 'Please add a few details (at least 10 characters).'; }
     };
-    var STEP_FIELDS = { 1: ['full_name', 'email', 'phone', 'company', 'company_url', 'region'], 2: ['services', 'budget'], 3: ['details', 'consent'] };
+    var STEP_FIELDS = { 1: ['full_name', 'email', 'phone', 'company', 'company_url', 'region'], 2: ['topic', 'services'], 3: ['details', 'consent'] };
 
-    function wrapperOf(el) { return el.closest('.btrx-f') || el.parentNode; }
-
-    function setError(name, message) {
+    function holderOf(name) {
+        if (name === 'services') return document.getElementById('cf-services');
         var el = form.elements[name];
-        if (name === 'services') {
-            var fs = document.getElementById('cf-services');
-            fs.classList.toggle('is-invalid', !!message);
-            showMsg(fs, message);
-            return;
-        }
-        if (name === 'budget') {
-            var bb = document.getElementById('cf-budgetbox');
-            bb.classList.toggle('is-invalid', !!message);
-            showMsg(bb, message);
-            return;
-        }
-        if (name === 'consent') {
-            var label = el.closest('.btrx-consent');
-            label.classList.toggle('is-invalid', !!message);
-            showMsg(label, message);
-            return;
-        }
-        if (!el) return;
-        var w = wrapperOf(el);
-        w.classList.toggle('is-invalid', !!message);
-        showMsg(w, message);
+        return el ? el.closest('.btrx-f') : null;
     }
 
-    function showMsg(container, message) {
-        var p = container.nextElementSibling && container.nextElementSibling.classList.contains('btrx-err') ? container.nextElementSibling : null;
+    function showMsg(holder, message) {
+        var p = holder.nextElementSibling && holder.nextElementSibling.classList.contains('btrx-err') ? holder.nextElementSibling : null;
         if (!message) { if (p) p.remove(); return; }
         if (!p) {
             p = document.createElement('p');
             p.className = 'btrx-err';
             p.setAttribute('role', 'alert');
-            container.parentNode.insertBefore(p, container.nextSibling);
+            holder.parentNode.insertBefore(p, holder.nextSibling);
         }
         p.textContent = message;
     }
 
+    function setError(name, message) {
+        if (name === 'country_code') name = 'phone';
+        var h = holderOf(name);
+        if (!h) return;
+        h.classList.toggle('is-invalid', !!message);
+        showMsg(h, message);
+    }
+
     function checkField(name) {
         var msg = '';
-        if (name === 'services') {
-            msg = form.querySelector('input[name="services"]:checked') ? '' : 'Choose at least one service.';
-        } else if (name === 'budget') {
-            msg = form.elements.budget.value ? '' : 'Choose a budget range, or tick "Not sure yet".';
-        } else if (name === 'consent') {
-            msg = form.elements.consent.checked ? '' : 'Please confirm to continue.';
-        } else if (RULES[name]) {
-            msg = RULES[name](form.elements[name].value || '');
-        }
+        if (name === 'services') msg = form.querySelector('input[name="services"]:checked') ? '' : 'Choose at least one service.';
+        else if (name === 'consent') msg = form.elements.consent.checked ? '' : 'Please confirm to continue.';
+        else msg = RULES[name](form.elements[name].value || '');
         setError(name, msg);
         return !msg;
     }
@@ -239,75 +212,62 @@
     function validateStep(n) {
         var ok = true, firstBad = null;
         STEP_FIELDS[n].forEach(function (name) {
-            if (!checkField(name)) {
-                ok = false;
-                if (!firstBad) firstBad = name;
-            }
+            if (!checkField(name)) { ok = false; if (!firstBad) firstBad = name; }
         });
         if (!ok) {
-            var el = firstBad === 'services' ? form.querySelector('input[name="services"]') :
-                     firstBad === 'budget' ? document.getElementById('cf-budget') : form.elements[firstBad];
-            if (el && el.focus) el.focus({ preventScroll: false });
+            var el = firstBad === 'services' ? form.querySelector('input[name="services"]') : form.elements[firstBad];
+            if (el && el.focus) el.focus();
         }
         return ok;
     }
 
-    // clear an error as soon as the user fixes it
     form.addEventListener('input', function (e) {
-        var n = e.target.name;
-        if (n && STEP_FIELDS[1].concat(STEP_FIELDS[3]).indexOf(n) !== -1 && n !== 'consent') {
-            if (wrapperOf(e.target).classList.contains('is-invalid')) checkField(n);
-        }
+        var n = e.target.name, h = n && holderOf(n);
+        if (RULES[n] && h && h.classList.contains('is-invalid')) checkField(n);
         saveDraft();
     });
     form.addEventListener('change', function (e) {
         var n = e.target.name;
         if (n === 'services' && document.getElementById('cf-services').classList.contains('is-invalid')) checkField('services');
-        if (n === 'consent' && e.target.closest('.btrx-consent').classList.contains('is-invalid')) checkField('consent');
-        if (n === 'region') checkField('region');
+        if (n === 'consent' && holderOf('consent').classList.contains('is-invalid')) checkField('consent');
+        if (RULES[n] && (n === 'region' || n === 'topic')) checkField(n);
     });
 
     nextBtn.addEventListener('click', function () { if (validateStep(current)) showStep(current + 1); });
     backBtn.addEventListener('click', function () { if (current > 1) showStep(current - 1); });
-
-    // Enter moves forward instead of submitting early
-    form.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA' && current < steps.length) {
-            e.preventDefault();
-            nextBtn.click();
-        }
+    form.addEventListener('keydown', function (e) {   // Enter goes forward instead of submitting early
+        if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA' && current < steps.length) { e.preventDefault(); nextBtn.click(); }
     });
 
-    // ---------- budget slider ----------
+    // ---------- budget slider (optional) ----------
     var slider = document.getElementById('cf-budget');
     var out = document.getElementById('cf-budget-out');
     var val = document.getElementById('cf-budget-val');
     var skip = document.getElementById('cf-budget-skip');
+    slider.max = String(Math.max(BUDGETS.length - 1, 0));
 
-    function setBudgetFromSlider() {
+    function budgetPicked() {
         var b = BUDGETS[Number(slider.value)];
+        if (!b) return;
         val.value = b[0];
         out.textContent = b[1];
-        slider.setAttribute('aria-valuetext', b[1]);
-        if (document.getElementById('cf-budgetbox').classList.contains('is-invalid')) checkField('budget');
     }
-    slider.addEventListener('input', setBudgetFromSlider);
+    slider.addEventListener('input', function () { skip.checked = false; budgetPicked(); });
     skip.addEventListener('change', function () {
         slider.disabled = skip.checked;
         if (skip.checked) { val.value = 'not-sure'; out.textContent = 'Not sure yet'; }
         else { val.value = ''; out.textContent = 'Slide to choose'; }
-        checkField('budget');
     });
 
     // ---------- details counter ----------
     var details = document.getElementById('cf-details');
     var counter = document.getElementById('cf-count');
-    function updateCount() { counter.textContent = details.value.length + ' / ' + details.getAttribute('maxlength'); }
+    function updateCount() { counter.textContent = details.value.length + ' / ' + (details.getAttribute('maxlength') || 2000); }
     details.addEventListener('input', updateCount);
 
-    // ---------- keep a draft while the visitor browses (session only, no budget/consent) ----------
+    // ---------- keep a draft for this browser session (no budget, no consent) ----------
     var DRAFT_KEY = 'btrx_chat_draft';
-    var DRAFT_FIELDS = ['full_name', 'email', 'phone', 'company', 'company_url', 'region', 'details'];
+    var DRAFT_FIELDS = ['full_name', 'email', 'phone', 'company', 'company_url', 'region', 'topic', 'details'];
     function saveDraft() {
         try {
             var d = {};
@@ -331,21 +291,15 @@
         var m = document.cookie.match(/(?:^|;\s*)csrftoken=([^;]+)/);
         return m ? decodeURIComponent(m[1]) : '';
     }
-
     function showFormError(text) { formErr.textContent = text; formErr.hidden = false; }
 
     form.addEventListener('submit', function (e) {
         e.preventDefault();
-        // validate every step; jump to the first one with a problem
         for (var n = 1; n <= steps.length; n++) {
-            if (!validateStep(n)) { if (current !== n) showStep(n); validateStep(n); return; }
+            if (!validateStep(n)) { if (current !== n) { showStep(n); validateStep(n); } return; }
         }
-
         var endpoint = form.getAttribute('data-endpoint');
-        if (!endpoint) {
-            showFormError('Sending is not available right now. Please use WhatsApp or call us.');
-            return;
-        }
+        if (!endpoint) { showFormError('Sending is not available right now. Please use WhatsApp or call us.'); return; }
 
         sendBtn.disabled = true;
         var label = sendBtn.innerHTML;
@@ -358,30 +312,28 @@
             headers: { 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFToken': csrfToken() },
             credentials: 'same-origin'
         }).then(function (res) {
-            return res.json().catch(function () { return {}; }).then(function (data) { return { status: res.status, data: data }; });
+            return res.json().catch(function () { return {}; }).then(function (data) { return { data: data }; });
         }).then(function (r) {
-            if (r.data && r.data.ok) {
+            var d = r.data || {};
+            if (d.ok) {
                 try { sessionStorage.removeItem(DRAFT_KEY); } catch (err) { /* ignore */ }
                 form.reset();
                 updateCount();
                 slider.disabled = false; val.value = ''; out.textContent = 'Slide to choose';
-                refEl.textContent = r.data.ref || '-';
-                form.hidden = true;
-                foot.querySelector('.btrx-nav').hidden = true;
-                stepperEl.hidden = true;
-                done.hidden = false;
+                refEl.textContent = d.ref || '-';
+                form.hidden = true; nav.hidden = true; stepperEl.hidden = true; done.hidden = false;
                 return;
             }
-            // field errors from the server: show them and go to the right step
-            if (r.data && r.data.errors) {
+            if (d.errors) {   // show server messages and jump to the first step that has one
                 var firstStep = 4;
-                Object.keys(r.data.errors).forEach(function (name) {
-                    setError(name, r.data.errors[name]);
-                    for (var s = 1; s <= 3; s++) if (STEP_FIELDS[s].indexOf(name) !== -1) firstStep = Math.min(firstStep, s);
+                Object.keys(d.errors).forEach(function (name) {
+                    var key = name === 'country_code' ? 'phone' : name;
+                    setError(key, d.errors[name]);
+                    for (var s = 1; s <= 3; s++) if (STEP_FIELDS[s].indexOf(key) !== -1) firstStep = Math.min(firstStep, s);
                 });
                 if (firstStep <= 3) showStep(firstStep);
             }
-            showFormError((r.data && r.data.error) || 'We could not send your message. Please check the form and try again.');
+            showFormError(d.error || 'We could not send your message. Please check the form and try again.');
         }).catch(function () {
             showFormError('Network problem. Please try again, or message us on WhatsApp.');
         }).then(function () {
@@ -390,7 +342,6 @@
         });
     });
 
-    // initial state
     showStep(1);
     updateCount();
 })();

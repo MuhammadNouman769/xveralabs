@@ -3,7 +3,7 @@
 {% block title %}Xvera Labs - Contact Us{% endblock %}
 {% block body_class %}page-home-contact-us{% endblock %}
 
-{% block page_css %}<link rel="stylesheet" href="{% static 'css/pages/home-contact-us.css' %}?v=6">{% endblock %}
+{% block page_css %}<link rel="stylesheet" href="{% static 'css/pages/home-contact-us.css' %}?v=8">{% endblock %}
 
 {% block content %}
 
@@ -16,12 +16,6 @@
       <a href="#support" class="ct-btn">Fill in the project form</a>
     </div>
 
-    <ul class="ct-ways" aria-label="Ways to reach us">
-      <li><a href="https://wa.me/923248699647" target="_blank" rel="noopener noreferrer"><small>WhatsApp</small><strong>0324 8699647</strong></a></li>
-      <li><a href="mailto:xveralabs@gmail.com"><small>Email</small><strong>xveralabs@gmail.com</strong></a></li>
-      <li><a href="tel:+923248699647"><small>Phone</small><strong>+92 324 8699 647</strong></a></li>
-      <li><div><small>Office</small><strong>297-C, P.I.A. Main Boulevard Road, Lahore</strong></div></li>
-    </ul>
   </div>
 </section>
 
@@ -29,16 +23,21 @@
 <section id="support" class="ct-main">
   <div class="ct-grid">
 
-    <div class="ct-side">
-      <h2>Let's discuss your project</h2>
-      <p>We will read your details and someone from our team will reach out to find a time to talk.</p>
+    <aside class="ct-side">
+      <h3>Reach us directly</h3>
+      <ul class="ct-ways" aria-label="Ways to reach us">
+        <li><a href="https://wa.me/923248699647" target="_blank" rel="noopener noreferrer"><small>WhatsApp</small><strong>0324 8699647</strong></a></li>
+        <li><a href="mailto:xveralabs@gmail.com"><small>Email</small><strong>xveralabs@gmail.com</strong></a></li>
+        <li><a href="tel:+923248699647"><small>Phone</small><strong>+92 324 8699 647</strong></a></li>
+        <li><div><small>Office</small><strong>297-C, P.I.A. Main Boulevard Road, Lahore</strong></div></li>
+      </ul>
       <h3>What happens next</h3>
       <ol class="ct-steps">
         <li><strong>You send the form.</strong> Tell us about the product, your users and your deadline.</li>
         <li><strong>We review it.</strong> An engineer reads it and prepares questions, not a sales pitch.</li>
         <li><strong>We book a call.</strong> We agree on scope, team and a first milestone.</li>
       </ol>
-    </div>
+    </aside>
 
     <div class="ct-card">
       <h2 class="ct-card__title">Get in touch</h2>
@@ -74,6 +73,7 @@
         <button type="submit" class="ct-submit">Send project details</button>
       </form>
     </div>
+
 
   </div>
 </section>

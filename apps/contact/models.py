@@ -39,6 +39,25 @@ class CountryCode(models.TextChoices):
     DE = "+49", "🇩🇪 +49"
 
 
+class Budget(models.TextChoices):
+    LT_50K = "lt-50k", "Less than PKR 50,000"
+    B_50_100 = "50-100k", "PKR 50,000 - 100,000"
+    B_100_150 = "100-150k", "PKR 100,000 - 150,000"
+    B_150_200 = "150-200k", "PKR 150,000 - 200,000"
+    B_200_250 = "200-250k", "PKR 200,000 - 250,000"
+    B_250_300 = "250-300k", "PKR 250,000 - 300,000"
+    B_300_350 = "300-350k", "PKR 300,000 - 350,000"
+    B_350_400 = "350-400k", "PKR 350,000 - 400,000"
+    B_400_500 = "400-500k", "PKR 400,000 - 500,000"
+    GT_500K = "gt-500k", "More than PKR 500,000"
+    NOT_SURE = "not-sure", "Not sure yet"
+
+
+class Source(models.TextChoices):
+    PAGE = "page", "Contact page"
+    CHAT = "chat", "Chat sidebar"
+
+
 class Status(models.TextChoices):
     NEW = "new", "New"
     CONTACTED = "contacted", "Contacted"
@@ -56,6 +75,9 @@ class ContactMessage(models.Model):
     region = models.CharField(max_length=20, choices=Region.choices)
     services = models.JSONField(default=list)
     details = models.TextField()
+    budget = models.CharField(max_length=10, choices=Budget.choices, blank=True)
+    source = models.CharField(max_length=10, choices=Source.choices, default=Source.PAGE)
+    page_url = models.CharField(max_length=500, blank=True)
 
     status = models.CharField(max_length=10, choices=Status.choices, default=Status.NEW, db_index=True)
     ip_address = models.GenericIPAddressField(null=True, blank=True)

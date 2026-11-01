@@ -5,9 +5,9 @@ from .models import ContactMessage
 
 @admin.register(ContactMessage)
 class ContactMessageAdmin(admin.ModelAdmin):
-    list_display = ("created_at", "full_name", "company", "topic", "region", "email", "status")
+    list_display = ("created_at", "full_name", "company", "topic", "region", "source", "email", "status")
     list_editable = ("status",)
-    list_filter = ("status", "topic", "region", "created_at")
+    list_filter = ("status", "source", "topic", "region", "created_at")
     search_fields = ("full_name", "email", "company", "phone", "details")
     date_hierarchy = "created_at"
     readonly_fields = [f.name for f in ContactMessage._meta.fields if f.name != "status"]
