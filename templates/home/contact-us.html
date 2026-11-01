@@ -3,197 +3,79 @@
 {% block title %}Xvera Labs - Contact Us{% endblock %}
 {% block body_class %}page-home-contact-us{% endblock %}
 
-{% block page_css %}<link rel="stylesheet" href="{% static 'css/pages/home-contact-us.css' %}">{% endblock %}
+{% block page_css %}<link rel="stylesheet" href="{% static 'css/pages/home-contact-us.css' %}?v=6">{% endblock %}
 
 {% block content %}
 
-<!-- HERO -->
-<section class="contact-hero">
-    <!-- Online image (Unsplash). Pehli load na ho to doosri khud load hoti hai -->
-    <img class="hero-bg"
-         src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1950&q=80"
-         alt="Xvera Labs team working together"
-         loading="eager"
-         onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1950&q=80';">
-    <div class="hero-content">
-        <h1>Contact Us</h1>
-        <p>
-            We build scalable industry-grade digital solutions with modern architecture,
-            clean UI/UX, and enterprise-level performance.
-        </p>
-
-        <a href="#support">Start Your Project</a>
+<!-- ===== BANNER ===== -->
+<section class="ct-hero">
+  <div class="ct-hero__in">
+    <div class="ct-hero__copy">
+      <h1>Tell us what you are building.</h1>
+      <p>Web, mobile, e-commerce or AI. Share your idea and our engineers will come back with a plan, a timeline and a cost.</p>
+      <a href="#support" class="ct-btn">Fill in the project form</a>
     </div>
+
+    <ul class="ct-ways" aria-label="Ways to reach us">
+      <li><a href="https://wa.me/923248699647" target="_blank" rel="noopener noreferrer"><small>WhatsApp</small><strong>0324 8699647</strong></a></li>
+      <li><a href="mailto:xveralabs@gmail.com"><small>Email</small><strong>xveralabs@gmail.com</strong></a></li>
+      <li><a href="tel:+923248699647"><small>Phone</small><strong>+92 324 8699 647</strong></a></li>
+      <li><div><small>Office</small><strong>297-C, P.I.A. Main Boulevard Road, Lahore</strong></div></li>
+    </ul>
+  </div>
 </section>
 
-<!-- ===== Contact Start ===== -->
-<section id="support" class="cu-section">
-    <div class="cu-container">
+<!-- ===== FORM ===== -->
+<section id="support" class="ct-main">
+  <div class="ct-grid">
 
-        <!-- LEFT: heading + text + old contact details -->
-        <div class="cu-left">
-            <span class="cu-brand">Xvera Labs</span>
-            <h1 class="cu-title">Let's discuss your project</h1>
-
-            <p class="cu-text">
-                We are committed to understanding your requirements and crafting a tailored solution that aligns with your goals.
-            </p>
-            <p class="cu-text">
-                Enter your details and someone from our team will reach out to find a time to connect with you.
-            </p>
-
-            <div class="cu-info">
-                <div class="cu-info-item">
-                    <h4>Address</h4>
-                    <p>297-C, P.I.A. Main Boulevard Road, Lahore Pakistan.</p>
-                </div>
-                <div class="cu-info-item">
-                    <h4>Phone</h4>
-                    <p><a href="#!">+92 324 8699 647</a></p>
-                </div>
-                <div class="cu-info-item">
-                    <h4>E-mail</h4>
-                    <p><a href="#!">xveralabs@gmail.com</a></p>
-                </div>
-
-                <div class="cu-info-item">
-                    <h4>Follow Us</h4>
-                    <ul class="cu-social">
-                        <li>
-                            <a href="#!" aria-label="Facebook">
-                                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <g clip-path="url(#clip0_48_1499)">
-                                        <path d="M14 13.5H16.5L17.5 9.5H14V7.5C14 6.47 14 5.5 16 5.5H17.5V2.14C17.174 2.097 15.943 2 14.643 2C11.928 2 10 3.657 10 6.7V9.5H7V13.5H10V22H14V13.5Z" />
-                                    </g>
-                                    <defs>
-                                        <clipPath id="clip0_48_1499">
-                                            <rect width="24" height="24" fill="white" />
-                                        </clipPath>
-                                    </defs>
-                                </svg>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#!" aria-label="Twitter">
-                                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <g clip-path="url(#clip0_48_1502)">
-                                        <path d="M22.162 5.65593C21.3985 5.99362 20.589 6.2154 19.76 6.31393C20.6337 5.79136 21.2877 4.96894 21.6 3.99993C20.78 4.48793 19.881 4.82993 18.944 5.01493C18.3146 4.34151 17.4803 3.89489 16.5709 3.74451C15.6615 3.59413 14.7279 3.74842 13.9153 4.18338C13.1026 4.61834 12.4564 5.30961 12.0771 6.14972C11.6978 6.98983 11.6067 7.93171 11.818 8.82893C10.1551 8.74558 8.52832 8.31345 7.04328 7.56059C5.55823 6.80773 4.24812 5.75098 3.19799 4.45893C2.82628 5.09738 2.63095 5.82315 2.63199 6.56193C2.63199 8.01193 3.36999 9.29293 4.49199 10.0429C3.828 10.022 3.17862 9.84271 2.59799 9.51993V9.57193C2.59819 10.5376 2.93236 11.4735 3.54384 12.221C4.15532 12.9684 5.00647 13.4814 5.95299 13.6729C5.33661 13.84 4.6903 13.8646 4.06299 13.7449C4.32986 14.5762 4.85 15.3031 5.55058 15.824C6.25117 16.345 7.09712 16.6337 7.96999 16.6499C7.10247 17.3313 6.10917 17.8349 5.04687 18.1321C3.98458 18.4293 2.87412 18.5142 1.77899 18.3819C3.69069 19.6114 5.91609 20.2641 8.18899 20.2619C15.882 20.2619 20.089 13.8889 20.089 8.36193C20.089 8.18193 20.084 7.99993 20.076 7.82193C20.8949 7.2301 21.6016 6.49695 22.163 5.65693L22.162 5.65593Z" />
-                                    </g>
-                                    <defs>
-                                        <clipPath id="clip0_48_1502">
-                                            <rect width="24" height="24" fill="white" />
-                                        </clipPath>
-                                    </defs>
-                                </svg>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#!" aria-label="LinkedIn">
-                                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <g clip-path="url(#clip0_48_1505)">
-                                        <path d="M6.94 5.00002C6.93974 5.53046 6.72877 6.03906 6.35351 6.41394C5.97825 6.78883 5.46944 6.99929 4.939 6.99902C4.40857 6.99876 3.89997 6.78779 3.52508 6.41253C3.1502 6.03727 2.93974 5.52846 2.94 4.99802C2.94027 4.46759 3.15124 3.95899 3.5265 3.5841C3.90176 3.20922 4.41057 2.99876 4.941 2.99902C5.47144 2.99929 5.98004 3.21026 6.35492 3.58552C6.72981 3.96078 6.94027 4.46959 6.94 5.00002ZM7 8.48002H3V21H7V8.48002ZM13.32 8.48002H9.34V21H13.28V14.43C13.28 10.77 18.05 10.43 18.05 14.43V21H22V13.07C22 6.90002 14.94 7.13002 13.28 10.16L13.32 8.48002Z" />
-                                    </g>
-                                    <defs>
-                                        <clipPath id="clip0_48_1505">
-                                            <rect width="24" height="24" fill="white" />
-                                        </clipPath>
-                                    </defs>
-                                </svg>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- RIGHT: Get In Touch form -->
-        <div class="cu-right">
-            <h2 class="cu-form-title">Get In Touch</h2>
-
-            <!-- Backend se jodte waqt yahan method="post" aur csrf_token tag add karein -->
-            <form class="cu-form">
-
-                <div class="cu-field">
-                    <label for="fullname">Full Name<span>*</span></label>
-                    <input type="text" id="fullname" name="fullname" required>
-                </div>
-
-                <div class="cu-field">
-                    <label for="email">Email<span>*</span></label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-
-                <div class="cu-field">
-                    <label for="phone">Phone Number<span>*</span></label>
-                    <div class="cu-phone">
-                        <select name="country_code" aria-label="Country code">
-                            <option value="+92" selected>🇵🇰 +92</option>
-                            <option value="+1">🇺🇸 +1</option>
-                            <option value="+44">🇬🇧 +44</option>
-                            <option value="+971">🇦🇪 +971</option>
-                            <option value="+966">🇸🇦 +966</option>
-                            <option value="+61">🇦🇺 +61</option>
-                            <option value="+49">🇩🇪 +49</option>
-                        </select>
-                        <input type="tel" id="phone" name="phone" placeholder="(201) 555-0123" required>
-                    </div>
-                </div>
-
-                <div class="cu-field">
-                    <label for="company">Company Name<span>*</span></label>
-                    <input type="text" id="company" name="company" required>
-                </div>
-
-                <div class="cu-field">
-                    <label for="company_url">Company URL</label>
-                    <input type="url" id="company_url" name="company_url">
-                </div>
-
-                <div class="cu-field">
-                    <label for="region">Region<span>*</span></label>
-                    <select id="region" name="region" required>
-                        <option value="" selected disabled>Select Region</option>
-                        <option>Pakistan</option>
-                        <option>Middle East</option>
-                        <option>North America</option>
-                        <option>Europe</option>
-                        <option>Asia Pacific</option>
-                        <option>Other</option>
-                    </select>
-                </div>
-
-                <fieldset class="cu-field cu-services">
-                    <legend>Services you are looking for<span>*</span></legend>
-                    <label class="cu-check"><input type="checkbox" name="services" value="remote-it"><span>Remote IT Resources</span></label>
-                    <label class="cu-check"><input type="checkbox" name="services" value="custom-software"><span>Custom Software Development</span></label>
-                    <label class="cu-check"><input type="checkbox" name="services" value="web"><span>Web Development</span></label>
-                    <label class="cu-check"><input type="checkbox" name="services" value="mobile"><span>Mobile App Development</span></label>
-                    <label class="cu-check"><input type="checkbox" name="services" value="ar-vr"><span>AR/VR</span></label>
-                    <label class="cu-check"><input type="checkbox" name="services" value="gaming"><span>Gaming</span></label>
-                    <label class="cu-check"><input type="checkbox" name="services" value="cyber-security"><span>Cyber Security</span></label>
-                    <label class="cu-check"><input type="checkbox" name="services" value="other"><span>Other IT Services</span></label>
-                </fieldset>
-
-                <div class="cu-field">
-                    <label for="details">Project Details<span>*</span></label>
-                    <textarea id="details" name="details" rows="4" required></textarea>
-                </div>
-
-                <div class="cu-field">
-                    <label for="job">I am looking for a job at Xvera<span>*</span></label>
-                    <select id="job" name="job" required>
-                        <option value="" selected disabled>Please Select</option>
-                        <option>Yes</option>
-                        <option>No</option>
-                    </select>
-                </div>
-
-                <button type="submit" class="cu-submit">Submit</button>
-            </form>
-        </div>
-
+    <div class="ct-side">
+      <h2>Let's discuss your project</h2>
+      <p>We will read your details and someone from our team will reach out to find a time to talk.</p>
+      <h3>What happens next</h3>
+      <ol class="ct-steps">
+        <li><strong>You send the form.</strong> Tell us about the product, your users and your deadline.</li>
+        <li><strong>We review it.</strong> An engineer reads it and prepares questions, not a sales pitch.</li>
+        <li><strong>We book a call.</strong> We agree on scope, team and a first milestone.</li>
+      </ol>
     </div>
+
+    <div class="ct-card">
+      <h2 class="ct-card__title">Get in touch</h2>
+
+      {% if sent %}<p class="ct-ok" role="status">Thank you. We have received your details and will contact you soon.</p>{% endif %}
+      {% if form.errors %}<p class="ct-err ct-err--top" role="alert">Please fix the fields marked below and send again.</p>{% endif %}
+
+      <form class="ct-form" method="post" action="{% url 'contact_us' %}#support">
+        {% csrf_token %}
+        <div class="ct-hp" aria-hidden="true"><label>Leave this empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+
+        <div class="ct-field"><label for="{{ form.full_name.id_for_label }}">Full name<span>*</span></label>{{ form.full_name }}{% if form.full_name.errors %}<small class="ct-err">{{ form.full_name.errors.0 }}</small>{% endif %}</div>
+        <div class="ct-field"><label for="{{ form.email.id_for_label }}">Email<span>*</span></label>{{ form.email }}{% if form.email.errors %}<small class="ct-err">{{ form.email.errors.0 }}</small>{% endif %}</div>
+        <div class="ct-field">
+          <label for="{{ form.phone.id_for_label }}">Phone number<span>*</span></label>
+          <div class="ct-phone">{{ form.country_code }}{{ form.phone }}</div>
+          {% if form.phone.errors %}<small class="ct-err">{{ form.phone.errors.0 }}</small>{% endif %}
+        </div>
+        <div class="ct-field"><label for="{{ form.company.id_for_label }}">Company name<span>*</span></label>{{ form.company }}{% if form.company.errors %}<small class="ct-err">{{ form.company.errors.0 }}</small>{% endif %}</div>
+        <div class="ct-field"><label for="{{ form.company_url.id_for_label }}">Company URL</label>{{ form.company_url }}{% if form.company_url.errors %}<small class="ct-err">{{ form.company_url.errors.0 }}</small>{% endif %}</div>
+        <div class="ct-field"><label for="{{ form.region.id_for_label }}">Region<span>*</span></label>{{ form.region }}{% if form.region.errors %}<small class="ct-err">{{ form.region.errors.0 }}</small>{% endif %}</div>
+        <div class="ct-field"><label for="{{ form.topic.id_for_label }}">I am reaching out about<span>*</span></label>{{ form.topic }}{% if form.topic.errors %}<small class="ct-err">{{ form.topic.errors.0 }}</small>{% endif %}</div>
+        <fieldset class="ct-field ct-services">
+          <legend>Services you are looking for<span>*</span></legend>
+          <div class="ct-chips">
+            {% for cb in form.services %}<label class="ct-chip">{{ cb.tag }}<span>{{ cb.choice_label }}</span></label>
+            {% endfor %}
+          </div>
+          {% if form.services.errors %}<small class="ct-err">{{ form.services.errors.0 }}</small>{% endif %}
+        </fieldset>
+
+        <div class="ct-field"><label for="{{ form.details.id_for_label }}">Project details<span>*</span></label>{{ form.details }}{% if form.details.errors %}<small class="ct-err">{{ form.details.errors.0 }}</small>{% endif %}</div>
+        <button type="submit" class="ct-submit">Send project details</button>
+      </form>
+    </div>
+
+  </div>
 </section>
-<!-- ===== Contact End ===== -->
 
 {% endblock %}

@@ -1,648 +1,391 @@
 {% load static %}
+{% url 'coming' as soon %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/layout/header.css' %}?v=2">
 
-<!-- ================= HEADER ================= -->
-<header class="btr-header" id="btrHeader">
-  <div class="btr-header__inner">
-
-    <!-- LOGO -->
-    <a href="{% url 'home' %}" class="btr-logo-switch" aria-label="Xvera Labs home">
-      <img src="{% static 'images/logos/xvera.png' %}" alt="Xvera Labs">
-    </a>
-
-    <!-- NAV -->
-    <nav class="btr-nav" id="btrPrimaryNav" aria-label="Main navigation">
-      <ul class="btr-nav__list">
-
+<header class="xv-header" id="xvHeader">
+  <div class="xv-bar">
+    <a href="{% url 'home' %}" class="xv-logo" aria-label="Xvera Labs home"><img src="{% static 'images/logos/xvera.png' %}" alt="Xvera Labs"></a>
+    <nav class="xv-nav" id="xvNav" aria-label="Main navigation">
+      <ul class="xv-list">
         <!-- ABOUT -->
-        <li class="btrx-mega-parent">
-          <button type="button" class="btr-nav__link has-mega {% if request.resolver_match.url_name == 'about-us' or request.resolver_match.url_name == 'why_choose_us' %}active{% endif %}" aria-haspopup="true" aria-expanded="false" aria-controls="mega-about">
-            About
-            <span class="btr-nav__chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
-          </button>
-          <div class="btrx-mega-menu" id="mega-about">
-            <div class="btrx-mega-left">
-              <div class="btrx-mega-col">
-                <h4>Company</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'about-us' %}#who-we-are">Who We Are</a></li>
-                  <li><a href="{% url 'about-us' %}#our-mission">Our Mission</a></li>
-                  <li><a href="{% url 'about-us' %}#our-vision">Our Vision</a></li>
-                  <li><a href="{% url 'about-us' %}#our-ecosystem">Our Ecosystem</a></li>
-                  <li><a href="{% url 'about-us' %}#leadership-team">Leadership & Team</a></li>
-                </ul>
-              </div>
-              <div class="btrx-mega-col">
-                <h4>Why Choose Us</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'why_choose_us' %}#industry-expertise">Industry Expertise</a></li>
-                  <li><a href="{% url 'why_choose_us' %}#end-to-end-solutions">End-to-End Solutions</a></li>
-                  <li><a href="{% url 'why_choose_us' %}#agile-delivery">Agile Delivery</a></li>
-                  <li><a href="{% url 'why_choose_us' %}#global-standards">Global Standards</a></li>
-                </ul>
-              </div>
-              <div class="btrx-mega-col">
-                <h4>Join Xvera Labs</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'careeers' %}">Careers</a></li>
-                  <li><a href="{% url 'life_at_xvera_labs' %}">Life at Xvera Labs</a></li>
-                  <li><a href="{% url 'people' %}#success">Employee Success</a></li>
-                  <li><a href="{% url 'people' %}#benefits">Benefits</a></li>
-                  <li><a href="{% url 'people' %}#inclusion">Diversity, Equity and Inclusion</a></li>
-                  <li><a href="{% url 'campus_ambassador_program' %}">Campus Ambassador Program</a></li>
-                </ul>
-              </div>
+        <li class="xv-item">
+          <button type="button" class="xv-trigger" aria-expanded="false" aria-controls="xv-company">About<i class="xv-chev"></i></button>
+          <div class="xv-panel" id="xv-company"><div class="xv-panel__in">
+            <div class="xv-rail">
+              <button type="button" class="xv-tab is-on" data-pane="company-0">Company</button>
+              <button type="button" class="xv-tab" data-pane="company-1">Why Choose Us</button>
+              <button type="button" class="xv-tab" data-pane="company-2">Join Xvera Labs</button>
             </div>
-            <div class="btrx-promo">
-              <a href="{% url 'home' %}" class="btrx-promo__logo" aria-label="Xvera Labs home"><img src="{% static 'images/logos/xvera.png' %}" alt="Xvera Labs"></a>
-              <div class="btrx-promo__text">
-                <h3>About Xvera Labs</h3>
-                <p>A technology partner helping startups, SMEs and enterprises build software products, scalable cloud infrastructure and AI-powered digital solutions.</p>
-              </div>
-              <div class="btrx-promo__actions">
-                <a href="{% url 'about-us' %}" class="btrx-btn">Know Us Better</a>
-              </div>
+            <div class="xv-panes">
+              <div class="xv-pane is-on" id="company-0"><h4>Company</h4><ul class="xv-links">
+                <li><a href="{% url 'about-us' %}#who-we-are">Who We Are</a></li>
+                <li><a href="{% url 'about-us' %}#our-mission">Our Mission</a></li>
+                <li><a href="{% url 'about-us' %}#our-vision">Our Vision</a></li>
+                <li><a href="{% url 'about-us' %}#our-ecosystem">Our Ecosystem</a></li>
+                <li><a href="{% url 'about-us' %}#leadership-team">Leadership &amp; Team</a></li></ul></div>
+              <div class="xv-pane" id="company-1"><h4>Why Choose Us</h4><ul class="xv-links">
+                <li><a href="{% url 'why_choose_us' %}#industry-expertise">Industry Expertise</a></li>
+                <li><a href="{% url 'why_choose_us' %}#end-to-end-solutions">End-to-End Solutions</a></li>
+                <li><a href="{% url 'why_choose_us' %}#agile-delivery">Agile Delivery</a></li>
+                <li><a href="{% url 'why_choose_us' %}#global-standards">Global Standards</a></li></ul></div>
+              <div class="xv-pane" id="company-2"><h4>Join Xvera Labs</h4><ul class="xv-links">
+                <li><a href="{% url 'careeers' %}">Careers</a></li>
+                <li><a href="{% url 'life_at_xvera_labs' %}">Life at Xvera Labs</a></li>
+                <li><a href="{% url 'people' %}#success">Employee Success</a></li>
+                <li><a href="{% url 'people' %}#benefits">Benefits</a></li>
+                <li><a href="{% url 'people' %}#inclusion">Diversity, Equity and Inclusion</a></li>
+                <li><a href="{% url 'campus_ambassador_program' %}">Campus Ambassador Program</a></li></ul></div>
             </div>
-          </div>
+            <aside class="xv-feature"><h3>A software team from Lahore</h3><p>We build web, mobile, e-commerce and AI products for startups, SMEs and enterprises.</p><a href="{% url 'about-us' %}" class="xv-btn">Know us better</a></aside>
+          </div></div>
         </li>
-
         <!-- SERVICES -->
-        <li class="btrx-mega-parent">
-          <button type="button" class="btr-nav__link has-mega {% if request.resolver_match.url_name == 'services' %}active{% endif %}" aria-haspopup="true" aria-expanded="false" aria-controls="mega-services">
-            Services
-            <span class="btr-nav__chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
-          </button>
-          <div class="btrx-mega-menu services-menu" id="mega-services">
-            <div class="btrx-mega-left">
-
-              <div class="btrx-mega-col">
-                <h4>Strategy & Consulting</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'strategy_and_consulting' %}">Strategy & Consulting</a></li>
-                  <li><a href="{% url 'business_optimization_consulting' %}">Business Optimization Consulting</a></li>
-                  <li><a href="{% url 'product_strategy' %}">Product Strategy</a></li>
-                  <li><a href="{% url 'technology_strategy' %}">Technology Strategy</a></li>
-                  <li><a href="{% url 'learning_and_development' %}">Learning & Development</a></li>
-                </ul>
-              </div>
-
-              <div class="btrx-mega-col">
-                <h4>Advanced Technology</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'advanced_technology' %}">Advanced Technology</a></li>
-                  <li><a href="{% url 'robotic_process_automation' %}">Robotic Process Automation (RPA)</a></li>
-                  <li><a href="{% url 'internet_of_things' %}">Internet of Things (IoT)</a></li>
-                  <li><a href="{% url 'blockchain' %}">Blockchain</a></li>
-                  <li><a href="{% url 'ar_vr' %}">AR/VR</a></li>
-                </ul>
-              </div>
-
-              <div class="btrx-mega-col">
-                <h4>Cloud Services</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">Cloud</a></li>
-                  <li><a href="{% url 'coming' %}">Managed Cloud and FinOps</a></li>
-                  <li><a href="{% url 'coming' %}">Cloud-Native Engineering</a></li>
-                  <li><a href="{% url 'coming' %}">AWS, Azure, GCP & Oracle</a></li>
-                  <li><a href="{% url 'coming' %}">Cloud Modernization & Migration</a></li>
-                </ul>
-              </div>
-
-              <div class="btrx-mega-col">
-                <h4>AI Solutions & Engineering</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">AI Solutions & Engineering</a></li>
-                  <li><a href="{% url 'coming' %}">AI Product Development</a></li>
-                  <li><a href="{% url 'coming' %}">Generative AI Applications</a></li>
-                  <li><a href="{% url 'coming' %}">Agentic AI Systems</a></li>
-                  <li><a href="{% url 'coming' %}">AI Platforms & Machine Learning</a></li>
-                </ul>
-              </div>
-
-              <div class="btrx-mega-col">
-                <h4>Innovation</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">Innovation</a></li>
-                  <li><a href="{% url 'coming' %}">Design Thinking</a></li>
-                  <li><a href="{% url 'coming' %}">Product Strategy</a></li>
-                  <li><a href="{% url 'coming' %}">MVP Development</a></li>
-                  <li><a href="{% url 'coming' %}">Agile Development</a></li>
-                </ul>
-              </div>
-
-              <div class="btrx-mega-col">
-                <h4>Quality Assurance</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">Quality Assurance</a></li>
-                  <li><a href="{% url 'coming' %}">Functional Testing</a></li>
-                  <li><a href="{% url 'coming' %}">Integration Testing</a></li>
-                  <li><a href="{% url 'coming' %}">Self-Healing Test Automation</a></li>
-                  <li><a href="{% url 'coming' %}">Automation Testing</a></li>
-                </ul>
-              </div>
-
-              <div class="btrx-mega-col">
-                <h4>AI Strategy & Governance</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">AI Strategy, Enablement & Governance</a></li>
-                  <li><a href="{% url 'coming' %}">AI Strategy & Readiness Assessment</a></li>
-                  <li><a href="{% url 'coming' %}">AI Use Case Discovery Workshops</a></li>
-                  <li><a href="{% url 'coming' %}">AI Enablement & Executive Training</a></li>
-                  <li><a href="{% url 'coming' %}">AI Security, Risk & Governance</a></li>
-                </ul>
-              </div>
-
-              <div class="btrx-mega-col">
-                <h4>Digital Implementation</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">Digital Implementation & Delivery</a></li>
-                  <li><a href="{% url 'coming' %}">Program Management</a></li>
-                  <li><a href="{% url 'coming' %}">Product Engineering</a></li>
-                  <li><a href="{% url 'coming' %}">Managed Services</a></li>
-                  <li><a href="{% url 'coming' %}">Business Process Orchestration</a></li>
-                </ul>
-              </div>
-
-              <div class="btrx-mega-col">
-                <h4>Modernization</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">Modernization</a></li>
-                  <li><a href="{% url 'coming' %}">Platform Refactoring</a></li>
-                  <li><a href="{% url 'coming' %}">Technology Assessment</a></li>
-                  <li><a href="{% url 'coming' %}">User Experience</a></li>
-                  <li><a href="{% url 'coming' %}">Enterprise Application Architecture</a></li>
-                </ul>
-              </div>
-
-              <div class="btrx-mega-col">
-                <h4>Software Development</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">Software Development</a></li>
-                  <li><a href="{% url 'coming' %}">Nearshore Development</a></li>
-                  <li><a href="{% url 'coming' %}">Offshore Development</a></li>
-                  <li><a href="{% url 'coming' %}">Staff Augmentation</a></li>
-                  <li><a href="{% url 'coming' %}">Web App Development</a></li>
-                  <li><a href="{% url 'coming' %}">Mobile App Development</a></li>
-                </ul>
-              </div>
-
-              <div class="btrx-mega-col">
-                <h4>Data & Analytics</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">Data & Analytics</a></li>
-                  <li><a href="{% url 'coming' %}">Data Engineering</a></li>
-                  <li><a href="{% url 'coming' %}">Data Management & Governance</a></li>
-                  <li><a href="{% url 'coming' %}">Analytics & Platform Implementation</a></li>
-                  <li><a href="{% url 'coming' %}">Data Science</a></li>
-                </ul>
-              </div>
-
-              <div class="btrx-mega-col">
-                <h4>Privacy & Security</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">Privacy & Security</a></li>
-                  <li><a href="{% url 'coming' %}">Governance, Risk & Compliance</a></li>
-                  <li><a href="{% url 'coming' %}">Cyber Security</a></li>
-                  <li><a href="{% url 'coming' %}">Security Services</a></li>
-                  <li><a href="{% url 'coming' %}">Penetration Testing</a></li>
-                </ul>
-              </div>
-
+        <li class="xv-item">
+          <button type="button" class="xv-trigger" aria-expanded="false" aria-controls="xv-services">Services<i class="xv-chev"></i></button>
+          <div class="xv-panel" id="xv-services"><div class="xv-panel__in">
+            <div class="xv-rail">
+              <button type="button" class="xv-tab is-on" data-pane="services-0">Strategy &amp; Consulting</button>
+              <button type="button" class="xv-tab" data-pane="services-1">Advanced Technology</button>
+              <button type="button" class="xv-tab" data-pane="services-2">Cloud Services</button>
+              <button type="button" class="xv-tab" data-pane="services-3">AI Solutions &amp; Engineering</button>
+              <button type="button" class="xv-tab" data-pane="services-4">Innovation</button>
+              <button type="button" class="xv-tab" data-pane="services-5">Quality Assurance</button>
+              <button type="button" class="xv-tab" data-pane="services-6">AI Strategy &amp; Governance</button>
+              <button type="button" class="xv-tab" data-pane="services-7">Digital Implementation</button>
+              <button type="button" class="xv-tab" data-pane="services-8">Modernization</button>
+              <button type="button" class="xv-tab" data-pane="services-9">Software Development</button>
+              <button type="button" class="xv-tab" data-pane="services-10">Data &amp; Analytics</button>
+              <button type="button" class="xv-tab" data-pane="services-11">Privacy &amp; Security</button>
             </div>
-            <div class="btrx-promo">
-              <a href="{% url 'home' %}" class="btrx-promo__logo" aria-label="Xvera Labs home"><img src="{% static 'images/logos/xvera.png' %}" alt="Xvera Labs"></a>
-              <div class="btrx-promo__text">
-                <h3>Intelligent Business Solutions</h3>
-                <p>Modern software engineering, cloud solutions, DevOps automation, AI innovation and scalable digital products.</p>
-              </div>
-              <div class="btrx-promo__actions">
-                <a href="{% url 'contact_us' %}" class="btrx-btn">Get Free Consultation</a>
-              </div>
+            <div class="xv-panes">
+              <div class="xv-pane is-on" id="services-0"><h4>Strategy &amp; Consulting</h4><ul class="xv-links">
+                <li><a href="{% url 'strategy_and_consulting' %}">Strategy &amp; Consulting</a></li>
+                <li><a href="{% url 'business_optimization_consulting' %}">Business Optimization Consulting</a></li>
+                <li><a href="{% url 'product_strategy' %}">Product Strategy</a></li>
+                <li><a href="{% url 'technology_strategy' %}">Technology Strategy</a></li>
+                <li><a href="{% url 'learning_and_development' %}">Learning &amp; Development</a></li></ul></div>
+              <div class="xv-pane" id="services-1"><h4>Advanced Technology</h4><ul class="xv-links">
+                <li><a href="{% url 'advanced_technology' %}">Advanced Technology</a></li>
+                <li><a href="{% url 'robotic_process_automation' %}">Robotic Process Automation (RPA)</a></li>
+                <li><a href="{% url 'internet_of_things' %}">Internet of Things (IoT)</a></li>
+                <li><a href="{% url 'blockchain' %}">Blockchain</a></li>
+                <li><a href="{% url 'ar_vr' %}">AR/VR</a></li></ul></div>
+              <div class="xv-pane" id="services-2"><h4>Cloud Services</h4><ul class="xv-links">
+                <li><a href="{{ soon }}">Cloud</a></li>
+                <li><a href="{{ soon }}">Managed Cloud and FinOps</a></li>
+                <li><a href="{{ soon }}">Cloud-Native Engineering</a></li>
+                <li><a href="{{ soon }}">AWS, Azure, GCP &amp; Oracle</a></li>
+                <li><a href="{{ soon }}">Cloud Modernization &amp; Migration</a></li></ul></div>
+              <div class="xv-pane" id="services-3"><h4>AI Solutions &amp; Engineering</h4><ul class="xv-links">
+                <li><a href="{{ soon }}">AI Solutions &amp; Engineering</a></li>
+                <li><a href="{{ soon }}">AI Product Development</a></li>
+                <li><a href="{{ soon }}">Generative AI Applications</a></li>
+                <li><a href="{{ soon }}">Agentic AI Systems</a></li>
+                <li><a href="{{ soon }}">AI Platforms &amp; Machine Learning</a></li></ul></div>
+              <div class="xv-pane" id="services-4"><h4>Innovation</h4><ul class="xv-links">
+                <li><a href="{{ soon }}">Innovation</a></li>
+                <li><a href="{{ soon }}">Design Thinking</a></li>
+                <li><a href="{{ soon }}">Product Strategy</a></li>
+                <li><a href="{{ soon }}">MVP Development</a></li>
+                <li><a href="{{ soon }}">Agile Development</a></li></ul></div>
+              <div class="xv-pane" id="services-5"><h4>Quality Assurance</h4><ul class="xv-links">
+                <li><a href="{{ soon }}">Quality Assurance</a></li>
+                <li><a href="{{ soon }}">Functional Testing</a></li>
+                <li><a href="{{ soon }}">Integration Testing</a></li>
+                <li><a href="{{ soon }}">Self-Healing Test Automation</a></li>
+                <li><a href="{{ soon }}">Automation Testing</a></li></ul></div>
+              <div class="xv-pane" id="services-6"><h4>AI Strategy &amp; Governance</h4><ul class="xv-links">
+                <li><a href="{{ soon }}">AI Strategy, Enablement &amp; Governance</a></li>
+                <li><a href="{{ soon }}">AI Strategy &amp; Readiness Assessment</a></li>
+                <li><a href="{{ soon }}">AI Use Case Discovery Workshops</a></li>
+                <li><a href="{{ soon }}">AI Enablement &amp; Executive Training</a></li>
+                <li><a href="{{ soon }}">AI Security, Risk &amp; Governance</a></li></ul></div>
+              <div class="xv-pane" id="services-7"><h4>Digital Implementation</h4><ul class="xv-links">
+                <li><a href="{{ soon }}">Digital Implementation &amp; Delivery</a></li>
+                <li><a href="{{ soon }}">Program Management</a></li>
+                <li><a href="{{ soon }}">Product Engineering</a></li>
+                <li><a href="{{ soon }}">Managed Services</a></li>
+                <li><a href="{{ soon }}">Business Process Orchestration</a></li></ul></div>
+              <div class="xv-pane" id="services-8"><h4>Modernization</h4><ul class="xv-links">
+                <li><a href="{{ soon }}">Modernization</a></li>
+                <li><a href="{{ soon }}">Platform Refactoring</a></li>
+                <li><a href="{{ soon }}">Technology Assessment</a></li>
+                <li><a href="{{ soon }}">User Experience</a></li>
+                <li><a href="{{ soon }}">Enterprise Application Architecture</a></li></ul></div>
+              <div class="xv-pane" id="services-9"><h4>Software Development</h4><ul class="xv-links">
+                <li><a href="{{ soon }}">Software Development</a></li>
+                <li><a href="{{ soon }}">Nearshore Development</a></li>
+                <li><a href="{{ soon }}">Offshore Development</a></li>
+                <li><a href="{{ soon }}">Staff Augmentation</a></li>
+                <li><a href="{{ soon }}">Web App Development</a></li>
+                <li><a href="{{ soon }}">Mobile App Development</a></li></ul></div>
+              <div class="xv-pane" id="services-10"><h4>Data &amp; Analytics</h4><ul class="xv-links">
+                <li><a href="{{ soon }}">Data &amp; Analytics</a></li>
+                <li><a href="{{ soon }}">Data Engineering</a></li>
+                <li><a href="{{ soon }}">Data Management &amp; Governance</a></li>
+                <li><a href="{{ soon }}">Analytics &amp; Platform Implementation</a></li>
+                <li><a href="{{ soon }}">Data Science</a></li></ul></div>
+              <div class="xv-pane" id="services-11"><h4>Privacy &amp; Security</h4><ul class="xv-links">
+                <li><a href="{{ soon }}">Privacy &amp; Security</a></li>
+                <li><a href="{{ soon }}">Governance, Risk &amp; Compliance</a></li>
+                <li><a href="{{ soon }}">Cyber Security</a></li>
+                <li><a href="{{ soon }}">Security Services</a></li>
+                <li><a href="{{ soon }}">Penetration Testing</a></li></ul></div>
             </div>
-          </div>
+            <aside class="xv-feature"><h3>Have an idea? Get a plan.</h3><p>Tell us what you want to build. We reply with scope, timeline and cost.</p><a href="{% url 'contact_us' %}" class="xv-btn">Get a free consultation</a></aside>
+          </div></div>
         </li>
-
-        <!-- AI (Artificial Intelligence + Generative AI merged) -->
-        <li class="btrx-mega-parent">
-          <button type="button" class="btr-nav__link has-mega {% if request.resolver_match.url_name == 'ai' or request.resolver_match.url_name == 'generative_ai' %}active{% endif %}" aria-haspopup="true" aria-expanded="false" aria-controls="mega-ai">
-            AI
-            <span class="btr-nav__chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
-          </button>
-          <div class="btrx-mega-menu ai-menu" id="mega-ai">
-            <div class="btrx-mega-left">
-
-              <div class="btrx-mega-col">
-                <h4>AI Consulting & Strategy</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">AI Strategy Consulting</a></li>
-                  <li><a href="{% url 'coming' %}">AI Readiness Assessment</a></li>
-                  <li><a href="{% url 'coming' %}">AI Product Development</a></li>
-                  <li><a href="{% url 'coming' %}">AI Adoption Roadmap</a></li>
-                </ul>
-              </div>
-
-              <div class="btrx-mega-col">
-                <h4>AI Development & Engineering</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">Custom AI Development</a></li>
-                  <li><a href="{% url 'coming' %}">Machine Learning Development</a></li>
-                  <li><a href="{% url 'coming' %}">Computer Vision Solutions</a></li>
-                  <li><a href="{% url 'coming' %}">AI Integration Services</a></li>
-                </ul>
-              </div>
-
-              <div class="btrx-mega-col">
-                <h4>Enterprise AI & Governance</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">Enterprise AI Solutions</a></li>
-                  <li><a href="{% url 'coming' %}">AI Security, Risk & Compliance</a></li>
-                  <li><a href="{% url 'coming' %}">Responsible AI & Governance</a></li>
-                  <li><a href="{% url 'coming' %}">MLOps & AI Platforms</a></li>
-                </ul>
-              </div>
-
-              <div class="btrx-mega-col">
-                <h4>AI Training & Enablement</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">Executive AI Leadership Program</a></li>
-                  <li><a href="{% url 'coming' %}">AI Workshops for Enterprises</a></li>
-                  <li><a href="{% url 'coming' %}">AI Use Case Discovery</a></li>
-                  <li><a href="{% url 'coming' %}">AI Enablement Workshops</a></li>
-                </ul>
-              </div>
-
-              <div class="btrx-mega-col">
-                <h4>Generative AI Development</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">LLM Application Development</a></li>
-                  <li><a href="{% url 'coming' %}">Custom Chatbot Development</a></li>
-                  <li><a href="{% url 'coming' %}">AI Content Generation</a></li>
-                  <li><a href="{% url 'coming' %}">Fine-Tuning & Model Customization</a></li>
-                </ul>
-              </div>
-
-              <div class="btrx-mega-col">
-                <h4>RAG & Knowledge Systems</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">RAG Solutions</a></li>
-                  <li><a href="{% url 'coming' %}">Enterprise Knowledge Assistants</a></li>
-                  <li><a href="{% url 'coming' %}">AI Document Intelligence</a></li>
-                  <li><a href="{% url 'coming' %}">Vector Database Integration</a></li>
-                </ul>
-              </div>
-
-              <div class="btrx-mega-col">
-                <h4>Agentic AI</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">AI Agent Development</a></li>
-                  <li><a href="{% url 'coming' %}">Multi-Agent Workflows</a></li>
-                  <li><a href="{% url 'coming' %}">AI Workflow Automation</a></li>
-                  <li><a href="{% url 'coming' %}">Voice & Conversational Agents</a></li>
-                </ul>
-              </div>
-
-              <div class="btrx-mega-col">
-                <h4>GenAI Integration & Services</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">OpenAI / Claude / Gemini Integration</a></li>
-                  <li><a href="{% url 'coming' %}">Prompt Engineering Services</a></li>
-                  <li><a href="{% url 'coming' %}">AI Copilots for Business</a></li>
-                  <li><a href="{% url 'coming' %}">GenAI MVP Development</a></li>
-                </ul>
-              </div>
-
+        <!-- AI -->
+        <li class="xv-item">
+          <button type="button" class="xv-trigger" aria-expanded="false" aria-controls="xv-ai">AI<i class="xv-chev"></i></button>
+          <div class="xv-panel" id="xv-ai"><div class="xv-panel__in">
+            <div class="xv-rail">
+              <button type="button" class="xv-tab is-on" data-pane="ai-0">AI Consulting &amp; Strategy</button>
+              <button type="button" class="xv-tab" data-pane="ai-1">AI Development &amp; Engineering</button>
+              <button type="button" class="xv-tab" data-pane="ai-2">Enterprise AI &amp; Governance</button>
+              <button type="button" class="xv-tab" data-pane="ai-3">AI Training &amp; Enablement</button>
+              <button type="button" class="xv-tab" data-pane="ai-4">Generative AI Development</button>
+              <button type="button" class="xv-tab" data-pane="ai-5">RAG &amp; Knowledge Systems</button>
+              <button type="button" class="xv-tab" data-pane="ai-6">Agentic AI</button>
+              <button type="button" class="xv-tab" data-pane="ai-7">GenAI Integration &amp; Services</button>
             </div>
-            <div class="btrx-promo">
-              <a href="{% url 'home' %}" class="btrx-promo__logo" aria-label="Xvera Labs home"><img src="{% static 'images/logos/xvera.png' %}" alt="Xvera Labs"></a>
-              <div class="btrx-promo__text">
-                <h3>AI-Powered Innovation</h3>
-                <p>From strategy and custom development to chatbots, AI agents and knowledge systems that automate work and serve your customers.</p>
-              </div>
-              <div class="btrx-promo__actions">
-                <a href="{% url 'contact_us' %}" class="btrx-btn">Start Your AI Journey</a>
-                <a href="{% url 'coming' %}" class="btrx-btn btrx-btn--ghost">AI Transformation with ValuePath</a>
-              </div>
+            <div class="xv-panes">
+              <div class="xv-pane is-on" id="ai-0"><h4>AI Consulting &amp; Strategy</h4><ul class="xv-links">
+                <li><a href="{{ soon }}">AI Strategy Consulting</a></li>
+                <li><a href="{{ soon }}">AI Readiness Assessment</a></li>
+                <li><a href="{{ soon }}">AI Product Development</a></li>
+                <li><a href="{{ soon }}">AI Adoption Roadmap</a></li></ul></div>
+              <div class="xv-pane" id="ai-1"><h4>AI Development &amp; Engineering</h4><ul class="xv-links">
+                <li><a href="{{ soon }}">Custom AI Development</a></li>
+                <li><a href="{{ soon }}">Machine Learning Development</a></li>
+                <li><a href="{{ soon }}">Computer Vision Solutions</a></li>
+                <li><a href="{{ soon }}">AI Integration Services</a></li></ul></div>
+              <div class="xv-pane" id="ai-2"><h4>Enterprise AI &amp; Governance</h4><ul class="xv-links">
+                <li><a href="{{ soon }}">Enterprise AI Solutions</a></li>
+                <li><a href="{{ soon }}">AI Security, Risk &amp; Compliance</a></li>
+                <li><a href="{{ soon }}">Responsible AI &amp; Governance</a></li>
+                <li><a href="{{ soon }}">MLOps &amp; AI Platforms</a></li></ul></div>
+              <div class="xv-pane" id="ai-3"><h4>AI Training &amp; Enablement</h4><ul class="xv-links">
+                <li><a href="{{ soon }}">Executive AI Leadership Program</a></li>
+                <li><a href="{{ soon }}">AI Workshops for Enterprises</a></li>
+                <li><a href="{{ soon }}">AI Use Case Discovery</a></li>
+                <li><a href="{{ soon }}">AI Enablement Workshops</a></li></ul></div>
+              <div class="xv-pane" id="ai-4"><h4>Generative AI Development</h4><ul class="xv-links">
+                <li><a href="{{ soon }}">LLM Application Development</a></li>
+                <li><a href="{{ soon }}">Custom Chatbot Development</a></li>
+                <li><a href="{{ soon }}">AI Content Generation</a></li>
+                <li><a href="{{ soon }}">Fine-Tuning &amp; Model Customization</a></li></ul></div>
+              <div class="xv-pane" id="ai-5"><h4>RAG &amp; Knowledge Systems</h4><ul class="xv-links">
+                <li><a href="{{ soon }}">RAG Solutions</a></li>
+                <li><a href="{{ soon }}">Enterprise Knowledge Assistants</a></li>
+                <li><a href="{{ soon }}">AI Document Intelligence</a></li>
+                <li><a href="{{ soon }}">Vector Database Integration</a></li></ul></div>
+              <div class="xv-pane" id="ai-6"><h4>Agentic AI</h4><ul class="xv-links">
+                <li><a href="{{ soon }}">AI Agent Development</a></li>
+                <li><a href="{{ soon }}">Multi-Agent Workflows</a></li>
+                <li><a href="{{ soon }}">AI Workflow Automation</a></li>
+                <li><a href="{{ soon }}">Voice &amp; Conversational Agents</a></li></ul></div>
+              <div class="xv-pane" id="ai-7"><h4>GenAI Integration &amp; Services</h4><ul class="xv-links">
+                <li><a href="{{ soon }}">OpenAI / Claude / Gemini Integration</a></li>
+                <li><a href="{{ soon }}">Prompt Engineering Services</a></li>
+                <li><a href="{{ soon }}">AI Copilots for Business</a></li>
+                <li><a href="{{ soon }}">GenAI MVP Development</a></li></ul></div>
             </div>
-          </div>
+            <aside class="xv-feature"><h3>Start your AI journey</h3><p>From chatbots and agents to knowledge systems that automate work and serve your customers.</p><a href="{% url 'contact_us' %}" class="xv-btn">Talk to us</a></aside>
+          </div></div>
         </li>
-
         <!-- SOLUTIONS -->
-        <li class="btrx-mega-parent">
-          <button type="button" class="btr-nav__link has-mega {% if request.resolver_match.url_name == 'solutions' %}active{% endif %}" aria-haspopup="true" aria-expanded="false" aria-controls="mega-solutions">
-            Solutions
-            <span class="btr-nav__chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
-          </button>
-          <div class="btrx-mega-menu" id="mega-solutions">
-            <div class="btrx-mega-left">
-              <div class="btrx-mega-col">
-                <h4>Data Solutions</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">Data Engineering</a></li>
-                  <li><a href="{% url 'coming' %}">BI & Data Analytics</a></li>
-                  <li><a href="{% url 'coming' %}">Data Governance & Security</a></li>
-                  <li><a href="{% url 'coming' %}">Data Migration</a></li>
-                  <li><a href="{% url 'coming' %}">Data Scraping</a></li>
-                  <li><a href="{% url 'coming' %}">Data Warehousing</a></li>
-                </ul>
-              </div>
-              <div class="btrx-mega-col">
-                <h4>E-Commerce</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">AI Chatbots & Support</a></li>
-                  <li><a href="{% url 'coming' %}">eCommerce Development</a></li>
-                  <li><a href="{% url 'coming' %}">Marketplace Solutions</a></li>
-                  <li><a href="{% url 'coming' %}">Voice Commerce</a></li>
-                  <li><a href="{% url 'coming' %}">Customer Segmentation</a></li>
-                  <li><a href="{% url 'coming' %}">Recommendation Engines</a></li>
-                </ul>
-              </div>
-              <div class="btrx-mega-col">
-                <h4>Applied AI</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">Deep Learning</a></li>
-                  <li><a href="{% url 'coming' %}">Predictive Analytics</a></li>
-                  <li><a href="{% url 'coming' %}">Sentiment Analysis</a></li>
-                  <li><a href="{% url 'coming' %}">Data Science</a></li>
-                  <li><a href="{% url 'coming' %}">AI Consulting</a></li>
-                </ul>
-              </div>
+        <li class="xv-item">
+          <button type="button" class="xv-trigger" aria-expanded="false" aria-controls="xv-solutions">Solutions<i class="xv-chev"></i></button>
+          <div class="xv-panel" id="xv-solutions"><div class="xv-panel__in">
+            <div class="xv-rail">
+              <button type="button" class="xv-tab is-on" data-pane="solutions-0">Data Solutions</button>
+              <button type="button" class="xv-tab" data-pane="solutions-1">E-Commerce</button>
+              <button type="button" class="xv-tab" data-pane="solutions-2">Applied AI</button>
             </div>
-            <div class="btrx-promo">
-              <a href="{% url 'home' %}" class="btrx-promo__logo" aria-label="Xvera Labs home"><img src="{% static 'images/logos/xvera.png' %}" alt="Xvera Labs"></a>
-              <div class="btrx-promo__text">
-                <h3>Intelligent Business Solutions</h3>
-                <p>Artificial Intelligence, data engineering, analytics and enterprise automation to unlock new opportunities.</p>
-              </div>
-              <div class="btrx-promo__actions">
-                <a href="{% url 'contact_us' %}" class="btrx-btn">Discuss Your Project</a>
-              </div>
+            <div class="xv-panes">
+              <div class="xv-pane is-on" id="solutions-0"><h4>Data Solutions</h4><ul class="xv-links">
+                <li><a href="{{ soon }}">Data Engineering</a></li>
+                <li><a href="{{ soon }}">BI &amp; Data Analytics</a></li>
+                <li><a href="{{ soon }}">Data Governance &amp; Security</a></li>
+                <li><a href="{{ soon }}">Data Migration</a></li>
+                <li><a href="{{ soon }}">Data Scraping</a></li>
+                <li><a href="{{ soon }}">Data Warehousing</a></li></ul></div>
+              <div class="xv-pane" id="solutions-1"><h4>E-Commerce</h4><ul class="xv-links">
+                <li><a href="{{ soon }}">AI Chatbots &amp; Support</a></li>
+                <li><a href="{{ soon }}">eCommerce Development</a></li>
+                <li><a href="{{ soon }}">Marketplace Solutions</a></li>
+                <li><a href="{{ soon }}">Voice Commerce</a></li>
+                <li><a href="{{ soon }}">Customer Segmentation</a></li>
+                <li><a href="{{ soon }}">Recommendation Engines</a></li></ul></div>
+              <div class="xv-pane" id="solutions-2"><h4>Applied AI</h4><ul class="xv-links">
+                <li><a href="{{ soon }}">Deep Learning</a></li>
+                <li><a href="{{ soon }}">Predictive Analytics</a></li>
+                <li><a href="{{ soon }}">Sentiment Analysis</a></li>
+                <li><a href="{{ soon }}">Data Science</a></li>
+                <li><a href="{{ soon }}">AI Consulting</a></li></ul></div>
             </div>
-          </div>
+            <aside class="xv-feature"><h3>Solutions for real problems</h3><p>Data, commerce and applied AI built around how your business actually runs.</p><a href="{% url 'contact_us' %}" class="xv-btn">Discuss your project</a></aside>
+          </div></div>
         </li>
-
         <!-- INDUSTRIES -->
-        <li class="btrx-mega-parent">
-          <button type="button" class="btr-nav__link has-mega {% if request.resolver_match.url_name == 'industries' %}active{% endif %}" aria-haspopup="true" aria-expanded="false" aria-controls="mega-industries">
-            Industries
-            <span class="btr-nav__chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
-          </button>
-          <div class="btrx-mega-menu" id="mega-industries">
-            <div class="btrx-mega-left">
-              <div class="btrx-mega-col">
-                <h4>Core Industries</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">Healthcare</a></li>
-                  <li><a href="{% url 'coming' %}">Education</a></li>
-                  <li><a href="{% url 'coming' %}">Finance & Banking</a></li>
-                  <li><a href="{% url 'coming' %}">E-Commerce</a></li>
-                  <li><a href="{% url 'coming' %}">Retail</a></li>
-                  <li><a href="{% url 'coming' %}">Real Estate</a></li>
-                </ul>
-              </div>
-              <div class="btrx-mega-col">
-                <h4>Digital Economy</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">Travel & Tourism</a></li>
-                  <li><a href="{% url 'coming' %}">Logistics & Supply Chain</a></li>
-                  <li><a href="{% url 'coming' %}">Food & Restaurants</a></li>
-                  <li><a href="{% url 'coming' %}">Media & Entertainment</a></li>
-                  <li><a href="{% url 'coming' %}">Sports Tech</a></li>
-                </ul>
-              </div>
-              <div class="btrx-mega-col">
-                <h4>Special Domains</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">Artificial Intelligence</a></li>
-                  <li><a href="{% url 'coming' %}">Cyber Security</a></li>
-                  <li><a href="{% url 'coming' %}">Government Projects</a></li>
-                  <li><a href="{% url 'coming' %}">Non-Profit / NGO</a></li>
-                  <li><a href="{% url 'coming' %}">Religious Platforms</a></li>
-                </ul>
-              </div>
+        <li class="xv-item">
+          <button type="button" class="xv-trigger" aria-expanded="false" aria-controls="xv-industries">Industries<i class="xv-chev"></i></button>
+          <div class="xv-panel" id="xv-industries"><div class="xv-panel__in">
+            <div class="xv-rail">
+              <button type="button" class="xv-tab is-on" data-pane="industries-0">Core Industries</button>
+              <button type="button" class="xv-tab" data-pane="industries-1">Digital Economy</button>
+              <button type="button" class="xv-tab" data-pane="industries-2">Special Domains</button>
             </div>
-            <div class="btrx-promo">
-              <a href="{% url 'home' %}" class="btrx-promo__logo" aria-label="Xvera Labs home"><img src="{% static 'images/logos/xvera.png' %}" alt="Xvera Labs"></a>
-              <div class="btrx-promo__text">
-                <h3>Industries We Serve</h3>
-                <p>Tailored digital solutions across industries, from healthcare and education to fintech, e-commerce and government.</p>
-              </div>
-              <div class="btrx-promo__actions">
-                <a href="{% url 'contact_us' %}" class="btrx-btn">Explore Solutions</a>
-              </div>
+            <div class="xv-panes">
+              <div class="xv-pane is-on" id="industries-0"><h4>Core Industries</h4><ul class="xv-links">
+                <li><a href="{{ soon }}">Healthcare</a></li>
+                <li><a href="{{ soon }}">Education</a></li>
+                <li><a href="{{ soon }}">Finance &amp; Banking</a></li>
+                <li><a href="{{ soon }}">E-Commerce</a></li>
+                <li><a href="{{ soon }}">Retail</a></li>
+                <li><a href="{{ soon }}">Real Estate</a></li></ul></div>
+              <div class="xv-pane" id="industries-1"><h4>Digital Economy</h4><ul class="xv-links">
+                <li><a href="{{ soon }}">Travel &amp; Tourism</a></li>
+                <li><a href="{{ soon }}">Logistics &amp; Supply Chain</a></li>
+                <li><a href="{{ soon }}">Food &amp; Restaurants</a></li>
+                <li><a href="{{ soon }}">Media &amp; Entertainment</a></li>
+                <li><a href="{{ soon }}">Sports Tech</a></li></ul></div>
+              <div class="xv-pane" id="industries-2"><h4>Special Domains</h4><ul class="xv-links">
+                <li><a href="{{ soon }}">Artificial Intelligence</a></li>
+                <li><a href="{{ soon }}">Cyber Security</a></li>
+                <li><a href="{{ soon }}">Government Projects</a></li>
+                <li><a href="{{ soon }}">Non-Profit / NGO</a></li>
+                <li><a href="{{ soon }}">Religious Platforms</a></li></ul></div>
             </div>
-          </div>
+            <aside class="xv-feature"><h3>Your industry, our code</h3><p>Describe your business and we will show you what we have built for similar teams.</p><a href="{% url 'contact_us' %}" class="xv-btn">Explore solutions</a></aside>
+          </div></div>
         </li>
-
-        <!-- OUR PRODUCTS -->
-        <li class="btrx-mega-parent">
-          <button type="button" class="btr-nav__link has-mega {% if request.resolver_match.url_name == 'products' %}active{% endif %}" aria-haspopup="true" aria-expanded="false" aria-controls="mega-products">
-            Our Products
-            <span class="btr-nav__chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
-          </button>
-          <div class="btrx-mega-menu products-menu" id="mega-products">
-            <div class="btrx-mega-left">
-              <div class="btrx-mega-col">
-                <h4>Social Impact</h4>
-                <ul class="btrx-mega-links">
-                  <!-- first link was a duplicate of "Xvera Care Foundation"; change the name if you prefer something else -->
-                  <li><a href="{% url 'coming' %}">Xvera Mall</a></li>
-                  <li><a href="{% url 'coming' %}">Xvera Home (Orphan Care Homes)</a></li>
-                  <li><a href="{% url 'coming' %}">Xvera Care Foundation</a></li>
-                  <li><a href="{% url 'coming' %}">Xvera Welfare Projects</a></li>
-                </ul>
-              </div>
-              <div class="btrx-mega-col">
-                <h4>Education & Growth</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">Xvera University</a></li>
-                  <li><a href="{% url 'coming' %}">Xvera Skills Academy</a></li>
-                  <li><a href="{% url 'coming' %}">Xvera Learning Hub</a></li>
-                  <li><a href="{% url 'coming' %}">Digital Training Programs</a></li>
-                </ul>
-              </div>
-              <div class="btrx-mega-col">
-                <h4>Business Ventures</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">Xvera Restaurant</a></li>
-                  <li><a href="{% url 'coming' %}">Xvera Petroleum</a></li>
-                  <li><a href="{% url 'coming' %}">Xvera Logistics</a></li>
-                  <li><a href="{% url 'coming' %}">Xvera Retail Network</a></li>
-                </ul>
-              </div>
-              <div class="btrx-mega-col">
-                <h4>Technology Products</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">BTR Mall — eCommerce Marketplace</a></li>
-                  <li><a href="{% url 'coming' %}">Dinex POS — Subscription System</a></li>
-                </ul>
-              </div>
+        <!-- PRODUCTS -->
+        <li class="xv-item">
+          <button type="button" class="xv-trigger" aria-expanded="false" aria-controls="xv-products">Products<i class="xv-chev"></i></button>
+          <div class="xv-panel" id="xv-products"><div class="xv-panel__in">
+            <div class="xv-rail">
+              <button type="button" class="xv-tab is-on" data-pane="products-0">Social Impact</button>
+              <button type="button" class="xv-tab" data-pane="products-1">Education &amp; Growth</button>
+              <button type="button" class="xv-tab" data-pane="products-2">Business Ventures</button>
+              <button type="button" class="xv-tab" data-pane="products-3">Technology Products</button>
             </div>
-            <div class="btrx-promo">
-              <a href="{% url 'home' %}" class="btrx-promo__logo" aria-label="Xvera Labs home"><img src="{% static 'images/logos/xvera.png' %}" alt="Xvera Labs"></a>
-              <div class="btrx-promo__text">
-                <h3>Xvera Ecosystem</h3>
-                <p>A self-sustaining ecosystem across education, social welfare, orphan care, food services and business, where success supports community development.</p>
-              </div>
-              <div class="btrx-promo__actions">
-                <a href="{% url 'coming' %}" class="btrx-btn">Explore Ecosystem</a>
-              </div>
+            <div class="xv-panes">
+              <div class="xv-pane is-on" id="products-0"><h4>Social Impact</h4><ul class="xv-links">
+                <li><a href="{{ soon }}">Xvera Mall</a></li>
+                <li><a href="{{ soon }}">Xvera Home (Orphan Care Homes)</a></li>
+                <li><a href="{{ soon }}">Xvera Care Foundation</a></li>
+                <li><a href="{{ soon }}">Xvera Welfare Projects</a></li></ul></div>
+              <div class="xv-pane" id="products-1"><h4>Education &amp; Growth</h4><ul class="xv-links">
+                <li><a href="{{ soon }}">Xvera University</a></li>
+                <li><a href="{{ soon }}">Xvera Skills Academy</a></li>
+                <li><a href="{{ soon }}">Xvera Learning Hub</a></li>
+                <li><a href="{{ soon }}">Digital Training Programs</a></li></ul></div>
+              <div class="xv-pane" id="products-2"><h4>Business Ventures</h4><ul class="xv-links">
+                <li><a href="{{ soon }}">Xvera Restaurant</a></li>
+                <li><a href="{{ soon }}">Xvera Petroleum</a></li>
+                <li><a href="{{ soon }}">Xvera Logistics</a></li>
+                <li><a href="{{ soon }}">Xvera Retail Network</a></li></ul></div>
+              <div class="xv-pane" id="products-3"><h4>Technology Products</h4><ul class="xv-links">
+                <li><a href="{{ soon }}">BTR Mall: eCommerce Marketplace</a></li>
+                <li><a href="{{ soon }}">Dinex POS: Subscription System</a></li></ul></div>
             </div>
-          </div>
+            <aside class="xv-feature"><h3>The Xvera ecosystem</h3><p>Education, welfare, food and business projects that support each other.</p><a href="{{ soon }}" class="xv-btn">Explore the ecosystem</a></aside>
+          </div></div>
         </li>
-
-        <!-- RESOURCES (Case Studies + Blogs merged) -->
-        <li class="btrx-mega-parent">
-          <button type="button" class="btr-nav__link has-mega {% if request.resolver_match.url_name == 'case_studies' or request.resolver_match.url_name == 'blogs' %}active{% endif %}" aria-haspopup="true" aria-expanded="false" aria-controls="mega-resources">
-            Resources
-            <span class="btr-nav__chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
-          </button>
-          <div class="btrx-mega-menu resources-menu" id="mega-resources">
-            <div class="btrx-mega-left">
-              <div class="btrx-mega-col">
-                <h4>Case Studies</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">Healthcare</a></li>
-                  <li><a href="{% url 'coming' %}">FinTech</a></li>
-                  <li><a href="{% url 'coming' %}">E-Commerce</a></li>
-                  <li><a href="{% url 'coming' %}">Education</a></li>
-                  <li><a href="{% url 'coming' %}">Logistics</a></li>
-                </ul>
-              </div>
-              <div class="btrx-mega-col">
-                <h4>Solutions Delivered</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">Web Applications</a></li>
-                  <li><a href="{% url 'coming' %}">Mobile Applications</a></li>
-                  <li><a href="{% url 'coming' %}">Enterprise Software</a></li>
-                  <li><a href="{% url 'coming' %}">Cloud Migration</a></li>
-                  <li><a href="{% url 'coming' %}">DevOps Automation</a></li>
-                </ul>
-              </div>
-              <div class="btrx-mega-col">
-                <h4>Success Stories</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">Startup Growth Stories</a></li>
-                  <li><a href="{% url 'coming' %}">Digital Transformation</a></li>
-                  <li><a href="{% url 'coming' %}">AI Implementations</a></li>
-                  <li><a href="{% url 'coming' %}">Product Scaling</a></li>
-                  <li><a href="{% url 'case_studies' %}">View All Case Studies</a></li>
-                </ul>
-              </div>
-              <div class="btrx-mega-col">
-                <h4>Blog: Technology</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">Software Development</a></li>
-                  <li><a href="{% url 'coming' %}">Cloud Computing</a></li>
-                  <li><a href="{% url 'coming' %}">DevOps</a></li>
-                  <li><a href="{% url 'coming' %}">Cyber Security</a></li>
-                  <li><a href="{% url 'coming' %}">AI & ML</a></li>
-                </ul>
-              </div>
-              <div class="btrx-mega-col">
-                <h4>Blog: Business</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">Digital Transformation</a></li>
-                  <li><a href="{% url 'coming' %}">Startup Growth</a></li>
-                  <li><a href="{% url 'coming' %}">Product Strategy</a></li>
-                  <li><a href="{% url 'coming' %}">Technology Trends</a></li>
-                  <li><a href="{% url 'coming' %}">Innovation</a></li>
-                </ul>
-              </div>
-              <div class="btrx-mega-col">
-                <h4>Guides & Reports</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'blogs' %}">Latest Articles</a></li>
-                  <li><a href="{% url 'coming' %}">Guides</a></li>
-                  <li><a href="{% url 'coming' %}">White Papers</a></li>
-                  <li><a href="{% url 'coming' %}">Industry Reports</a></li>
-                  <li><a href="{% url 'blogs' %}">All Blogs</a></li>
-                </ul>
-              </div>
+        <!-- RESOURCES -->
+        <li class="xv-item">
+          <button type="button" class="xv-trigger" aria-expanded="false" aria-controls="xv-resources">Resources<i class="xv-chev"></i></button>
+          <div class="xv-panel" id="xv-resources"><div class="xv-panel__in">
+            <div class="xv-rail">
+              <button type="button" class="xv-tab is-on" data-pane="resources-0">Case Studies</button>
+              <button type="button" class="xv-tab" data-pane="resources-1">Solutions Delivered</button>
+              <button type="button" class="xv-tab" data-pane="resources-2">Success Stories</button>
+              <button type="button" class="xv-tab" data-pane="resources-3">Blog: Technology</button>
+              <button type="button" class="xv-tab" data-pane="resources-4">Blog: Business</button>
+              <button type="button" class="xv-tab" data-pane="resources-5">Guides &amp; Reports</button>
             </div>
-            <div class="btrx-promo">
-              <a href="{% url 'home' %}" class="btrx-promo__logo" aria-label="Xvera Labs home"><img src="{% static 'images/logos/xvera.png' %}" alt="Xvera Labs"></a>
-              <div class="btrx-promo__text">
-                <h3>Insights & Proven Work</h3>
-                <p>Case studies and expert articles on software engineering, cloud, AI and digital transformation.</p>
-              </div>
-              <div class="btrx-promo__actions">
-                <a href="{% url 'case_studies' %}" class="btrx-btn">Explore Case Studies</a>
-                <a href="{% url 'blogs' %}" class="btrx-btn btrx-btn--ghost">Read Articles</a>
-              </div>
+            <div class="xv-panes">
+              <div class="xv-pane is-on" id="resources-0"><h4>Case Studies</h4><ul class="xv-links">
+                <li><a href="{{ soon }}">Healthcare</a></li>
+                <li><a href="{{ soon }}">FinTech</a></li>
+                <li><a href="{{ soon }}">E-Commerce</a></li>
+                <li><a href="{{ soon }}">Education</a></li>
+                <li><a href="{{ soon }}">Logistics</a></li></ul></div>
+              <div class="xv-pane" id="resources-1"><h4>Solutions Delivered</h4><ul class="xv-links">
+                <li><a href="{{ soon }}">Web Applications</a></li>
+                <li><a href="{{ soon }}">Mobile Applications</a></li>
+                <li><a href="{{ soon }}">Enterprise Software</a></li>
+                <li><a href="{{ soon }}">Cloud Migration</a></li>
+                <li><a href="{{ soon }}">DevOps Automation</a></li></ul></div>
+              <div class="xv-pane" id="resources-2"><h4>Success Stories</h4><ul class="xv-links">
+                <li><a href="{{ soon }}">Startup Growth Stories</a></li>
+                <li><a href="{{ soon }}">Digital Transformation</a></li>
+                <li><a href="{{ soon }}">AI Implementations</a></li>
+                <li><a href="{{ soon }}">Product Scaling</a></li>
+                <li><a href="{% url 'case_studies' %}">View All Case Studies</a></li></ul></div>
+              <div class="xv-pane" id="resources-3"><h4>Blog: Technology</h4><ul class="xv-links">
+                <li><a href="{{ soon }}">Software Development</a></li>
+                <li><a href="{{ soon }}">Cloud Computing</a></li>
+                <li><a href="{{ soon }}">DevOps</a></li>
+                <li><a href="{{ soon }}">Cyber Security</a></li>
+                <li><a href="{{ soon }}">AI &amp; ML</a></li></ul></div>
+              <div class="xv-pane" id="resources-4"><h4>Blog: Business</h4><ul class="xv-links">
+                <li><a href="{{ soon }}">Digital Transformation</a></li>
+                <li><a href="{{ soon }}">Startup Growth</a></li>
+                <li><a href="{{ soon }}">Product Strategy</a></li>
+                <li><a href="{{ soon }}">Technology Trends</a></li>
+                <li><a href="{{ soon }}">Innovation</a></li></ul></div>
+              <div class="xv-pane" id="resources-5"><h4>Guides &amp; Reports</h4><ul class="xv-links">
+                <li><a href="{% url 'blogs' %}">Latest Articles</a></li>
+                <li><a href="{{ soon }}">Guides</a></li>
+                <li><a href="{{ soon }}">White Papers</a></li>
+                <li><a href="{{ soon }}">Industry Reports</a></li>
+                <li><a href="{% url 'blogs' %}">All Blogs</a></li></ul></div>
             </div>
-          </div>
+            <aside class="xv-feature"><h3>See what we have shipped</h3><p>Case studies with the problem, the build and the result.</p><a href="{% url 'case_studies' %}" class="xv-btn">View case studies</a></aside>
+          </div></div>
         </li>
-        <!-- PARTNERS (NEW) -->
-        <li class="btrx-mega-parent">
-          <button type="button" class="btr-nav__link btr-nav__link--partner has-mega {% if request.resolver_match.url_name == 'partners' or request.resolver_match.url_name == 'partners_investors' or request.resolver_match.url_name == 'partner_apply' %}active{% endif %}" aria-haspopup="true" aria-expanded="false" aria-controls="mega-partners">
-            Partners
-            <span class="btr-nav__badge">New</span>
-            <span class="btr-nav__chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
-          </button>
-          <div class="btrx-mega-menu" id="mega-partners">
-            <div class="btrx-mega-left">
-              <div class="btrx-mega-col">
-                <h4>Investment & Business Alliances</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'partners_investors' %}">Become an Investor Partner</a></li>
-                  <li><a href="{% url 'partners_investors' %}#opportunities">Product Investment Modules</a></li>
-                  <li><a href="{% url 'partners' %}#strategic">Strategic & Corporate Partnerships</a></li>
-                  <li><a href="{% url 'partners' %}#strategic">Distribution Partners</a></li>
-                </ul>
-              </div>
-              <div class="btrx-mega-col">
-                <h4>Sales & Client Acquisition</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'partners' %}#referral">Referral Partner (Bring a Client)</a></li>
-                  <li><a href="{% url 'partners' %}#referral">Sales Partner Program</a></li>
-                  <li><a href="{% url 'partners' %}#reseller">Reseller Program</a></li>
-                  <li><a href="{% url 'partners' %}#referral">Affiliate Program</a></li>
-                </ul>
-              </div>
-              <div class="btrx-mega-col">
-                <h4>Marketing & Product Growth</h4>
-                <ul class="btrx-mega-links">
-                  <li><a href="{% url 'partners' %}#marketing">Marketing Partners</a></li>
-                  <li><a href="{% url 'partners' %}#marketing">Promote Our Products</a></li>
-                  <li><a href="{% url 'campus_ambassador_program' %}">Campus Ambassador Program</a></li>
-                  <li><a href="{% url 'partners' %}#marketing">Market Expansion Program</a></li>
-                </ul>
-              </div>
+        <!-- PARTNERS -->
+        <li class="xv-item">
+          <button type="button" class="xv-trigger" aria-expanded="false" aria-controls="xv-partners">Partners<b class="xv-new">New</b><i class="xv-chev"></i></button>
+          <div class="xv-panel" id="xv-partners"><div class="xv-panel__in">
+            <div class="xv-rail">
+              <button type="button" class="xv-tab is-on" data-pane="partners-0">Investment &amp; Business Alliances</button>
+              <button type="button" class="xv-tab" data-pane="partners-1">Sales &amp; Client Acquisition</button>
+              <button type="button" class="xv-tab" data-pane="partners-2">Marketing &amp; Product Growth</button>
             </div>
-            <div class="btrx-promo">
-              <a href="{% url 'home' %}" class="btrx-promo__logo" aria-label="Xvera Labs home"><img src="{% static 'images/logos/xvera.png' %}" alt="Xvera Labs"></a>
-              <div class="btrx-promo__text">
-                <h3>Grow With Xvera Labs</h3>
-                <p>Partner with us to build technology, education and community projects together, under a clear written agreement.</p>
-              </div>
-              <div class="btrx-promo__actions">
-                <a href="{% url 'partners' %}" class="btrx-btn btrx-btn--ghost">All programs</a>
-                <a href="{% url 'partner_apply' %}" class="btrx-btn">Become a Partner</a>
-              </div>
+            <div class="xv-panes">
+              <div class="xv-pane is-on" id="partners-0"><h4>Investment &amp; Business Alliances</h4><ul class="xv-links">
+                <li><a href="{% url 'partners_investors' %}">Become an Investor Partner</a></li>
+                <li><a href="{% url 'partners_investors' %}#opportunities">Product Investment Modules</a></li>
+                <li><a href="{% url 'partners' %}#strategic">Strategic &amp; Corporate Partnerships</a></li>
+                <li><a href="{% url 'partners' %}#strategic">Distribution Partners</a></li></ul></div>
+              <div class="xv-pane" id="partners-1"><h4>Sales &amp; Client Acquisition</h4><ul class="xv-links">
+                <li><a href="{% url 'partners' %}#referral">Referral Partner (Bring a Client)</a></li>
+                <li><a href="{% url 'partners' %}#referral">Sales Partner Program</a></li>
+                <li><a href="{% url 'partners' %}#reseller">Reseller Program</a></li>
+                <li><a href="{% url 'partners' %}#referral">Affiliate Program</a></li></ul></div>
+              <div class="xv-pane" id="partners-2"><h4>Marketing &amp; Product Growth</h4><ul class="xv-links">
+                <li><a href="{% url 'partners' %}#marketing">Marketing Partners</a></li>
+                <li><a href="{% url 'partners' %}#marketing">Promote Our Products</a></li>
+                <li><a href="{% url 'campus_ambassador_program' %}">Campus Ambassador Program</a></li>
+                <li><a href="{% url 'partners' %}#marketing">Market Expansion Program</a></li></ul></div>
             </div>
-          </div>
+            <aside class="xv-feature"><h3>Build with us, in writing</h3><p>Every partnership runs under a clear written agreement.</p><a href="{% url 'partner_apply' %}" class="xv-btn">Become a partner</a></aside>
+          </div></div>
         </li>
-
-        <!-- Mobile-only CTA (desktop CTA lives in .btr-actions) -->
-        <li class="btr-nav__mobile-cta">
-          <a href="{% url 'contact_us' %}" class="btr-cta">Contact Us</a>
-        </li>
-
+        <li class="xv-mobile-cta"><a href="{% url 'contact_us' %}" class="xv-cta">Contact us</a></li>
       </ul>
     </nav>
-
-    <!-- CTA + MENU BUTTON -->
-    <div class="btr-actions">
-      <a href="{% url 'contact_us' %}" class="btr-cta">Contact Us</a>
-      <button class="btr-menu" id="btrMenuBtn" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="btrPrimaryNav">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M3 6H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M3 12H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M9 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-      </button>
+    <div class="xv-actions">
+      <a href="{% url 'contact_us' %}" class="xv-cta">Contact us</a>
+      <button type="button" class="xv-burger" id="xvBurger" aria-label="Open menu" aria-expanded="false" aria-controls="xvNav"><span></span><span></span></button>
     </div>
-
   </div>
 </header>
-
-<script src="{% static 'js/layout/header-1.js' %}?v=5"></script>
+<script src="{% static 'js/layout/header-1.js' %}?v=2"></script>
