@@ -4,6 +4,7 @@ from django.core.mail import send_mail
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse
+from django.utils.http import url_has_allowed_host_and_scheme
 from django.views import View
 
 from .forms import ChatForm, ContactForm
@@ -36,6 +37,13 @@ def _notify(msg):
     )
 
 
+def _sent_url(request):
+    """After a successful send, go back to the page the form was on (home page or contact page)."""
+    nxt = request.POST.get("next", "")
+    ok = nxt and url_has_allowed_host_and_scheme(nxt, allowed_hosts={request.get_host()})
+    return f"{nxt if ok else reverse('contact_us')}?sent=1#support"
+
+
 class ContactUsView(View):
     template_name = "home/contact-us.html"  # change to your real template path if it differs
 
@@ -43,7 +51,7 @@ class ContactUsView(View):
         return self._render(request, ContactForm())
 
     def post(self, request):
-        sent_url = f"{reverse('contact_us')}?sent=1#support"
+        sent_url = _sent_url(request)
         if request.POST.get("website"):  # honeypot: bots fill it, people never see it
             return redirect(sent_url)
         form = ContactForm(request.POST)

@@ -1,314 +1,160 @@
-
 {% extends 'base.html' %}
 {% load static %}
 
 {% block title %}Xvera Labs | Custom Software, AI & Cloud Solutions{% endblock %}
-
 {% block meta_description %}Xvera Labs builds custom software, web and mobile applications, AI-powered solutions, and scalable cloud platforms. Partner with our engineering team to turn your ideas into digital products.{% endblock %}
-
 {% block meta_robots %}index, follow, max-image-preview:large{% endblock %}
-
 {% block og_title %}Xvera Labs | Custom Software, AI & Cloud Engineering{% endblock %}
-
 {% block og_description %}Custom software development, AI solutions, web and mobile apps, and cloud engineering for startups, SMEs, and enterprises.{% endblock %}
-
 {% block twitter_title %}Xvera Labs | Custom Software, AI & Cloud Engineering{% endblock %}
-
 {% block twitter_description %}Build and scale your business with custom software, AI-powered products, and cloud solutions from Xvera Labs.{% endblock %}
-
 {% block body_class %}page-home-index{% endblock %}
 
-{% block page_css %}<link rel="stylesheet" href="{% static 'css/pages/home-index.css' %}">{% endblock %}
+{% block page_css %}
+<!-- home-index.css is kept ONLY for the Featured Insights section (btrwho). Everything else is in home-index-2.css -->
+<link rel="stylesheet" href="{% static 'css/pages/home-index.css' %}">
+<link rel="stylesheet" href="{% static 'css/pages/home-index-2.css' %}?v=1">
+{% endblock %}
 
 {% block content %}
 
-<!-- =================================================================
-   HERO  (redesigned: clear message + product-style visual)
-================================================================== -->
-<section class="btrhero" id="top" aria-labelledby="btrheroTitle">
+<!-- ===================== HERO (4 slides) ===================== -->
+<section class="xh xh-hero" id="top" aria-roledescription="carousel" aria-label="Xvera Labs highlights">
+  <div class="xh-wrap">
+    <div class="xh-hero__stage">
 
-    <div class="btrhero__bg" aria-hidden="true">
-        <span class="btrhero__glow btrhero__glow--a"></span>
-        <span class="btrhero__glow btrhero__glow--b"></span>
-        <span class="btrhero__glow btrhero__glow--c"></span>
-        <span class="btrhero__grid"></span>
+      <!-- 1 -->
+      <article class="xh-slide is-active" role="group" aria-roledescription="slide" aria-label="1 of 4">
+        <div class="xh-slide__copy">
+          <p class="xh-kicker">Software development</p>
+          <h1>Custom software, web and mobile apps built to last.</h1>
+          <p class="xh-lead">From the first idea to production, our engineers design and build products for startups, SMEs and growing companies.</p>
+          <div class="xh-actions"><a href="{% url 'contact_us' %}" class="xh-btn xh-btn--teal">Start a project</a><a href="#services" class="xh-btn xh-btn--line">See what we build</a></div>
+        </div>
+        <div class="xh-panel" aria-hidden="true">
+          <div class="xh-panel__top"><i></i><i></i><i></i><span>what we build</span></div>
+          <ul class="xh-check">
+            <li>Web applications</li><li>Mobile apps (iOS and Android)</li><li>E-commerce platforms</li><li>Admin dashboards</li><li>APIs and integrations</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="xh-slide" role="group" aria-roledescription="slide" aria-label="2 of 4" aria-hidden="true">
+        <div class="xh-slide__copy">
+          <p class="xh-kicker">AI and automation</p>
+          <h2>Practical AI that gives your team hours back.</h2>
+          <p class="xh-lead">Chatbots, knowledge assistants and workflow automation built on OpenAI, Claude and Gemini, connected to your own data.</p>
+          <div class="xh-actions"><a href="{% url 'contact_us' %}" class="xh-btn xh-btn--teal">Talk about AI</a><a href="#cloud" class="xh-btn xh-btn--line">Cloud and DevOps</a></div>
+        </div>
+        <div class="xh-panel" aria-hidden="true">
+          <div class="xh-panel__top"><i></i><i></i><i></i><span>ai assistant</span></div>
+          <p class="xh-bubble">Summarise this week's support tickets</p>
+          <div class="xh-reply"><b style="--w:94%"></b><b style="--w:80%"></b><b style="--w:58%"></b></div>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="xh-slide" role="group" aria-roledescription="slide" aria-label="3 of 4" aria-hidden="true">
+        <div class="xh-slide__copy">
+          <p class="xh-kicker">Cloud and DevOps</p>
+          <h2>Ship faster on a cloud foundation you can trust.</h2>
+          <p class="xh-lead">Migration, CI/CD, containers and monitoring, so releases are routine and your platform scales with you.</p>
+          <div class="xh-actions"><a href="{% url 'contact_us' %}" class="xh-btn xh-btn--teal">Talk to an engineer</a><a href="#cloud" class="xh-btn xh-btn--line">Our approach</a></div>
+        </div>
+        <div class="xh-panel" aria-hidden="true">
+          <div class="xh-panel__top"><i></i><i></i><i></i><span>release pipeline</span></div>
+          <ul class="xh-pipe">
+            <li style="--i:0"><span>Build</span><em><b></b></em></li>
+            <li style="--i:1"><span>Test</span><em><b></b></em></li>
+            <li style="--i:2"><span>Security scan</span><em><b></b></em></li>
+            <li style="--i:3"><span>Deploy</span><em><b></b></em></li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="xh-slide" role="group" aria-roledescription="slide" aria-label="4 of 4" aria-hidden="true">
+        <div class="xh-slide__copy">
+          <p class="xh-kicker">Partners</p>
+          <h2>Grow with Xvera Labs.</h2>
+          <p class="xh-lead">Join as an investor, referral partner or campus ambassador and help grow technology, education and community projects under a clear written agreement.</p>
+          <div class="xh-actions"><a href="{% url 'partner_apply' %}" class="xh-btn xh-btn--teal">Become a partner</a><a href="{% url 'partners' %}" class="xh-btn xh-btn--line">All programs</a></div>
+        </div>
+        <div class="xh-panel xh-panel--links">
+          <div class="xh-panel__top"><i></i><i></i><i></i><span>partner programs</span></div>
+          <a href="{% url 'partners_investors' %}">Investor partner<small>Invest in our products</small></a>
+          <a href="{% url 'partners' %}#referral">Referral and reseller<small>Bring a client</small></a>
+          <a href="{% url 'campus_ambassador_program' %}">Campus ambassador<small>Represent us at your campus</small></a>
+        </div>
+      </article>
     </div>
 
-    <div class="btrhero__wrap">
-
-        <!-- LEFT: message -->
-        <div class="btrhero__copy">
-            <a href="#services" class="btrhero__pill btrhero__reveal" style="--d:.05s">
-                <span class="btrhero__pill-dot" aria-hidden="true"></span>
-                Software, AI &amp; Cloud engineering
-                <span class="btrhero__pill-arrow" aria-hidden="true">&rarr;</span>
-            </a>
-
-            <h1 class="btrhero__title btrhero__reveal" id="btrheroTitle" style="--d:.15s">
-                Software, AI and cloud solutions <span class="btrhero__grad">built to scale your business</span>
-            </h1>
-
-            <p class="btrhero__lead btrhero__reveal" style="--d:.25s">
-                Xvera Labs designs and builds custom software, AI-powered products and cloud platforms for startups, SMEs and enterprises, from the first idea to production.
-            </p>
-
-            <div class="btrhero__actions btrhero__reveal" style="--d:.35s">
-                <a href="{% url 'contact_us' %}" class="btrhero__btn btrhero__btn--primary">Book a Demo <span aria-hidden="true">&rarr;</span></a>
-                <a href="#services" class="btrhero__btn btrhero__btn--ghost">Explore Solutions</a>
-            </div>
-
-            <ul class="btrhero__caps btrhero__reveal" style="--d:.45s" aria-label="What we do">
-                <li>Custom software</li>
-                <li>AI &amp; Generative AI</li>
-                <li>Cloud &amp; DevOps</li>
-                <li>Data &amp; Analytics</li>
-            </ul>
-
-            <p class="btrhero__partner btrhero__reveal" style="--d:.55s">
-                Looking to partner or invest? <a href="{% url 'partners' %}">Partner with us &rarr;</a>
-            </p>
-        </div>
-
-        <!-- RIGHT: product-style visual (decorative) -->
-        <div class="btrhero__visual btrhero__reveal" id="btrheroVisual" style="--d:.3s" role="img" aria-label="Illustration of a cloud release pipeline and an AI assistant">
-            <div class="btrhero__stage" aria-hidden="true">
-                <div class="btrhero__tilt" id="btrheroTilt">
-
-                    <span class="btrhero__ring btrhero__ring--one"></span>
-                    <span class="btrhero__ring btrhero__ring--two"></span>
-
-                    <!-- main window -->
-                    <div class="btrhero__panel">
-                        <div class="btrhero__bar">
-                            <span class="btrhero__dots"><i></i><i></i><i></i></span>
-                            <span class="btrhero__bar-title">release pipeline</span>
-                            <span class="btrhero__live"><b></b>Live</span>
-                        </div>
-
-                        <ul class="btrhero__steps">
-                            <li style="--i:0"><span class="btrhero__ico btrhero__ico--ok"></span><span class="btrhero__step">Build</span><span class="btrhero__track"><span class="btrhero__fill"></span></span></li>
-                            <li style="--i:1"><span class="btrhero__ico btrhero__ico--ok"></span><span class="btrhero__step">Automated tests</span><span class="btrhero__track"><span class="btrhero__fill"></span></span></li>
-                            <li style="--i:2"><span class="btrhero__ico btrhero__ico--ok"></span><span class="btrhero__step">Security scan</span><span class="btrhero__track"><span class="btrhero__fill"></span></span></li>
-                            <li style="--i:3"><span class="btrhero__ico btrhero__ico--run"></span><span class="btrhero__step">Deploy to cloud</span><span class="btrhero__track"><span class="btrhero__fill"></span></span></li>
-                        </ul>
-
-                        <div class="btrhero__chart">
-                            <span class="btrhero__chart-label">Performance</span>
-                            <svg viewBox="0 0 360 84" preserveAspectRatio="none" fill="none">
-                                <defs>
-                                    <linearGradient id="btrheroLine" x1="0" y1="0" x2="1" y2="0">
-                                        <stop offset="0" stop-color="#0ebab1"/>
-                                        <stop offset="1" stop-color="#38bdf8"/>
-                                    </linearGradient>
-                                    <linearGradient id="btrheroArea" x1="0" y1="0" x2="0" y2="1">
-                                        <stop offset="0" stop-color="#0ebab1" stop-opacity=".32"/>
-                                        <stop offset="1" stop-color="#0ebab1" stop-opacity="0"/>
-                                    </linearGradient>
-                                </defs>
-                                <path d="M0 66 C30 62 50 44 80 48 S130 70 160 44 S220 18 250 34 S320 12 360 14 L360 84 L0 84 Z" fill="url(#btrheroArea)"/>
-                                <path class="btrhero__line" d="M0 66 C30 62 50 44 80 48 S130 70 160 44 S220 18 250 34 S320 12 360 14" stroke="url(#btrheroLine)" stroke-width="2.4" stroke-linecap="round"/>
-                            </svg>
-                        </div>
-                    </div>
-
-                    <!-- AI assistant card -->
-                    <div class="btrhero__ai">
-                        <div class="btrhero__ai-head">
-                            <span class="btrhero__spark"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.2 6.3L20.5 10l-6.3 1.7L12 18l-2.2-6.3L3.5 10l6.3-1.7L12 2z"/></svg></span>
-                            AI assistant
-                            <span class="btrhero__ai-tag">Online</span>
-                        </div>
-                        <p class="btrhero__bubble">Summarise this week's support tickets</p>
-                        <div class="btrhero__reply">
-                            <span class="btrhero__sk" style="--w:92%"></span>
-                            <span class="btrhero__sk" style="--w:78%"></span>
-                            <span class="btrhero__sk" style="--w:56%"></span>
-                            <span class="btrhero__typing"><i></i><i></i><i></i></span>
-                        </div>
-                    </div>
-
-                    <!-- floating chips -->
-                    <span class="btrhero__chip btrhero__chip--a"><i></i>Cloud-native</span>
-                    <span class="btrhero__chip btrhero__chip--b"><i></i>Secure by design</span>
-                    <span class="btrhero__chip btrhero__chip--c"><i></i>AI-ready</span>
-                </div>
-            </div>
-        </div>
-
+    <div class="xh-hero__bar">
+      <div class="xh-tabs" role="group" aria-label="Choose slide">
+        <button type="button" class="xh-tab is-active" aria-pressed="true"><span>Software</span><i class="xh-tab__bar"></i></button>
+        <button type="button" class="xh-tab" aria-pressed="false"><span>AI</span><i class="xh-tab__bar"></i></button>
+        <button type="button" class="xh-tab" aria-pressed="false"><span>Cloud</span><i class="xh-tab__bar"></i></button>
+        <button type="button" class="xh-tab" aria-pressed="false"><span>Partners</span><i class="xh-tab__bar"></i></button>
+      </div>
+      <div class="xh-arrows">
+        <button type="button" class="xh-arrow" id="xhPrev" aria-label="Previous slide">&larr;</button>
+        <button type="button" class="xh-arrow" id="xhNext" aria-label="Next slide">&rarr;</button>
+      </div>
     </div>
+  </div>
 </section>
 
-<!-- ==================================================
-     CLIENTS  (redesigned: heading + two-way logo marquee)
-     Only keep logos of real clients here.
-     The second row and the loop copies are built by JS from this list.
-================================================== -->
-<section class="btrcl" id="clients" aria-labelledby="btrclTitle">
-    <div class="btrcl__bg" aria-hidden="true"></div>
-
-    <div class="btrcl__head">
-        <span class="btrcl__eyebrow">Our clients</span>
-        <h2 class="btrcl__title" id="btrclTitle">Brands that build with <em>Xvera Labs</em></h2>
-        <p class="btrcl__lead">From startups to established companies, teams across industries work with us on software, cloud and AI.</p>
-    </div>
-
-    <div class="btrcl__marquee" role="group" aria-label="Client logos">
-        <div class="btrcl__row">
-            <ul class="btrcl__track" id="btrclTrack1">
-                <li class="btrcl__item"><img src="{% static 'images/brands/Adore-clube.png' %}" alt="Adore Clube" decoding="async"></li>
-                <li class="btrcl__item"><img src="{% static 'images/brands/beta-start.png' %}" alt="Beta Start" decoding="async"></li>
-                <li class="btrcl__item"><img src="{% static 'images/brands/expert.png' %}" alt="Expert" decoding="async"></li>
-                <li class="btrcl__item"><img src="{% static 'images/brands/green-soft.png' %}" alt="Green Soft" decoding="async"></li>
-                <li class="btrcl__item"><img src="{% static 'images/brands/hadi.png' %}" alt="Hadi Sports" decoding="async"></li>
-                <li class="btrcl__item"><img src="{% static 'images/brands/k-t-soft.png' %}" alt="KT Soft" decoding="async"></li>
-                <li class="btrcl__item"><img src="{% static 'images/brands/kadam.png' %}" alt="KADAM" decoding="async"></li>
-                <li class="btrcl__item"><img src="{% static 'images/brands/kidco.png' %}" alt="Kidco" decoding="async"></li>
-                <li class="btrcl__item"><img src="{% static 'images/brands/mozay.png' %}" alt="Mozay" decoding="async"></li>
-                <li class="btrcl__item"><img src="{% static 'images/brands/orfit.png' %}" alt="Orfit" decoding="async"></li>
-                <li class="btrcl__item"><img src="{% static 'images/brands/parley.png' %}" alt="Parley" decoding="async"></li>
-                <li class="btrcl__item"><img src="{% static 'images/brands/promax.png' %}" alt="Promax" decoding="async"></li>
-                <li class="btrcl__item"><img src="{% static 'images/brands/ruby.png' %}" alt="Ruby" decoding="async"></li>
-                <li class="btrcl__item"><img src="{% static 'images/brands/supermain.png' %}" alt="Supermain" decoding="async"></li>
-                <li class="btrcl__item"><img src="{% static 'images/brands/tr.png' %}" alt="Tahir Rafique" decoding="async"></li>
-                <li class="btrcl__item"><img src="{% static 'images/brands/trand-brand.png' %}" alt="Trand Brand" decoding="async"></li>
-                <li class="btrcl__item"><img src="{% static 'images/brands/welcome.png' %}" alt="Welcome" decoding="async"></li>
-                <li class="btrcl__item"><img src="{% static 'images/brands/welto.png' %}" alt="Welto" decoding="async"></li>
-                <li class="btrcl__item"><img src="{% static 'images/brands/xara-soft.png' %}" alt="Xara Soft" decoding="async"></li>
-                <li class="btrcl__item"><img src="{% static 'images/brands/z-star.png' %}" alt="Z Start" decoding="async"></li>
-                {% comment %} <li class="btrcl__item"><img src="{% static 'images/brands/elechmech.png' %}" alt="Elech Mech" decoding="async"></li> {% endcomment %}
-            </ul>
-        </div>
-
-        <div class="btrcl__row btrcl__row--reverse" id="btrclRow2" hidden>
-            <ul class="btrcl__track" id="btrclTrack2" aria-hidden="true"></ul>
-        </div>
-    </div>
-
-    <div class="btrcl__foot">
-        <button type="button" class="btrcl__toggle" id="btrclToggle" aria-pressed="false">
-            <span class="btrcl__toggle-pause"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>Pause</span>
-            <span class="btrcl__toggle-play"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15a1 1 0 001.5.86l12-7.5a1 1 0 000-1.72l-12-7.5A1 1 0 007 4.5z"/></svg>Play</span>
-        </button>
-    </div>
+<!-- ===================== CLIENTS ===================== -->
+<section class="xh xh-clients" id="clients" aria-labelledby="xhClTitle">
+  <p class="xh-clients__title" id="xhClTitle">Teams that build with Xvera Labs</p>
+  <div class="xh-marquee" role="group" aria-label="Client logos">
+    <ul class="xh-marquee__track" id="xhTrack">
+      <li><img src="{% static 'images/brands/Adore-clube.png' %}" alt="Adore Clube" decoding="async"></li>
+      <li><img src="{% static 'images/brands/beta-start.png' %}" alt="Beta Start" decoding="async"></li>
+      <li><img src="{% static 'images/brands/expert.png' %}" alt="Expert" decoding="async"></li>
+      <li><img src="{% static 'images/brands/green-soft.png' %}" alt="Green Soft" decoding="async"></li>
+      <li><img src="{% static 'images/brands/hadi.png' %}" alt="Hadi Sports" decoding="async"></li>
+      <li><img src="{% static 'images/brands/k-t-soft.png' %}" alt="KT Soft" decoding="async"></li>
+      <li><img src="{% static 'images/brands/kadam.png' %}" alt="KADAM" decoding="async"></li>
+      <li><img src="{% static 'images/brands/kidco.png' %}" alt="Kidco" decoding="async"></li>
+      <li><img src="{% static 'images/brands/mozay.png' %}" alt="Mozay" decoding="async"></li>
+      <li><img src="{% static 'images/brands/orfit.png' %}" alt="Orfit" decoding="async"></li>
+      <li><img src="{% static 'images/brands/parley.png' %}" alt="Parley" decoding="async"></li>
+      <li><img src="{% static 'images/brands/promax.png' %}" alt="Promax" decoding="async"></li>
+      <li><img src="{% static 'images/brands/ruby.png' %}" alt="Ruby" decoding="async"></li>
+      <li><img src="{% static 'images/brands/supermain.png' %}" alt="Supermain" decoding="async"></li>
+      <li><img src="{% static 'images/brands/tr.png' %}" alt="Tahir Rafique" decoding="async"></li>
+      <li><img src="{% static 'images/brands/trand-brand.png' %}" alt="Trand Brand" decoding="async"></li>
+      <li><img src="{% static 'images/brands/welcome.png' %}" alt="Welcome" decoding="async"></li>
+      <li><img src="{% static 'images/brands/welto.png' %}" alt="Welto" decoding="async"></li>
+      <li><img src="{% static 'images/brands/xara-soft.png' %}" alt="Xara Soft" decoding="async"></li>
+      <li><img src="{% static 'images/brands/z-star.png' %}" alt="Z Start" decoding="async"></li>
+    </ul>
+  </div>
 </section>
 
-<!-- =========================================================
-     TECH SECTION (Engineering Enterprise Technology Solutions)
-========================================================= -->
-<section class="btr-tech-section" id="services">
-    <div class="btr-tech-container">
-        <!-- HEADING -->
-        <div class="btr-tech-heading">
-            <h2>
-                Engineering Enterprise Technology
-                Solutions That Work For You
-            </h2>
-        </div>
-        <!-- CARDS -->
-        <div class="btr-tech-cards" id="btrTechCards">
-            <!-- 01 — ARTIFICIAL INTELLIGENCE -->
-            <article class="btr-tech-card">
-                <img src="{% static 'images/interprise/artificial-intelligence.png' %}" alt="Artificial Intelligence" loading="lazy">
-                <div class="btr-tech-title">Artificial Intelligence</div>
-                <button type="button" class="btr-tech-detail-btn" aria-label="View Artificial Intelligence details" aria-expanded="false">
-                    <span>↗</span>
-                </button>
-                <div class="btr-tech-content">
-                    <p>
-                        We build enterprise AI solutions that automate
-                        workflows, improve decision-making, and help
-                        businesses operate with greater speed,
-                        accuracy, and efficiency.
-                    </p>
-                </div>
-            </article>
-            <!-- 02 — GENERATIVE AI -->
-            <article class="btr-tech-card">
-                <img src="{% static 'images/interprise/generative-ai.png' %}" alt="Generative AI" loading="lazy">
-                <div class="btr-tech-title">Generative AI</div>
-                <button type="button" class="btr-tech-detail-btn" aria-label="View Generative AI details" aria-expanded="false">
-                    <span>↗</span>
-                </button>
-                <div class="btr-tech-content">
-                    <p>
-                        We develop generative AI systems that create
-                        content, streamline operations, enhance customer
-                        experiences, and unlock new business opportunities
-                        at scale.
-                    </p>
-                </div>
-            </article>
-            <!-- 03 — LOGISTICS -->
-            <article class="btr-tech-card">
-                <img src="{% static 'images/interprise/logistics.png' %}" alt="Logistics Technology" loading="lazy">
-                <div class="btr-tech-title">Logistics</div>
-                <button type="button" class="btr-tech-detail-btn" aria-label="View Logistics details" aria-expanded="false">
-                    <span>↗</span>
-                </button>
-                <div class="btr-tech-content">
-                    <p>
-                        Intelligent logistics platforms that connect
-                        transportation, inventory, warehouse operations,
-                        shipment tracking, and real-time business data.
-                    </p>
-                </div>
-            </article>
-            <!-- 04 — BLOCKCHAIN -->
-            <article class="btr-tech-card">
-                <img src="{% static 'images/interprise/blockchain.png' %}" alt="Blockchain Technology" loading="lazy">
-                <div class="btr-tech-title">Blockchain</div>
-                <button type="button" class="btr-tech-detail-btn" aria-label="View Blockchain details" aria-expanded="false">
-                    <span>↗</span>
-                </button>
-                <div class="btr-tech-content">
-                    <p>
-                        Secure and transparent blockchain solutions
-                        designed for digital assets, decentralized
-                        applications, smart contracts, and trusted
-                        business transactions.
-                    </p>
-                </div>
-            </article>
-            <!-- 05 — ON-DEMAND -->
-            <article class="btr-tech-card">
-                <img src="{% static 'images/interprise/on-demand.png' %}" alt="On Demand Applications" loading="lazy">
-                <div class="btr-tech-title">On-Demand</div>
-                <button type="button" class="btr-tech-detail-btn" aria-label="View On-Demand details" aria-expanded="false">
-                    <span>↗</span>
-                </button>
-                <div class="btr-tech-content">
-                    <p>
-                        Scalable on-demand platforms connecting customers,
-                        service providers, payments, operations, and
-                        real-time experiences through one ecosystem.
-                    </p>
-                </div>
-            </article>
-            <!-- 06 — DATA ANALYTICS -->
-            <article class="btr-tech-card">
-                <img src="{% static 'images/interprise/data-analytics.png' %}" alt="Data Analytics" loading="lazy">
-                <div class="btr-tech-title">Data Analytics</div>
-                <button type="button" class="btr-tech-detail-btn" aria-label="View Data Analytics details" aria-expanded="false">
-                    <span>↗</span>
-                </button>
-                <div class="btr-tech-content">
-                    <p>
-                        Transforming complex business data into actionable
-                        insights through analytics, dashboards,
-                        visualization, reporting, and intelligent
-                        decision-support systems.
-                    </p>
-                </div>
-            </article>
-        </div>
-
-        <!-- Slider dots (sirf ≤1000px par dikhte hain; JS bharta hai) -->
-        <div class="btr-tech-dots" id="btrTechDots" aria-label="Slides"></div>
+<!-- ===================== WHAT WE BUILD ===================== -->
+<section class="xh xh-sec xh-sec--paper" id="services" aria-labelledby="xhSvTitle">
+  <div class="xh-wrap">
+    <header class="xh-head">
+      <p class="xh-eyebrow">What we build</p>
+      <h2 id="xhSvTitle">Enterprise technology that works for you</h2>
+      <p class="xh-sub">Six areas where our team designs, builds and runs production systems.</p>
+    </header>
+    <div class="xh-cards">
+      <article class="xh-card"><img src="{% static 'images/interprise/artificial-intelligence.png' %}" alt="" loading="lazy"><div class="xh-card__body"><h3>Artificial Intelligence</h3><p>Enterprise AI that automates workflows, improves decisions and helps teams work with more speed and accuracy.</p><a href="{% url 'contact_us' %}">Discuss this</a></div></article>
+      <article class="xh-card"><img src="{% static 'images/interprise/generative-ai.png' %}" alt="" loading="lazy"><div class="xh-card__body"><h3>Generative AI</h3><p>Systems that create content, streamline operations and improve customer experiences at scale.</p><a href="{% url 'contact_us' %}">Discuss this</a></div></article>
+      <article class="xh-card"><img src="{% static 'images/interprise/logistics.png' %}" alt="" loading="lazy"><div class="xh-card__body"><h3>Logistics</h3><p>Platforms that connect transport, inventory, warehouses and shipment tracking with real-time data.</p><a href="{% url 'contact_us' %}">Discuss this</a></div></article>
+      <article class="xh-card"><img src="{% static 'images/interprise/blockchain.png' %}" alt="" loading="lazy"><div class="xh-card__body"><h3>Blockchain</h3><p>Secure, transparent solutions for digital assets, smart contracts and trusted business transactions.</p><a href="{% url 'contact_us' %}">Discuss this</a></div></article>
+      <article class="xh-card"><img src="{% static 'images/interprise/on-demand.png' %}" alt="" loading="lazy"><div class="xh-card__body"><h3>On-demand</h3><p>Scalable platforms that connect customers, providers, payments and operations in one ecosystem.</p><a href="{% url 'contact_us' %}">Discuss this</a></div></article>
+      <article class="xh-card"><img src="{% static 'images/interprise/data-analytics.png' %}" alt="" loading="lazy"><div class="xh-card__body"><h3>Data analytics</h3><p>Dashboards, reporting and decision-support systems that turn complex data into clear insight.</p><a href="{% url 'contact_us' %}">Discuss this</a></div></article>
     </div>
+  </div>
 </section>
 
 <!-- ================================================
-   WHO WE ARE - FEATURED INSIGHTS STYLE (staggered cards)
+   WHO WE ARE - FEATURED INSIGHTS (unchanged design)
    ================================================ -->
 <section id="who-we-are" class="btrwho-section">
     <div class="btrwho-left">
@@ -392,432 +238,120 @@
     </div>
 </section>
 
-<!-- =================================================================
-     CLOUD & DEVOPS  (redesigned; was "Enterprise Solutions")
-================================================================== -->
-<section class="btrsc" id="cloud-devops" aria-labelledby="btrscTitle">
-  <div class="btrsc__wrap">
+<!-- ===================== HOW WE WORK ===================== -->
+<section class="xh xh-sec" id="process" aria-labelledby="xhPrTitle">
+  <div class="xh-wrap">
+    <header class="xh-head">
+      <p class="xh-eyebrow">How we work</p>
+      <h2 id="xhPrTitle">A simple process from idea to launch</h2>
+    </header>
+    <ol class="xh-steps">
+      <li><span class="xh-steps__n">01</span><h3>Discover</h3><p>We learn your goals, users and limits, then agree on scope, timeline and cost.</p></li>
+      <li><span class="xh-steps__n">02</span><h3>Design</h3><p>Wireframes and a clickable prototype, so you see the product before we build it.</p></li>
+      <li><span class="xh-steps__n">03</span><h3>Build</h3><p>We work in short iterations with regular demos, so you can steer as we go.</p></li>
+      <li><span class="xh-steps__n">04</span><h3>Launch and support</h3><p>Deployment, monitoring and ongoing maintenance after go-live.</p></li>
+    </ol>
+  </div>
+</section>
 
-    <div class="btrsc__head">
+<!-- ===================== CLOUD & DEVOPS ===================== -->
+<section class="xh xh-sec xh-sec--ink" id="cloud" aria-labelledby="xhClTitle2">
+  <div class="xh-wrap">
+    <header class="xh-head xh-head--row">
       <div>
-        <span class="btrsc__eyebrow">Cloud &amp; DevOps</span>
-        <h2 class="btrsc__title" id="btrscTitle">Engineering the cloud foundation behind <em>your growth</em></h2>
+        <p class="xh-eyebrow">Cloud and DevOps</p>
+        <h2 id="xhClTitle2">The cloud foundation behind your growth</h2>
       </div>
-      <div class="btrsc__side">
-        <p class="btrsc__lead">From migration and CI/CD to Kubernetes and security, we design cloud platforms that are fast to ship on, simple to operate and ready to scale.</p>
-        <a href="{% url 'contact_us' %}" class="btrsc__cta">Talk to an engineer <span aria-hidden="true">&rarr;</span></a>
-      </div>
-    </div>
-
-    <div class="btrsc__filters" role="group" aria-label="Filter cloud and DevOps services">
-      <button type="button" class="btrsc__filter is-active" data-filter="all" aria-pressed="true">All services</button>
-      <button type="button" class="btrsc__filter" data-filter="migration" aria-pressed="false">Cloud Migration</button>
-      <button type="button" class="btrsc__filter" data-filter="automation" aria-pressed="false">DevOps Automation</button>
-      <button type="button" class="btrsc__filter" data-filter="kubernetes" aria-pressed="false">Kubernetes</button>
-      <button type="button" class="btrsc__filter" data-filter="security" aria-pressed="false">Security</button>
-    </div>
-
-    <div class="btrsc__grid">
-
-      <a href="{% url 'coming' %}" class="btrsc__card" data-category="migration">
-        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="" loading="lazy" decoding="async" onerror="this.remove()">
-        <span class="btrsc__tag">Cloud Migration</span>
-        <span class="btrsc__arrow" aria-hidden="true">&nearr;</span>
-        <div class="btrsc__body">
-          <h3>Cloud migration &amp; modernization</h3>
-          <p>Move legacy workloads to AWS, Azure or GCP with a phased plan that limits downtime and risk.</p>
-        </div>
-      </a>
-
-      <a href="{% url 'coming' %}" class="btrsc__card" data-category="automation">
-        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="" loading="lazy" decoding="async" onerror="this.remove()">
-        <span class="btrsc__tag">DevOps Automation</span>
-        <span class="btrsc__arrow" aria-hidden="true">&nearr;</span>
-        <div class="btrsc__body">
-          <h3>CI/CD pipeline engineering</h3>
-          <p>Automated build, test and release workflows, so every change ships faster and safer.</p>
-        </div>
-      </a>
-
-      <a href="{% url 'coming' %}" class="btrsc__card" data-category="kubernetes">
-        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="" loading="lazy" decoding="async" onerror="this.remove()">
-        <span class="btrsc__tag">Kubernetes</span>
-        <span class="btrsc__arrow" aria-hidden="true">&nearr;</span>
-        <div class="btrsc__body">
-          <h3>Kubernetes &amp; containers</h3>
-          <p>Run resilient, auto-scaling workloads on managed Kubernetes with solid observability.</p>
-        </div>
-      </a>
-
-      <a href="{% url 'coming' %}" class="btrsc__card" data-category="security">
-        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="" loading="lazy" decoding="async" onerror="this.remove()">
-        <span class="btrsc__tag">Security</span>
-        <span class="btrsc__arrow" aria-hidden="true">&nearr;</span>
-        <div class="btrsc__body">
-          <h3>DevSecOps &amp; monitoring</h3>
-          <p>Security checks, compliance controls and round-the-clock monitoring built into your pipeline.</p>
-        </div>
-      </a>
-
-      <a href="{% url 'coming' %}" class="btrsc__card" data-category="automation">
-        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="" loading="lazy" decoding="async" onerror="this.remove()">
-        <span class="btrsc__tag">Infrastructure as Code</span>
-        <span class="btrsc__arrow" aria-hidden="true">&nearr;</span>
-        <div class="btrsc__body">
-          <h3>Infrastructure as code</h3>
-          <p>Repeatable environments with Terraform and CloudFormation, versioned like application code.</p>
-        </div>
-      </a>
-
-      <a href="{% url 'coming' %}" class="btrsc__card" data-category="migration">
-        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="" loading="lazy" decoding="async" onerror="this.remove()">
-        <span class="btrsc__tag">Cloud Architecture</span>
-        <span class="btrsc__arrow" aria-hidden="true">&nearr;</span>
-        <div class="btrsc__body">
-          <h3>Cloud architecture &amp; FinOps</h3>
-          <p>Well-architected platforms designed for scale, reliability and predictable cloud spend.</p>
-        </div>
-      </a>
-
+      <p class="xh-sub">From migration and CI/CD to containers and security, we build platforms that are fast to ship on, simple to run and ready to scale.</p>
+    </header>
+    <div class="xh-dgrid">
+      <a href="{% url 'coming' %}" class="xh-dcard"><h3>Cloud migration and modernization</h3><p>Move legacy workloads to AWS, Azure or GCP with a phased plan that limits downtime and risk.</p><span>Learn more</span></a>
+      <a href="{% url 'coming' %}" class="xh-dcard"><h3>CI/CD pipeline engineering</h3><p>Automated build, test and release workflows, so every change ships faster and safer.</p><span>Learn more</span></a>
+      <a href="{% url 'coming' %}" class="xh-dcard"><h3>Kubernetes and containers</h3><p>Resilient, auto-scaling workloads on managed Kubernetes with solid observability.</p><span>Learn more</span></a>
+      <a href="{% url 'coming' %}" class="xh-dcard"><h3>DevSecOps and monitoring</h3><p>Security checks, compliance controls and round-the-clock monitoring built into your pipeline.</p><span>Learn more</span></a>
+      <a href="{% url 'coming' %}" class="xh-dcard"><h3>Infrastructure as code</h3><p>Repeatable environments with Terraform and CloudFormation, versioned like application code.</p><span>Learn more</span></a>
+      <a href="{% url 'coming' %}" class="xh-dcard"><h3>Cloud architecture and FinOps</h3><p>Well-architected platforms designed for scale, reliability and predictable cloud spend.</p><span>Learn more</span></a>
     </div>
   </div>
 </section>
 
-<!-- =================================================================
-     CLIENT VOICES  (redesigned; was "Client Testimonials")
-     IMPORTANT: the quotes, names and companies below are PLACEHOLDERS.
-     Replace them with real client feedback (with permission) before launch.
-================================================================== -->
-<section class="btrtm" id="client-voices" aria-labelledby="btrtmTitle">
-  <div class="btrtm__wrap">
-
-    <div class="btrtm__intro">
-      <span class="btrtm__eyebrow">Client voices</span>
-      <h2 class="btrtm__title" id="btrtmTitle">What it's like to build with Xvera Labs</h2>
-      <p class="btrtm__lead">Feedback from the teams we've partnered with on software, cloud and AI projects.</p>
-
-      <div class="btrtm__controls">
-        <button type="button" class="btrtm__btn" id="btrtmPrev" aria-label="Previous testimonial">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
-        </button>
-        <button type="button" class="btrtm__btn" id="btrtmNext" aria-label="Next testimonial">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
-        </button>
-        <span class="btrtm__count" id="btrtmCount" aria-live="polite">01 / 06</span>
-      </div>
-    </div>
-
-    <div class="btrtm__stage" role="region" aria-roledescription="carousel" aria-label="Client testimonials">
-      <div class="btrtm__slides">
-
-        <article class="btrtm__slide is-active" aria-roledescription="slide" aria-label="1 of 6">
-          <svg class="btrtm__mark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.2 5C5.8 6.6 3.5 9.7 3.5 13.6V19h6.1v-6H6.7c.1-2 1.2-3.5 3.2-4.4L9.2 5zm10 0c-3.4 1.6-5.7 4.7-5.7 8.6V19h6.1v-6h-2.9c.1-2 1.2-3.5 3.2-4.4L19.2 5z"/></svg>
-          <div class="btrtm__stars" aria-label="5 out of 5 stars">★★★★★</div>
-          <p class="btrtm__quote">Xvera Labs transformed our digital systems with precision and speed. Their team combined technical depth with an understanding of business strategy that made the whole rollout feel effortless.</p>
-          <div class="btrtm__author">
-            <span class="btrtm__avatar" aria-hidden="true">DS</span>
-            <div><div class="btrtm__name">David Smith</div><div class="btrtm__role">Founder &amp; CEO</div></div>
-            <span class="btrtm__company">TechCorp</span>
-          </div>
-        </article>
-
-        <article class="btrtm__slide" aria-roledescription="slide" aria-label="2 of 6" aria-hidden="true">
-          <svg class="btrtm__mark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.2 5C5.8 6.6 3.5 9.7 3.5 13.6V19h6.1v-6H6.7c.1-2 1.2-3.5 3.2-4.4L9.2 5zm10 0c-3.4 1.6-5.7 4.7-5.7 8.6V19h6.1v-6h-2.9c.1-2 1.2-3.5 3.2-4.4L19.2 5z"/></svg>
-          <div class="btrtm__stars" aria-label="5 out of 5 stars">★★★★★</div>
-          <p class="btrtm__quote">We needed a partner who could understand enterprise complexity, and Xvera delivered exactly that. Their execution quality, communication and cloud expertise stood out from day one.</p>
-          <div class="btrtm__author">
-            <span class="btrtm__avatar" aria-hidden="true">AK</span>
-            <div><div class="btrtm__name">Aisha Khan</div><div class="btrtm__role">VP Operations</div></div>
-            <span class="btrtm__company">NorthPeak</span>
-          </div>
-        </article>
-
-        <article class="btrtm__slide" aria-roledescription="slide" aria-label="3 of 6" aria-hidden="true">
-          <svg class="btrtm__mark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.2 5C5.8 6.6 3.5 9.7 3.5 13.6V19h6.1v-6H6.7c.1-2 1.2-3.5 3.2-4.4L9.2 5zm10 0c-3.4 1.6-5.7 4.7-5.7 8.6V19h6.1v-6h-2.9c.1-2 1.2-3.5 3.2-4.4L19.2 5z"/></svg>
-          <div class="btrtm__stars" aria-label="5 out of 5 stars">★★★★★</div>
-          <p class="btrtm__quote">Their team brought clarity to a difficult migration and gave our product roadmap a strong technical foundation. The result was faster delivery and much better reliability.</p>
-          <div class="btrtm__author">
-            <span class="btrtm__avatar" aria-hidden="true">MG</span>
-            <div><div class="btrtm__name">Michael Gray</div><div class="btrtm__role">Director of Product</div></div>
-            <span class="btrtm__company">Luma Labs</span>
-          </div>
-        </article>
-
-        <article class="btrtm__slide" aria-roledescription="slide" aria-label="4 of 6" aria-hidden="true">
-          <svg class="btrtm__mark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.2 5C5.8 6.6 3.5 9.7 3.5 13.6V19h6.1v-6H6.7c.1-2 1.2-3.5 3.2-4.4L9.2 5zm10 0c-3.4 1.6-5.7 4.7-5.7 8.6V19h6.1v-6h-2.9c.1-2 1.2-3.5 3.2-4.4L19.2 5z"/></svg>
-          <div class="btrtm__stars" aria-label="5 out of 5 stars">★★★★★</div>
-          <p class="btrtm__quote">From cloud architecture to automation, every solution felt custom-built for our goals. The team was proactive, responsive and deeply invested in measurable outcomes.</p>
-          <div class="btrtm__author">
-            <span class="btrtm__avatar" aria-hidden="true">SA</span>
-            <div><div class="btrtm__name">Sonia Ahmed</div><div class="btrtm__role">COO</div></div>
-            <span class="btrtm__company">Vantage One</span>
-          </div>
-        </article>
-
-        <article class="btrtm__slide" aria-roledescription="slide" aria-label="5 of 6" aria-hidden="true">
-          <svg class="btrtm__mark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.2 5C5.8 6.6 3.5 9.7 3.5 13.6V19h6.1v-6H6.7c.1-2 1.2-3.5 3.2-4.4L9.2 5zm10 0c-3.4 1.6-5.7 4.7-5.7 8.6V19h6.1v-6h-2.9c.1-2 1.2-3.5 3.2-4.4L19.2 5z"/></svg>
-          <div class="btrtm__stars" aria-label="5 out of 5 stars">★★★★★</div>
-          <p class="btrtm__quote">Xvera Labs quickly understood our environment and made improvements that had a real impact on speed, scalability and visibility. Their delivery model is efficient and highly reliable.</p>
-          <div class="btrtm__author">
-            <span class="btrtm__avatar" aria-hidden="true">JP</span>
-            <div><div class="btrtm__name">Jason Park</div><div class="btrtm__role">Technology Lead</div></div>
-            <span class="btrtm__company">OrbitGrid</span>
-          </div>
-        </article>
-
-        <article class="btrtm__slide" aria-roledescription="slide" aria-label="6 of 6" aria-hidden="true">
-          <svg class="btrtm__mark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.2 5C5.8 6.6 3.5 9.7 3.5 13.6V19h6.1v-6H6.7c.1-2 1.2-3.5 3.2-4.4L9.2 5zm10 0c-3.4 1.6-5.7 4.7-5.7 8.6V19h6.1v-6h-2.9c.1-2 1.2-3.5 3.2-4.4L19.2 5z"/></svg>
-          <div class="btrtm__stars" aria-label="5 out of 5 stars">★★★★★</div>
-          <p class="btrtm__quote">The collaboration was smooth, strategic and outcome-focused. We saw not only technical improvements but also better performance across our customer experience journey.</p>
-          <div class="btrtm__author">
-            <span class="btrtm__avatar" aria-hidden="true">NA</span>
-            <div><div class="btrtm__name">Nadia Ali</div><div class="btrtm__role">Head of Growth</div></div>
-            <span class="btrtm__company">SummitIQ</span>
-          </div>
-        </article>
-
-      </div>
-      <div class="btrtm__progress" aria-hidden="true"><span class="btrtm__bar" id="btrtmBar"></span></div>
-    </div>
-
+<!-- ===================== NUMBERS (use real numbers only) ===================== -->
+<section class="xh xh-stats" aria-label="Xvera Labs in numbers">
+  <div class="xh-wrap xh-stats__grid">
+    <div><span class="xh-count" data-count="5">0</span><p>Global brands</p></div>
+    <div><span class="xh-count" data-count="13">0</span><p>Happy clients</p></div>
+    <div><span class="xh-count" data-count="2">0</span><p>Awards won</p></div>
+    <div><span class="xh-count" data-count="15">0</span><p>Projects delivered</p></div>
   </div>
 </section>
 
-<!-- ================================================
-   COUNTER SECTION
-   NOTE: use real numbers only (investors will check)
-   ================================================ -->
-<section class="btr-counter-section btr-section-padding">
-    <div class="btr-container">
-        <div class="btr-counter-grid">
-            <div class="btr-counter-item">
-                <span class="btr-counter-number" data-count="5">0</span>
-                <span class="btr-counter-label">Global Brands</span>
-            </div>
-            <div class="btr-counter-item">
-                <span class="btr-counter-number" data-count="13">0</span>
-                <span class="btr-counter-label">Happy Clients</span>
-            </div>
-            <div class="btr-counter-item">
-                <span class="btr-counter-number" data-count="2">0</span>
-                <span class="btr-counter-label">Winning Awards</span>
-            </div>
-            <div class="btr-counter-item">
-                <span class="btr-counter-number" data-count="15">0</span>
-                <span class="btr-counter-label">Projects Delivered</span>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- =================================================================
-     BLOG  (redesigned; was "Insights & News")
-================================================================== -->
-<section class="btrbl" id="insights" aria-labelledby="btrblTitle">
-  <div class="btrbl__wrap">
-
-    <div class="btrbl__head">
+<!-- ===================== BLOG ===================== -->
+<section class="xh xh-sec xh-sec--paper" id="insights" aria-labelledby="xhBlTitle">
+  <div class="xh-wrap">
+    <header class="xh-head xh-head--row">
       <div>
-        <span class="btrbl__eyebrow">From the blog</span>
-        <h2 class="btrbl__title" id="btrblTitle">Ideas on cloud, AI and building better products</h2>
+        <p class="xh-eyebrow">From the blog</p>
+        <h2 id="xhBlTitle">Ideas on cloud, AI and building better products</h2>
       </div>
-      <a href="{% url 'blogs' %}" class="btrbl__all">View all articles <span aria-hidden="true">&rarr;</span></a>
-    </div>
-
-    <div class="btrbl__grid">
-
-      <!-- Featured post -->
-      <a href="{% url 'blogs' %}" class="btrbl__feature">
-        <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="" loading="lazy" decoding="async" onerror="this.remove()">
-        <div class="btrbl__feature-body">
-          <div class="btrbl__meta"><span class="btrbl__chip">Cloud</span><span>25 Dec, 2025</span></div>
-          <h3>Designing resilient cloud systems for fast-moving enterprises</h3>
-          <p>Learn how leading teams modernize infrastructure with measurable performance gains and lower operational drag.</p>
-          <span class="btrbl__read">Read article <span aria-hidden="true">&rarr;</span></span>
-        </div>
-      </a>
-
-      <!-- Side posts -->
-      <div class="btrbl__list">
-
-        <a href="{% url 'blogs' %}" class="btrbl__item">
-          <div class="btrbl__thumb">
-            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="" loading="lazy" decoding="async" onerror="this.remove()">
-          </div>
-          <div class="btrbl__item-body">
-            <div class="btrbl__meta"><span class="btrbl__chip">AI</span><span>09 Jan, 2026</span></div>
-            <h3>AI workflows that turn data into smarter enterprise decisions</h3>
-            <span class="btrbl__read">Read article <span aria-hidden="true">&rarr;</span></span>
-          </div>
-        </a>
-
-        <a href="{% url 'blogs' %}" class="btrbl__item">
-          <div class="btrbl__thumb">
-            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="" loading="lazy" decoding="async" onerror="this.remove()">
-          </div>
-          <div class="btrbl__item-body">
-            <div class="btrbl__meta"><span class="btrbl__chip">Strategy</span><span>18 Mar, 2026</span></div>
-            <h3>How product teams build better digital experiences for global audiences</h3>
-            <span class="btrbl__read">Read article <span aria-hidden="true">&rarr;</span></span>
-          </div>
-        </a>
-
-      </div>
+      <a href="{% url 'blogs' %}" class="xh-btn xh-btn--ink">View all articles</a>
+    </header>
+    <div class="xh-posts">
+      <a href="{% url 'blogs' %}" class="xh-post"><span class="xh-chip">Cloud</span><h3>Designing resilient cloud systems for fast-moving teams</h3><p>How modern teams update their infrastructure for better performance and less operational drag.</p><span class="xh-more">Read article</span></a>
+      <a href="{% url 'blogs' %}" class="xh-post"><span class="xh-chip">AI</span><h3>AI workflows that turn data into smarter decisions</h3><p>Where AI automation pays off first, and how to start without a huge budget.</p><span class="xh-more">Read article</span></a>
+      <a href="{% url 'blogs' %}" class="xh-post"><span class="xh-chip">Strategy</span><h3>How product teams build better digital experiences</h3><p>Practical habits that help product teams ship features users actually want.</p><span class="xh-more">Read article</span></a>
     </div>
   </div>
 </section>
 
-<!-- =================================================================
-   CONTACT SECTION  (redesigned: intro on the left, project form on the right)
-   TODO (backend): point the form action at a Django view that saves / emails
-   the submission. Field names: full_name, email, phone_code, phone, company,
-   company_url, region, topic, services (multiple), message.
-================================================================== -->
-<section class="btrct" id="support" aria-labelledby="btrctTitle">
-  <div class="btrct__wrap">
+<!-- ===================== CONTACT (same backend as the Contact page) ===================== -->
+<section class="xh xh-sec" id="support" aria-labelledby="xhCtTitle">
+  <div class="xh-wrap xh-contact">
 
-    <!-- LEFT: intro + contact details -->
-    <div class="btrct__intro">
-      <span class="btrct__eyebrow">Contact us</span>
-      <h2 class="btrct__title" id="btrctTitle">Let's discuss your project</h2>
-      <p class="btrct__text">Tell us what you are building, and our team will review your details and reach out to find a time to talk.</p>
-      <p class="btrct__text">Interested in partnering or investing with Xvera Labs? Pick that option in the form and we will point you to the right person.</p>
-
-      <ul class="btrct__info">
-        <li>
-          <span class="btrct__icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
-          <div><span class="btrct__label">Email</span><a href="mailto:xveralabs.contact@gmail.com">xveralabs.contact@gmail.com</a></div>
-        </li>
-        <li>
-          <span class="btrct__icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg></span>
-          <div><span class="btrct__label">Phone</span><a href="tel:+923248699647">+92 324 8699 647</a></div>
-        </li>
-        <li>
-          <span class="btrct__icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 01-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1121 11.5z"/></svg></span>
-          <div><span class="btrct__label">WhatsApp</span><a href="https://wa.me/923248699647" target="_blank" rel="noopener noreferrer">0324 8699647</a></div>
-        </li>
-        <li>
-          <span class="btrct__icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-11.5A7 7 0 005 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
-          <div><span class="btrct__label">Office</span><span class="btrct__value">297-C, P.I.A. Main Boulevard Road, Lahore, Pakistan</span></div>
-        </li>
+    <div class="xh-contact__intro">
+      <p class="xh-eyebrow">Contact us</p>
+      <h2 id="xhCtTitle">Let's discuss your project</h2>
+      <p class="xh-sub">Tell us what you are building. Our team will review your details and reach out to find a time to talk.</p>
+      <ul class="xh-ways" aria-label="Ways to reach us">
+        <li><a href="https://wa.me/923248699647" target="_blank" rel="noopener noreferrer"><small>WhatsApp</small><strong>0324 8699647</strong></a></li>
+        <li><a href="mailto:xveralabs@gmail.com"><small>Email</small><strong>xveralabs@gmail.com</strong></a></li>
+        <li><a href="tel:+923248699647"><small>Phone</small><strong>+92 324 8699 647</strong></a></li>
+        <li><div><small>Office</small><strong>297-C, P.I.A. Main Boulevard Road, Lahore</strong></div></li>
       </ul>
-
-      <div class="btrct__social">
-        <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M14 13.5H16.5L17.5 9.5H14V7.5C14 6.47 14 5.5 16 5.5H17.5V2.14C17.174 2.097 15.943 2 14.643 2C11.928 2 10 3.657 10 6.7V9.5H7V13.5H10V22H14V13.5Z"/></svg></a>
-        <a href="#" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.162 5.656C21.398 5.994 20.589 6.216 19.76 6.314C20.634 5.792 21.288 4.969 21.6 4C20.78 4.488 19.881 4.83 18.944 5.015C18.315 4.342 17.48 3.895 16.571 3.745C15.662 3.594 14.728 3.748 13.915 4.183C13.103 4.618 12.456 5.31 12.077 6.15C11.698 6.99 11.607 7.932 11.818 8.829C10.155 8.746 8.528 8.314 7.043 7.561C5.558 6.808 4.248 5.751 3.198 4.459C2.826 5.097 2.631 5.823 2.632 6.562C2.632 8.012 3.37 9.293 4.492 10.043C3.828 10.022 3.179 9.843 2.598 9.52V9.572C2.598 10.538 2.932 11.474 3.544 12.221C4.155 12.968 5.006 13.481 5.953 13.673C5.337 13.84 4.69 13.865 4.063 13.745C4.33 14.576 4.85 15.303 5.551 15.824C6.251 16.345 7.097 16.634 7.97 16.65C7.102 17.331 6.109 17.835 5.047 18.132C3.985 18.429 2.874 18.514 1.779 18.382C3.691 19.611 5.916 20.264 8.189 20.262C15.882 20.262 20.089 13.889 20.089 8.362C20.089 8.182 20.084 8 20.076 7.822C20.895 7.23 21.602 6.497 22.162 5.656Z"/></svg></a>
-        <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 5.00002C6.94 5.53046 6.729 6.03906 6.354 6.41394C5.979 6.78883 5.47 6.99929 4.94 6.99902C4.409 6.99876 3.901 6.78779 3.525 6.41253C3.15 6.03727 2.94 5.52846 2.94 4.99802C2.94 4.46759 3.151 3.95899 3.526 3.5841C3.902 3.20922 4.411 2.99876 4.941 2.99902C5.471 2.99929 5.98 3.21026 6.355 3.58552C6.73 3.96078 6.94 4.46959 6.94 5.00002ZM7 8.48002H3V21H7V8.48002ZM13.32 8.48002H9.34V21H13.28V14.43C13.28 10.77 18.05 10.43 18.05 14.43V21H22V13.07C22 6.90002 14.94 7.13002 13.28 10.16L13.32 8.48002Z"/></svg></a>
-      </div>
     </div>
 
-    <!-- RIGHT: form -->
-    <div class="btrct__card">
-      <h3 class="btrct__card-title">Get In Touch</h3>
+    <div class="xh-form-card">
+      <h3>Get in touch</h3>
+      {% if request.GET.sent == '1' %}<p class="xh-ok" role="status">Thank you. We have received your details and will contact you soon.</p>{% endif %}
 
-      <form class="btrct__form" id="btrctForm" method="post" action="{% url 'contact_us' %}" novalidate>
+      <form class="xh-form" id="xhForm" method="post" action="{% url 'contact_us' %}">
         {% csrf_token %}
+        <input type="hidden" name="next" value="{{ request.path }}">
+        <div class="xh-hp" aria-hidden="true"><label>Leave this empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
 
-        <div class="btrct__grid">
-          <div class="btrct__field">
-            <label for="ctName">Full Name<span class="btrct__req" aria-hidden="true">*</span></label>
-            <input type="text" id="ctName" name="full_name" autocomplete="name" required>
-          </div>
-          <div class="btrct__field">
-            <label for="ctEmail">Email<span class="btrct__req" aria-hidden="true">*</span></label>
-            <input type="email" id="ctEmail" name="email" autocomplete="email" required>
-          </div>
+        <div class="xh-f"><label for="{{ contact_form.full_name.id_for_label }}">Full name<span>*</span></label>{{ contact_form.full_name }}</div>
+        <div class="xh-f"><label for="{{ contact_form.email.id_for_label }}">Email<span>*</span></label>{{ contact_form.email }}</div>
+        <div class="xh-f"><label for="{{ contact_form.phone.id_for_label }}">Phone number<span>*</span></label><div class="xh-phone">{{ contact_form.country_code }}{{ contact_form.phone }}</div></div>
+        <div class="xh-f"><label for="{{ contact_form.company.id_for_label }}">Company name<span>*</span></label>{{ contact_form.company }}</div>
+        <div class="xh-f"><label for="{{ contact_form.company_url.id_for_label }}">Company URL</label>{{ contact_form.company_url }}</div>
+        <div class="xh-f"><label for="{{ contact_form.region.id_for_label }}">Region<span>*</span></label>{{ contact_form.region }}</div>
+        <div class="xh-f"><label for="{{ contact_form.topic.id_for_label }}">I am reaching out about<span>*</span></label>{{ contact_form.topic }}</div>
 
-          <div class="btrct__field">
-            <label for="ctPhone">Phone Number<span class="btrct__req" aria-hidden="true">*</span></label>
-            <div class="btrct__phone">
-              <select name="phone_code" aria-label="Country code">
-              <option value="+92" selected>🇵🇰 +92</option>
-              <option value="+1">🇺🇸 +1</option>
-              <option value="+44">🇬🇧 +44</option>
-              <option value="+971">🇦🇪 +971</option>
-              <option value="+966">🇸🇦 +966</option>
-              <option value="+61">🇦🇺 +61</option>
-              <option value="+49">🇩🇪 +49</option>
-              </select>
-              <input type="tel" id="ctPhone" name="phone" autocomplete="tel-national" placeholder="300 1234567" required>
-            </div>
+        <fieldset class="xh-f xh-services" id="xhServices">
+          <legend>Services you are looking for<span>*</span></legend>
+          <div class="xh-opts">
+            {% for cb in contact_form.services %}<label class="xh-opt">{{ cb.tag }}<span>{{ cb.choice_label }}</span></label>
+            {% endfor %}
           </div>
-          <div class="btrct__field">
-            <label for="ctCompany">Company Name<span class="btrct__req" aria-hidden="true">*</span></label>
-            <input type="text" id="ctCompany" name="company" autocomplete="organization" required>
-          </div>
-
-          <div class="btrct__field">
-            <label for="ctUrl">Company URL</label>
-            <input type="url" id="ctUrl" name="company_url" placeholder="https://" autocomplete="url">
-          </div>
-          <div class="btrct__field">
-            <label for="ctRegion">Region<span class="btrct__req" aria-hidden="true">*</span></label>
-            <select id="ctRegion" name="region" required>
-              <option value="" selected disabled>Select region</option>
-              <option>Pakistan</option>
-              <option>Middle East</option>
-              <option>Europe</option>
-              <option>North America</option>
-              <option>Asia Pacific</option>
-              <option>Africa</option>
-              <option>Other</option>
-            </select>
-          </div>
-
-          <div class="btrct__field btrct__field--full">
-            <label for="ctTopic">I'm reaching out about<span class="btrct__req" aria-hidden="true">*</span></label>
-            <select id="ctTopic" name="topic" required>
-              <option value="" selected disabled>Please select</option>
-              <option>A new project</option>
-              <option>Partnership or investment</option>
-              <option>Careers</option>
-              <option>Something else</option>
-            </select>
-          </div>
-        </div>
-
-        <fieldset class="btrct__services">
-          <legend>Services you are looking for<span class="btrct__req" aria-hidden="true">*</span></legend>
-          <div class="btrct__chips">
-            <label class="btrct__chip"><input type="checkbox" name="services" value="Custom Software Development"><span>Custom Software Development</span></label>
-            <label class="btrct__chip"><input type="checkbox" name="services" value="Web Development"><span>Web Development</span></label>
-            <label class="btrct__chip"><input type="checkbox" name="services" value="Mobile App Development"><span>Mobile App Development</span></label>
-            <label class="btrct__chip"><input type="checkbox" name="services" value="AI & Machine Learning"><span>AI &amp; Machine Learning</span></label>
-            <label class="btrct__chip"><input type="checkbox" name="services" value="Cloud & DevOps"><span>Cloud &amp; DevOps</span></label>
-            <label class="btrct__chip"><input type="checkbox" name="services" value="Data & Analytics"><span>Data &amp; Analytics</span></label>
-            <label class="btrct__chip"><input type="checkbox" name="services" value="Cyber Security"><span>Cyber Security</span></label>
-            <label class="btrct__chip"><input type="checkbox" name="services" value="Other IT Services"><span>Other IT Services</span></label>
-          </div>
+          <p class="xh-err" id="xhServicesErr" role="alert" hidden>Please choose at least one service.</p>
         </fieldset>
 
-        <div class="btrct__field btrct__field--full">
-          <label for="ctMessage">Project Details<span class="btrct__req" aria-hidden="true">*</span></label>
-          <textarea id="ctMessage" name="message" rows="4" placeholder="Tell us about your project, goals and timeline..." required></textarea>
-        </div>
-
-        <div class="btrct__foot">
-          <button type="submit" class="btrct__submit">Submit <span aria-hidden="true">&rarr;</span></button>
-          <p class="btrct__note">By submitting, you agree to our <a href="{% url 'privacy_policy' %}">Privacy Policy</a>.</p>
-        </div>
+        <div class="xh-f"><label for="{{ contact_form.details.id_for_label }}">Project details<span>*</span></label>{{ contact_form.details }}</div>
+        <button type="submit" class="xh-btn xh-btn--ink xh-submit">Send project details</button>
       </form>
     </div>
-
   </div>
 </section>
 
-<!-- ================================================
-   CTA SECTION
-   ================================================ -->
-<section class="btr-cta-section btr-section-padding">
-    <div class="btr-container">
-        <div class="btr-cta-content">
-            <div class="btr-cta-text">
-                <h2>Ready to Transform Your Business?</h2>
-                <p>Partner with Xvera Solutions to build scalable, high-performance digital products that drive measurable results.</p>
-            </div>
-            <a href="#" class="btr-cta-btn">Get Started Now →</a>
-        </div>
-    </div>
-</section>
 <script src="{% static 'js/pages/home-index-1.js' %}"></script>
+<script src="{% static 'js/pages/home-index-2.js' %}?v=1"></script>
 {% endblock %}
