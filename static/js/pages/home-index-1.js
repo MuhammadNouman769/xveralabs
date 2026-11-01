@@ -1,433 +1,131 @@
-// ===== Hero: pause animations off screen + subtle pointer tilt =====
-document.addEventListener("DOMContentLoaded", function () {
-    var hero = document.querySelector(".btrhero");
-    if (!hero) return;
+(function () {
+  'use strict';
 
-    // save CPU/battery: pause the hero animations when it is not visible
-    if ("IntersectionObserver" in window) {
-        new IntersectionObserver(function (entries) {
-            hero.classList.toggle("is-offscreen", !entries[0].isIntersecting);
-        }, { threshold: 0 }).observe(hero);
-    }
-
-    var tilt = document.getElementById("btrheroTilt");
-    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-    if (!tilt || reduceMotion || !finePointer) return;
-
-    var raf = null;
-    function setTilt(rx, ry) {
-        tilt.style.setProperty("--rx", rx + "deg");
-        tilt.style.setProperty("--ry", ry + "deg");
-    }
-
-    hero.addEventListener("mousemove", function (e) {
-        if (raf) return;
-        raf = requestAnimationFrame(function () {
-            raf = null;
-            var r = hero.getBoundingClientRect();
-            var x = (e.clientX - r.left) / r.width - 0.5;
-            var y = (e.clientY - r.top) / r.height - 0.5;
-            setTilt((-y * 6).toFixed(2), (x * 8).toFixed(2));
-        });
-    });
-    hero.addEventListener("mouseleave", function () { setTilt(0, 0); });
-});
-
-// ===== Cloud & DevOps: filter =====
-document.addEventListener("DOMContentLoaded", function () {
-    var root = document.querySelector(".btrsc");
-    if (!root) return;
-
-    var buttons = Array.prototype.slice.call(root.querySelectorAll(".btrsc__filter"));
-    var cards = Array.prototype.slice.call(root.querySelectorAll(".btrsc__card"));
-
-    buttons.forEach(function (button) {
-        button.addEventListener("click", function () {
-            buttons.forEach(function (b) {
-                b.classList.remove("is-active");
-                b.setAttribute("aria-pressed", "false");
-            });
-            button.classList.add("is-active");
-            button.setAttribute("aria-pressed", "true");
-
-            var filter = button.getAttribute("data-filter");
-
-            cards.forEach(function (card) {
-                var show = filter === "all" || card.getAttribute("data-category") === filter;
-                card.classList.toggle("is-hidden", !show);
-                if (show) {
-                    // restart the fade-in animation
-                    card.classList.remove("is-entering");
-                    void card.offsetWidth;
-                    card.classList.add("is-entering");
-                }
-            });
-        });
-    });
-});
-
-// ===== Counter Animation =====
-document.addEventListener("DOMContentLoaded", function () {
-    const counters = document.querySelectorAll(".btr-counter-number");
-
-    const observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-                const el = entry.target;
-                const target = parseInt(el.dataset.count, 10);
-                const duration = 2000;
-                const startTime = performance.now();
-
-                function updateCounter(currentTime) {
-                    const elapsed = currentTime - startTime;
-                    const progress = Math.min(elapsed / duration, 1);
-                    const eased = 1 - Math.pow(1 - progress, 3);
-                    el.textContent = Math.floor(eased * target);
-
-                    if (progress < 1) {
-                        requestAnimationFrame(updateCounter);
-                    } else {
-                        el.textContent = target;
-                    }
-                }
-                requestAnimationFrame(updateCounter);
-                observer.unobserve(el);
-            }
-        });
-    }, { threshold: 0.5 });
-
-    counters.forEach(function (counter) { observer.observe(counter); });
-});
-
-// ===== Who We Are: staggered cards reveal on scroll =====
-document.addEventListener("DOMContentLoaded", function () {
-    const section = document.querySelector(".btrwho-section");
-    if (!section) return;
-
-    const cards = Array.from(section.querySelectorAll(".btrwho-card"));
-    if (!cards.length) return;
-
-    // IntersectionObserver na ho to cards waise hi dikhte rahenge
-    if (!("IntersectionObserver" in window)) return;
-
-    section.classList.add("btrwho-js");
-
-    function reveal(card) {
-        // column ke hisaab se halka sa delay (1st col -> 2nd col -> 3rd col)
-        const col = card.closest(".btrwho-column");
-        const colIndex = col ? Array.from(col.parentElement.children).indexOf(col) : 0;
-        const rowIndex = col ? Array.from(col.children).indexOf(card) : 0;
-        card.style.transitionDelay = (colIndex * 120 + rowIndex * 90) + "ms";
-        card.classList.add("is-visible");
-
-        // delay hover animation ko slow na kare, isliye reveal ke baad hata do
-        setTimeout(function () { card.style.transitionDelay = ""; }, 1200);
-    }
-
-    const io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-                reveal(entry.target);
-                io.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.15 });
-
-    cards.forEach(function (card) { io.observe(card); });
-});
-
-// ===== Tech Cards Interaction (desktop accordion) =====
-document.addEventListener("DOMContentLoaded", function () {
-    const cards = document.querySelectorAll(".btr-tech-card");
-    const buttons = document.querySelectorAll(".btr-tech-detail-btn");
-
-    function resetAll() {
-        cards.forEach(function (item) {
-            item.classList.remove("is-active");
-            const b = item.querySelector(".btr-tech-detail-btn");
-            if (b) b.setAttribute("aria-expanded", "false");
-        });
-    }
-
-    buttons.forEach(function (button) {
-        button.addEventListener("click", function (event) {
-            event.preventDefault();
-            event.stopPropagation();
-            const card = button.closest(".btr-tech-card");
-            const isActive = card.classList.contains("is-active");
-            resetAll();
-            if (!isActive) {
-                card.classList.add("is-active");
-                button.setAttribute("aria-expanded", "true");
-            }
-        });
-    });
-
-    cards.forEach(function (card) {
-        card.addEventListener("click", function (event) {
-            if (event.target.closest(".btr-tech-detail-btn")) return;
-            // slider mode (≤1000px) mein accordion ki zaroorat nahi
-            if (window.matchMedia("(max-width: 1000px)").matches) return;
-            if (window.matchMedia("(hover: none)").matches) {
-                const isActive = card.classList.contains("is-active");
-                resetAll();
-                if (!isActive) {
-                    card.classList.add("is-active");
-                    const b = card.querySelector(".btr-tech-detail-btn");
-                    if (b) b.setAttribute("aria-expanded", "true");
-                }
-            }
-        });
-    });
-
-    document.addEventListener("click", function (event) {
-        if (!event.target.closest(".btr-tech-card")) resetAll();
-    });
-});
-
-// ===== Tech Cards: one-by-one slider (≤1000px) =====
-document.addEventListener("DOMContentLoaded", function () {
-    const wrap = document.getElementById("btrTechCards");
-    const dotsBox = document.getElementById("btrTechDots");
-    if (!wrap || !dotsBox) return;
-
-    const slides = Array.from(wrap.querySelectorAll(".btr-tech-card"));
-    if (!slides.length) return;
-
-    const mq = window.matchMedia("(max-width: 1000px)");
-    const DELAY = 3500;
-    let index = 0;
-    let timer = null;
-    let scrollTimer = null;
-
-    // dots banao
-    slides.forEach(function (_, i) {
-        const d = document.createElement("button");
-        d.type = "button";
-        d.className = "btr-tech-dot";
-        d.setAttribute("aria-label", "Go to slide " + (i + 1));
-        d.addEventListener("click", function () {
-            goTo(i);
-            start();
-        });
-        dotsBox.appendChild(d);
-    });
-    const dots = Array.from(dotsBox.querySelectorAll(".btr-tech-dot"));
-
-    function setDot(i) {
-        dots.forEach(function (d, n) { d.classList.toggle("active", n === i); });
-    }
-
-    function goTo(i) {
-        index = (i + slides.length) % slides.length;
-        wrap.scrollTo({ left: slides[index].offsetLeft, behavior: "smooth" });
-        setDot(index);
-    }
-
-    function stop() {
-        if (timer) { clearInterval(timer); timer = null; }
-    }
-
-    function start() {
-        stop();
-        if (!mq.matches) return;
-        timer = setInterval(function () { goTo(index + 1); }, DELAY);
-    }
-
-    // swipe / manual scroll ke baad current index detect karo
-    wrap.addEventListener("scroll", function () {
-        if (!mq.matches) return;
-        clearTimeout(scrollTimer);
-        scrollTimer = setTimeout(function () {
-            let nearest = 0;
-            let min = Infinity;
-            slides.forEach(function (s, n) {
-                const diff = Math.abs(s.offsetLeft - wrap.scrollLeft);
-                if (diff < min) { min = diff; nearest = n; }
-            });
-            index = nearest;
-            setDot(index);
-        }, 80);
-    }, { passive: true });
-
-    // user touch kare to pause, chhodne par dobara start
-    wrap.addEventListener("touchstart", stop, { passive: true });
-    wrap.addEventListener("touchend", start, { passive: true });
-    wrap.addEventListener("mouseenter", stop);
-    wrap.addEventListener("mouseleave", start);
-
-    // screen size badle (desktop <-> tablet/mobile)
-    function onModeChange() {
-        wrap.scrollLeft = 0;
-        index = 0;
-        setDot(0);
-        start();
-    }
-    if (mq.addEventListener) {
-        mq.addEventListener("change", onModeChange);
-    } else if (mq.addListener) {
-        mq.addListener(onModeChange);
-    }
-
-    setDot(0);
-    start();
-});
-
-// ===== Client Voices: featured testimonial carousel =====
-document.addEventListener("DOMContentLoaded", function () {
-    var root = document.querySelector(".btrtm");
-    if (!root) return;
-
-    var slides = Array.prototype.slice.call(root.querySelectorAll(".btrtm__slide"));
-    var prev = document.getElementById("btrtmPrev");
-    var next = document.getElementById("btrtmNext");
-    var count = document.getElementById("btrtmCount");
-    var bar = document.getElementById("btrtmBar");
-    if (slides.length < 2) return;
-
-    var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    var index = 0;
-
-    function pad(n) { return n < 10 ? "0" + n : String(n); }
-
-    function restartBar() {
-        if (!bar) return;
-        bar.classList.remove("is-running");
-        void bar.offsetWidth;
-        if (!reduceMotion) bar.classList.add("is-running");
-    }
+  // ===== Hero carousel =====
+  var hero = document.querySelector('.xh-hero');
+  if (hero) {
+    var slides = [].slice.call(hero.querySelectorAll('.xh-slide'));
+    var tabs = [].slice.call(hero.querySelectorAll('.xh-tab'));
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var idx = 0;
 
     function show(i) {
-        index = (i + slides.length) % slides.length;
-        slides.forEach(function (slide, n) {
-            var active = n === index;
-            slide.classList.toggle("is-active", active);
-            slide.setAttribute("aria-hidden", active ? "false" : "true");
-        });
-        if (count) count.textContent = pad(index + 1) + " / " + pad(slides.length);
-        restartBar();
+      idx = (i + slides.length) % slides.length;
+      slides.forEach(function (s, n) {
+        s.classList.toggle('is-active', n === idx);
+        s.setAttribute('aria-hidden', n === idx ? 'false' : 'true');
+      });
+      tabs.forEach(function (t, n) {
+        t.classList.toggle('is-active', n === idx);
+        t.setAttribute('aria-pressed', n === idx ? 'true' : 'false');
+      });
+      hero.classList.remove('is-running');   // restart the timer bar
+      void hero.offsetWidth;
+      if (!reduce) hero.classList.add('is-running');
     }
 
-    // the progress bar finishing = time for the next slide (pausing the bar pauses autoplay)
-    if (bar) {
-        bar.addEventListener("animationend", function () { show(index + 1); });
-    }
-
-    if (prev) prev.addEventListener("click", function () { show(index - 1); });
-    if (next) next.addEventListener("click", function () { show(index + 1); });
-
-    function pause() { root.classList.add("is-paused"); }
-    function resume() { root.classList.remove("is-paused"); }
-
-    root.addEventListener("mouseenter", pause);
-    root.addEventListener("mouseleave", resume);
-    root.addEventListener("focusin", pause);
-    root.addEventListener("focusout", resume);
-    root.addEventListener("touchstart", pause, { passive: true });
-    root.addEventListener("touchend", resume, { passive: true });
-
-    root.addEventListener("keydown", function (e) {
-        if (e.key === "ArrowLeft") { show(index - 1); }
-        if (e.key === "ArrowRight") { show(index + 1); }
+    // the timer bar finishing means "go to the next slide"; pausing the bar pauses autoplay
+    hero.addEventListener('animationend', function (e) {
+      if (e.animationName === 'xhTimer') show(idx + 1);
     });
+    tabs.forEach(function (t, n) { t.addEventListener('click', function () { show(n); }); });
+    document.getElementById('xhPrev').addEventListener('click', function () { show(idx - 1); });
+    document.getElementById('xhNext').addEventListener('click', function () { show(idx + 1); });
 
-    // do not rotate while the tab is hidden
-    document.addEventListener("visibilitychange", function () {
-        if (document.hidden) { pause(); } else { resume(); }
+    function pause() { hero.classList.add('is-paused'); }
+    function resume() { hero.classList.remove('is-paused'); }
+    hero.addEventListener('mouseenter', pause);
+    hero.addEventListener('mouseleave', resume);
+    hero.addEventListener('focusin', pause);
+    hero.addEventListener('focusout', resume);
+    hero.addEventListener('touchstart', pause, { passive: true });
+    hero.addEventListener('touchend', resume, { passive: true });
+    document.addEventListener('visibilitychange', function () { document.hidden ? pause() : resume(); });
+    hero.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') show(idx - 1);
+      if (e.key === 'ArrowRight') show(idx + 1);
     });
-
     show(0);
-});
+  }
 
-// ===== Contact form: validation (no fake success, the server handles the submit) =====
-document.addEventListener("DOMContentLoaded", function () {
-    var form = document.getElementById("btrctForm");
-    if (!form) return;
-
-    var services = form.querySelector(".btrct__services");
-    var boxes = Array.prototype.slice.call(form.querySelectorAll('input[name="services"]'));
-    if (!services || !boxes.length) return;
-
-    var error = document.createElement("p");
-    error.className = "btrct__services-error";
-    error.setAttribute("role", "alert");
-    error.hidden = true;
-    error.textContent = "Please choose at least one service.";
-    services.appendChild(error);
-
-    function servicesOk() {
-        return boxes.some(function (b) { return b.checked; });
-    }
-    function showServices() {
-        var ok = servicesOk();
-        services.classList.toggle("is-invalid", !ok);
-        error.hidden = ok;
-    }
-
-    boxes.forEach(function (b) {
-        b.addEventListener("change", function () {
-            if (form.classList.contains("was-validated")) showServices();
-        });
+  // ===== Client logos: seamless marquee =====
+  var marquee = document.querySelector('.xh-marquee');
+  var track = document.getElementById('xhTrack');
+  if (marquee && track && track.children.length) {
+    [].slice.call(track.children).forEach(function (li) {
+      var c = li.cloneNode(true);
+      c.setAttribute('aria-hidden', 'true');
+      var img = c.querySelector('img');
+      if (img) img.setAttribute('alt', '');
+      track.appendChild(c);
     });
+    marquee.classList.add('is-ready');
+  }
 
-    form.addEventListener("submit", function (e) {
-        form.classList.add("was-validated");
-        var fieldsOk = form.checkValidity();
-        var svcOk = servicesOk();
-        showServices();
-        if (!fieldsOk || !svcOk) {
-            e.preventDefault();
-            var firstBad = form.querySelector(":invalid");
-            if (firstBad) { firstBad.focus(); } else { boxes[0].focus(); }
-        }
+  // ===== Counters + scroll reveal =====
+  var counters = [].slice.call(document.querySelectorAll('.xh-count'));
+  if ('IntersectionObserver' in window) {
+    var co = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var el = en.target, target = parseInt(el.dataset.count, 10) || 0, start = performance.now();
+        (function step(now) {
+          var p = Math.min((now - start) / 1600, 1);
+          el.textContent = Math.floor((1 - Math.pow(1 - p, 3)) * target);
+          if (p < 1) requestAnimationFrame(step); else el.textContent = target;
+        })(start);
+        co.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(function (c) { co.observe(c); });
+
+    var items = [].slice.call(document.querySelectorAll('.xh-card, .xh-dcard, .xh-post, .xh-steps li, .xh-head'));
+    document.documentElement.classList.add('xh-js');
+    items.forEach(function (n) { n.classList.add('xh-reveal'); });
+    var ro = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('is-in'); ro.unobserve(en.target); }
+      });
+    }, { threshold: 0.12 });
+    items.forEach(function (n) { ro.observe(n); });
+  } else {
+    counters.forEach(function (c) { c.textContent = c.dataset.count; });
+  }
+
+  // ===== Contact form: need at least one service (the server checks everything again) =====
+  var form = document.getElementById('xhForm');
+  if (form) {
+    var err = document.getElementById('xhServicesErr');
+    form.addEventListener('submit', function (e) {
+      var any = form.querySelector('input[name="services"]:checked');
+      err.hidden = !!any;
+      if (!any) {
+        e.preventDefault();
+        var first = form.querySelector('input[name="services"]');
+        if (first) first.focus();
+      }
     });
-});
+  }
+})();
 
-// ===== Clients: build the two-way logo marquee =====
-document.addEventListener("DOMContentLoaded", function () {
-    var section = document.querySelector(".btrcl");
-    var track1 = document.getElementById("btrclTrack1");
-    var track2 = document.getElementById("btrclTrack2");
-    var row2 = document.getElementById("btrclRow2");
-    var toggle = document.getElementById("btrclToggle");
-    if (!section || !track1 || !track2 || !row2) return;
-
-    var items = Array.prototype.slice.call(track1.children);
-    if (!items.length) return;
-
-    // decorative copy of a logo (hidden from screen readers)
-    function copy(li) {
-        var c = li.cloneNode(true);
-        c.setAttribute("aria-hidden", "true");
-        var img = c.querySelector("img");
-        if (img) img.setAttribute("alt", "");
-        return c;
-    }
-
-    // row 1: original logos + one decorative copy (seamless loop)
-    items.forEach(function (li) { track1.appendChild(copy(li)); });
-
-    // row 2: same logos in reverse order, twice
-    var reversed = items.slice().reverse();
-    reversed.forEach(function (li) { track2.appendChild(copy(li)); });
-    reversed.forEach(function (li) { track2.appendChild(copy(li)); });
-    row2.hidden = false;
-
-    section.classList.add("is-ready");
-
-    // pause / play button
-    if (toggle) {
-        toggle.addEventListener("click", function () {
-            var paused = section.classList.toggle("is-paused");
-            toggle.setAttribute("aria-pressed", paused ? "true" : "false");
-        });
-    }
-
-    // do not animate while the section is off screen
-    if ("IntersectionObserver" in window) {
-        new IntersectionObserver(function (entries) {
-            section.classList.toggle("is-offscreen", !entries[0].isIntersecting);
-        }, { threshold: 0 }).observe(section);
-    }
+// ===== Featured Insights: staggered cards reveal on scroll =====
+document.addEventListener('DOMContentLoaded', function () {
+  var section = document.querySelector('.btrwho-section');
+  if (!section || !('IntersectionObserver' in window)) return;
+  var cards = [].slice.call(section.querySelectorAll('.btrwho-card'));
+  if (!cards.length) return;
+  section.classList.add('btrwho-js');
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var card = entry.target, col = card.closest('.btrwho-column');
+      var colIndex = col ? [].indexOf.call(col.parentElement.children, col) : 0;
+      var rowIndex = col ? [].indexOf.call(col.children, card) : 0;
+      card.style.transitionDelay = (colIndex * 120 + rowIndex * 90) + 'ms';
+      card.classList.add('is-visible');
+      setTimeout(function () { card.style.transitionDelay = ''; }, 1200);   // do not slow down hover
+      io.unobserve(card);
+    });
+  }, { threshold: 0.15 });
+  cards.forEach(function (c) { io.observe(c); });
 });

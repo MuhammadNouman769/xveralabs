@@ -264,7 +264,6 @@ body {
     margin: 0 0 16px;
     font: 700 22px/1.2 'Bricolage Grotesque', sans-serif;
 }
-
 .xv-links {
     list-style: none;
     margin: 0;
@@ -278,19 +277,34 @@ body {
 }
 
 .xv-links a {
-    display: block;
+    position: relative;
+    display: inline-block;
     padding: 9px 0;
     font-size: 15px;
     line-height: 1.35;
     color: rgba(255, 255, 255, .82);
     text-decoration: none;
-    border-bottom: 1px solid rgba(255, 255, 255, .08);
-    transition: color .15s, padding .2s var(--xv-ease);
+    border-bottom: none;
+    transition: color .25s ease;
+}
+
+.xv-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 3px;
+    width: 0;
+    height: 1px;
+    background: var(--xv-teal);
+    transition: width .3s ease;
 }
 
 .xv-links a:hover {
     color: var(--xv-teal);
-    padding-left: 6px;
+}
+
+.xv-links a:hover::after {
+    width: 100%;
 }
 
 .xv-feature {
