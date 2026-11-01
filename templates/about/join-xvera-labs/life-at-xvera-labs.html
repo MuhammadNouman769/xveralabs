@@ -2,201 +2,83 @@
 {% load static %}
 
 {% block title %}Life at Xvera Labs{% endblock %}
-
+{% block meta_description %}See what life is like at Xvera Labs: team events, a typical day for our developers, and the spaces we work in.{% endblock %}
 {% block body_class %}page-about-culture{% endblock %}
 
-{% block page_css %}<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{% static 'css/pages/about-culture.css' %}">
-{% endblock %}
+{% block page_css %}<link rel="stylesheet" href="{% static 'css/pages/about-culture.css' %}?v=2">{% endblock %}
 
 {% block content %}
-
 <div class="mn-life-page" data-culture-image-base="{% static 'images/culture/' %}">
 
 <!-- HERO -->
-<section class="hero-banner">
+<section class="hero-banner" aria-labelledby="lifeTitle">
     <div class="hero-content">
-        <span class="hero-badge">
-            <i class="fas fa-heart"></i>
-            Life at Xvera Labs
-        </span>
-
-        <h1>Where <span>Culture</span> Meets Innovation</h1>
-
-        <p>
-            We believe great work happens when people feel valued,
-            connected, and inspired. From celebrations to collaborations,
-            here's what makes Xvera Labs a place people love to be.
-        </p>
-
-        <div class="hero-stats">
-            <div>
-                <strong>150+</strong>
-                <span>Team Members</span>
-            </div>
-            <div>
-                <strong>20+</strong>
-                <span>Nationalities</span>
-            </div>
-            <div>
-                <strong>85%</strong>
-                <span>Employee Satisfaction</span>
-            </div>
+        <span class="hero-badge">Life at Xvera Labs</span>
+        <h1 id="lifeTitle">Where culture meets innovation.</h1>
+        <p>We believe great work happens when people feel valued, connected and inspired. From celebrations to collaboration, here is what makes Xvera Labs a place people enjoy working in.</p>
+        <div class="hero-actions">
+            <a href="{% url 'careeers' %}" class="mn-btn mn-btn--teal">See open roles</a>
+            <a href="{% url 'about-us' %}#leadership-team" class="mn-btn mn-btn--line">Meet the team</a>
         </div>
+        {% comment %}
+        Team-size / satisfaction numbers removed on purpose. Add them back here only if they are true and you can show where they come from.
+        {% endcomment %}
     </div>
 </section>
 
-<!-- CULTURE SLIDER -->
-<section class="slider-section">
+<!-- CULTURE SLIDER (cards are built by about-culture-1.js) -->
+<section class="slider-section" aria-labelledby="momentsTitle">
     <div class="section-header">
-        <span class="section-tag">
-            <i class="fas fa-images"></i>
-            Moments That Matter
-        </span>
-
-        <h2>
-            Moments that say more than
-            <span>a mission statement</span>
-        </h2>
-
-        <p>
-            From Her Revolution and Jashn-e-Baharan to Qawali Nights,
-            sports, meetups, and everything in between — these are the
-            moments that bring our culture to life.
-        </p>
+        <span class="section-tag">Moments that matter</span>
+        <h2 id="momentsTitle">Moments that say more than <span>a mission statement</span></h2>
+        <p>From Her Revolution and Jashn-e-Baharan to Qawali Nights, sports, meetups and everything in between, these are the moments that bring our culture to life.</p>
     </div>
-
     <div class="carousel-wrapper">
-        <button type="button" class="carousel-arrow carousel-prev" id="culturePrev" aria-label="Previous">
-            <i class="fas fa-chevron-left"></i>
-        </button>
-
+        <button type="button" class="carousel-arrow carousel-prev" id="culturePrev" aria-label="Previous">&larr;</button>
         <div class="carousel-track" id="cultureTrack"></div>
-
-        <button type="button" class="carousel-arrow carousel-next" id="cultureNext" aria-label="Next">
-            <i class="fas fa-chevron-right"></i>
-        </button>
+        <button type="button" class="carousel-arrow carousel-next" id="cultureNext" aria-label="Next">&rarr;</button>
     </div>
 </section>
 
 <!-- DAY IN THE LIFE -->
-<section class="day-section">
+<section class="day-section" aria-labelledby="dayTitle">
     <div class="section-header">
-        <span class="section-tag">
-            <i class="fas fa-clock"></i>
-            A Day in the Life
-        </span>
-
-        <h2>
-            How a <span>Developer</span> Spends Their Day
-        </h2>
-
-        <p>
-            A normal working day here, so you know exactly what
-            you're signing up for.
-        </p>
+        <span class="section-tag">A day in the life</span>
+        <h2 id="dayTitle">How a <span>developer</span> spends their day</h2>
+        <p>A normal working day here, so you know exactly what you are signing up for.</p>
     </div>
-
     <div class="carousel-wrapper">
-        <button type="button" class="carousel-arrow carousel-prev" id="dayPrev" aria-label="Previous">
-            <i class="fas fa-chevron-left"></i>
-        </button>
-
+        <button type="button" class="carousel-arrow carousel-prev" id="dayPrev" aria-label="Previous">&larr;</button>
         <div class="carousel-track" id="dayTrack"></div>
-
-        <button type="button" class="carousel-arrow carousel-next" id="dayNext" aria-label="Next">
-            <i class="fas fa-chevron-right"></i>
-        </button>
+        <button type="button" class="carousel-arrow carousel-next" id="dayNext" aria-label="Next">&rarr;</button>
     </div>
 </section>
 
-<!-- FACILITIES -->
-<section class="facilities">
-
-    <div class="facility-card">
-        <div class="facility-image">
-            <img src="{% static 'images/culture/nap.png' %}" alt="Nap Rooms" loading="lazy">
-        </div>
-        <div class="facility-content">
-            <div class="facility-icon"><i class="fas fa-moon"></i></div>
-            <div class="facility-text">
-                <div class="facility-title">Nap Rooms</div>
-                <div class="facility-desc">Quiet recharge pods, every floor</div>
-            </div>
-        </div>
+<!-- SPACES & FACILITIES -->
+<section class="facilities-wrap" aria-labelledby="spacesTitle">
+    <div class="section-header">
+        <span class="section-tag">Our spaces</span>
+        <h2 id="spacesTitle">Spaces built for <span>people</span></h2>
     </div>
-
-    <div class="facility-card">
-        <div class="facility-image">
-            <img src="{% static 'images/culture/rooftop.png' %}" alt="Rooftop Restaurant" loading="lazy">
-        </div>
-        <div class="facility-content">
-            <div class="facility-icon"><i class="fas fa-utensils"></i></div>
-            <div class="facility-text">
-                <div class="facility-title">Rooftop Restaurant</div>
-                <div class="facility-desc">Open-air dining, top floor</div>
-            </div>
-        </div>
+    <div class="facilities">
+        <div class="facility-card"><div class="facility-image"><img src="{% static 'images/culture/nap.png' %}" alt="Nap rooms" loading="lazy"></div><div class="facility-content"><div class="facility-text"><div class="facility-title">Nap rooms</div><div class="facility-desc">Quiet recharge pods</div></div></div></div>
+        <div class="facility-card"><div class="facility-image"><img src="{% static 'images/culture/rooftop.png' %}" alt="Rooftop restaurant" loading="lazy"></div><div class="facility-content"><div class="facility-text"><div class="facility-title">Rooftop restaurant</div><div class="facility-desc">Open-air dining</div></div></div></div>
+        <div class="facility-card"><div class="facility-image"><img src="{% static 'images/culture/care.png' %}" alt="Day care" loading="lazy"></div><div class="facility-content"><div class="facility-text"><div class="facility-title">Day care</div><div class="facility-desc">For working parents</div></div></div></div>
+        <div class="facility-card"><div class="facility-image"><img src="{% static 'images/culture/gaming.png' %}" alt="Gaming zone" loading="lazy"></div><div class="facility-content"><div class="facility-text"><div class="facility-title">Gaming zone</div><div class="facility-desc">Console and PC setups</div></div></div></div>
+        <div class="facility-card"><div class="facility-image"><img src="{% static 'images/culture/saloon.png' %}" alt="Salon" loading="lazy"></div><div class="facility-content"><div class="facility-text"><div class="facility-title">Salon</div><div class="facility-desc">On-campus grooming</div></div></div></div>
+        <div class="facility-card"><div class="facility-image"><img src="{% static 'images/culture/gym.png' %}" alt="Gym" loading="lazy"></div><div class="facility-content"><div class="facility-text"><div class="facility-title">Gym</div><div class="facility-desc">Fully equipped</div></div></div></div>
     </div>
+</section>
 
-    <div class="facility-card">
-        <div class="facility-image">
-            <img src="{% static 'images/culture/care.png' %}" alt="Day Care" loading="lazy">
-        </div>
-        <div class="facility-content">
-            <div class="facility-icon"><i class="fas fa-shield-heart"></i></div>
-            <div class="facility-text">
-                <div class="facility-title">Day Care</div>
-                <div class="facility-desc">On-site, for working parents</div>
-            </div>
-        </div>
+<!-- CTA -->
+<section class="life-cta" aria-labelledby="lifeCta">
+    <div>
+        <h2 id="lifeCta">Want to be part of it?</h2>
+        <p>Take a look at our open roles, or send us your CV and tell us what you would like to build.</p>
     </div>
-
-    <div class="facility-card">
-        <div class="facility-image">
-            <img src="{% static 'images/culture/gaming.png' %}" alt="Gaming Zone" loading="lazy">
-        </div>
-        <div class="facility-content">
-            <div class="facility-icon"><i class="fas fa-gamepad"></i></div>
-            <div class="facility-text">
-                <div class="facility-title">Gaming Zone</div>
-                <div class="facility-desc">Console + PC setups</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="facility-card">
-        <div class="facility-image">
-            <img src="{% static 'images/culture/saloon.png' %}" alt="Salon" loading="lazy">
-        </div>
-        <div class="facility-content">
-            <div class="facility-icon"><i class="fas fa-scissors"></i></div>
-            <div class="facility-text">
-                <div class="facility-title">Salon</div>
-                <div class="facility-desc">On-campus grooming</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="facility-card">
-        <div class="facility-image">
-            <img src="{% static 'images/culture/gym.png' %}" alt="Gym" loading="lazy">
-        </div>
-        <div class="facility-content">
-            <div class="facility-icon"><i class="fas fa-dumbbell"></i></div>
-            <div class="facility-text">
-                <div class="facility-title">Gym</div>
-                <div class="facility-desc">Fully equipped, open all day</div>
-            </div>
-        </div>
-    </div>
-
+    <a href="{% url 'careeers' %}" class="mn-btn mn-btn--teal">Join our team</a>
 </section>
 
 </div>
-
 <script src="{% static 'js/pages/about-culture-1.js' %}"></script>
-
 {% endblock %}

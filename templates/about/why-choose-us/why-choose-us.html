@@ -1,218 +1,216 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}Why Choose Us | Xvera Labs{% endblock %}
+{% block meta_description %}Why teams choose Xvera Labs: industry understanding, one team from idea to launch, agile delivery you can see, and engineering standards you can rely on.{% endblock %}
 {% block body_class %}page-about-why-choose-us{% endblock %}
 
-{% block page_css %}<link rel="stylesheet" href="{% static 'css/pages/about-why-choose-us.css' %}">{% endblock %}
+{% block page_css %}<link rel="stylesheet" href="{% static 'css/pages/about-why-choose-us.css' %}?v=2">{% endblock %}
 
 {% block content %}
-<div class="btrw" id="btrwRoot">
+<main class="xw" id="xwRoot">
 
-<!-- =====================================================================
-     HERO
-====================================================================== -->
-<section class="btrw-hero" id="top" aria-labelledby="btrwTitle">
-  <div class="btrw-wrap btrw-hero__grid">
-
-    <div class="btrw-hero__text">
-      <nav class="btrw-crumbs" aria-label="Breadcrumb"><a href="{% url 'home' %}">Home</a><span aria-hidden="true">/</span><span aria-current="page">Why choose us</span></nav>
-      <span class="btrw-eyebrow"><i></i>Why Xvera Labs</span>
-      <h1 class="btrw-title" id="btrwTitle">A technology partner that <span>delivers end to end</span></h1>
-      <p class="btrw-lead">Industry understanding, one team from idea to launch, a delivery process you can see, and engineering standards you can rely on. Here is what working with us looks like.</p>
-      <div class="btrw-actions">
-        <a href="{% url 'contact_us' %}" class="btrw-btn btrw-btn--solid">Start a project <span aria-hidden="true">&rarr;</span></a>
-        <a href="{% url 'case_studies' %}" class="btrw-btn btrw-btn--ghost">See our work</a>
-      </div>
-    </div>
-
-    <nav class="btrw-tiles" aria-label="Reasons to choose us">
-      <a href="#industry-expertise" class="btrw-tile"><b>01</b><strong>Industry expertise</strong><span>We understand your sector</span></a>
-      <a href="#end-to-end-solutions" class="btrw-tile"><b>02</b><strong>End-to-end solutions</strong><span>One team, idea to launch</span></a>
-      <a href="#agile-delivery" class="btrw-tile"><b>03</b><strong>Agile delivery</strong><span>Visible progress, often</span></a>
-      <a href="#global-standards" class="btrw-tile"><b>04</b><strong>Global standards</strong><span>Engineering you can trust</span></a>
-    </nav>
-
-  </div>
-</section>
-
-<!-- =====================================================================
-     BODY: side rail + four panels
-====================================================================== -->
-<div class="btrw-wrap btrw-body">
-
-  <aside class="btrw-rail" aria-label="On this page">
-    <ol id="btrwRail">
-      <li><a href="#industry-expertise" data-spy="industry-expertise"><b>01</b>Industry expertise</a></li>
-      <li><a href="#end-to-end-solutions" data-spy="end-to-end-solutions"><b>02</b>End-to-end solutions</a></li>
-      <li><a href="#agile-delivery" data-spy="agile-delivery"><b>03</b>Agile delivery</a></li>
-      <li><a href="#global-standards" data-spy="global-standards"><b>04</b>Global standards</a></li>
-    </ol>
-  </aside>
-
-  <div class="btrw-main">
-
-    <!-- ---------- 01 INDUSTRY EXPERTISE ---------- -->
-    <section class="btrw-panel btrw-panel--light" id="industry-expertise" aria-labelledby="indTitle">
-      <header class="btrw-panel__head btrw-reveal">
-        <span class="btrw-no">01</span>
-        <h2 id="indTitle">Industry <span>expertise</span></h2>
-        <p>We start by understanding how your industry works, so the software we build fits your customers, your rules and your daily operations.</p>
-      </header>
-
-      <div class="btrw-ind">
-        <article class="btrw-ind__card btrw-reveal">
-          <span class="btrw-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.5-7 10-7 10z"/></svg></span>
-          <h3>Healthcare</h3>
-          <p>Patient portals, appointment and records systems, and telehealth integrations.</p>
-          <ul><li>Portals</li><li>Scheduling</li><li>Records</li></ul>
-        </article>
-        <article class="btrw-ind__card btrw-reveal" style="--d:.06s">
-          <span class="btrw-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11.5V16c0 1.4 2.7 3 6 3s6-1.6 6-3v-4.5"/></svg></span>
-          <h3>Education</h3>
-          <p>Learning platforms, student portals and e-learning content delivery.</p>
-          <ul><li>LMS</li><li>Portals</li><li>E-learning</li></ul>
-        </article>
-        <article class="btrw-ind__card btrw-reveal" style="--d:.12s">
-          <span class="btrw-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 11h20M6 15h4"/></svg></span>
-          <h3>Finance &amp; banking</h3>
-          <p>Secure workflows, payment integrations and reporting dashboards.</p>
-          <ul><li>Payments</li><li>Dashboards</li><li>Workflows</li></ul>
-        </article>
-        <article class="btrw-ind__card btrw-reveal">
-          <span class="btrw-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.2 11H6.2z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg></span>
-          <h3>E-commerce &amp; retail</h3>
-          <p>Storefronts, marketplaces, POS and inventory systems that scale.</p>
-          <ul><li>Marketplaces</li><li>POS</li><li>Inventory</li></ul>
-        </article>
-        <article class="btrw-ind__card btrw-reveal" style="--d:.06s">
-          <span class="btrw-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h13v10H1zM14 10h4l4 3v3h-8z"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg></span>
-          <h3>Logistics &amp; supply chain</h3>
-          <p>Shipment and fleet tracking, route planning and warehouse tools.</p>
-          <ul><li>Tracking</li><li>Routing</li><li>Warehousing</li></ul>
-        </article>
-        <article class="btrw-ind__card btrw-reveal" style="--d:.12s">
-          <span class="btrw-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-4 7 4v13M9 21v-6h6v6"/></svg></span>
-          <h3>Non-profit &amp; government</h3>
-          <p>Digitisation, citizen and donor portals, and transparent reporting.</p>
-          <ul><li>Portals</li><li>Donations</li><li>Reporting</li></ul>
-        </article>
-      </div>
-    </section>
-
-    <!-- ---------- 02 END TO END ---------- -->
-    <section class="btrw-panel btrw-panel--dark" id="end-to-end-solutions" aria-labelledby="e2eTitle">
-      <header class="btrw-panel__head btrw-reveal">
-        <span class="btrw-no">02</span>
-        <h2 id="e2eTitle">End-to-end <span>solutions</span></h2>
-        <p>One team takes your product from first idea to live system, and keeps it healthy afterwards. No hand-offs between vendors.</p>
-      </header>
-
-      <div class="btrw-e2e btrw-reveal" id="btrwStages">
-        <div class="btrw-e2e__tabs" role="tablist" aria-label="Project stages">
-          <button type="button" role="tab" class="is-active" id="st-1" aria-selected="true" aria-controls="sp-1" data-i="0"><b>1</b>Discover</button>
-          <button type="button" role="tab" id="st-2" aria-selected="false" aria-controls="sp-2" tabindex="-1" data-i="1"><b>2</b>Design</button>
-          <button type="button" role="tab" id="st-3" aria-selected="false" aria-controls="sp-3" tabindex="-1" data-i="2"><b>3</b>Build</button>
-          <button type="button" role="tab" id="st-4" aria-selected="false" aria-controls="sp-4" tabindex="-1" data-i="3"><b>4</b>Test</button>
-          <button type="button" role="tab" id="st-5" aria-selected="false" aria-controls="sp-5" tabindex="-1" data-i="4"><b>5</b>Launch</button>
-          <button type="button" role="tab" id="st-6" aria-selected="false" aria-controls="sp-6" tabindex="-1" data-i="5"><b>6</b>Evolve</button>
-        </div>
-        <div class="btrw-e2e__bar" aria-hidden="true"><span id="btrwStageBar"></span></div>
-
-        <div class="btrw-e2e__panels">
-          <div class="btrw-stage is-active" role="tabpanel" id="sp-1" aria-labelledby="st-1">
-            <div><h3>Discover</h3><p>We learn your business, users and goals, then turn them into a clear scope and roadmap before any code is written.</p></div>
-            <ul><li>Stakeholder workshops</li><li>Requirements and priorities</li><li>Roadmap and estimates</li></ul>
-          </div>
-          <div class="btrw-stage" role="tabpanel" id="sp-2" aria-labelledby="st-2" hidden>
-            <div><h3>Design</h3><p>Experience and architecture are designed together, so what looks good is also fast, secure and easy to extend.</p></div>
-            <ul><li>UX flows and UI design</li><li>Clickable prototypes</li><li>System architecture</li></ul>
-          </div>
-          <div class="btrw-stage" role="tabpanel" id="sp-3" aria-labelledby="st-3" hidden>
-            <div><h3>Build</h3><p>Web, mobile, backend and AI components are built in short iterations, with working software you can try early.</p></div>
-            <ul><li>Web and mobile apps</li><li>APIs and integrations</li><li>AI and data features</li></ul>
-          </div>
-          <div class="btrw-stage" role="tabpanel" id="sp-4" aria-labelledby="st-4" hidden>
-            <div><h3>Test</h3><p>Quality is checked all the way through, not only at the end, using manual and automated testing.</p></div>
-            <ul><li>Functional and integration tests</li><li>Automated regression checks</li><li>Security and performance review</li></ul>
-          </div>
-          <div class="btrw-stage" role="tabpanel" id="sp-5" aria-labelledby="st-5" hidden>
-            <div><h3>Launch</h3><p>We deploy to the cloud with repeatable pipelines and a rollback plan, and support your team through go-live.</p></div>
-            <ul><li>CI/CD and cloud setup</li><li>Data migration</li><li>Launch support</li></ul>
-          </div>
-          <div class="btrw-stage" role="tabpanel" id="sp-6" aria-labelledby="st-6" hidden>
-            <div><h3>Evolve</h3><p>After launch we monitor, maintain and improve the product as your users and business grow.</p></div>
-            <ul><li>Monitoring and support</li><li>Updates and fixes</li><li>New features and scaling</li></ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ---------- 03 AGILE ---------- -->
-    <section class="btrw-panel btrw-panel--soft" id="agile-delivery" aria-labelledby="agTitle">
-      <header class="btrw-panel__head btrw-reveal">
-        <span class="btrw-no">03</span>
-        <h2 id="agTitle">Agile <span>delivery</span></h2>
-        <p>Work is organised in short cycles, so you see real progress often and can change direction early, when it is cheap to do so.</p>
-      </header>
-
-      <div class="btrw-ag">
-        <div class="btrw-cycle btrw-reveal" aria-label="Delivery cycle: plan, build, review, improve" role="img">
-          <span class="btrw-cycle__orbit" aria-hidden="true"></span>
-          <span class="btrw-cycle__core"><b>Every sprint</b><small>a working increment</small></span>
-          <span class="btrw-cycle__n btrw-cycle__n--1">Plan</span>
-          <span class="btrw-cycle__n btrw-cycle__n--2">Build</span>
-          <span class="btrw-cycle__n btrw-cycle__n--3">Review</span>
-          <span class="btrw-cycle__n btrw-cycle__n--4">Improve</span>
-        </div>
-
-        <div class="btrw-ag__list btrw-reveal" style="--d:.1s">
-          <article><span>A</span><div><h3>Short iterations</h3><p>Work is split into small sprints, typically around two weeks, each ending with something you can use or review.</p></div></article>
-          <article><span>B</span><div><h3>Demo at the end of every sprint</h3><p>You see the product, not just a status report, and your feedback shapes the next sprint.</p></div></article>
-          <article><span>C</span><div><h3>A transparent backlog</h3><p>Priorities, progress and blockers are visible to you at any time, so there are no surprises.</p></div></article>
-          <article><span>D</span><div><h3>Flexible priorities</h3><p>Requirements change. A clear process lets you re-prioritise without restarting the project.</p></div></article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ---------- 04 GLOBAL STANDARDS ---------- -->
-    <section class="btrw-panel btrw-panel--teal" id="global-standards" aria-labelledby="gsTitle">
-      <header class="btrw-panel__head btrw-reveal">
-        <span class="btrw-no">04</span>
-        <h2 id="gsTitle">Global <span>standards</span></h2>
-        <p>We follow engineering practices used by good teams everywhere, so your product is easy to maintain, safe to run and ready to grow.</p>
-        {% comment %} Add real certifications / partnerships here only if you hold them. {% endcomment %}
-      </header>
-
-      <div class="btrw-std">
-        <article class="btrw-std__card btrw-reveal"><span class="btrw-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></span><h3>Code quality</h3><p>Peer code reviews, consistent style and automated tests on every change.</p></article>
-        <article class="btrw-std__card btrw-reveal" style="--d:.06s"><span class="btrw-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.4 8-8 9-4.6-1-8-4-8-9V6z"/></svg></span><h3>Secure by default</h3><p>Secure coding practices, access control and regular dependency updates.</p></article>
-        <article class="btrw-std__card btrw-reveal" style="--d:.12s"><span class="btrw-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span><h3>Clear documentation</h3><p>Architecture notes, API docs and handover material that outlive the project.</p></article>
-        <article class="btrw-std__card btrw-reveal"><span class="btrw-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></span><h3>Reliability</h3><p>Monitoring, backups and rollback plans so problems are caught and fixed quickly.</p></article>
-        <article class="btrw-std__card btrw-reveal" style="--d:.06s"><span class="btrw-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 01-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1121 11.5z"/></svg></span><h3>Clear communication</h3><p>English-language reporting, regular updates and overlap with your working hours.</p></article>
-        <article class="btrw-std__card btrw-reveal" style="--d:.12s"><span class="btrw-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></span><h3>Data protection</h3><p>Privacy-minded data handling, and NDAs signed whenever you need them.</p></article>
-      </div>
-    </section>
-
-  </div>
-</div>
-
-<!-- =====================================================================
-     CTA
-====================================================================== -->
-<section class="btrw-cta" aria-labelledby="wcuCta">
-  <div class="btrw-wrap btrw-cta__in btrw-reveal">
+<!-- ===================== HERO ===================== -->
+<section class="xw-hero" id="top" aria-labelledby="xwTitle">
+  <div class="xw-wrap xw-hero__grid">
     <div>
-      <h2 id="wcuCta">Ready to see how we would work with you?</h2>
-      <p>Tell us about your project. We will come back with questions, ideas and a clear way forward.</p>
+      <nav class="xw-crumbs" aria-label="Breadcrumb"><a href="{% url 'home' %}">Home</a><span aria-hidden="true">/</span><span aria-current="page">Why choose us</span></nav>
+      <p class="xw-eyebrow">Why Xvera Labs</p>
+      <h1 id="xwTitle">A technology partner that delivers end to end.</h1>
+      <p class="xw-lead">Industry understanding, one team from idea to launch, a delivery process you can see, and engineering standards you can rely on. Here is what working with us looks like.</p>
+      <div class="xw-actions">
+        <a href="{% url 'contact_us' %}" class="xw-btn xw-btn--teal">Start a project</a>
+        <a href="{% url 'case_studies' %}" class="xw-btn xw-btn--line">See our work</a>
+      </div>
     </div>
-    <div class="btrw-cta__btns">
-      <a href="{% url 'contact_us' %}" class="btrw-btn btrw-btn--solid">Talk to our team <span aria-hidden="true">&rarr;</span></a>
-      <a href="{% url 'partners' %}" class="btrw-btn btrw-btn--ghost">Become a partner</a>
+    <nav class="xw-tiles" aria-label="Reasons to choose us">
+      <a href="#industry-expertise"><b>01</b><strong>Industry expertise</strong><span>We understand your sector</span></a>
+      <a href="#end-to-end-solutions"><b>02</b><strong>End-to-end solutions</strong><span>One team, idea to launch</span></a>
+      <a href="#agile-delivery"><b>03</b><strong>Agile delivery</strong><span>Visible progress, often</span></a>
+      <a href="#global-standards"><b>04</b><strong>Global standards</strong><span>Engineering you can trust</span></a>
+    </nav>
+  </div>
+</section>
+
+<!-- ===================== OVERVIEW + COMPARISON ===================== -->
+<section class="xw-sec" id="overview" aria-labelledby="xwOv">
+  <div class="xw-wrap xw-ov">
+    <div class="xw-reveal">
+      <p class="xw-eyebrow xw-eyebrow--dark">The short version</p>
+      <h2 id="xwOv">Four things you can count on</h2>
+      <p class="xw-text">Choosing a software partner is a bet on people, not just technology. The projects that go well share the same traits: the team understands the business, owns the whole problem, shows real progress early, and builds to a standard that lasts.</p>
+      <p class="xw-text">That is how we work. The sections below explain each point in detail, so you know what to expect before we write a single line of code.</p>
+    </div>
+    <div class="xw-reveal">
+      <table class="xw-compare">
+        <caption class="xw-sr">How our approach compares with a common agency approach</caption>
+        <thead><tr><th scope="col"></th><th scope="col">Common approach</th><th scope="col">With Xvera Labs</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Understanding</th><td>Starts coding from a short brief</td><td>Starts with discovery, so we build the right thing</td></tr>
+          <tr><th scope="row">Team</th><td>Separate vendors for design, build and hosting</td><td>One team from idea to launch and beyond</td></tr>
+          <tr><th scope="row">Progress</th><td>Status reports and long gaps</td><td>A working demo at the end of every sprint</td></tr>
+          <tr><th scope="row">Quality</th><td>Testing squeezed in at the end</td><td>Testing throughout, automated where it counts</td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
 
+<!-- ===================== BODY: rail + four panels ===================== -->
+<div class="xw-body">
+  <div class="xw-wrap xw-body__grid">
+
+    <aside class="xw-rail" aria-label="On this page">
+      <ol id="xwRail">
+        <li><a href="#industry-expertise" data-spy="industry-expertise"><b>01</b>Industry expertise</a></li>
+        <li><a href="#end-to-end-solutions" data-spy="end-to-end-solutions"><b>02</b>End-to-end solutions</a></li>
+        <li><a href="#agile-delivery" data-spy="agile-delivery"><b>03</b>Agile delivery</a></li>
+        <li><a href="#global-standards" data-spy="global-standards"><b>04</b>Global standards</a></li>
+        <li><a href="#faq" data-spy="faq"><b>?</b>Questions</a></li>
+      </ol>
+    </aside>
+
+    <div class="xw-main">
+
+      <!-- 01 INDUSTRY EXPERTISE -->
+      <section class="xw-panel" id="industry-expertise" aria-labelledby="xwInd">
+        <header class="xw-panel__head xw-reveal">
+          <span class="xw-no">01</span>
+          <h2 id="xwInd">Industry expertise</h2>
+          <p>We start by understanding how your industry works, so the software we build fits your customers, your rules and your daily operations.</p>
+          <p>A hospital, a school and an online store all need software, but their users, risks and regulations are very different. Knowing the sector means fewer wrong turns, faster decisions and a product that feels familiar to the people who use it.</p>
+        </header>
+        <div class="xw-ind">
+          <article class="xw-reveal"><h3>Healthcare</h3><p>Patient portals, appointment and records systems, and telehealth integrations.</p><ul><li>Portals</li><li>Scheduling</li><li>Records</li></ul></article>
+          <article class="xw-reveal"><h3>Education</h3><p>Learning platforms, student portals and e-learning content delivery.</p><ul><li>LMS</li><li>Portals</li><li>E-learning</li></ul></article>
+          <article class="xw-reveal"><h3>Finance and banking</h3><p>Secure workflows, payment integrations and reporting dashboards.</p><ul><li>Payments</li><li>Dashboards</li><li>Workflows</li></ul></article>
+          <article class="xw-reveal"><h3>E-commerce and retail</h3><p>Storefronts, marketplaces, POS and inventory systems that scale.</p><ul><li>Marketplaces</li><li>POS</li><li>Inventory</li></ul></article>
+          <article class="xw-reveal"><h3>Logistics and supply chain</h3><p>Shipment and fleet tracking, route planning and warehouse tools.</p><ul><li>Tracking</li><li>Routing</li><li>Warehousing</li></ul></article>
+          <article class="xw-reveal"><h3>Non-profit and government</h3><p>Digitisation, citizen and donor portals, and transparent reporting.</p><ul><li>Portals</li><li>Donations</li><li>Reporting</li></ul></article>
+        </div>
+        <div class="xw-trio xw-reveal">
+          <div><h3>Domain workshops</h3><p>Early sessions with your team to map processes, users and pain points in your own words.</p></div>
+          <div><h3>Rules and risk awareness</h3><p>We ask about compliance, data sensitivity and approvals up front, not after the design is done.</p></div>
+          <div><h3>Reusable building blocks</h3><p>Common parts such as logins, payments and dashboards are reused, so effort goes into what is unique to you.</p></div>
+        </div>
+        <p class="xw-note xw-reveal">Your industry is not listed? <a href="{% url 'contact_us' %}">Tell us about it</a>. We are happy to learn.</p>
+      </section>
+
+      <!-- 02 END TO END -->
+      <section class="xw-panel xw-panel--ink" id="end-to-end-solutions" aria-labelledby="xwE2e">
+        <header class="xw-panel__head xw-reveal">
+          <span class="xw-no">02</span>
+          <h2 id="xwE2e">End-to-end solutions</h2>
+          <p>One team takes your product from first idea to live system, and keeps it healthy afterwards. No hand-offs between vendors.</p>
+          <p>Every hand-off between companies loses context, adds delay and makes it unclear who is responsible when something breaks. Keeping strategy, design, engineering, testing and operations together removes those gaps.</p>
+        </header>
+        <div class="xw-e2e xw-reveal" id="xwStages">
+          <div class="xw-e2e__tabs" role="tablist" aria-label="Project stages">
+            <button type="button" role="tab" class="is-active" id="st-1" aria-selected="true" aria-controls="sp-1"><b>1</b>Discover</button>
+            <button type="button" role="tab" id="st-2" aria-selected="false" aria-controls="sp-2" tabindex="-1"><b>2</b>Design</button>
+            <button type="button" role="tab" id="st-3" aria-selected="false" aria-controls="sp-3" tabindex="-1"><b>3</b>Build</button>
+            <button type="button" role="tab" id="st-4" aria-selected="false" aria-controls="sp-4" tabindex="-1"><b>4</b>Test</button>
+            <button type="button" role="tab" id="st-5" aria-selected="false" aria-controls="sp-5" tabindex="-1"><b>5</b>Launch</button>
+            <button type="button" role="tab" id="st-6" aria-selected="false" aria-controls="sp-6" tabindex="-1"><b>6</b>Evolve</button>
+          </div>
+          <div class="xw-e2e__bar" aria-hidden="true"><span id="xwStageBar"></span></div>
+          <div class="xw-stage is-active" role="tabpanel" id="sp-1" aria-labelledby="st-1"><div><h3>Discover</h3><p>We learn your business, users and goals, then turn them into a clear scope and roadmap before any code is written.</p></div><ul><li>Stakeholder workshops</li><li>Requirements and priorities</li><li>Roadmap and estimates</li></ul></div>
+          <div class="xw-stage" role="tabpanel" id="sp-2" aria-labelledby="st-2" hidden><div><h3>Design</h3><p>Experience and architecture are designed together, so what looks good is also fast, secure and easy to extend.</p></div><ul><li>UX flows and UI design</li><li>Clickable prototypes</li><li>System architecture</li></ul></div>
+          <div class="xw-stage" role="tabpanel" id="sp-3" aria-labelledby="st-3" hidden><div><h3>Build</h3><p>Web, mobile, backend and AI components are built in short iterations, with working software you can try early.</p></div><ul><li>Web and mobile apps</li><li>APIs and integrations</li><li>AI and data features</li></ul></div>
+          <div class="xw-stage" role="tabpanel" id="sp-4" aria-labelledby="st-4" hidden><div><h3>Test</h3><p>Quality is checked all the way through, not only at the end, using manual and automated testing.</p></div><ul><li>Functional and integration tests</li><li>Automated regression checks</li><li>Security and performance review</li></ul></div>
+          <div class="xw-stage" role="tabpanel" id="sp-5" aria-labelledby="st-5" hidden><div><h3>Launch</h3><p>We deploy to the cloud with repeatable pipelines and a rollback plan, and support your team through go-live.</p></div><ul><li>CI/CD and cloud setup</li><li>Data migration</li><li>Launch support</li></ul></div>
+          <div class="xw-stage" role="tabpanel" id="sp-6" aria-labelledby="st-6" hidden><div><h3>Evolve</h3><p>After launch we monitor, maintain and improve the product as your users and business grow.</p></div><ul><li>Monitoring and support</li><li>Updates and fixes</li><li>New features and scaling</li></ul></div>
+        </div>
+        <div class="xw-trio xw-trio--dark xw-reveal">
+          <div><h3>One accountable team</h3><p>The people who design your product also build, test and run it, so there is no finger-pointing between vendors.</p></div>
+          <div><h3>Consistent standards</h3><p>The same practices apply from the first workshop to the production server, so quality does not drop between stages.</p></div>
+          <div><h3>Less coordination for you</h3><p>You deal with one point of contact and one plan, instead of managing several suppliers yourself.</p></div>
+        </div>
+      </section>
+
+      <!-- 03 AGILE -->
+      <section class="xw-panel xw-panel--soft" id="agile-delivery" aria-labelledby="xwAg">
+        <header class="xw-panel__head xw-reveal">
+          <span class="xw-no">03</span>
+          <h2 id="xwAg">Agile delivery</h2>
+          <p>Work is organised in short cycles, so you see real progress often and can change direction early, when it is cheap to do so.</p>
+          <p>Requirements always change once real users get involved. Agile delivery accepts that, and turns it into an advantage: you learn quickly, fix early and spend your budget on what matters.</p>
+        </header>
+        <ol class="xw-cycle">
+          <li class="xw-reveal"><span>Plan</span><p>Pick the most valuable work for the next sprint, together with you.</p></li>
+          <li class="xw-reveal"><span>Build</span><p>Engineers deliver small, tested pieces of the product.</p></li>
+          <li class="xw-reveal"><span>Review</span><p>You see a working demo and give feedback.</p></li>
+          <li class="xw-reveal"><span>Improve</span><p>We adjust the plan and the process, then repeat.</p></li>
+        </ol>
+        <table class="xw-rhythm xw-reveal">
+          <caption class="xw-sr">Sprint rhythm</caption>
+          <thead><tr><th scope="col">Meeting</th><th scope="col">What happens</th><th scope="col">Your part</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Sprint planning</th><td>We agree the goal and the work for the next sprint, typically around two weeks.</td><td>Set priorities</td></tr>
+            <tr><th scope="row">Daily check-in</th><td>A short team sync to share progress and unblock problems.</td><td>Optional</td></tr>
+            <tr><th scope="row">Sprint demo</th><td>We show working software, not slides.</td><td>Review and give feedback</td></tr>
+            <tr><th scope="row">Retrospective</th><td>The team reviews what worked and what to improve.</td><td>Share your view</td></tr>
+          </tbody>
+        </table>
+        <div class="xw-see xw-reveal">
+          <h3>What you can always see</h3>
+          <ul><li>The backlog and its priorities</li><li>Progress against the sprint goal</li><li>Blockers and risks, raised early</li><li>The date of the next demo</li></ul>
+        </div>
+      </section>
+
+      <!-- 04 GLOBAL STANDARDS -->
+      <section class="xw-panel" id="global-standards" aria-labelledby="xwGs">
+        <header class="xw-panel__head xw-reveal">
+          <span class="xw-no">04</span>
+          <h2 id="xwGs">Global standards</h2>
+          <p>We follow engineering practices used by good teams everywhere, so your product is easy to maintain, safe to run and ready to grow.</p>
+          <p>Standards are what let a product survive team changes, traffic spikes and new requirements. They cost little at the start and save a lot later.</p>
+          {% comment %} Add real certifications / partnerships here only if you hold them. {% endcomment %}
+        </header>
+        <div class="xw-std">
+          <article class="xw-reveal"><h3>Code quality</h3><p>Peer code reviews, consistent style and automated tests on every change.</p></article>
+          <article class="xw-reveal"><h3>Secure by default</h3><p>Secure coding practices, access control and regular dependency updates.</p></article>
+          <article class="xw-reveal"><h3>Clear documentation</h3><p>Architecture notes, API docs and handover material that outlive the project.</p></article>
+          <article class="xw-reveal"><h3>Reliability</h3><p>Monitoring, backups and rollback plans so problems are caught and fixed quickly.</p></article>
+          <article class="xw-reveal"><h3>Clear communication</h3><p>English-language reporting, regular updates and overlap with your working hours.</p></article>
+          <article class="xw-reveal"><h3>Data protection</h3><p>Privacy-minded data handling, and NDAs signed whenever you need them.</p></article>
+        </div>
+        <div class="xw-two xw-reveal">
+          <div><h3>How we build</h3><ul><li>Code review before every merge</li><li>Automated tests and CI/CD pipelines</li><li>Separate development, staging and production</li><li>Infrastructure defined as code</li></ul></div>
+          <div><h3>How we protect</h3><ul><li>Role-based access to systems and data</li><li>Secrets kept out of source code</li><li>Regular dependency and security updates</li><li>Backups and tested recovery steps</li></ul></div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="xw-panel xw-panel--faq" id="faq" aria-labelledby="xwFaq">
+        <header class="xw-panel__head xw-reveal">
+          <span class="xw-no">?</span>
+          <h2 id="xwFaq">Questions we are often asked</h2>
+        </header>
+        <div class="xw-faq xw-reveal">
+          <details name="faq"><summary>How do we get started?</summary><p>Send us a short description through the <a href="{% url 'contact_us' %}">contact form</a>. We reply to set up a call, ask questions about your goals and users, and then propose a scope, a team and a first milestone.</p></details>
+          <details name="faq"><summary>How long will my project take?</summary><p>It depends on scope. A focused MVP can take weeks, while a larger platform is delivered in phases over several months. After discovery we give you a timeline with the reasoning behind it.</p></details>
+          <details name="faq"><summary>How is pricing decided?</summary><p>We estimate after discovery, once the scope is clear. Depending on the project we can work on a fixed scope, with a dedicated team, or in a short MVP sprint.</p></details>
+          <details name="faq"><summary>Who owns the code and the data?</summary><p>Ownership is set out in our written agreement. For custom work, the code you pay for is yours, and your data stays yours.</p></details>
+          <details name="faq"><summary>Can you sign an NDA?</summary><p>Yes. We can sign an NDA before you share any details about your project.</p></details>
+          <details name="faq"><summary>What happens after launch?</summary><p>We can monitor, maintain and improve the product after go-live, including bug fixes, updates and new features, or hand over cleanly to your own team with documentation.</p></details>
+        </div>
+      </section>
+
+    </div>
+  </div>
 </div>
 
-<script src="{% static 'js/pages/about-why-choose-us-1.js' %}"></script>
+<!-- ===================== CTA ===================== -->
+<section class="xw-cta" aria-labelledby="xwCta">
+  <div class="xw-wrap xw-cta__in">
+    <div><h2 id="xwCta">Ready to see how we would work with you?</h2><p>Tell us about your project. We will come back with questions, ideas and a clear way forward.</p></div>
+    <div class="xw-actions">
+      <a href="{% url 'contact_us' %}" class="xw-btn xw-btn--teal">Talk to our team</a>
+      <a href="{% url 'partners' %}" class="xw-btn xw-btn--line">Become a partner</a>
+    </div>
+  </div>
+</section>
+
+</main>
+<script src="{% static 'js/pages/about-why-choose-us-1.js' %}?v=2"></script>
 {% endblock %}
