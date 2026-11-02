@@ -1,158 +1,68 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}FAQs - BTR Solutions{% endblock %}
-
+{% block title %}FAQs - Xvera Labs{% endblock %}
+{% block meta_description %}Answers to common questions about Xvera Labs: our services, how projects work, timelines, pricing, technology, support and partnerships.{% endblock %}
 {% block body_class %}page-faqs-faqs{% endblock %}
-
-{% block page_css %}<link rel="stylesheet" href="{% static 'css/pages/faqs-faqs.css' %}">{% endblock %}
+{% block page_css %}<link rel="stylesheet" href="{% static 'css/pages/faqs-faqs.css' %}?v=2">{% endblock %}
 
 {% block content %}
+<main class="fq" id="fqMain">
 
-
-
-<div class="faq-page">
-
-```
-<!-- HERO -->
-
-<section class="faq-hero">
-    <div class="faq-hero-content">
-
-        <h1>Frequently Asked Questions</h1>
-
-        <p>
-            Find answers to common questions about our software development,
-            web applications, mobile solutions, project delivery process,
-            and long-term support services.
-        </p>
-
+  <header class="fq-hero">
+    <div class="fq-wrap">
+      <nav class="fq-crumbs" aria-label="Breadcrumb"><a href="{% url 'home' %}">Home</a><span aria-hidden="true">/</span><span aria-current="page">FAQs</span></nav>
+      <h1>Frequently asked questions</h1>
+      <p class="fq-sub">Answers about our services, how projects work, timelines, technology and support.</p>
+      <div class="fq-search">
+        <label for="fqSearch">Search questions</label>
+        <input type="search" id="fqSearch" placeholder="Search, for example: pricing, timeline, AI" autocomplete="off">
+      </div>
     </div>
-</section>
+  </header>
 
-<!-- CONTENT -->
+  <div class="fq-wrap fq-body">
+    <div>
+      <div class="fq-chips" role="group" aria-label="Filter by topic">
+        <button type="button" class="fq-chip is-on" data-cat="all" aria-pressed="true">All</button>
+        <button type="button" class="fq-chip" data-cat="general" aria-pressed="false">General</button>
+        <button type="button" class="fq-chip" data-cat="projects" aria-pressed="false">Projects</button>
+        <button type="button" class="fq-chip" data-cat="tech" aria-pressed="false">Technology</button>
+        <button type="button" class="fq-chip" data-cat="support" aria-pressed="false">Support</button>
+        <button type="button" class="fq-chip" data-cat="partners" aria-pressed="false">Partners and careers</button>
+      </div>
+      <p class="fq-count" id="fqCount" aria-live="polite"></p>
 
-<section class="faq-wrapper">
-
-    <!-- FAQ CARD -->
-
-    <div class="faq-box">
-
-        <div class="faq-highlight">
-            Our team is committed to delivering scalable, secure, and enterprise-grade digital solutions for businesses worldwide.
-        </div>
-
-        <div class="faq-item active">
-            <div class="faq-question">
-                What services does BTR Solutions provide?
-                <span class="icon">+</span>
-            </div>
-
-            <div class="faq-answer">
-                We provide web development, mobile app development, UI/UX design, cloud solutions, DevOps services, enterprise software development, and digital transformation consulting.
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">
-                Do you build custom software solutions?
-                <span class="icon">+</span>
-            </div>
-
-            <div class="faq-answer">
-                Yes. Every solution is tailored to business requirements, workflows, scalability goals, and long-term growth strategies.
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">
-                How long does a project usually take?
-                <span class="icon">+</span>
-            </div>
-
-            <div class="faq-answer">
-                Project timelines depend on complexity. Small projects typically take a few weeks, while enterprise platforms may require several months.
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">
-                Do you provide post-launch support?
-                <span class="icon">+</span>
-            </div>
-
-            <div class="faq-answer">
-                Yes. We offer maintenance, monitoring, upgrades, security updates, performance optimization, and dedicated support packages.
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">
-                Which technologies do you use?
-                <span class="icon">+</span>
-            </div>
-
-            <div class="faq-answer">
-                We work with Django, Laravel, React, Next.js, Flutter, Node.js, PostgreSQL, Docker, AWS, and modern cloud-native technologies.
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">
-                Can you redesign existing websites?
-                <span class="icon">+</span>
-            </div>
-
-            <div class="faq-answer">
-                Absolutely. We modernize outdated websites with improved UI/UX, better performance, enhanced security, and responsive layouts.
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">
-                Do you work with startups?
-                <span class="icon">+</span>
-            </div>
-
-            <div class="faq-answer">
-                Yes. We help startups build MVPs, validate ideas, launch products, and scale into enterprise-ready platforms.
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">
-                How can I start a project with BTR Solutions?
-                <span class="icon">+</span>
-            </div>
-
-            <div class="faq-answer">
-                Simply contact our team, share your requirements, and we will schedule a consultation to discuss the best solution for your business.
-            </div>
-        </div>
-
+      <div class="fq-list" id="fqList">
+        <details class="fq-item" data-cat="general"><summary>What does Xvera Labs do?</summary><div class="fq-a"><p>We design and build custom software, web and mobile applications, e-commerce platforms, AI-powered features and cloud systems. We also offer UI/UX design, DevOps, quality assurance and technology consulting.</p></div></details>
+        <details class="fq-item" data-cat="general"><summary>Do you build custom software solutions?</summary><div class="fq-a"><p>Yes. Every solution is shaped around your requirements, workflows and growth plans, rather than forced into a ready-made template.</p></div></details>
+        <details class="fq-item" data-cat="general"><summary>Do you work with startups?</summary><div class="fq-a"><p>Yes. We help startups plan and build MVPs, test ideas, launch products and scale them as the business grows.</p></div></details>
+        <details class="fq-item" data-cat="general"><summary>Do you work with clients in other countries?</summary><div class="fq-a"><p>Yes. We work remotely with clients in different countries and regions, using video calls and email, and we agree meeting times that suit both sides.</p></div></details>
+        <details class="fq-item" data-cat="projects"><summary>How do I start a project with you?</summary><div class="fq-a"><p>Send us your requirements through the contact form. We review them, arrange a call, and then share a plan with scope, timeline and cost, so you can decide with the full picture.</p></div></details>
+        <details class="fq-item" data-cat="projects"><summary>How long does a project usually take?</summary><div class="fq-a"><p>It depends on the size and complexity. Small projects can take a few weeks, while larger platforms may take several months. We give you a realistic timeline after we understand what you need.</p></div></details>
+        <details class="fq-item" data-cat="projects"><summary>How is a project priced?</summary><div class="fq-a"><p>We price after a discovery conversation, based on scope, complexity and timeline. You receive a clear estimate before any work starts, so you know what to expect.</p></div></details>
+        <details class="fq-item" data-cat="projects"><summary>Can I follow progress during the project?</summary><div class="fq-a"><p>Yes. We work in short iterations with regular demos, so you can see real progress, give feedback and adjust priorities as you go.</p></div></details>
+        <details class="fq-item" data-cat="tech"><summary>Which technologies do you use?</summary><div class="fq-a"><p>We work with Django, Laravel, React, Next.js, Flutter, Node.js, PostgreSQL, Docker, AWS and modern cloud-native tools. We pick the stack that fits your product, not the other way round.</p></div></details>
+        <details class="fq-item" data-cat="tech"><summary>Do you build AI features and chatbots?</summary><div class="fq-a"><p>Yes. We integrate AI providers such as OpenAI, Claude and Gemini into products, and build chatbots, knowledge assistants and workflow automation connected to your own data.</p></div></details>
+        <details class="fq-item" data-cat="tech"><summary>Can you redesign an existing website or app?</summary><div class="fq-a"><p>Yes. We can modernize an older product with a better design, faster performance, stronger security and responsive layouts, while keeping what already works.</p></div></details>
+        <details class="fq-item" data-cat="support"><summary>Do you provide support after launch?</summary><div class="fq-a"><p>Yes. We offer maintenance, monitoring, updates, security fixes and performance improvements, so your product stays healthy after it goes live.</p></div></details>
+        <details class="fq-item" data-cat="support"><summary>Is my information safe when I contact you?</summary><div class="fq-a"><p>We only use what you send us to reply and plan work with you. Read our <a href="{% url 'privacy_policy' %}">Privacy Policy</a> to see what we collect, why, and how you can ask us to delete it.</p></div></details>
+        <details class="fq-item" data-cat="partners"><summary>Can I partner with or invest in Xvera Labs?</summary><div class="fq-a"><p>Yes. We have referral, reseller, marketing, strategic and investor programs, each under a written agreement. See the <a href="{% url 'partners' %}">partner programs</a> or <a href="{% url 'partner_apply' %}">apply directly</a>.</p></div></details>
+        <details class="fq-item" data-cat="partners"><summary>Are you hiring?</summary><div class="fq-a"><p>Check our <a href="{% url 'careeers' %}">careers page</a> for open roles and ways to join the team.</p></div></details>
+      </div>
+      <p class="fq-empty" id="fqEmpty" hidden>No questions match your search. Try another word, or <a href="{% url 'contact_us' %}">ask us directly</a>.</p>
     </div>
 
-    <!-- CTA -->
-
-    <div class="cta-box">
-
-        <h2>Still Have Questions?</h2>
-
-        <p>
-            Can't find the answer you're looking for? Contact our experts and we'll respond within 24 hours.
-        </p>
-
-        <a href="{% url 'contact_us' %}">
-            Contact Our Team
-        </a>
-
-    </div>
-
-</section>
-```
-
-</div>
-
-<script src="{% static 'js/pages/faqs-faqs-1.js' %}"></script>
-
+    <aside class="fq-help" aria-labelledby="fqHelpT">
+      <h2 id="fqHelpT">Still have questions?</h2>
+      <p>Cannot find the answer you are looking for? Talk to our team and we will get back to you.</p>
+      <a href="{% url 'contact_us' %}" class="fq-btn">Contact our team</a>
+      <ul>
+        <li><small>WhatsApp</small><a href="https://wa.me/923248699647" target="_blank" rel="noopener noreferrer">0324 8699647</a></li>
+        <li><small>Email</small><a href="mailto:xveralabs@gmail.com">xveralabs@gmail.com</a></li>
+      </ul>
+    </aside>
+  </div>
+</main>
+<script src="{% static 'js/pages/faqs-faqs-1.js' %}?v=2"></script>
 {% endblock %}
