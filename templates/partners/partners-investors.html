@@ -1,289 +1,152 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}Investor Partners - Xvera Labs{% endblock %}
+{% block meta_description %}Choose a Xvera Labs product module, invest alongside us and share in its profit under a written agreement with clear reporting. Returns are not guaranteed.{% endblock %}
 {% block body_class %}page-partners-investors{% endblock %}
-
-{% block page_css %}<link rel="stylesheet" href="{% static 'css/pages/partners-investors.css' %}">{% endblock %}
+{% block page_css %}<link rel="stylesheet" href="{% static 'css/pages/partners.css' %}?v=1">{% endblock %}
 
 {% block content %}
-{% comment %}
-  The profit-share rate comes from the view (PARTNER_TERMS['investor_share']).
-  If it is not passed, the default after |default: is used.
-  Module names/descriptions are short on purpose: add real details to the investor pack, not here,
-  until the terms are final.
-{% endcomment %}
-<main class="btrp btrpi" id="btrpMain">
+{% comment %} Profit-share rate: PARTNER_TERMS in views.py. Modules: content.py. {% endcomment %}
+<main class="pt" id="ptMain">
 
-  <!-- ================= HERO ================= -->
-  <section class="btrp-hero" aria-labelledby="btrpiTitle">
-    <div class="btrp-wrap btrp-hero__wrap">
-
-      <div class="btrp-hero__copy">
-        <nav class="btrp-crumbs" aria-label="Breadcrumb">
-          <a href="{% url 'home' %}">Home</a><span aria-hidden="true">/</span><a href="{% url 'partners' %}">Partners</a><span aria-hidden="true">/</span><span aria-current="page">Investors</span>
-        </nav>
-        <span class="btrp-eyebrow"><i></i>Investor partners</span>
-        <h1 class="btrp-title" id="btrpiTitle">Back the products <span class="btrp-grad">we are building</span></h1>
-        <p class="btrp-lead">Choose a product module, invest alongside us and share in its profit, under a written agreement and with clear reporting.</p>
-        <div class="btrp-actions">
-          <a href="{% url 'partner_apply' %}?type=investor" class="btrp-btn btrp-btn--primary">Apply as an investor partner <span aria-hidden="true">&rarr;</span></a>
-          <a href="#opportunities" class="btrp-btn btrp-btn--ghost">View modules</a>
-        </div>
-        <ul class="btrp-trust" aria-label="Our approach">
-          <li>Written agreement</li>
-          <li>Module-level transparency</li>
-          <li>No guaranteed returns</li>
+  <section class="pt-hero" aria-labelledby="ptTitle">
+    <div class="pt-wrap pt-hero__grid">
+      <div>
+        <nav class="pt-crumbs" aria-label="Breadcrumb"><a href="{% url 'home' %}">Home</a><span aria-hidden="true">/</span><a href="{% url 'partners' %}">Partners</a><span aria-hidden="true">/</span><span aria-current="page">Investors</span></nav>
+        <p class="pt-eyebrow">Investor partners</p>
+        <h1 class="pt-h1" id="ptTitle">Back the products we are building</h1>
+        <p class="pt-lead">Choose a product module, invest alongside us and share in its profit, under a written agreement and with clear reporting.</p>
+        <div class="pt-actions"><a href="{% url 'partner_apply' %}?type=investor" class="pt-btn pt-btn--teal">Apply as an investor partner</a><a href="#opportunities" class="pt-btn pt-btn--line">View modules</a></div>
+        <ul class="pt-trust" aria-label="Our approach"><li>Written agreement</li><li>Module-level transparency</li><li>No guaranteed returns</li></ul>
+      </div>
+      <div class="pt-pack" role="img" aria-label="Investor pack contents: module brief, use of funds, milestones, profit-share terms, reporting schedule and written agreement">
+        <div class="pt-pack__top"><i></i><i></i><i></i><span>investor pack</span></div>
+        <ul aria-hidden="true">
+          <li>Module brief</li><li>Use of funds</li><li>Milestones and timeline</li><li>Profit-share terms</li><li>Reporting schedule</li><li>Written agreement</li>
         </ul>
-      </div>
-
-      <!-- investor pack illustration (decorative) -->
-      <div class="btrpi-pack" role="img" aria-label="Illustration of an investor pack with a module brief, use of funds, milestones, profit-share terms and reporting schedule">
-        <div class="btrpi-pack__card" aria-hidden="true">
-          <div class="btrpi-pack__head">
-            <span class="btrpi-pack__doc"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg></span>
-            <div><b>Investor pack</b><small>One module, in one place</small></div>
-            <span class="btrpi-pack__tag">Draft</span>
-          </div>
-          <ul class="btrpi-pack__rows">
-            <li><span>Module brief</span><i></i></li>
-            <li><span>Use of funds</span><i></i></li>
-            <li><span>Milestones &amp; timeline</span><i></i></li>
-            <li><span>Profit-share terms</span><i></i></li>
-            <li><span>Reporting schedule</span><i></i></li>
-            <li><span>Written agreement</span><i></i></li>
-          </ul>
-          <div class="btrpi-pack__foot"><span class="btrpi-pack__bar"><b></b></span><small>Everything you review before you decide</small></div>
-        </div>
-        <span class="btrpi-chip btrpi-chip--a"><i></i>You choose the module</span>
-        <span class="btrpi-chip btrpi-chip--b"><i></i>Reviewed with your own advisor</span>
-        <span class="btrpi-orb" aria-hidden="true"></span>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ================= WHY ================= -->
-  <section class="btrp-section" aria-labelledby="whyTitle">
-    <div class="btrp-wrap">
-      <div class="btrp-head btrp-head--center btrp-reveal">
-        <span class="btrp-kicker">Why partner as an investor</span>
-        <h2 class="btrp-h2" id="whyTitle">Simple, specific and in writing</h2>
-        <p class="btrp-sub">You do not invest in a vague idea. You pick one product module and know exactly what it is, what the money is for and how you will be updated.</p>
-      </div>
-      <div class="btrp-grid btrp-grid--3">
-        <article class="btrp-card btrp-reveal">
-          <span class="btrp-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M17.5 14v7M14 17.5h7"/></svg></span>
-          <h3>Module-focused</h3>
-          <p>Back one product module at a time. Each has its own brief, budget and milestones, so you can see where your capital goes.</p>
-        </article>
-        <article class="btrp-card btrp-reveal" style="--d:.1s">
-          <span class="btrp-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span>
-          <h3>Agreement-based</h3>
-          <p>Capital, profit share, term and responsibilities are written into an agreement. You read it, ask questions and sign only when you are comfortable.</p>
-        </article>
-        <article class="btrp-card btrp-reveal" style="--d:.2s">
-          <span class="btrp-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg></span>
-          <h3>Regular reporting</h3>
-          <p>Receive milestone updates and periodic reports on how the module is performing, so you are never left guessing.</p>
-        </article>
+        <p class="pt-pack__foot" aria-hidden="true">Everything you review before you decide</p>
       </div>
     </div>
   </section>
 
-  <!-- ================= MODULES ================= -->
-  <section class="btrp-section btrp-section--tint" id="opportunities" aria-labelledby="modTitle">
-    <div class="btrp-wrap">
-      <div class="btrp-head btrp-reveal">
-        <span class="btrp-kicker">Product investment modules</span>
-        <h2 class="btrp-h2" id="modTitle">Choose where you want to partner</h2>
-        <p class="btrp-sub">Full briefs, budgets and timelines are shared in the investor pack after you apply.</p>
-      </div>
-      <div class="btrp-grid btrp-grid--2 btrpi-mods">
+  <nav class="pt-sub" id="ptSub" aria-label="On this page">
+    <div class="pt-wrap pt-sub__in">
+      <a href="#why" data-spy="why">Why invest</a><a href="#opportunities" data-spy="opportunities">Modules</a><a href="#profit-share" data-spy="profit-share">Profit sharing</a>
+      <a href="#process" data-spy="process">Process</a><a href="#faq" data-spy="faq">FAQ</a>
+      <a href="{% url 'partners' %}" class="pt-sub__ext">All programs &rarr;</a>
+    </div>
+  </nav>
 
-        <article class="btrpi-mod btrp-reveal">
-          <div class="btrpi-mod__top">
-            <span class="btrpi-mod__ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.2 11H6.2z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg></span>
-            <span class="btrpi-mod__tag">Technology product</span>
-          </div>
-          <h3>BTR Mall</h3>
-          <p>An eCommerce marketplace platform connecting sellers and buyers.</p>
-          <a class="btrpi-mod__link" href="{% url 'partner_apply' %}?type=investor&amp;module=btr-mall">Ask for the module brief <span aria-hidden="true">&rarr;</span></a>
-        </article>
-
-        <article class="btrpi-mod btrp-reveal" style="--d:.1s">
-          <div class="btrpi-mod__top">
-            <span class="btrpi-mod__ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4M7 9h4M7 12h7"/></svg></span>
-            <span class="btrpi-mod__tag">Technology product</span>
-          </div>
-          <h3>Dinex POS</h3>
-          <p>A subscription-based point-of-sale system for restaurants and food businesses.</p>
-          <a class="btrpi-mod__link" href="{% url 'partner_apply' %}?type=investor&amp;module=dinex-pos">Ask for the module brief <span aria-hidden="true">&rarr;</span></a>
-        </article>
-
-        <article class="btrpi-mod btrp-reveal">
-          <div class="btrpi-mod__top">
-            <span class="btrpi-mod__ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11.5V16c0 1.4 2.7 3 6 3s6-1.6 6-3v-4.5"/></svg></span>
-            <span class="btrpi-mod__tag">Education</span>
-          </div>
-          <h3>Xvera Skills Academy</h3>
-          <p>Digital skills and training programs that build the next generation of technology talent.</p>
-          <a class="btrpi-mod__link" href="{% url 'partner_apply' %}?type=investor&amp;module=skills-academy">Ask for the module brief <span aria-hidden="true">&rarr;</span></a>
-        </article>
-
-        <article class="btrpi-mod btrp-reveal" style="--d:.1s">
-          <div class="btrpi-mod__top">
-            <span class="btrpi-mod__ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-4 7 4v13M9 21v-6h6v6"/></svg></span>
-            <span class="btrpi-mod__tag">Ventures</span>
-          </div>
-          <h3>Other ventures</h3>
-          <p>Restaurant, logistics, retail network and more. Talk to us if a different venture interests you.</p>
-          <a class="btrpi-mod__link" href="{% url 'partner_apply' %}?type=investor&amp;module=other">Tell us what interests you <span aria-hidden="true">&rarr;</span></a>
-        </article>
-
+  <!-- WHY -->
+  <section class="pt-sec" id="why" aria-labelledby="whyT">
+    <div class="pt-wrap">
+      <header class="pt-head pt-reveal"><p class="pt-kicker">Why partner as an investor</p><h2 class="pt-h2" id="whyT">Simple, specific and in writing</h2><p class="pt-text">You do not invest in a vague idea. You pick one product module and know exactly what it is, what the money is for and how you will be updated.</p></header>
+      <div class="pt-cards">
+        <article class="pt-card pt-reveal"><h3>Module-focused</h3><p>Back one product module at a time. Each has its own brief, budget and milestones, so you can see where your capital goes.</p></article>
+        <article class="pt-card pt-reveal" style="--d:.08s"><h3>Agreement-based</h3><p>Capital, profit share, term and responsibilities are written into an agreement. You read it, ask questions and sign only when you are comfortable.</p></article>
+        <article class="pt-card pt-reveal" style="--d:.16s"><h3>Regular reporting</h3><p>Receive milestone updates and periodic reports on how the module is performing, so you are never left guessing.</p></article>
       </div>
     </div>
   </section>
 
-  <!-- ================= PROFIT SHARE ================= -->
-  <section class="btrp-section" id="profit-share" aria-labelledby="psTitle">
-    <div class="btrp-wrap btrpi-ps">
+  <!-- MODULES -->
+  <section class="pt-sec pt-sec--paper" id="opportunities" aria-labelledby="modT">
+    <div class="pt-wrap">
+      <header class="pt-head pt-reveal"><p class="pt-kicker">Product investment modules</p><h2 class="pt-h2" id="modT">Choose where you want to partner</h2><p class="pt-text">Full briefs, budgets and timelines are shared in the investor pack after you apply.</p></header>
+      <div class="pt-mods">
+        {% for m in modules %}
+        <article class="pt-mod pt-reveal"{% if forloop.counter0 %} style="--d:{{ forloop.counter0 }}00ms"{% endif %}>
+          <span class="pt-chip">{{ m.tag }}</span>
+          <h3>{{ m.name }}</h3>
+          <p>{{ m.text }}</p>
+          <a href="{% url 'partner_apply' %}?type=investor&amp;module={{ m.value }}">{% if m.value == 'other' %}Tell us what interests you{% else %}Ask for the module brief{% endif %}</a>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
 
-      <div class="btrpi-ps__text btrp-reveal">
-        <span class="btrp-kicker">Profit sharing</span>
-        <h2 class="btrp-h2" id="psTitle">How profit sharing works</h2>
-        <p class="btrp-sub">Each module shares a portion of its net profit with its investor partners. The numbers are written into your agreement, not left to a handshake.</p>
-
-        <div class="btrpi-rate">
-          <span class="btrpi-rate__num">{{ terms.investor_share|default:"5%" }}</span>
-          <span class="btrpi-rate__txt">indicative share of a module's net profit<sup>*</sup></span>
-        </div>
-
-        <ul class="btrpi-facts">
+  <!-- PROFIT SHARE -->
+  <section class="pt-sec" id="profit-share" aria-labelledby="psT">
+    <div class="pt-wrap pt-split">
+      <div class="pt-reveal">
+        <p class="pt-kicker">Profit sharing</p>
+        <h2 class="pt-h2" id="psT">How profit sharing works</h2>
+        <p class="pt-text">Each module shares a portion of its net profit with its investor partners. The numbers are written into your agreement, not left to a handshake.</p>
+        <div class="pt-rate"><span class="pt-rate__num">{{ terms.investor_share|default:"5%" }}</span><span class="pt-rate__txt">indicative share of a module's net profit<sup>*</sup></span></div>
+        <ul class="pt-facts">
           <li><b>Net profit</b> means what is left after the module's costs, as defined in the agreement.</li>
           <li><b>Your capital, share and term</b> are set per module and written down before you commit.</li>
           <li><b>Reports</b> show the module's results so you can see how your share was calculated.</li>
         </ul>
-        <p class="btrpi-foot"><sup>*</sup> Indicative rate for the programme. The exact share is set per module in your written agreement. It is not a promised return.</p>
+        <p class="pt-foot"><sup>*</sup> Indicative rate for the program. The exact share is set per module in your written agreement. It is not a promised return.</p>
       </div>
-
-      <!-- illustrator -->
-      <div class="btrpi-calc btrp-reveal" style="--d:.12s">
-        <div class="btrpi-calc__head">
-          <h3>Profit-share illustrator</h3>
-          <span>Illustration only</span>
-        </div>
-        <form class="btrpi-calc__form" id="btrpiCalc" onsubmit="return false">
+      <div class="pt-calc pt-reveal" style="--d:.1s">
+        <div class="pt-calc__head"><h3>Profit-share illustrator</h3><span>Illustration only</span></div>
+        <form class="pt-calc__form" id="ptCalc" onsubmit="return false">
           <label for="calcProfit">Module net profit for a period (PKR)</label>
           <input type="text" id="calcProfit" inputmode="numeric" value="1,000,000" autocomplete="off">
-
           <label for="calcRate">Profit share (%)</label>
-          <div class="btrpi-calc__rate">
-            <input type="range" id="calcRange" min="0" max="20" step="0.5" value="5" aria-label="Profit share slider">
-            <input type="number" id="calcRate" min="0" max="100" step="0.5" value="5">
-          </div>
+          <div class="pt-calc__rate"><input type="range" id="calcRange" min="0" max="20" step="0.5" value="5" aria-label="Profit share slider"><input type="number" id="calcRate" min="0" max="100" step="0.5" value="5"></div>
         </form>
-        <div class="btrpi-calc__out" aria-live="polite">
-          <span>Illustrative share</span>
-          <b id="calcResult">PKR 50,000</b>
-        </div>
-        <p class="btrpi-calc__note">This is simple arithmetic to show how a percentage works. It is not a forecast, and actual profit can be lower, zero, or negative.</p>
+        <div class="pt-calc__out" aria-live="polite"><span>Illustrative share</span><b id="calcResult">PKR 50,000</b></div>
+        <p class="pt-foot">This is simple arithmetic to show how a percentage works. It is not a forecast, and actual profit can be lower, zero, or negative.</p>
       </div>
-
     </div>
   </section>
 
-  <!-- ================= PROCESS ================= -->
-  <section class="btrp-section btrp-section--dark" id="process" aria-labelledby="procTitle">
-    <div class="btrp-wrap">
-      <div class="btrp-head btrp-head--center btrp-reveal">
-        <span class="btrp-kicker">The process</span>
-        <h2 class="btrp-h2" id="procTitle">From first call to funded module</h2>
-      </div>
-      <ol class="btrp-steps btrp-reveal" style="--n:5">
-        <li class="btrp-step"><h3>Apply</h3><p>Tell us about yourself and the module you are interested in.</p></li>
-        <li class="btrp-step"><h3>Intro call</h3><p>We talk through your goals, our plans and any questions you have.</p></li>
-        <li class="btrp-step"><h3>Investor pack</h3><p>You receive the module brief, use of funds, milestones and terms.</p></li>
-        <li class="btrp-step"><h3>Agreement</h3><p>Review the written agreement, ideally with your own legal advisor.</p></li>
-        <li class="btrp-step"><h3>Fund &amp; report</h3><p>Funds are used as agreed and you get regular updates.</p></li>
+  <!-- PROCESS -->
+  <section class="pt-sec pt-sec--ink" id="process" aria-labelledby="procT">
+    <div class="pt-wrap">
+      <header class="pt-head pt-reveal"><p class="pt-kicker">The process</p><h2 class="pt-h2" id="procT">From first call to funded module</h2></header>
+      <ol class="pt-steps pt-reveal" style="--n:5">
+        <li><h3>Apply</h3><p>Tell us about yourself and the module you are interested in.</p></li>
+        <li><h3>Intro call</h3><p>We talk through your goals, our plans and any questions you have.</p></li>
+        <li><h3>Investor pack</h3><p>You receive the module brief, use of funds, milestones and terms.</p></li>
+        <li><h3>Agreement</h3><p>Review the written agreement, ideally with your own legal advisor.</p></li>
+        <li><h3>Fund and report</h3><p>Funds are used as agreed and you get regular updates.</p></li>
       </ol>
     </div>
   </section>
 
-  <!-- ================= RECEIVE + RISK ================= -->
-  <section class="btrp-section" aria-labelledby="recvTitle">
-    <div class="btrp-wrap btrpi-recv">
-      <div class="btrp-reveal">
-        <span class="btrp-kicker">What you receive</span>
-        <h2 class="btrp-h2" id="recvTitle">Everything you need to decide</h2>
-        <ul class="btrpi-checks">
-          <li>A module brief that explains the product and the plan</li>
-          <li>A clear use-of-funds and budget outline</li>
-          <li>Milestones and an expected timeline</li>
-          <li>The profit-share terms in plain language</li>
-          <li>A written agreement to review before signing</li>
-          <li>A named contact at Xvera Labs for your questions</li>
+  <!-- RECEIVE + RISK -->
+  <section class="pt-sec" aria-labelledby="recvT">
+    <div class="pt-wrap pt-split">
+      <div class="pt-reveal">
+        <p class="pt-kicker">What you receive</p>
+        <h2 class="pt-h2" id="recvT">Everything you need to decide</h2>
+        <ul class="pt-points pt-points--lg">
+          <li>A module brief that explains the product and the plan</li><li>A clear use-of-funds and budget outline</li><li>Milestones and an expected timeline</li>
+          <li>The profit-share terms in plain language</li><li>A written agreement to review before signing</li><li>A named contact at Xvera Labs for your questions</li>
         </ul>
       </div>
-
-      <aside class="btrpi-risk btrp-reveal" style="--d:.12s" aria-labelledby="riskTitle">
-        <div class="btrp-note">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg>
-          <div>
-            <strong id="riskTitle">Important risk notice</strong><br>
-            Investing involves risk, including the loss of your capital. Profit shares are not guaranteed and depend on how a module performs. This page is for information only. It is not an offer of securities, nor financial or legal advice. Please get independent legal and financial advice before you invest.
-          </div>
-        </div>
+      <aside class="pt-risk pt-reveal" style="--d:.1s" aria-labelledby="riskT">
+        <strong id="riskT">Important risk notice</strong>
+        <p>Investing involves risk, including the loss of your capital. Profit shares are not guaranteed and depend on how a module performs. This page is for information only. It is not an offer of securities, nor financial or legal advice. Please get independent legal and financial advice before you invest.</p>
       </aside>
     </div>
   </section>
 
-  <!-- ================= FAQ ================= -->
-  <section class="btrp-section btrp-section--tint" id="faq" aria-labelledby="faqTitle">
-    <div class="btrp-wrap">
-      <div class="btrp-head btrp-head--center btrp-reveal">
-        <span class="btrp-kicker">FAQ</span>
-        <h2 class="btrp-h2" id="faqTitle">Investor questions</h2>
-      </div>
-      <div class="btrp-faq btrp-reveal" id="btrpiFaq">
-        <details>
-          <summary>Are returns guaranteed?</summary>
-          <p>No. A share of profit depends on how the module performs. There may be periods with low or no profit, and capital is at risk.</p>
-        </details>
-        <details>
-          <summary>Can I choose which module to invest in?</summary>
-          <p>Yes. You choose the module that interests you, and the agreement is specific to that module.</p>
-        </details>
-        <details>
-          <summary>What is the minimum amount?</summary>
-          <p>The amount is set per module and shared in the investor pack. Tell us your approximate range in the application and we will point you to the right option.</p>
-        </details>
-        <details>
-          <summary>Should I involve a lawyer or advisor?</summary>
-          <p>We recommend it. A written agreement is a serious commitment, and your own advisor can review it for you before you sign.</p>
-        </details>
-        <details>
-          <summary>How do I apply?</summary>
-          <p>Fill in the short application form and select "Investor partner". We will contact you to arrange an intro call.</p>
-        </details>
+  <!-- FAQ -->
+  <section class="pt-sec pt-sec--paper" id="faq" aria-labelledby="faqT">
+    <div class="pt-wrap">
+      <header class="pt-head pt-reveal"><p class="pt-kicker">FAQ</p><h2 class="pt-h2" id="faqT">Investor questions</h2></header>
+      <div class="pt-faq pt-reveal" data-faq>
+        <details><summary>Are returns guaranteed?</summary><p>No. A share of profit depends on how the module performs. There may be periods with low or no profit, and capital is at risk.</p></details>
+        <details><summary>Can I choose which module to invest in?</summary><p>Yes. You choose the module that interests you, and the agreement is specific to that module.</p></details>
+        <details><summary>What is the minimum amount?</summary><p>The amount is set per module and shared in the investor pack. Tell us your approximate range in the application and we will point you to the right option.</p></details>
+        <details><summary>Should I involve a lawyer or advisor?</summary><p>We recommend it. A written agreement is a serious commitment, and your own advisor can review it for you before you sign.</p></details>
+        <details><summary>How do I apply?</summary><p>Fill in the short application form and select "Investor partner". We will contact you to arrange an intro call.</p></details>
       </div>
     </div>
   </section>
 
-  <!-- ================= CTA ================= -->
-  <section class="btrp-cta" aria-labelledby="ctaTitle">
-    <div class="btrp-wrap btrp-cta__in">
-      <div>
-        <h2 id="ctaTitle">Interested in a module?</h2>
-        <p>Apply to receive the investor pack. There is no commitment until you sign an agreement.</p>
-      </div>
-      <div class="btrp-cta__btns">
-        <a href="{% url 'partner_apply' %}?type=investor" class="btrp-btn btrp-btn--primary">Apply as an investor partner <span aria-hidden="true">&rarr;</span></a>
-        <a href="{% url 'partners' %}" class="btrp-btn btrp-btn--ghost">All partner programs</a>
-      </div>
+  <section class="pt-cta" aria-labelledby="ctaT">
+    <div class="pt-wrap pt-cta__in">
+      <div><h2 id="ctaT">Interested in a module?</h2><p>Apply to receive the investor pack. There is no commitment until you sign an agreement.</p></div>
+      <div class="pt-actions"><a href="{% url 'partner_apply' %}?type=investor" class="pt-btn pt-btn--teal">Apply as an investor partner</a><a href="{% url 'partners' %}" class="pt-btn pt-btn--line">All partner programs</a></div>
     </div>
   </section>
-
 </main>
-
-<script src="{% static 'js/pages/partners-investors-1.js' %}"></script>
+<script src="{% static 'js/pages/partners-1.js' %}?v=1"></script>
 {% endblock %}

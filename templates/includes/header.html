@@ -355,28 +355,30 @@
           <button type="button" class="xv-trigger" aria-expanded="false" aria-controls="xv-partners">Partners<b class="xv-new">New</b><i class="xv-chev"></i></button>
           <div class="xv-panel" id="xv-partners"><div class="xv-panel__in">
             <div class="xv-rail">
-              <button type="button" class="xv-tab is-on" data-pane="partners-0">Investment &amp; Business Alliances</button>
-              <button type="button" class="xv-tab" data-pane="partners-1">Sales &amp; Client Acquisition</button>
-              <button type="button" class="xv-tab" data-pane="partners-2">Marketing &amp; Product Growth</button>
+              <button type="button" class="xv-tab is-on" data-pane="partners-0">Programs</button>
+              <button type="button" class="xv-tab" data-pane="partners-1">Investors</button>
+              <button type="button" class="xv-tab" data-pane="partners-2">Get involved</button>
             </div>
             <div class="xv-panes">
-              <div class="xv-pane is-on" id="partners-0"><h4>Investment &amp; Business Alliances</h4><ul class="xv-links">
+              <div class="xv-pane is-on" id="partners-0"><h4>Programs</h4><ul class="xv-links">
+                <li><a href="{% url 'partners' %}">Partner programs overview</a></li>
+                <li><a href="{% url 'partners' %}#referral">Referral &amp; Sales</a></li>
+                <li><a href="{% url 'partners' %}#reseller">Reseller</a></li>
+                <li><a href="{% url 'partners' %}#marketing">Marketing &amp; Growth</a></li>
+                <li><a href="{% url 'partners' %}#strategic">Strategic &amp; Corporate</a></li></ul></div>
+              <div class="xv-pane" id="partners-1"><h4>Investors</h4><ul class="xv-links">
                 <li><a href="{% url 'partners_investors' %}">Become an Investor Partner</a></li>
                 <li><a href="{% url 'partners_investors' %}#opportunities">Product Investment Modules</a></li>
-                <li><a href="{% url 'partners' %}#strategic">Strategic &amp; Corporate Partnerships</a></li>
-                <li><a href="{% url 'partners' %}#strategic">Distribution Partners</a></li></ul></div>
-              <div class="xv-pane" id="partners-1"><h4>Sales &amp; Client Acquisition</h4><ul class="xv-links">
-                <li><a href="{% url 'partners' %}#referral">Referral Partner (Bring a Client)</a></li>
-                <li><a href="{% url 'partners' %}#referral">Sales Partner Program</a></li>
-                <li><a href="{% url 'partners' %}#reseller">Reseller Program</a></li>
-                <li><a href="{% url 'partners' %}#referral">Affiliate Program</a></li></ul></div>
-              <div class="xv-pane" id="partners-2"><h4>Marketing &amp; Product Growth</h4><ul class="xv-links">
-                <li><a href="{% url 'partners' %}#marketing">Marketing Partners</a></li>
-                <li><a href="{% url 'partners' %}#marketing">Promote Our Products</a></li>
+                <li><a href="{% url 'partners_investors' %}#profit-share">Profit Sharing</a></li>
+                <li><a href="{% url 'partners_investors' %}#process">Investor Process</a></li>
+                <li><a href="{% url 'partners_investors' %}#faq">Investor FAQ</a></li></ul></div>
+              <div class="xv-pane" id="partners-2"><h4>Get involved</h4><ul class="xv-links">
                 <li><a href="{% url 'campus_ambassador_program' %}">Campus Ambassador Program</a></li>
-                <li><a href="{% url 'partners' %}#marketing">Market Expansion Program</a></li></ul></div>
+                <li><a href="{% url 'partners' %}#compare">Compare Programs</a></li>
+                <li><a href="{% url 'partners' %}#faq">Partner FAQ</a></li>
+                <li><a href="{% url 'partner_apply' %}">Apply Now</a></li></ul></div>
             </div>
-            <aside class="xv-feature"><h3>Build with us, in writing</h3><p>Every partnership runs under a clear written agreement.</p><a href="{% url 'partner_apply' %}" class="xv-btn">Become a partner</a></aside>
+            <aside class="xv-feature"><h3>Build with us, in writing</h3><p>Every partnership runs under a clear written agreement, with clear terms and reporting.</p><a href="{% url 'partner_apply' %}" class="xv-btn">Become a partner</a></aside>
           </div></div>
         </li>
         <li class="xv-mobile-cta"><a href="{% url 'contact_us' %}" class="xv-cta">Contact us</a></li>

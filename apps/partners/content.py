@@ -1,0 +1,86 @@
+"""Page content for the partner pages. Edit text here, not in the templates.
+Numbers (commission, profit share) live in PARTNER_TERMS in views.py."""
+
+PROGRAMS = [
+    {
+        "slug": "referral",
+        "name": "Referral & Sales",
+        "blurb": "Bring a client, earn a commission",
+        "kicker": "Referral & Sales partners",
+        "title": "Bring a client, earn a commission",
+        "text": "Know a business that needs software, AI or cloud work? Introduce them to us. If the project goes ahead, you earn a commission. This program includes sales partners and affiliates.",
+        "points": ["Freelancers, consultants and agencies", "Business owners with a strong network", "Sales professionals who want performance-based income"],
+        "reward_key": "referral_commission",
+        "reward_note": "commission on the net revenue of every project you bring",
+        "steps": [("Apply", "and sign the partner agreement."), ("Introduce", "a client. We handle the proposal and delivery."), ("Project signed:", "we confirm it with you."), ("You earn", "your commission after the client's payment reaches us, as set out in the agreement.")],
+        "cta": "Apply as a referral partner",
+        "best_for": "Consultants, networkers",
+        "earns": "{referral_commission} of net project revenue",
+        "does": "Introduce clients",
+    },
+    {
+        "slug": "reseller",
+        "name": "Reseller",
+        "blurb": "Sell our products to your customers",
+        "kicker": "Reseller program",
+        "title": "Resell our products to your customers",
+        "text": "Offer Xvera Labs products and solutions, such as our eCommerce marketplace and subscription-based POS system, to your own customers. You keep a margin, we handle the product and technical support.",
+        "points": ["IT shops and system integrators", "Agencies with an existing customer base", "Local partners who can onboard and support customers"],
+        "reward_label": "Margin",
+        "reward_note": "set per product and written into your reseller agreement",
+        "steps": [("Choose", "the products you want to sell."), ("Get onboarded:", "demos, material and technical training."), ("Sell", "to your customers under your own relationship."), ("Earn", "your margin as agreed, with support from our team.")],
+        "cta": "Apply as a reseller",
+        "best_for": "IT shops, agencies",
+        "earns": "Margin per product",
+        "does": "Sell to your customers",
+    },
+    {
+        "slug": "marketing",
+        "name": "Marketing & Growth",
+        "blurb": "Promote our products, open new markets",
+        "kicker": "Marketing & growth partners",
+        "title": "Promote our products, grow new markets",
+        "text": "Help us reach new audiences. Promote our products, run campaigns in your community or city, or help us enter a new market. Students can join through the Campus Ambassador Program.",
+        "points": ["Marketers, creators and community leaders", "Agencies that want to add our products to their offer", "Partners who can open a new city, region or industry"],
+        "reward_label": "Performance",
+        "reward_note": "based rewards, agreed in writing before you start",
+        "steps": [("Apply", "and tell us how you would promote."), ("Agree", "goals and rewards in writing."), ("Promote", "with our brand material and support."), ("Get rewarded", "for the results you deliver.")],
+        "cta": "Apply as a marketing partner",
+        "best_for": "Marketers, communities",
+        "earns": "Performance-based rewards",
+        "does": "Promote and generate leads",
+        "extra_link": ("campus_ambassador_program", "Campus Ambassador Program"),
+    },
+    {
+        "slug": "strategic",
+        "name": "Strategic & Corporate",
+        "blurb": "Technology, distribution, joint solutions",
+        "kicker": "Strategic & corporate partners",
+        "title": "Build bigger things together",
+        "text": "For companies that want a deeper relationship: technology partnerships, joint solutions, or distribution of our products in new regions and industries.",
+        "points": ["Technology and platform companies", "Corporates that want a long-term engineering partner", "Distributors who can take our products to a new region"],
+        "reward_label": "Per deal",
+        "reward_note": "terms are agreed for each partnership in a written agreement",
+        "steps": [("Introduce", "your company and your goals."), ("Explore", "the fit in a call with our team."), ("Define", "scope, responsibilities and terms."), ("Start", "working together under the agreement.")],
+        "cta": "Start a conversation",
+        "best_for": "Companies, distributors",
+        "earns": "Agreed per deal",
+        "does": "Work jointly under agreement",
+    },
+]
+
+MODULES = [
+    {"value": "btr-mall", "name": "BTR Mall", "tag": "Technology product", "text": "An eCommerce marketplace platform connecting sellers and buyers."},
+    {"value": "dinex-pos", "name": "Dinex POS", "tag": "Technology product", "text": "A subscription-based point-of-sale system for restaurants and food businesses."},
+    {"value": "skills-academy", "name": "Xvera Skills Academy", "tag": "Education", "text": "Digital skills and training programs that build the next generation of technology talent."},
+    {"value": "other", "name": "Other ventures", "tag": "Ventures", "text": "Restaurant, logistics, retail network and more. Talk to us if a different venture interests you."},
+]
+
+# title + one-line hint for the partner-type cards on the apply form
+TYPE_UI = {
+    "referral": ("Referral & sales", "Bring clients, earn commission"),
+    "reseller": ("Reseller", "Sell our products"),
+    "marketing": ("Marketing & growth", "Promote and expand"),
+    "strategic": ("Strategic & corporate", "Technology, distribution"),
+    "investor": ("Investor partner", "Back a product module"),
+}
