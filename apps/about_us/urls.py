@@ -6,8 +6,7 @@ from .views import (
     careeers,
     life_at_xvera_labs,
     PeopleView,
-    PeopleAnchorRedirect,
-    campus_ambassador_program
+    PeopleAnchorRedirect
 )       
 urlpatterns = [
     # company url
@@ -25,7 +24,5 @@ urlpatterns = [
     path("benefits/",                   views.PeopleAnchorRedirect.as_view(anchor="benefits"),  name="benefits"),
     path("diversity-equity-inclusion/", views.PeopleAnchorRedirect.as_view(anchor="inclusion"), name="diversity-equity-inclusion"),
 
-
-    path('join-xvera-labs/campus-ambassador-program/',campus_ambassador_program, name="campus_ambassador_program"),
     
 ]

@@ -61,6 +61,3 @@ class PeopleAnchorRedirect(RedirectView):
     def get_redirect_url(self, *args, **kwargs):
         return reverse("people") + (f"#{self.anchor}" if self.anchor else "")
 
-
-def campus_ambassador_program(request):
-    return render(request, 'about/join-xvera-labs/campus-ambassador-program.html')    

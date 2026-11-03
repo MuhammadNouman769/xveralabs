@@ -75,7 +75,7 @@ INSTALLED_APPS = [
     # custom apps
     'apps.utils',
     'apps.about_us',
-    'apps.projects',
+    'apps.campus_ambassador',
     
     'apps.main',
     'apps.contact',

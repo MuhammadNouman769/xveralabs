@@ -19,6 +19,7 @@ urlpatterns = [
     path('', include('apps.partners.urls')),
     path('contact/', include('apps.contact.urls')),
     path('careers/', include('apps.careers.urls')),
+    path('', include('apps.campus_ambassador.urls')),
 ]
 
 if settings.DEBUG or settings.SERVE_MEDIA:

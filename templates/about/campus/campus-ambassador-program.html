@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Campus Ambassador Program - Xvera Labs{% endblock %}
+{% block meta_description %}Represent Xvera Labs on your campus. Build your network, learn new skills and grow as a student leader. Apply to the Campus Ambassador Program.{% endblock %}
+{% block body_class %}page-about-campuses{% endblock %}
+{% block page_css %}<link rel="stylesheet" href="{% static 'css/pages/campus-ambassador-program.css' %}?v=2">{% endblock %}
+
+{% block content %}
+{% comment %} Everything below the hero text comes from the admin: Campus Ambassador > Cohorts / Program items / Stories. {% endcomment %}
+<main class="cp" id="cpMain">
+
+  <!-- HERO -->
+  <header class="cp-hero" aria-labelledby="cpTitle">
+    <div class="cp-wrap cp-hero__grid">
+      <div>
+        <nav class="cp-crumbs" aria-label="Breadcrumb"><a href="{% url 'home' %}">Home</a><span aria-hidden="true">/</span><a href="{% url 'partners' %}">Partners</a><span aria-hidden="true">/</span><span aria-current="page">Campus Ambassador</span></nav>
+        {% if cohort %}
+          {% if accepting %}<p class="cp-status cp-status--open">Applications open{% if cohort.closes_on %} until {{ cohort.closes_on|date:"j F Y" }}{% endif %}</p>
+          {% else %}<p class="cp-status">Applications are closed right now</p>{% endif %}
+        {% endif %}
+        <h1 class="cp-h1" id="cpTitle">Campus Ambassador Program</h1>
+        <p class="cp-lead">Represent Xvera Labs on your campus. Build your network, learn new skills and grow as a student leader.</p>
+        <div class="cp-actions">
+          {% if accepting %}<a href="#apply" class="cp-btn cp-btn--teal">Apply now</a>{% endif %}
+          <a href="#how" class="cp-btn cp-btn--line">How it works</a>
+        </div>
+        {% if ambassadors %}<ul class="cp-stats" aria-label="Program in numbers"><li><b>{{ ambassadors }}</b><span>active ambassador{{ ambassadors|pluralize }}</span></li>{% if campuses %}<li><b>{{ campuses }}</b><span>campus{{ campuses|pluralize:",es" }}</span></li>{% endif %}</ul>{% endif %}
+      </div>
+
+      {% if cohort %}
+      <aside class="cp-facts" aria-label="Program at a glance">
+        <p class="cp-facts__title">At a glance</p>
+        <dl>
+          <div><dt>Program term</dt><dd>{{ cohort.term_months }} month{{ cohort.term_months|pluralize }}</dd></div>
+          {% if cohort.hours_per_week %}<div><dt>Time commitment</dt><dd>{{ cohort.hours_per_week }} per week</dd></div>{% endif %}
+          <div><dt>Who can apply</dt><dd>Enrolled students</dd></div>
+          <div><dt>Cost</dt><dd>Free to apply</dd></div>
+          {% if cohort.closes_on %}<div><dt>Apply by</dt><dd>{{ cohort.closes_on|date:"j F Y" }}</dd></div>{% endif %}
+        </dl>
+      </aside>
+      {% endif %}
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section class="cp-sec" id="about" aria-labelledby="aboutT">
+    <div class="cp-wrap cp-split">
+      <div class="cp-reveal">
+        <p class="cp-kicker">About the program</p>
+        <h2 class="cp-h2" id="aboutT">Why become an ambassador?</h2>
+        <p class="cp-text">As a Campus Ambassador you are the friendly face of Xvera Labs on your campus. You help students learn about technology and opportunities, organise activities with our support, and build skills in communication, event planning and leadership.</p>
+        <p class="cp-text">It is a way to gain real experience, meet people and show initiative, long before you graduate.</p>
+      </div>
+      {% if cohort and cohort.eligibility_list %}
+      <div class="cp-box cp-reveal" style="--d:.1s">
+        <h3>Who we are looking for</h3>
+        <ul class="cp-points">{% for pt in cohort.eligibility_list %}<li>{{ pt }}</li>{% endfor %}</ul>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  {% if benefits %}
+  <section class="cp-sec cp-sec--paper" id="benefits" aria-labelledby="benT">
+    <div class="cp-wrap">
+      <header class="cp-head cp-reveal"><p class="cp-kicker">What you get</p><h2 class="cp-h2" id="benT">Benefits for ambassadors</h2></header>
+      <div class="cp-cards">{% for b in benefits %}<article class="cp-card cp-reveal"><h3>{{ b.title }}</h3><p>{{ b.text }}</p></article>{% endfor %}</div>
+    </div>
+  </section>
+  {% endif %}
+
+  <!-- HOW IT WORKS -->
+  {% if steps %}
+  <section class="cp-sec" id="how" aria-labelledby="howT">
+    <div class="cp-wrap">
+      <header class="cp-head cp-reveal"><p class="cp-kicker">The process</p><h2 class="cp-h2" id="howT">How it works</h2></header>
+      <ol class="cp-steps cp-reveal" style="--n:{{ steps|length }}">{% for s in steps %}<li><h3>{{ s.title }}</h3><p>{{ s.text }}</p></li>{% endfor %}</ol>
+    </div>
+  </section>
+  {% endif %}
+
+  <!-- RESPONSIBILITIES -->
+  {% if responsibilities %}
+  <section class="cp-sec cp-sec--ink" id="role" aria-labelledby="roleT">
+    <div class="cp-wrap cp-split">
+      <div class="cp-reveal">
+        <p class="cp-kicker">Your role</p>
+        <h2 class="cp-h2" id="roleT">What you will do</h2>
+        <p class="cp-text">Being an ambassador is about action. You will not be on your own: our team supports you throughout the term.</p>
+      </div>
+      <ul class="cp-tasks cp-reveal" style="--d:.1s">{% for r in responsibilities %}<li><h3>{{ r.title }}</h3><p>{{ r.text }}</p></li>{% endfor %}</ul>
+    </div>
+  </section>
+  {% endif %}
+
+  <!-- STORIES (only when real stories are published in the admin) -->
+  {% if stories %}
+  <section class="cp-sec" id="stories" aria-labelledby="stT">
+    <div class="cp-wrap">
+      <header class="cp-head cp-reveal"><p class="cp-kicker">Ambassador voices</p><h2 class="cp-h2" id="stT">In their own words</h2></header>
+      <div class="cp-cards">{% for s in stories %}<figure class="cp-story cp-reveal"><blockquote>{{ s.quote }}</blockquote><figcaption><b>{{ s.name }}</b><span>{{ s.university }}{% if s.label %} &middot; {{ s.label }}{% endif %}</span></figcaption></figure>{% endfor %}</div>
+    </div>
+  </section>
+  {% endif %}
+
+  <!-- FAQ -->
+  {% if faqs %}
+  <section class="cp-sec cp-sec--paper" id="faq" aria-labelledby="faqT">
+    <div class="cp-wrap">
+      <header class="cp-head cp-reveal"><p class="cp-kicker">Questions</p><h2 class="cp-h2" id="faqT">Frequently asked questions</h2></header>
+      <div class="cp-faq cp-reveal" data-faq>{% for f in faqs %}<details><summary>{{ f.title }}</summary><p>{{ f.text }}</p></details>{% endfor %}</div>
+    </div>
+  </section>
+  {% endif %}
+
+  <!-- APPLY -->
+  <section class="cp-sec cp-apply" id="apply" aria-labelledby="applyT">
+    <div class="cp-wrap cp-apply__grid">
+      <div class="cp-apply__intro">
+        <p class="cp-kicker">Apply</p>
+        <h2 class="cp-h2" id="applyT">Ready to lead your campus?</h2>
+        <p class="cp-text">Tell us a little about yourself. We read every application and will contact you about the next step.</p>
+        <p class="cp-safe">Applying is free and does not commit you to anything.</p>
+        <p class="cp-alt">Questions? Write to <a href="mailto:xveralabs@gmail.com">xveralabs@gmail.com</a>.</p>
+      </div>
+
+      <div class="cp-formcard">
+        {% if sent %}
+        <div class="cp-done" role="status"><h3>Application received</h3><p>Thank you for applying. Our team will review your application and contact you.{% if ref %} A confirmation has been sent to your email.{% endif %}</p>{% if ref %}<p class="cp-done__ref">Your reference: <b>{{ ref }}</b></p>{% endif %}<a href="{% url 'partners' %}" class="cp-btn cp-btn--ink">Explore partner programs</a></div>
+        {% elif not accepting %}
+        <div class="cp-closed"><h3>Applications are closed right now</h3><p>We open new cohorts regularly. Check back soon, or write to us at <a href="mailto:xveralabs@gmail.com">xveralabs@gmail.com</a> and we will let you know when applications open again.</p></div>
+        {% else %}
+        <h3 class="cp-formtitle">Ambassador application</h3>
+        {% if form.non_field_errors %}<p class="cp-err cp-err--top" role="alert">{{ form.non_field_errors.0 }}</p>{% elif form.errors %}<p class="cp-err cp-err--top" role="alert">Please fix the fields marked below and send again.</p>{% endif %}
+        <form class="cp-form" id="cpForm" method="post" action="{% url 'campus_ambassador_program' %}#apply" novalidate>
+          {% csrf_token %}
+          <div class="cp-hp" aria-hidden="true"><label>Leave this empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+
+          <div class="cp-f"><label for="{{ form.full_name.id_for_label }}">Full name<span>*</span></label>{{ form.full_name }}{% if form.full_name.errors %}<p class="cp-err">{{ form.full_name.errors.0 }}</p>{% endif %}</div>
+          <div class="cp-f"><label for="{{ form.email.id_for_label }}">Email<span>*</span></label>{{ form.email }}{% if form.email.errors %}<p class="cp-err">{{ form.email.errors.0 }}</p>{% endif %}</div>
+          <div class="cp-f"><label for="{{ form.phone.id_for_label }}">Phone number<span>*</span></label>{{ form.phone }}{% if form.phone.errors %}<p class="cp-err">{{ form.phone.errors.0 }}</p>{% endif %}</div>
+          <div class="cp-f"><label for="{{ form.university.id_for_label }}">University or college<span>*</span></label>{{ form.university }}{% if form.university.errors %}<p class="cp-err">{{ form.university.errors.0 }}</p>{% endif %}</div>
+          <div class="cp-f"><label for="{{ form.city.id_for_label }}">City<span>*</span></label>{{ form.city }}{% if form.city.errors %}<p class="cp-err">{{ form.city.errors.0 }}</p>{% endif %}</div>
+          <div class="cp-f"><label for="{{ form.degree.id_for_label }}">Degree program<span>*</span></label>{{ form.degree }}{% if form.degree.errors %}<p class="cp-err">{{ form.degree.errors.0 }}</p>{% endif %}</div>
+          <div class="cp-f"><label for="{{ form.year_of_study.id_for_label }}">Year of study<span>*</span></label>{{ form.year_of_study }}{% if form.year_of_study.errors %}<p class="cp-err">{{ form.year_of_study.errors.0 }}</p>{% endif %}</div>
+          <div class="cp-f"><label for="{{ form.motivation.id_for_label }}">Why do you want to join?<span>*</span></label>{{ form.motivation }}<span class="cp-count" data-count-for="motivation">0 / 1000</span>{% if form.motivation.errors %}<p class="cp-err">{{ form.motivation.errors.0 }}</p>{% endif %}</div>
+          <div class="cp-f"><label for="{{ form.experience.id_for_label }}">Leadership or community experience</label>{{ form.experience }}<span class="cp-count" data-count-for="experience">0 / 1000</span></div>
+          <div class="cp-f"><label for="{{ form.social_url.id_for_label }}">LinkedIn or Instagram link</label>{{ form.social_url }}{% if form.social_url.errors %}<p class="cp-err">{{ form.social_url.errors.0 }}</p>{% endif %}</div>
+
+          <div class="cp-f"><label class="cp-check"><input type="checkbox" name="is_student" id="cp-is_student"{% if form.is_student.value %} checked{% endif %} required><span>I am currently enrolled at a university or college.</span></label>{% if form.is_student.errors %}<p class="cp-err">{{ form.is_student.errors.0 }}</p>{% endif %}</div>
+          <div class="cp-f"><label class="cp-check"><input type="checkbox" name="consent" id="cp-consent"{% if form.consent.value %} checked{% endif %} required><span>I agree that Xvera Labs may store my details and contact me about this application. I have read the <a href="{% url 'privacy_policy' %}">Privacy Policy</a>.</span></label>{% if form.consent.errors %}<p class="cp-err">{{ form.consent.errors.0 }}</p>{% endif %}</div>
+
+          <button type="submit" class="cp-btn cp-btn--ink cp-submit">Submit application</button>
+        </form>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+</main>
+<script src="{% static 'js/pages/campus-ambassador-program-1.js' %}?v=2"></script>
+{% endblock %}
