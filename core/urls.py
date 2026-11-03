@@ -18,6 +18,7 @@ urlpatterns = [
     path('services/', include('apps.services.urls')),
     path('', include('apps.partners.urls')),
     path('contact/', include('apps.contact.urls')),
+    path('careers/', include('apps.careers.urls')),
 ]
 
 if settings.DEBUG or settings.SERVE_MEDIA:

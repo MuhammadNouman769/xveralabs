@@ -1,0 +1,24 @@
+{% comment %} Application form, used on the role page and on the general "Send your CV" page. {% endcomment %}
+{% if form.non_field_errors %}<p class="cr-err cr-err--top" role="alert">{{ form.non_field_errors.0 }}</p>{% elif form.errors %}<p class="cr-err cr-err--top" role="alert">Please fix the fields marked below and send again.</p>{% endif %}
+<form class="cr-form" id="crForm" method="post" enctype="multipart/form-data" action="{{ request.path }}#apply" novalidate>
+  {% csrf_token %}
+  <div class="cr-hp" aria-hidden="true"><label>Leave this empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+
+  <div class="cr-f"><label for="{{ form.full_name.id_for_label }}">Full name<span>*</span></label>{{ form.full_name }}{% if form.full_name.errors %}<p class="cr-err">{{ form.full_name.errors.0 }}</p>{% endif %}</div>
+  <div class="cr-f"><label for="{{ form.email.id_for_label }}">Email<span>*</span></label>{{ form.email }}{% if form.email.errors %}<p class="cr-err">{{ form.email.errors.0 }}</p>{% endif %}</div>
+  <div class="cr-f"><label for="{{ form.phone.id_for_label }}">Phone number<span>*</span></label>{{ form.phone }}{% if form.phone.errors %}<p class="cr-err">{{ form.phone.errors.0 }}</p>{% endif %}</div>
+  <div class="cr-f"><label for="{{ form.city.id_for_label }}">City</label>{{ form.city }}</div>
+  <div class="cr-f"><label for="{{ form.profile_url.id_for_label }}">LinkedIn, GitHub or portfolio link</label>{{ form.profile_url }}{% if form.profile_url.errors %}<p class="cr-err">{{ form.profile_url.errors.0 }}</p>{% endif %}</div>
+
+  <div class="cr-f">
+    <label for="{{ form.cv.id_for_label }}">Your CV<span>*</span></label>
+    <label class="cr-file" for="{{ form.cv.id_for_label }}">{{ form.cv }}<span class="cr-file__btn">Choose file</span><span class="cr-file__name" id="crFileName">PDF, DOC or DOCX, up to 5 MB</span></label>
+    {% if form.cv.errors %}<p class="cr-err">{{ form.cv.errors.0 }}</p>{% endif %}
+  </div>
+
+  <div class="cr-f"><label for="{{ form.cover_note.id_for_label }}">Short note (optional)</label>{{ form.cover_note }}<span class="cr-count" id="crCount2">0 / 1500</span></div>
+
+  <div class="cr-f"><label class="cr-consent"><input type="checkbox" name="consent" id="ca-consent"{% if form.consent.value %} checked{% endif %} required><span>I agree that Xvera Labs may store my details and CV and contact me about this application. I have read the <a href="{% url 'privacy_policy' %}">Privacy Policy</a>.</span></label>{% if form.consent.errors %}<p class="cr-err">{{ form.consent.errors.0 }}</p>{% endif %}</div>
+
+  <button type="submit" class="cr-btn cr-btn--ink cr-submit">Submit application</button>
+</form>

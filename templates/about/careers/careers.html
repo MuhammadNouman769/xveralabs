@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Careers and Internships - Xvera Labs{% endblock %}
+{% block meta_description %}Join Xvera Labs. See our open positions and internships in engineering, design, DevOps and more, or send us your CV.{% endblock %}
+{% block body_class %}page-about-careers{% endblock %}
+{% block page_css %}<link rel="stylesheet" href="{% static 'css/pages/careers.css' %}?v=1">{% endblock %}
+
+{% block content %}
+{% comment %} Positions come from the admin (Careers > Job positions). Static text: content.py {% endcomment %}
+<main class="cr" id="crMain">
+
+  <!-- HERO -->
+  <section class="cr-hero" aria-labelledby="crTitle">
+    <div class="cr-wrap cr-hero__grid">
+      <div>
+        <nav class="cr-crumbs" aria-label="Breadcrumb"><a href="{% url 'home' %}">Home</a><span aria-hidden="true">/</span><span aria-current="page">Careers</span></nav>
+        <p class="cr-eyebrow">Careers</p>
+        <h1 class="cr-h1" id="crTitle">Build your career at Xvera Labs</h1>
+        <p class="cr-lead">Join a software team building web, mobile, AI and cloud products for clients in different regions. We hire engineers, designers and interns who like to learn and ship.</p>
+        <div class="cr-actions"><a href="#positions" class="cr-btn cr-btn--teal">View open roles</a><a href="{% url 'career_apply' %}" class="cr-btn cr-btn--line">Send your CV</a></div>
+        {% if open_count %}<ul class="cr-stats" aria-label="Hiring now"><li><b>{{ open_count }}</b><span>open role{{ open_count|pluralize }}</span></li>{% if internship_count %}<li><b>{{ internship_count }}</b><span>internship{{ internship_count|pluralize }}</span></li>{% endif %}</ul>{% endif %}
+      </div>
+
+      <aside class="cr-live" aria-label="Open now">
+        <p class="cr-live__title">Open now</p>
+        {% if latest %}
+        <ul>{% for p in latest %}<li><a href="{{ p.get_absolute_url }}"><b>{{ p.title }}</b><small>{{ p.get_job_type_display }} &middot; {{ p.get_work_mode_display }}</small></a></li>{% endfor %}</ul>
+        {% else %}
+        <p class="cr-live__empty">There are no open roles at the moment, but we are always glad to hear from talented people.</p>
+        <a href="{% url 'career_apply' %}" class="cr-btn cr-btn--teal">Send your CV</a>
+        {% endif %}
+      </aside>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="cr-sec" id="culture" aria-labelledby="valT">
+    <div class="cr-wrap">
+      <header class="cr-head"><p class="cr-kicker">Life at Xvera Labs</p><h2 class="cr-h2" id="valT">What it is like to work here</h2></header>
+      <div class="cr-values">{% for title, text in values %}<article class="cr-value"><span class="cr-value__n">0{{ forloop.counter }}</span><h3>{{ title }}</h3><p>{{ text }}</p></article>{% endfor %}</div>
+    </div>
+  </section>
+
+  <!-- POSITIONS -->
+  <section class="cr-sec cr-sec--paper" id="positions" aria-labelledby="posT">
+    <div class="cr-wrap">
+      <header class="cr-head"><p class="cr-kicker">Join us</p><h2 class="cr-h2" id="posT">Open positions</h2><p class="cr-text">Find a role or an internship that fits you. Not seeing one? <a href="{% url 'career_apply' %}">Send us your CV</a> anyway.</p></header>
+
+      {% if positions %}
+      <div class="cr-toolbar">
+        <div class="cr-chips" id="crTypes" role="group" aria-label="Filter by type">
+          <button type="button" class="cr-chip is-on" data-type="all" aria-pressed="true">All</button>
+          {% for v, l in types %}<button type="button" class="cr-chip" data-type="{{ v }}" aria-pressed="false">{{ l }}</button>{% endfor %}
+        </div>
+        <div class="cr-filters">
+          <label class="cr-vh" for="crDept">Department</label>
+          <select id="crDept"><option value="all">All departments</option>{% for v, l in departments %}<option value="{{ v }}">{{ l }}</option>{% endfor %}</select>
+          <label class="cr-vh" for="crSearch">Search roles</label>
+          <input type="search" id="crSearch" placeholder="Search roles" autocomplete="off">
+        </div>
+      </div>
+      <p class="cr-count" id="crCount" aria-live="polite"></p>
+
+      <div class="cr-jobs" id="crJobs">
+        {% for p in positions %}
+        <article class="cr-job" data-dept="{{ p.department }}" data-type="{{ p.job_type }}" data-text="{{ p.title|lower }} {{ p.summary|lower }} {{ p.get_department_display|lower }}">
+          <div class="cr-job__main">
+            <div class="cr-tags"><span class="cr-tag cr-tag--{{ p.job_type }}">{{ p.get_job_type_display }}</span><span class="cr-tag">{{ p.get_department_display }}</span>{% if p.is_featured %}<span class="cr-tag cr-tag--hot">Featured</span>{% endif %}</div>
+            <h3><a href="{{ p.get_absolute_url }}">{{ p.title }}</a></h3>
+            <p>{{ p.summary }}</p>
+            <ul class="cr-meta"><li>{{ p.location }}</li><li>{{ p.get_work_mode_display }}</li><li>{{ p.get_level_display }}</li>{% if p.duration %}<li>{{ p.duration }}</li>{% endif %}{% if p.deadline %}<li>Apply by {{ p.deadline|date:"j M Y" }}</li>{% endif %}</ul>
+          </div>
+          <a class="cr-job__go" href="{{ p.get_absolute_url }}">View role<span aria-hidden="true"> &rarr;</span></a>
+        </article>
+        {% endfor %}
+      </div>
+      <p class="cr-empty" id="crEmpty" hidden>No roles match your filters. <a href="{% url 'career_apply' %}">Send us your CV</a> and we will keep it for future openings.</p>
+      {% else %}
+      <div class="cr-none"><h3>No open roles right now</h3><p>We open new positions regularly. Send your CV and we will contact you when a role fits your profile.</p><a href="{% url 'career_apply' %}" class="cr-btn cr-btn--ink">Send your CV</a></div>
+      {% endif %}
+    </div>
+  </section>
+
+  <!-- INTERNSHIPS -->
+  {% if internship_count %}
+  <section class="cr-sec cr-sec--ink" id="internships" aria-labelledby="intT">
+    <div class="cr-wrap cr-split">
+      <div>
+        <p class="cr-kicker">Internships</p>
+        <h2 class="cr-h2" id="intT">Start your career with a real team</h2>
+        <p class="cr-text">Our internships are for students and fresh graduates who want hands-on experience. You learn by doing real tasks, with a mentor beside you.</p>
+        <button type="button" class="cr-btn cr-btn--teal" data-filter-type="internship">See internships</button>
+      </div>
+      <ul class="cr-points">{% for pt in internship_points %}<li>{{ pt }}</li>{% endfor %}</ul>
+    </div>
+  </section>
+  {% endif %}
+
+  <!-- BENEFITS -->
+  <section class="cr-sec" id="why" aria-labelledby="whyT">
+    <div class="cr-wrap">
+      <header class="cr-head"><p class="cr-kicker">Why Xvera Labs</p><h2 class="cr-h2" id="whyT">What you can expect from us</h2></header>
+      <div class="cr-cards">{% for title, text in benefits %}<article class="cr-card"><h3>{{ title }}</h3><p>{{ text }}</p></article>{% endfor %}</div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="cr-sec cr-sec--paper" id="process" aria-labelledby="prT">
+    <div class="cr-wrap">
+      <header class="cr-head"><p class="cr-kicker">How we hire</p><h2 class="cr-h2" id="prT">A simple, transparent process</h2></header>
+      <ol class="cr-steps">{% for title, text in process %}<li><h3>{{ title }}</h3><p>{{ text }}</p></li>{% endfor %}</ol>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cr-cta" aria-labelledby="ctaT">
+    <div class="cr-wrap cr-cta__in">
+      <div><h2 id="ctaT">Ready to make an impact?</h2><p>Cannot see your role? Send us your CV anyway and we will keep it in mind for future openings.</p></div>
+      <div class="cr-actions"><a href="#positions" class="cr-btn cr-btn--teal">View all openings</a><a href="{% url 'career_apply' %}" class="cr-btn cr-btn--line">Send your CV</a></div>
+    </div>
+  </section>
+</main>
+<script src="{% static 'js/pages/careers-1.js' %}?v=1"></script>
+{% endblock %}

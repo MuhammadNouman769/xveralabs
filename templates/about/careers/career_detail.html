@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ position.title }} - Careers - Xvera Labs{% endblock %}
+{% block meta_description %}{{ position.summary }}{% endblock %}
+{% block body_class %}page-about-careers{% endblock %}
+{% block page_css %}<link rel="stylesheet" href="{% static 'css/pages/careers.css' %}?v=1">{% if jobposting_ld %}<script type="application/ld+json">{{ jobposting_ld|safe }}</script>{% endif %}{% endblock %}
+
+{% block content %}
+<main class="cr" id="crMain">
+
+  <header class="cr-hero cr-hero--role">
+    <div class="cr-wrap">
+      <nav class="cr-crumbs" aria-label="Breadcrumb"><a href="{% url 'home' %}">Home</a><span aria-hidden="true">/</span><a href="{% url 'careeers' %}">Careers</a><span aria-hidden="true">/</span><span aria-current="page">{{ position.title }}</span></nav>
+      <div class="cr-tags cr-tags--hero"><span class="cr-tag cr-tag--{{ position.job_type }}">{{ position.get_job_type_display }}</span><span class="cr-tag">{{ position.get_department_display }}</span></div>
+      <h1 class="cr-h1">{{ position.title }}</h1>
+      <p class="cr-lead">{{ position.summary }}</p>
+      {% if position.is_accepting %}<div class="cr-actions"><a href="#apply" class="cr-btn cr-btn--teal">Apply for this role</a><a href="{% url 'careeers' %}#positions" class="cr-btn cr-btn--line">All open roles</a></div>{% endif %}
+    </div>
+  </header>
+
+  <div class="cr-wrap cr-role">
+    <article class="cr-role__main">
+      {% if not position.is_accepting %}
+      <p class="cr-closed" role="status">This position is no longer open. See the <a href="{% url 'careeers' %}#positions">current openings</a> or <a href="{% url 'career_apply' %}">send us your CV</a> for future roles.</p>
+      {% endif %}
+
+      <section><h2>About the role</h2>{% for para in position.paragraphs %}<p>{{ para }}</p>{% endfor %}</section>
+      {% if position.responsibilities_list %}<section><h2>What you will do</h2><ul>{% for i in position.responsibilities_list %}<li>{{ i }}</li>{% endfor %}</ul></section>{% endif %}
+      {% if position.requirements_list %}<section><h2>What we are looking for</h2><ul>{% for i in position.requirements_list %}<li>{{ i }}</li>{% endfor %}</ul></section>{% endif %}
+      {% if position.nice_to_have_list %}<section><h2>Nice to have</h2><ul>{% for i in position.nice_to_have_list %}<li>{{ i }}</li>{% endfor %}</ul></section>{% endif %}
+
+      {% if position.is_accepting or sent %}
+      <section class="cr-apply" id="apply" aria-labelledby="applyT">
+        {% if sent %}
+        <div class="cr-done" role="status"><h2 id="applyT">Application received</h2><p>Thank you for applying. Our team will review your application and contact you if there is a fit.{% if ref %} A confirmation has been sent to your email.{% endif %}</p>{% if ref %}<p class="cr-done__ref">Your reference: <b>{{ ref }}</b></p>{% endif %}<a href="{% url 'careeers' %}#positions" class="cr-btn cr-btn--ink">See other roles</a></div>
+        {% else %}
+        <h2 id="applyT">Apply for this role</h2>
+        {% include 'about/careers/_apply_form.html' %}
+        {% endif %}
+      </section>
+      {% endif %}
+    </article>
+
+    <aside class="cr-role__side" aria-label="Role details">
+      <div class="cr-side">
+        <h2>Role details</h2>
+        <dl>
+          <div><dt>Type</dt><dd>{{ position.get_job_type_display }}</dd></div>
+          <div><dt>Department</dt><dd>{{ position.get_department_display }}</dd></div>
+          <div><dt>Level</dt><dd>{{ position.get_level_display }}</dd></div>
+          <div><dt>Work mode</dt><dd>{{ position.get_work_mode_display }}</dd></div>
+          <div><dt>Location</dt><dd>{{ position.location }}</dd></div>
+          {% if position.duration %}<div><dt>Duration</dt><dd>{{ position.duration }}</dd></div>{% endif %}
+          {% if position.compensation %}<div><dt>Compensation</dt><dd>{{ position.compensation }}</dd></div>{% endif %}
+          {% if position.deadline %}<div><dt>Apply by</dt><dd>{{ position.deadline|date:"j F Y" }}</dd></div>{% endif %}
+        </dl>
+        {% if position.is_accepting %}<a href="#apply" class="cr-btn cr-btn--teal">Apply now</a>{% endif %}
+        <p class="cr-side__alt">Not the right role? <a href="{% url 'career_apply' %}">Send us your CV</a>.</p>
+      </div>
+    </aside>
+  </div>
+</main>
+<script src="{% static 'js/pages/careers-1.js' %}?v=1"></script>
+{% endblock %}

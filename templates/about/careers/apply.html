@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Send your CV - Careers - Xvera Labs{% endblock %}
+{% block meta_robots %}noindex, follow{% endblock %}
+{% block body_class %}page-about-careers{% endblock %}
+{% block page_css %}<link rel="stylesheet" href="{% static 'css/pages/careers.css' %}?v=1">{% endblock %}
+
+{% block content %}
+<main class="cr" id="crMain">
+  <header class="cr-hero cr-hero--role">
+    <div class="cr-wrap">
+      <nav class="cr-crumbs" aria-label="Breadcrumb"><a href="{% url 'home' %}">Home</a><span aria-hidden="true">/</span><a href="{% url 'careeers' %}">Careers</a><span aria-hidden="true">/</span><span aria-current="page">Send your CV</span></nav>
+      <p class="cr-eyebrow">General application</p>
+      <h1 class="cr-h1">Send us your CV</h1>
+      <p class="cr-lead">Cannot see a role that fits? Tell us about yourself. We keep applications and contact you when a position matches your profile.</p>
+    </div>
+  </header>
+
+  <div class="cr-wrap cr-role cr-role--solo">
+    <section class="cr-apply" id="apply" aria-labelledby="applyT">
+      {% if sent %}
+      <div class="cr-done" role="status"><h2 id="applyT">Application received</h2><p>Thank you. Our team will keep your details and contact you if a position fits.{% if ref %} A confirmation has been sent to your email.{% endif %}</p>{% if ref %}<p class="cr-done__ref">Your reference: <b>{{ ref }}</b></p>{% endif %}<a href="{% url 'careeers' %}#positions" class="cr-btn cr-btn--ink">See open roles</a></div>
+      {% else %}
+      <h2 id="applyT">Your details</h2>
+      {% include 'about/careers/_apply_form.html' %}
+      {% endif %}
+    </section>
+  </div>
+</main>
+<script src="{% static 'js/pages/careers-1.js' %}?v=1"></script>
+{% endblock %}
