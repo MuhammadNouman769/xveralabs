@@ -79,7 +79,7 @@ INSTALLED_APPS = [
     
     'apps.main',
     'apps.contact',
-    'apps.services',
+    'apps.services_pages',
     'apps.blogs',
     'apps.partners',
     'apps.careers',

@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% load static service_tags %}
+{% block title %}{{ page.title }} - Xvera Labs{% endblock %}
+{% block meta_description %}{% if page.meta_description %}{{ page.meta_description }}{% else %}{{ page.tagline }}{% endif %}{% endblock %}
+{% block body_class %}page-service{% endblock %}
+{% block page_css %}<link rel="stylesheet" href="{% static 'css/pages/service-page.css' %}?v=1">{% endblock %}
+
+{% block content %}
+{% comment %} All text on this page comes from the admin: Service pages > {{ page.title }}. {% endcomment %}
+<main class="sv" id="svMain">
+
+  <!-- BANNER -->
+  <header class="sv-hero" aria-labelledby="svTitle">
+    <div class="sv-wrap sv-hero__grid">
+      <div>
+        <nav class="sv-crumbs" aria-label="Breadcrumb"><a href="{% url 'home' %}">Home</a><span aria-hidden="true">/</span><span>Services</span><span aria-hidden="true">/</span><span>{{ group.name }}</span>{% if page.slug != 'strategy-and-consulting' %}<span aria-hidden="true">/</span><span aria-current="page">{{ page.title }}</span>{% endif %}</nav>
+        <p class="sv-eyebrow">{{ group.name }}</p>
+        <h1 class="sv-h1" id="svTitle">{{ page.title }}</h1>
+        <p class="sv-lead">{{ page.tagline }}</p>
+        <div class="sv-actions"><a href="{% url 'contact_us' %}" class="sv-btn sv-btn--teal">Talk to our team</a><a href="#{% if steps %}process{% else %}overview{% endif %}" class="sv-btn sv-btn--line">See how we work</a></div>
+      </div>
+      <aside class="sv-group" aria-label="{{ group.name }} services">
+        <p class="sv-group__title">{{ group.name }}</p>
+        <ul>{% for p in siblings %}<li><a href="{{ p.get_absolute_url }}"{% if p.pk == page.pk %} class="is-current" aria-current="page"{% endif %}><b>{{ p.title }}</b></a></li>{% endfor %}</ul>
+      </aside>
+    </div>
+  </header>
+
+  <!-- ON-PAGE NAV -->
+  <nav class="sv-sub" id="svSub" aria-label="On this page">
+    <div class="sv-wrap sv-sub__in">
+      <a href="#overview" data-spy="overview">Overview</a>
+      {% if features %}<a href="#capabilities" data-spy="capabilities">What we do</a>{% endif %}
+      {% if steps %}<a href="#process" data-spy="process">Process</a>{% endif %}
+      {% if deliverables %}<a href="#deliverables" data-spy="deliverables">What you receive</a>{% endif %}
+      {% if sections %}<a href="#details" data-spy="details">In depth</a>{% endif %}
+      {% if faqs %}<a href="#faq" data-spy="faq">FAQ</a>{% endif %}
+    </div>
+  </nav>
+
+  <!-- OVERVIEW -->
+  <section class="sv-sec" id="overview" aria-labelledby="ovT">
+    <div class="sv-wrap sv-split">
+      <div class="sv-reveal">
+        <p class="sv-kicker">Overview</p>
+        <h2 class="sv-h2" id="ovT">{{ page.title }}</h2>
+        <div class="sv-prose">{{ page.intro|richtext }}</div>
+      </div>
+      {% if audience %}
+      <aside class="sv-box sv-reveal" style="--d:.1s"><h3>Who it is for</h3><ul class="sv-points">{% for a in audience %}<li>{{ a.title }}</li>{% endfor %}</ul></aside>
+      {% endif %}
+    </div>
+  </section>
+
+  <!-- WHAT WE DO -->
+  {% if features %}
+  <section class="sv-sec sv-sec--paper" id="capabilities" aria-labelledby="capT">
+    <div class="sv-wrap">
+      <header class="sv-head sv-reveal"><p class="sv-kicker">What we do</p><h2 class="sv-h2" id="capT">How we can help</h2></header>
+      <div class="sv-cards">{% for f in features %}<article class="sv-card sv-reveal"><span class="sv-card__n">0{{ forloop.counter }}</span><h3>{{ f.title }}</h3><p>{{ f.text }}</p></article>{% endfor %}</div>
+    </div>
+  </section>
+  {% endif %}
+
+  <!-- PROCESS -->
+  {% if steps %}
+  <section class="sv-sec sv-sec--ink" id="process" aria-labelledby="prT">
+    <div class="sv-wrap">
+      <header class="sv-head sv-reveal"><p class="sv-kicker">Our process</p><h2 class="sv-h2" id="prT">From first call to a clear plan</h2></header>
+      <ol class="sv-steps sv-reveal" style="--n:{{ steps|length }}">{% for s in steps %}<li><h3>{{ s.title }}</h3><p>{{ s.text }}</p></li>{% endfor %}</ol>
+    </div>
+  </section>
+  {% endif %}
+
+  <!-- DELIVERABLES -->
+  {% if deliverables %}
+  <section class="sv-sec" id="deliverables" aria-labelledby="delT">
+    <div class="sv-wrap sv-split">
+      <div class="sv-reveal">
+        <p class="sv-kicker">What you receive</p>
+        <h2 class="sv-h2" id="delT">Clear outputs you can use</h2>
+        <p class="sv-text">Every engagement ends with documents and decisions your team can act on, written in plain language.</p>
+        <ul class="sv-points sv-points--lg">{% for d in deliverables %}<li>{{ d.title }}</li>{% endfor %}</ul>
+      </div>
+      <aside class="sv-cta-box sv-reveal" style="--d:.1s">
+        <h3>Not sure where to start?</h3>
+        <p>Tell us your situation in a few lines. We will suggest the simplest next step, with no obligation.</p>
+        <a href="{% url 'contact_us' %}" class="sv-btn sv-btn--teal">Start a conversation</a>
+      </aside>
+    </div>
+  </section>
+  {% endif %}
+
+  <!-- IN DEPTH -->
+  {% if sections %}
+  <section class="sv-sec sv-sec--paper" id="details" aria-label="In depth">
+    <div class="sv-wrap sv-depth">
+      {% for s in sections %}
+      <article class="sv-depth__item sv-reveal">
+        <h2 class="sv-h2">{{ s.title }}</h2>
+        <div class="sv-prose">{{ s.text|richtext }}</div>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  <!-- FAQ -->
+  {% if faqs %}
+  <section class="sv-sec" id="faq" aria-labelledby="faqT">
+    <div class="sv-wrap">
+      <header class="sv-head sv-reveal"><p class="sv-kicker">FAQ</p><h2 class="sv-h2" id="faqT">Common questions</h2></header>
+      <div class="sv-faq sv-reveal" data-faq>{% for f in faqs %}<details><summary>{{ f.title }}</summary><p>{{ f.text }}</p></details>{% endfor %}</div>
+    </div>
+  </section>
+  {% endif %}
+
+  <!-- RELATED -->
+  {% if others %}
+  <section class="sv-sec sv-sec--paper" aria-labelledby="relT">
+    <div class="sv-wrap">
+      <header class="sv-head sv-reveal"><p class="sv-kicker">More from {{ group.name }}</p><h2 class="sv-h2" id="relT">Related services</h2></header>
+      <div class="sv-rel">{% for p in others %}<a href="{{ p.get_absolute_url }}" class="sv-rel__item sv-reveal"><h3>{{ p.title }}</h3><p>{{ p.tagline }}</p><span>Learn more</span></a>{% endfor %}</div>
+    </div>
+  </section>
+  {% endif %}
+
+  <!-- CTA -->
+  <section class="sv-cta" aria-labelledby="ctaT">
+    <div class="sv-wrap sv-cta__in">
+      <div><h2 id="ctaT">Let us talk about your goals</h2><p>Share what you are working on and we will tell you honestly how we can help.</p></div>
+      <div class="sv-actions"><a href="{% url 'contact_us' %}" class="sv-btn sv-btn--teal">Contact us</a><a href="{% url 'partners' %}" class="sv-btn sv-btn--line">Partner with us</a></div>
+    </div>
+  </section>
+</main>
+{% if faq_ld %}<script type="application/ld+json">{{ faq_ld|safe }}</script>{% endif %}
+<script src="{% static 'js/pages/service-page-1.js' %}?v=1"></script>
+{% endblock %}

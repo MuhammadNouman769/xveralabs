@@ -15,9 +15,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apps.main.urls')),
     path('about/', include('apps.about_us.urls')),
-    path('services/', include('apps.services.urls')),
+    path('services/', include('apps.services_pages.urls')),
     path('', include('apps.partners.urls')),
-    path('contact/', include('apps.contact.urls')),
+    path('', include('apps.contact.urls')),
     path('careers/', include('apps.careers.urls')),
     path('', include('apps.campus_ambassador.urls')),
 ]
