@@ -1,11 +1,21 @@
-from urllib import request
-from django.shortcuts import render
 import json
 
 from django.shortcuts import get_object_or_404, render
 from django.views import View
 
+from .catalog import (
+    AI_CATEGORIES,
+    INDUSTRY_CATEGORIES,
+    SERVICE_CATEGORIES,
+    SOLUTION_CATEGORIES,
+)
 from .models import BlockKind, ServicePage
+from .routes import SERVICE_ROUTES
+
+CATALOG_GROUPS = {
+    category["slug"]
+    for category in (*SERVICE_CATEGORIES, *SOLUTION_CATEGORIES, *INDUSTRY_CATEGORIES)
+}
 
 
 class ServicePageView(View):
@@ -32,28 +42,35 @@ class ServicePageView(View):
             "deliverables": by_kind.get(BlockKind.DELIVERABLE, []), "audience": by_kind.get(BlockKind.AUDIENCE, []),
             "sections": by_kind.get(BlockKind.SECTION, []), "faqs": faqs, "faq_ld": faq_ld,
         }
-        return render(request, self.template_name, ctx)
-
-
-
-
-
-
-
-
-
-
-def advanced_technology(request):
-    return render(request, 'services/advanced_technology/advanced_technology.html')
-
-def robotic_process_automation(request):
-    return render(request, 'services/advanced_technology/robotic_process_automation.html')
-
-def internet_of_things(request):
-    return render(request, 'services/advanced_technology/internet_of_things.html')
-
-def blockchain(request):
-    return render(request, 'services/advanced_technology/blockchain.html')
-
-def ar_vr(request):
-    return render(request, 'services/advanced_technology/ar_vr.html')
+        if page.group.slug in CATALOG_GROUPS:
+            template_name = "services/catalog_service_page.html"
+            design_variant = list(SERVICE_ROUTES).index(page.slug)
+            ctx["design_variant"] = design_variant
+            ctx["card_style"] = design_variant % 8
+        elif page.group.slug == "advanced-technology":
+            template_name = "services/technology_page.html"
+        elif page.group.slug in {category["slug"] for category in AI_CATEGORIES}:
+            template_name = "services/ai_service_page.html"
+            category_index = next(
+                index
+                for index, category in enumerate(AI_CATEGORIES)
+                if category["slug"] == page.group.slug
+            )
+            category = AI_CATEGORIES[category_index]
+            page_position = next(
+                index
+                for index, title in enumerate(category["items"])
+                if title == page.title
+            )
+            ctx["ai_layout"] = category_index * len(category["items"]) + page_position
+            ctx["ai_layout_variant"] = (category_index + page_position * 2) % 8
+            ctx["ai_page_number"] = f"{ctx['ai_layout'] + 1:02d}"
+            ctx["ai_title_pattern"] = (
+                "Machine learning with human direction",
+                "A focused path from problem to solution",
+                "Built to fit your existing workflows",
+                "Clear, careful, and ready to evolve",
+            )[page_position]
+        else:
+            template_name = self.template_name
+        return render(request, template_name, ctx)

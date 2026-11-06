@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block title %}Page Not Found | Xvera Labs{% endblock %}
+{% block meta_robots %}noindex, nofollow{% endblock %}
 
 {% block page_css %}
 <link rel="stylesheet" href="{% static 'css/error-pages.css' %}">
@@ -15,8 +16,8 @@
     <h1 class="xvera-error-title">We couldn't find that page.</h1>
     <p class="xvera-error-copy">The address may be incorrect, or the page may have moved. Use one of the links below to get back on track.</p>
     <div class="xvera-error-actions">
-      <a class="xvera-error-action" href="{% url 'home' %}">Back to home</a>
-      <a class="xvera-error-action xvera-error-action--secondary" href="{% url 'contact_us' %}">Contact us</a>
+      <a class="xvera-error-action" href="{% url 'case_studies' %}">Explore industries</a>
+      <a class="xvera-error-action xvera-error-action--secondary" href="{% url 'home' %}">Back to home</a>
     </div>
   </div>
 </main>

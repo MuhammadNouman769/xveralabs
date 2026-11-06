@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from apps.blogs import views as blog_views
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -9,8 +10,11 @@ urlpatterns = [
     path('signin/', views.signin, name='signin'),
     path('signup/', views.signup, name='signup'),
     path('blogs/', views.blogs, name='blogs'),
+    path('resources/', blog_views.resource_index, name='resources'),
+    path('resources/<slug:slug>/', blog_views.resource_detail, name='resource_detail'),
     path('blog-single/', views.blog_single, name='blog_single'),
     path('case-studies/', views.case_studies, name='case_studies'),
+    path('case-studies/<slug:slug>/', views.industry_case_study, name='case_study_detail'),
     path('faqs/', views.faqs, name='faqs'),
     path('terms-conditions/', views.term_condition, name='term_condition'),
     path('privacy-policy/', views.privacy_policy, name='privacy_policy'),

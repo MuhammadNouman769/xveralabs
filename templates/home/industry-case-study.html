@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ case_study.name }} Industry Case Study - Xvera Labs{% endblock %}
+{% block meta_description %}{{ case_study.summary }}{% endblock %}
+{% block og_title %}{{ case_study.name }} Industry Case Study - Xvera Labs{% endblock %}
+{% block og_description %}{{ case_study.summary }}{% endblock %}
+{% block twitter_title %}{{ case_study.name }} Industry Case Study - Xvera Labs{% endblock %}
+{% block twitter_description %}{{ case_study.summary }}{% endblock %}
+{% block body_class %}page-case-studies page-industry-case-study{% endblock %}
+{% block page_css %}<link rel="stylesheet" href="{% static 'css/pages/home-case-studies.css' %}?v=2">{% endblock %}
+{% block extra_head %}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","name":"{{ case_study.title|escapejs }}","description":"{{ case_study.summary|escapejs }}","url":"https://{{ request.get_host }}{% url 'case_study_detail' case_study.slug %}","about":{"@type":"Thing","name":"{{ case_study.name|escapejs }}"}}
+</script>
+{% endblock %}
+
+{% block content %}
+<main class="cs cs-detail">
+  <header class="cs-detail-hero">
+    <div class="cs-wrap">
+      <nav class="cs-crumbs" aria-label="Breadcrumb"><a href="{% url 'home' %}">Home</a><span>/</span><a href="{% url 'case_studies' %}">Case Studies</a><span>/</span><span aria-current="page">{{ case_study.name }}</span></nav>
+      <div class="cs-detail-hero__grid">
+        <div class="cs-detail-copy">
+          <p class="cs-eyebrow">{{ case_study.eyebrow }}</p>
+          <h1>{{ case_study.title }}</h1>
+          <p>{{ case_study.summary }}</p>
+          <a class="cs-button" href="#case-study-content">Explore the approach <span aria-hidden="true">↓</span></a>
+        </div>
+        <figure class="cs-detail-image"><img src="{{ case_study.image_url }}" alt="{{ case_study.image_alt }}" fetchpriority="high"><figcaption>{{ case_study.image_alt }}</figcaption></figure>
+      </div>
+    </div>
+  </header>
+
+  <section class="cs-story" id="case-study-content">
+    <div class="cs-wrap cs-story__grid">
+      <aside class="cs-story__rail"><p class="cs-eyebrow">Industry perspective</p><a href="{% url 'case_studies' %}">← All industries</a><span>{{ case_study.name }}</span></aside>
+      <div class="cs-story__content">
+        <article class="cs-story-section">
+          <span class="cs-story-section__number">01</span>
+          <div><p class="cs-eyebrow">The challenge</p><h2>Start with the real-world friction</h2><p>{{ case_study.challenge }}</p></div>
+        </article>
+        <article class="cs-story-section">
+          <span class="cs-story-section__number">02</span>
+          <div><p class="cs-eyebrow">The approach</p><h2>Design for the people doing the work</h2><p>{{ case_study.approach }}</p></div>
+        </article>
+        {% if capabilities %}
+        <section class="cs-capabilities">
+          <header><p class="cs-eyebrow">Where technology can help</p><h2>Capabilities to consider</h2></header>
+          <div class="cs-capability-grid">
+            {% for item in capabilities %}<article class="cs-capability"><span>0{{ forloop.counter }}</span><h3>{{ item.title }}</h3><p>{{ item.text }}</p></article>{% endfor %}
+          </div>
+        </section>
+        {% endif %}
+        {% if considerations %}
+        <section class="cs-considerations">
+          <p class="cs-eyebrow">Plan with care</p><h2>Important considerations</h2>
+          <ul>{% for item in considerations %}<li><span>✓</span><div><b>{{ item.title }}</b><p>{{ item.text }}</p></div></li>{% endfor %}</ul>
+        </section>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+
+  {% if related_case_studies %}
+  <section class="cs-related">
+    <div class="cs-wrap">
+      <header class="cs-section-head"><div><p class="cs-eyebrow">Keep exploring</p><h2>More industry perspectives</h2></div><a href="{% url 'case_studies' %}">All case studies <span aria-hidden="true">→</span></a></header>
+      <div class="cs-related-grid">
+        {% for study in related_case_studies %}<a class="cs-related-card" href="{% url 'case_study_detail' study.slug %}"><img src="{{ study.image_url }}" alt="" loading="lazy" decoding="async"><span><small>{{ study.eyebrow }}</small><b>{{ study.name }}</b><i aria-hidden="true">↗</i></span></a>{% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  <section class="cs-cta">
+    <div class="cs-wrap cs-cta__inner"><div><p class="cs-eyebrow">Your team. Your context.</p><h2>Let’s discuss a practical next step.</h2></div><a class="cs-button" href="{% url 'contact_us' %}">Talk to our team <span aria-hidden="true">→</span></a></div>
+  </section>
+</main>
+{% endblock %}

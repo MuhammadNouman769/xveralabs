@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ resource.title }} - Xvera Labs{% endblock %}
+{% block meta_description %}{{ resource.excerpt }}{% endblock %}
+{% block body_class %}page-resources page-resource-detail{% endblock %}
+{% block page_css %}<link rel="stylesheet" href="{% static 'css/pages/resources.css' %}?v=1">{% endblock %}
+
+{% block content %}
+<main class="rs rs-detail">
+  <header class="rs-detail-hero">
+    <div class="rs-wrap">
+      <nav class="rs-crumbs" aria-label="Breadcrumb"><a href="{% url 'home' %}">Home</a><span>/</span><a href="{% url 'resources' %}">Resources</a><span>/</span><span aria-current="page">{{ resource.category }}</span></nav>
+      <div class="rs-detail-hero__grid">
+        <div class="rs-detail-copy">
+          <p class="rs-eyebrow">{{ resource.category }} <span>·</span> {{ resource.kind|title }} <span>·</span> {{ resource.read_time }}</p>
+          <h1>{{ resource.title }}</h1>
+          <p class="rs-detail-lead">{{ resource.excerpt }}</p>
+          <a class="rs-detail-back" href="{% url 'resources' %}?filter={{ resource.topic }}">Back to {{ resource.category }} resources <span aria-hidden="true">→</span></a>
+        </div>
+        <figure class="rs-detail-image"><img src="{{ resource.image }}" alt="{{ resource.image_alt }}" fetchpriority="high"><figcaption>{{ resource.image_alt }}</figcaption></figure>
+      </div>
+    </div>
+  </header>
+
+  <div class="rs-wrap rs-detail-layout">
+    <article class="rs-article">
+      {% for section in resource.sections %}
+      <section class="rs-article-section">
+        <h2>{{ section.heading }}</h2>
+        {% for paragraph in section.paragraphs %}<p>{{ paragraph }}</p>{% endfor %}
+        {% if section.bullets %}<ul>{% for point in section.bullets %}<li>{{ point }}</li>{% endfor %}</ul>{% endif %}
+      </section>
+      {% endfor %}
+      <aside class="rs-article-callout"><span>Next step</span><p>Use these ideas to frame a practical conversation with your team. A clear goal and a few known constraints are enough to begin.</p><a href="{% url 'contact_us' %}">Discuss your project <span aria-hidden="true">→</span></a></aside>
+    </article>
+    <aside class="rs-detail-sidebar">
+      <p class="rs-side-kicker">Keep exploring</p><h2>Related resources</h2>
+      {% for related in related_resources %}
+      <a class="rs-related" href="{% url 'resource_detail' related.slug %}">
+        <img src="{{ related.image }}" alt="" loading="lazy" decoding="async">
+        <span><small>{{ related.kind|title }} · {{ related.read_time }}</small><b>{{ related.title }}</b></span>
+      </a>
+      {% endfor %}
+      <a class="rs-all-link" href="{% url 'resources' %}">Browse all resources <span aria-hidden="true">→</span></a>
+    </aside>
+  </div>
+</main>
+{% endblock %}

@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load static service_tags %}
+{% block title %}{{ page.title }} - Xvera Labs{% endblock %}
+{% block meta_description %}{% if page.meta_description %}{{ page.meta_description }}{% else %}{{ page.tagline }}{% endif %}{% endblock %}
+{% block body_class %}page-service page-catalog-service{% endblock %}
+{% block page_css %}<link rel="stylesheet" href="{% static 'css/pages/service-page.css' %}?v=5">{% endblock %}
+
+{% block content %}
+<main class="sv sv--catalog sv--{{ group.slug }} sv-layout--{{ design_variant|divisibleby:2|yesno:'even,odd' }}" style="--sv-design:{{ design_variant }}" id="svMain">
+  <header class="sv-hero sv-catalog-hero" aria-labelledby="svTitle">
+    <div class="sv-wrap">
+      <nav class="sv-crumbs" aria-label="Breadcrumb"><a href="{% url 'home' %}">Home</a><span aria-hidden="true">/</span><span>Services</span><span aria-hidden="true">/</span><span>{{ group.name }}</span><span aria-hidden="true">/</span><span aria-current="page">{{ page.title }}</span></nav>
+      <div class="sv-catalog-hero__grid">
+        <div class="sv-catalog-copy">
+          <p class="sv-eyebrow">{{ group.name }} / Xvera Labs</p>
+          <p class="sv-catalog-index">SERVICE NOTE <span>{{ design_variant|stringformat:"02d" }}</span></p>
+          <h1 class="sv-h1" id="svTitle">{{ page.title }}</h1>
+          <p class="sv-lead">{{ page.tagline }}</p>
+          <div class="sv-actions"><a href="{% url 'contact_us' %}" class="sv-btn sv-btn--teal">Talk to our team</a><a href="#overview" class="sv-btn sv-btn--line">Explore the service</a></div>
+        </div>
+        <aside class="sv-catalog-art" aria-label="{{ group.name }} service illustration">
+          {% if group.slug == "cloud-services" %}
+            <div class="sv-art-cloud"><span>PLATFORM</span><b>{{ page.short_title }}</b><i>Build · Operate · Improve</i><div><span>Compute</span><span>Data</span><span>Network</span></div></div>
+          {% elif group.slug == "ai-solutions-engineering" %}
+            <div class="sv-art-ai"><span class="sv-art-ai__orbit"></span><b>AI</b><i>IDEA → SYSTEM → VALUE</i><small>{{ page.short_title }}</small></div>
+          {% elif group.slug == "innovation" %}
+            <div class="sv-art-innovation"><span>QUESTION</span><b>What if?</b><i>Explore / Test / Learn</i></div>
+          {% elif group.slug == "quality-assurance" %}
+            <div class="sv-art-terminal"><span>QUALITY CHECK</span><p><b>01</b> scope the risk</p><p><b>02</b> test the flow</p><p><b>03</b> review the result</p><strong>READY FOR REVIEW <i>●</i></strong></div>
+          {% elif group.slug == "ai-strategy-governance" %}
+            <div class="sv-art-governance"><span>RESPONSIBLE AI</span><b>People<br>Purpose<br>Practice</b><i>Clear decisions at every step</i></div>
+          {% elif group.slug == "digital-implementation" %}
+            <div class="sv-art-delivery"><span>PLAN</span><i></i><span>BUILD</span><i></i><span>DELIVER</span><b>{{ page.short_title }}</b></div>
+          {% elif group.slug == "modernization" %}
+            <div class="sv-art-modern"><span>EXISTING</span><b>+</b><span>BETTER</span><div>{{ page.short_title }}</div></div>
+          {% elif group.slug == "software-development" %}
+            <div class="sv-art-browser"><div><i></i><i></i><i></i><span>xvera / {{ page.short_title }}</span></div><b>Build for<br>what's next.</b><i></i><i></i><i></i></div>
+          {% elif group.slug == "data-analytics" %}
+            <div class="sv-art-data"><span>DATA → DECISIONS</span><div><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><b>{{ page.short_title }}</b></div>
+          {% else %}
+            <div class="sv-art-security"><span>TRUST BY DESIGN</span><b>Secure<br>the essentials.</b><i>IDENTITY · DATA · SYSTEMS</i></div>
+          {% endif %}
+        </aside>
+      </div>
+      {% if siblings %}
+      <nav class="sv-catalog-siblings" aria-label="{{ group.name }} services">
+        {% for service in siblings %}<a href="{{ service.get_absolute_url }}"{% if service.pk == page.pk %} aria-current="page"{% endif %}>{{ service.tab_title }}</a>{% endfor %}
+      </nav>
+      {% endif %}
+    </div>
+  </header>
+
+  <nav class="sv-sub" id="svSub" aria-label="On this page">
+    <div class="sv-wrap sv-sub__in">
+      {% if features %}<a href="#capabilities" data-spy="capabilities">Capabilities</a>{% endif %}
+      <a href="#overview" data-spy="overview">Overview</a>
+      {% if steps %}<a href="#process" data-spy="process">Approach</a>{% endif %}
+      {% if deliverables %}<a href="#deliverables" data-spy="deliverables">Outputs</a>{% endif %}
+      {% if sections %}<a href="#details" data-spy="details">In depth</a>{% endif %}
+      {% if faqs %}<a href="#faq" data-spy="faq">FAQ</a>{% endif %}
+    </div>
+  </nav>
+
+  {% if features %}
+  <section class="sv-sec sv-sec--paper sv-catalog-capabilities" id="capabilities" aria-labelledby="capT">
+    <div class="sv-wrap">
+      <header class="sv-head sv-reveal"><p class="sv-kicker">{{ group.name }}</p><h2 class="sv-h2" id="capT">A service shaped around your priorities</h2></header>
+      <div class="sv-cards sv-card-style-{{ card_style }}">{% for f in features %}<article class="sv-card sv-reveal"><span class="sv-card__n">0{{ forloop.counter }}</span><h3>{{ f.title }}</h3><p>{{ f.text }}</p></article>{% endfor %}</div>
+    </div>
+  </section>
+  {% endif %}
+
+  <section class="sv-sec sv-catalog-overview" id="overview" aria-labelledby="ovT">
+    <div class="sv-wrap sv-split">
+      <div class="sv-reveal">
+        <p class="sv-kicker">The brief</p>
+        <h2 class="sv-h2" id="ovT">{{ page.title }}</h2>
+        <div class="sv-prose">{{ page.intro|richtext }}</div>
+      </div>
+      {% if audience %}
+      <aside class="sv-box sv-reveal" style="--d:.1s"><h3>Good fit for</h3><ul class="sv-points">{% for a in audience %}<li>{{ a.title }}</li>{% endfor %}</ul></aside>
+      {% endif %}
+    </div>
+  </section>
+
+  {% if steps %}
+  <section class="sv-sec sv-sec--ink sv-catalog-process" id="process" aria-labelledby="prT">
+    <div class="sv-wrap">
+      <header class="sv-head sv-reveal"><p class="sv-kicker">A clear way forward</p><h2 class="sv-h2" id="prT">How we approach the work</h2></header>
+      <ol class="sv-steps sv-reveal" style="--n:{{ steps|length }}">{% for s in steps %}<li><h3>{{ s.title }}</h3><p>{{ s.text }}</p></li>{% endfor %}</ol>
+    </div>
+  </section>
+  {% endif %}
+
+  {% if deliverables %}
+  <section class="sv-sec sv-catalog-outputs" id="deliverables" aria-labelledby="delT">
+    <div class="sv-wrap sv-split">
+      <div class="sv-reveal"><p class="sv-kicker">Useful outputs</p><h2 class="sv-h2" id="delT">A plan your team can use</h2>
+        <ul class="sv-points sv-points--lg" style="margin-top:24px">{% for d in deliverables %}<li>{{ d.title }}</li>{% endfor %}</ul>
+      </div>
+      <aside class="sv-cta-box sv-reveal" style="--d:.1s"><h3>Want to discuss this service?</h3><p>Share what you are trying to improve. We will help identify a sensible next step.</p><a href="{% url 'contact_us' %}" class="sv-btn sv-btn--teal">Start a conversation</a></aside>
+    </div>
+  </section>
+  {% endif %}
+
+  {% if sections %}
+  <section class="sv-sec sv-sec--paper" id="details" aria-label="In depth">
+    <div class="sv-wrap sv-depth">{% for section in sections %}<article class="sv-depth__item sv-reveal"><h2 class="sv-h2">{{ section.title }}</h2><div class="sv-prose">{{ section.text|richtext }}</div></article>{% endfor %}</div>
+  </section>
+  {% endif %}
+
+  {% if faqs %}
+  <section class="sv-sec" id="faq" aria-labelledby="faqT"><div class="sv-wrap">
+    <header class="sv-head sv-reveal"><p class="sv-kicker">FAQ</p><h2 class="sv-h2" id="faqT">A few common questions</h2></header>
+    <div class="sv-faq sv-reveal" data-faq>{% for faq in faqs %}<details><summary>{{ faq.title }}</summary><p>{{ faq.text }}</p></details>{% endfor %}</div>
+  </div></section>
+  {% endif %}
+
+  {% if others %}
+  <section class="sv-sec sv-sec--paper" aria-labelledby="relT"><div class="sv-wrap">
+    <header class="sv-head sv-reveal"><p class="sv-kicker">More from {{ group.name }}</p><h2 class="sv-h2" id="relT">Related services</h2></header>
+    <div class="sv-rel">{% for service in others %}<a href="{{ service.get_absolute_url }}" class="sv-rel__item sv-reveal"><h3>{{ service.title }}</h3><p>{{ service.tagline }}</p><span>Explore service</span></a>{% endfor %}</div>
+  </div></section>
+  {% endif %}
+
+  <section class="sv-cta" aria-labelledby="ctaT"><div class="sv-wrap sv-cta__in">
+    <div><h2 id="ctaT">Let's make the next step clear</h2><p>Tell us what you need, and we will talk through a practical way forward.</p></div>
+    <div class="sv-actions"><a href="{% url 'contact_us' %}" class="sv-btn sv-btn--teal">Contact us</a><a href="{% url 'partners' %}" class="sv-btn sv-btn--line">Partner with us</a></div>
+  </div></section>
+</main>
+{% if faq_ld %}<script type="application/ld+json">{{ faq_ld|safe }}</script>{% endif %}
+<script src="{% static 'js/pages/service-page-1.js' %}?v=1"></script>
+{% endblock %}

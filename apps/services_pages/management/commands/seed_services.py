@@ -1,7 +1,70 @@
 from django.core.management.base import BaseCommand
 
+from apps.services_pages.catalog import (
+    AI_CATEGORIES,
+    INDUSTRY_CATEGORIES,
+    SERVICE_CATEGORIES,
+    SOLUTION_CATEGORIES,
+    build_ai_pages,
+    build_catalog_pages,
+    build_domain_pages,
+)
 from apps.services_pages.models import BlockKind as K
 from apps.services_pages.models import ServiceBlock, ServiceGroup, ServicePage
+
+
+def additional_faqs(title, group_name):
+    return [
+        (
+            "What information should we bring to the first discussion?",
+            "A short description of the goal, the people involved, relevant systems and any known constraints is enough to begin.",
+        ),
+        (
+            "Can this work with our existing systems and processes?",
+            "We review your current environment during discovery and shape the scope around relevant systems, workflows and constraints.",
+        ),
+        (
+            "How do you agree on scope and priorities?",
+            "We clarify the desired outcome, compare options and confirm priorities and boundaries with your team before delivery.",
+        ),
+        (
+            "Can the work be delivered in phases?",
+            "Yes. Where appropriate, we can break the work into reviewable stages and agree the next stage based on what is learned.",
+        ),
+        (
+            "How will progress be reviewed?",
+            "The team agrees on checkpoints and reviewable outputs so decisions, risks and progress stay visible.",
+        ),
+        (
+            "How do you approach security and privacy?",
+            "Security and privacy needs are considered during discovery and solution design, based on the data, users and requirements involved.",
+        ),
+        (
+            "What will our team receive at the end?",
+            "The outputs depend on the agreed scope and can include documented decisions, implementation work and recommended next steps.",
+        ),
+        (
+            "Can you coordinate with our internal team?",
+            "We agree responsibilities and communication with your team before work begins, and coordinate around the existing delivery process.",
+        ),
+        (
+            "What support is available after delivery?",
+            "Any follow-up, handover or ongoing support is discussed as part of the scope so expectations are clear before delivery.",
+        ),
+        (
+            "How do we get started?",
+            f"Contact us with a brief description of your {title.lower()} needs. We can discuss your goals and identify a sensible next step.",
+        ),
+        (
+            f"How is success measured for {title.lower()}?",
+            "We agree practical outcomes and review criteria with your team before delivery, so the result can be assessed against the original need.",
+        ),
+        (
+            f"Who is involved in work on {title.lower()}?",
+            f"The right participants depend on the scope. We identify the relevant {group_name.lower()} stakeholders and subject-matter experts during discovery.",
+        ),
+    ]
+
 
 # Starter content for the Strategy & Consulting pages. It describes HOW we work, with no invented numbers or client claims.
 # Review it, edit it in the admin (Service pages) and delete anything that is not true for your company.
@@ -181,23 +244,236 @@ We agree format, group size and schedule with you when we scope the programme.""
    ("How do we measure progress?","We agree simple goals at the start, review them at the end and can include a hands-on task.")]),
 ]
 
+TECHNOLOGY_PAGES = [
+ dict(slug="advanced-technology", title="Advanced Technology", short="Overview", order=0,
+  tagline="Explore practical technologies that can improve operations, connect devices and create more useful digital experiences.",
+  intro="""Advanced technology is most valuable when it solves a real problem. We help teams assess opportunities, choose an appropriate approach and plan a responsible implementation.
+
+This page introduces our technology services. Explore the focused capabilities below to learn where automation, connected devices, distributed records or immersive interfaces may fit your goals.""",
+  features=[("Robotic Process Automation","Identify repetitive, rules-based work that could be handled by software automation."),
+   ("Internet of Things","Connect devices and systems to collect useful operational data."),
+   ("Blockchain","Assess whether a shared, tamper-evident ledger is appropriate for a business process."),
+   ("AR/VR experiences","Explore immersive interfaces for training, visualization or customer experiences.")],
+  steps=[("Understand the need","Clarify the users, process and outcome behind the technology idea."),
+   ("Assess options","Compare technical fit, integration needs, risks and ongoing ownership."),
+   ("Prototype and plan","Test the important assumptions and define a practical delivery plan.")],
+  deliverables=["A documented problem and opportunity assessment","A comparison of suitable technology options","A prototype or proof-of-concept plan","A phased implementation roadmap"],
+  audience=["Teams exploring a new technology for a known business need","Operations leaders looking to reduce repetitive work","Product teams considering connected or immersive experiences"],
+  sections=[("Start with the problem","""A technology choice should follow a clear need, not the other way around.
+
+## What we consider
+- The people who will use or maintain the solution.
+- Existing systems, data and integration requirements.
+- Security, privacy, accessibility and operational risks.
+- The simplest way to test whether the idea is useful.""")],
+  faqs=[("Do all projects need a proof of concept?","No. We recommend a prototype when an important assumption needs to be tested before a larger investment."),
+   ("Can you help implement the selected solution?","Yes. After agreeing on scope, our team can help with design, engineering and integration.")]),
+
+ dict(slug="robotic-process-automation", title="Robotic Process Automation (RPA)", short="RPA", order=1,
+  tagline="Reduce repetitive, rule-based work with software automation designed around your existing processes.",
+  intro="""Many teams spend time moving information between systems, checking forms or repeating predictable steps. Robotic Process Automation can handle some of this work when the process is stable and rules are clear.
+
+We help map the workflow, check where automation is appropriate and design a solution with monitoring and human review for exceptions.""",
+  features=[("Workflow assessment","Map the current steps and identify repetitive tasks suitable for automation."),
+   ("Automation design","Define triggers, rules, exception handling and approvals."),
+   ("System integration","Connect automation to the applications and data sources a workflow uses.")],
+  steps=[("Map the workflow","Document the existing process and its exceptions."),
+   ("Choose a pilot","Select a bounded, repeatable task and agree how to evaluate it."),
+   ("Build and review","Implement the automation, test edge cases and plan ongoing monitoring.")],
+  deliverables=["A workflow map and automation suitability review","A prioritized automation backlog","A pilot scope with exception handling","Documentation for operating and reviewing the automation"],
+  audience=["Operations teams handling repeated data-entry tasks","Businesses moving information across multiple applications","Teams seeking to improve consistency in stable workflows"],
+  sections=[("Choose automation carefully","""Automation works best when the process is understood and reasonably consistent.
+
+## Before automating
+- Simplify unnecessary steps first.
+- Identify sensitive decisions that need human review.
+- Plan for application changes, errors and audit requirements.""")],
+  faqs=[("Can RPA work with our existing applications?","It can often interact with existing applications, but the best approach depends on available APIs, system stability and access controls."),
+   ("Should every manual task be automated?","No. Tasks that require judgment or change frequently may be better improved through process redesign or direct system integration.")]),
+
+ dict(slug="internet-of-things", title="Internet of Things (IoT)", short="IoT", order=2,
+  tagline="Connect devices and operational systems to collect, understand and act on useful real-world data.",
+  intro="""Connected devices can provide timely information about equipment, environments and operations. A successful IoT solution needs more than sensors: it also needs reliable connectivity, secure data handling and a clear plan for what happens when readings change.
+
+We help teams define the use case, evaluate device and platform options, and plan an architecture that fits the environment.""",
+  features=[("Use-case discovery","Define what should be observed and how the information will support a decision."),
+   ("Device and platform planning","Compare sensors, connectivity and data platforms for the deployment context."),
+   ("Data and alert workflows","Plan dashboards, event processing and the right response to important readings.")],
+  steps=[("Define the signal","Choose the measurements and decisions that matter."),
+   ("Plan the system","Review devices, connectivity, security and integrations."),
+   ("Pilot in context","Test a small deployment and refine the operating model.")],
+  deliverables=["An IoT use-case and requirements brief","A device, connectivity and platform comparison","A data-flow and integration plan","A pilot and rollout checklist"],
+  audience=["Organizations monitoring equipment or facilities","Teams collecting data from distributed locations","Product teams building connected-device features"],
+  sections=[("Design for the operating environment","""Device constraints and connectivity conditions shape the architecture.
+
+## Plan for the full lifecycle
+- Secure device identity and communications.
+- Handle intermittent or unavailable connectivity.
+- Track device health, updates and data quality.
+- Define who responds to alerts and how.""")],
+  faqs=[("Do we need to choose hardware before planning?","Not always. Starting with the required measurements and environment helps narrow hardware options."),
+   ("Can an IoT project work with our existing software?","Often, through APIs or data integrations. The available interfaces and data requirements determine the approach.")]),
+
+ dict(slug="blockchain", title="Blockchain", short="Blockchain", order=3,
+  tagline="Evaluate distributed-ledger approaches for processes that need shared records, traceability or verifiable transactions.",
+  intro="""Blockchain is useful only for a limited set of problems. It may be worth evaluating when multiple parties need to share a consistent record and ordinary databases or existing platforms do not meet the trust requirements.
+
+We help compare the trade-offs, clarify governance and identify a small way to validate the concept before committing to a larger build.""",
+  features=[("Use-case evaluation","Check whether a distributed ledger addresses a real coordination or trust need."),
+   ("Architecture planning","Compare permissioned and public approaches, integrations and data boundaries."),
+   ("Prototype design","Test a focused workflow and define how participants would operate it.")],
+  steps=[("Review the participants","Understand who writes, reads and governs shared records."),
+   ("Compare alternatives","Assess conventional databases and existing services alongside ledger options."),
+   ("Validate a workflow","Prototype the smallest useful transaction and review its constraints.")],
+  deliverables=["A technology suitability assessment","A comparison of architecture options","A governance and integration outline","A bounded prototype brief"],
+  audience=["Organizations coordinating records across independent parties","Teams evaluating transaction traceability requirements","Product owners considering verifiable digital workflows"],
+  sections=[("Compare the simpler alternatives","""A shared database or established service may be more appropriate than a blockchain.
+
+## Important trade-offs
+- Governance and participant responsibilities.
+- Privacy and the handling of sensitive information.
+- Performance, operating costs and long-term support.
+- Integration with existing systems and legal requirements.""")],
+  faqs=[("Should we put sensitive data on a blockchain?","Sensitive information needs careful protection. A design should evaluate data minimization, access, retention and legal requirements before implementation."),
+   ("Can you help us decide if blockchain is necessary?","Yes. An initial assessment can compare the use case with conventional databases and other available approaches.")]),
+
+ dict(slug="ar-vr", title="AR/VR", short="AR/VR", order=4,
+  tagline="Design augmented and virtual reality experiences for training, visualization and interactive product use cases.",
+  intro="""Augmented and Virtual Reality can make spatial information and simulated experiences easier to understand. The right format depends on the audience, environment, devices and task.
+
+We help define the experience, assess device and accessibility needs, and prototype the important interactions before planning a full implementation.""",
+  features=[("Experience discovery","Choose the user task and decide whether AR, VR or a simpler interface fits."),
+   ("Interaction prototyping","Test navigation, controls and content with representative users."),
+   ("Application integration","Plan how the experience connects to existing products, content and workflows.")],
+  steps=[("Define the audience","Clarify users, setting, devices and accessibility needs."),
+   ("Prototype key interactions","Test the experience with a small, focused scenario."),
+   ("Plan delivery","Document content, integration, device support and maintenance needs.")],
+  deliverables=["An experience concept and user-flow outline","A device and platform assessment","A prototype plan for key interactions","A content and implementation roadmap"],
+  audience=["Teams developing interactive product experiences","Organizations exploring simulated training","Businesses visualizing spatial or product information"],
+  sections=[("Make the experience useful and comfortable","""Immersive features should support a task rather than distract from it.
+
+## Design considerations
+- Keep interactions clear and comfortable for the intended session length.
+- Provide alternatives for different devices and accessibility needs.
+- Plan content updates, privacy and support from the beginning.""")],
+  faqs=[("Do users need a headset?","Not always. Some augmented-reality experiences can use mobile devices, while virtual reality generally uses a headset."),
+   ("Can we test an idea before building the full experience?","Yes. A small interactive prototype can help validate the task, device and interaction model.")]),
+]
+
 
 class Command(BaseCommand):
-    help = "Create the Strategy & Consulting group and its five pages with starter content (edit them in the admin)."
+    help = "Create starter content for all service pages (edit it in the admin)."
 
     def handle(self, *args, **opts):
-        group, _ = ServiceGroup.objects.get_or_create(slug="strategy-consulting", defaults=dict(name="Strategy & Consulting", order=0))
         made = 0
-        for d in PAGES:
-            page, created = ServicePage.objects.get_or_create(slug=d["slug"], defaults=dict(
-                group=group, title=d["title"], short_title=d["short"], tagline=d["tagline"], intro=d["intro"], order=d["order"]))
-            if not created:
-                continue
-            made += 1
-            rows = []
-            for kind, key in ((K.FEATURE, "features"), (K.STEP, "steps"), (K.SECTION, "sections"), (K.FAQ, "faqs")):
-                rows += [(kind, t, x) for t, x in d[key]] # type: ignore
-            rows += [(K.DELIVERABLE, t, "") for t in d["deliverables"]] # pyright: ignore[reportGeneralTypeIssues]
-            rows += [(K.AUDIENCE, t, "") for t in d["audience"]] # type: ignore
-            ServiceBlock.objects.bulk_create([ServiceBlock(page=page, kind=k, title=t, text=x or t, order=i) for i, (k, t, x) in enumerate(rows)])
-        self.stdout.write(self.style.SUCCESS(f"{made} pages created ({len(PAGES) - made} already existed)."))
+        groups = (
+            ("strategy-consulting", "Strategy & Consulting", 0, PAGES),
+            ("advanced-technology", "Advanced Technology", 1, TECHNOLOGY_PAGES),
+        )
+        for categories, catalog_pages in (
+            (SERVICE_CATEGORIES, build_catalog_pages()),
+            (AI_CATEGORIES, build_ai_pages()),
+            (SOLUTION_CATEGORIES, build_domain_pages(SOLUTION_CATEGORIES, "solution")),
+            (INDUSTRY_CATEGORIES, build_domain_pages(INDUSTRY_CATEGORIES, "industry")),
+        ):
+            for category in categories:
+                category_pages = [
+                    page for page in catalog_pages
+                    if page["group_slug"] == category["slug"]
+                ]
+                groups += (
+                    (
+                        category["slug"],
+                        category["name"],
+                        category["order"],
+                        category_pages,
+                    ),
+                )
+        total_pages = sum(len(pages) for _, _, _, pages in groups)
+        for group_slug, group_name, group_order, pages in groups:
+            group, _ = ServiceGroup.objects.get_or_create(
+                slug=group_slug,
+                defaults={"name": group_name, "order": group_order},
+            )
+            for d in pages:
+                page, created = ServicePage.objects.get_or_create(
+                    slug=d["slug"],
+                    defaults={
+                        "group": group,
+                        "title": d["title"],
+                        "short_title": d["short"],
+                        "tagline": d["tagline"],
+                        "intro": d["intro"],
+                        "order": d["order"],
+                    },
+                )
+                if created:
+                    made += 1
+                    rows = []
+                    for kind, key in (
+                        (K.FEATURE, "features"),
+                        (K.STEP, "steps"),
+                        (K.SECTION, "sections"),
+                        (K.FAQ, "faqs"),
+                    ):
+                        rows += [(kind, title, text) for title, text in d[key]]  # type: ignore
+                    rows += [(K.DELIVERABLE, title, "") for title in d["deliverables"]]  # pyright: ignore[reportGeneralTypeIssues]
+                    rows += [(K.AUDIENCE, title, "") for title in d["audience"]]  # type: ignore
+                    ServiceBlock.objects.bulk_create(
+                        [
+                            ServiceBlock(
+                                page=page,
+                                kind=kind,
+                                title=title,
+                                text=text or title,
+                                order=index,
+                            )
+                            for index, (kind, title, text) in enumerate(rows)
+                        ]
+                    )
+
+                faq_blocks = ServiceBlock.objects.filter(
+                    page=page, kind=K.FAQ, is_active=True
+                )
+                faq_titles = {faq.title.casefold() for faq in faq_blocks}
+                missing_faqs = []
+                faq_count = faq_blocks.count()
+                for title, text in additional_faqs(d["title"], group_name):
+                    if faq_count + len(missing_faqs) >= 10:
+                        break
+                    if title.casefold() in faq_titles:
+                        continue
+                    missing_faqs.append(
+                        ServiceBlock(
+                            page=page,
+                            kind=K.FAQ,
+                            title=title,
+                            text=text,
+                            order=faq_count + len(missing_faqs),
+                        )
+                    )
+                ServiceBlock.objects.bulk_create(missing_faqs)
+                section_blocks = ServiceBlock.objects.filter(
+                    page=page, kind=K.SECTION, is_active=True
+                )
+                section_titles = {
+                    section.title.casefold() for section in section_blocks
+                }
+                section_count = section_blocks.count()
+                missing_sections = [
+                    ServiceBlock(
+                        page=page,
+                        kind=K.SECTION,
+                        title=title,
+                        text=text,
+                        order=section_count + index,
+                    )
+                    for index, (title, text) in enumerate(d.get("sections", []))
+                    if title.casefold() not in section_titles
+                ]
+                ServiceBlock.objects.bulk_create(missing_sections)
+        self.stdout.write(
+            self.style.SUCCESS(
+                f"{made} pages created ({total_pages - made} already existed)."
+            )
+        )

@@ -28,7 +28,7 @@
           <p class="xh-kicker">Software development</p>
           <h1>Custom software, web and mobile apps built to last.</h1>
           <p class="xh-lead">From the first idea to production, our engineers design and build products for startups, SMEs and growing companies.</p>
-          <div class="xh-actions"><a href="{% url 'contact_us' %}" class="xh-btn xh-btn--teal">Start a project</a><a href="#services" class="xh-btn xh-btn--line">See what we build</a></div>
+          <div class="xh-actions"><a href="{% url 'software_development' %}" class="xh-btn xh-btn--line">Explore software development</a></div>
         </div>
         <div class="xh-panel" aria-hidden="true">
           <div class="xh-panel__top"><i></i><i></i><i></i><span>what we build</span></div>
@@ -44,7 +44,7 @@
           <p class="xh-kicker">AI and automation</p>
           <h2>Practical AI that gives your team hours back.</h2>
           <p class="xh-lead">Chatbots, knowledge assistants and workflow automation built on OpenAI, Claude and Gemini, connected to your own data.</p>
-          <div class="xh-actions"><a href="{% url 'contact_us' %}" class="xh-btn xh-btn--teal">Talk about AI</a><a href="#cloud" class="xh-btn xh-btn--line">Cloud and DevOps</a></div>
+          <div class="xh-actions"><a href="{% url 'ai_solutions_engineering' %}" class="xh-btn xh-btn--line">Explore AI solutions</a></div>
         </div>
         <div class="xh-panel" aria-hidden="true">
           <div class="xh-panel__top"><i></i><i></i><i></i><span>ai assistant</span></div>
@@ -59,7 +59,7 @@
           <p class="xh-kicker">Cloud and DevOps</p>
           <h2>Ship faster on a cloud foundation you can trust.</h2>
           <p class="xh-lead">Migration, CI/CD, containers and monitoring, so releases are routine and your platform scales with you.</p>
-          <div class="xh-actions"><a href="{% url 'contact_us' %}" class="xh-btn xh-btn--teal">Talk to an engineer</a><a href="#cloud" class="xh-btn xh-btn--line">Our approach</a></div>
+          <div class="xh-actions"><a href="{% url 'cloud' %}" class="xh-btn xh-btn--line">Explore cloud services</a></div>
         </div>
         <div class="xh-panel" aria-hidden="true">
           <div class="xh-panel__top"><i></i><i></i><i></i><span>release pipeline</span></div>
@@ -142,12 +142,12 @@
       <p class="xh-sub">Six areas where our team designs, builds and runs production systems.</p>
     </header>
     <div class="xh-cards">
-      <article class="xh-card"><img src="{% static 'images/interprise/artificial-intelligence.png' %}" alt="" loading="lazy"><div class="xh-card__body"><h3>Artificial Intelligence</h3><p>Enterprise AI that automates workflows, improves decisions and helps teams work with more speed and accuracy.</p><a href="{% url 'contact_us' %}">Discuss this</a></div></article>
-      <article class="xh-card"><img src="{% static 'images/interprise/generative-ai.png' %}" alt="" loading="lazy"><div class="xh-card__body"><h3>Generative AI</h3><p>Systems that create content, streamline operations and improve customer experiences at scale.</p><a href="{% url 'contact_us' %}">Discuss this</a></div></article>
-      <article class="xh-card"><img src="{% static 'images/interprise/logistics.png' %}" alt="" loading="lazy"><div class="xh-card__body"><h3>Logistics</h3><p>Platforms that connect transport, inventory, warehouses and shipment tracking with real-time data.</p><a href="{% url 'contact_us' %}">Discuss this</a></div></article>
-      <article class="xh-card"><img src="{% static 'images/interprise/blockchain.png' %}" alt="" loading="lazy"><div class="xh-card__body"><h3>Blockchain</h3><p>Secure, transparent solutions for digital assets, smart contracts and trusted business transactions.</p><a href="{% url 'contact_us' %}">Discuss this</a></div></article>
-      <article class="xh-card"><img src="{% static 'images/interprise/on-demand.png' %}" alt="" loading="lazy"><div class="xh-card__body"><h3>On-demand</h3><p>Scalable platforms that connect customers, providers, payments and operations in one ecosystem.</p><a href="{% url 'contact_us' %}">Discuss this</a></div></article>
-      <article class="xh-card"><img src="{% static 'images/interprise/data-analytics.png' %}" alt="" loading="lazy"><div class="xh-card__body"><h3>Data analytics</h3><p>Dashboards, reporting and decision-support systems that turn complex data into clear insight.</p><a href="{% url 'contact_us' %}">Discuss this</a></div></article>
+      <article class="xh-card"><img src="{% static 'images/interprise/artificial-intelligence.png' %}" alt="" loading="lazy"><div class="xh-card__body"><h3>Artificial Intelligence</h3><p>Enterprise AI that automates workflows, improves decisions and helps teams work with more speed and accuracy.</p><a href="{% url 'ai_solutions_engineering' %}">Explore AI solutions</a></div></article>
+      <article class="xh-card"><img src="{% static 'images/interprise/generative-ai.png' %}" alt="" loading="lazy"><div class="xh-card__body"><h3>Generative AI</h3><p>Systems that create content, streamline operations and improve customer experiences at scale.</p><a href="{% url 'generative_ai_applications' %}">Explore Generative AI</a></div></article>
+      <article class="xh-card"><img src="{% static 'images/interprise/logistics.png' %}" alt="" loading="lazy"><div class="xh-card__body"><h3>Logistics</h3><p>Platforms that connect transport, inventory, warehouses and shipment tracking with real-time data.</p><a href="{% url 'logistics_supply_chain' %}">Explore logistics</a></div></article>
+      <article class="xh-card"><img src="{% static 'images/interprise/blockchain.png' %}" alt="" loading="lazy"><div class="xh-card__body"><h3>Blockchain</h3><p>Secure, transparent solutions for digital assets, smart contracts and trusted business transactions.</p><a href="{% url 'blockchain' %}">Explore blockchain</a></div></article>
+      <article class="xh-card"><img src="{% static 'images/interprise/on-demand.png' %}" alt="" loading="lazy"><div class="xh-card__body"><h3>On-demand</h3><p>Scalable platforms that connect customers, providers, payments and operations in one ecosystem.</p><a href="{% url 'marketplace_solutions' %}">Explore marketplace solutions</a></div></article>
+      <article class="xh-card"><img src="{% static 'images/interprise/data-analytics.png' %}" alt="" loading="lazy"><div class="xh-card__body"><h3>Data analytics</h3><p>Dashboards, reporting and decision-support systems that turn complex data into clear insight.</p><a href="{% url 'data_analytics' %}">Explore data analytics</a></div></article>
     </div>
   </div>
 </section>
@@ -160,7 +160,7 @@
         <span class="btrwho-tag">Featured Insights</span>
         <h2>Stories of our transformations across Services and Industries</h2>
         <p class="btrwho-sub">From Concept to Completion</p>
-        <a href="#" class="btrwho-main-btn">Explore More</a>
+        <a href="{% url 'case_studies' %}" class="btrwho-main-btn">Explore More</a>
     </div>
 
     <div class="btrwho-layout">
@@ -170,7 +170,7 @@
                 <div class="btrwho-overlay">
                     <h3>Case Study</h3>
                     <p>US Fashion Resale Platform Scales to 100K Monthly Transactions</p>
-                    <a href="#" class="btrwho-card-btn">Explore More</a>
+                    <a href="{% url 'case_study_detail' 'e-commerce' %}" class="btrwho-card-btn">Explore More</a>
                 </div>
             </article>
             <article class="btrwho-card">
@@ -178,7 +178,7 @@
                 <div class="btrwho-overlay">
                     <h3>Blogs</h3>
                     <p>How Cloud Computing Can Transform Small Businesses</p>
-                    <a href="#" class="btrwho-card-btn">Explore More</a>
+                    <a href="{% url 'resource_detail' 'cloud-cost-controls-without-slowing-delivery' %}" class="btrwho-card-btn">Explore More</a>
                 </div>
             </article>
         </div>
@@ -188,7 +188,7 @@
                 <div class="btrwho-overlay">
                     <h3>Blogs</h3>
                     <p>Custom Web Application Development: Everything You Need to Know</p>
-                    <a href="#" class="btrwho-card-btn">Explore More</a>
+                    <a href="{% url 'web_app_development' %}" class="btrwho-card-btn">Explore More</a>
                 </div>
             </article>
             <article class="btrwho-card">
@@ -196,7 +196,7 @@
                 <div class="btrwho-overlay">
                     <h3>Blogs</h3>
                     <p>Trends of Mobile Design: What's Next for Your Business?</p>
-                    <a href="#" class="btrwho-card-btn">Explore More</a>
+                    <a href="{% url 'mobile_app_development' %}" class="btrwho-card-btn">Explore More</a>
                 </div>
             </article>
             <article class="btrwho-card">
@@ -204,7 +204,7 @@
                 <div class="btrwho-overlay">
                     <h3>Blogs</h3>
                     <p>How Generative AI is Transforming Business Operations</p>
-                    <a href="#" class="btrwho-card-btn">Explore More</a>
+                    <a href="{% url 'resource_detail' 'enterprise-ai-readiness-checklist' %}" class="btrwho-card-btn">Explore More</a>
                 </div>
             </article>
         </div>
@@ -214,7 +214,7 @@
                 <div class="btrwho-overlay">
                     <h3>Case Study</h3>
                     <p>Hospitality AI Platform Reconciles $300M+ in OTA Commissions Automatically</p>
-                    <a href="#" class="btrwho-card-btn">Explore More</a>
+                    <a href="{% url 'ai_solutions_engineering' %}" class="btrwho-card-btn">Explore More</a>
                 </div>
             </article>
             <article class="btrwho-card">
@@ -222,7 +222,7 @@
                 <div class="btrwho-overlay">
                     <h3>Case Study</h3>
                     <p>Pakistan Furniture Leader's Shopify Migration Drives 55% Growth</p>
-                    <a href="#" class="btrwho-card-btn">Explore More</a>
+                    <a href="{% url 'case_study_detail' 'e-commerce' %}" class="btrwho-card-btn">Explore More</a>
                 </div>
             </article>
             <article class="btrwho-card">
@@ -230,7 +230,7 @@
                 <div class="btrwho-overlay">
                     <h3>Case Study</h3>
                     <p>US Fintech's AI Financial Modeling Secures $2M+ Funding</p>
-                    <a href="#" class="btrwho-card-btn">Explore More</a>
+                    <a href="{% url 'case_study_detail' 'fintech' %}" class="btrwho-card-btn">Explore More</a>
                 </div>
             </article>
         </div>
@@ -264,12 +264,12 @@
       <p class="xh-sub">From migration and CI/CD to containers and security, we build platforms that are fast to ship on, simple to run and ready to scale.</p>
     </header>
     <div class="xh-dgrid">
-      <a href="{% url 'coming' %}" class="xh-dcard"><h3>Cloud migration and modernization</h3><p>Move legacy workloads to AWS, Azure or GCP with a phased plan that limits downtime and risk.</p><span>Learn more</span></a>
-      <a href="{% url 'coming' %}" class="xh-dcard"><h3>CI/CD pipeline engineering</h3><p>Automated build, test and release workflows, so every change ships faster and safer.</p><span>Learn more</span></a>
-      <a href="{% url 'coming' %}" class="xh-dcard"><h3>Kubernetes and containers</h3><p>Resilient, auto-scaling workloads on managed Kubernetes with solid observability.</p><span>Learn more</span></a>
-      <a href="{% url 'coming' %}" class="xh-dcard"><h3>DevSecOps and monitoring</h3><p>Security checks, compliance controls and round-the-clock monitoring built into your pipeline.</p><span>Learn more</span></a>
-      <a href="{% url 'coming' %}" class="xh-dcard"><h3>Infrastructure as code</h3><p>Repeatable environments with Terraform and CloudFormation, versioned like application code.</p><span>Learn more</span></a>
-      <a href="{% url 'coming' %}" class="xh-dcard"><h3>Cloud architecture and FinOps</h3><p>Well-architected platforms designed for scale, reliability and predictable cloud spend.</p><span>Learn more</span></a>
+      <a href="{% url 'cloud_modernization_migration' %}" class="xh-dcard"><h3>Cloud migration and modernization</h3><p>Move legacy workloads to AWS, Azure or GCP with a phased plan that limits downtime and risk.</p><span>Learn more</span></a>
+      <a href="{% url 'cloud_native_engineering' %}" class="xh-dcard"><h3>CI/CD pipeline engineering</h3><p>Automated build, test and release workflows, so every change ships faster and safer.</p><span>Learn more</span></a>
+      <a href="{% url 'cloud_native_engineering' %}" class="xh-dcard"><h3>Kubernetes and containers</h3><p>Resilient, auto-scaling workloads on managed Kubernetes with solid observability.</p><span>Learn more</span></a>
+      <a href="{% url 'privacy_security' %}" class="xh-dcard"><h3>DevSecOps and monitoring</h3><p>Security checks, compliance controls and round-the-clock monitoring built into your pipeline.</p><span>Learn more</span></a>
+      <a href="{% url 'cloud_native_engineering' %}" class="xh-dcard"><h3>Infrastructure as code</h3><p>Repeatable environments with Terraform and CloudFormation, versioned like application code.</p><span>Learn more</span></a>
+      <a href="{% url 'managed_cloud_and_finops' %}" class="xh-dcard"><h3>Cloud architecture and FinOps</h3><p>Well-architected platforms designed for scale, reliability and predictable cloud spend.</p><span>Learn more</span></a>
     </div>
   </div>
 </section>
@@ -295,9 +295,9 @@
       <a href="{% url 'blogs' %}" class="xh-btn xh-btn--ink">View all articles</a>
     </header>
     <div class="xh-posts">
-      <a href="{% url 'blogs' %}" class="xh-post"><span class="xh-chip">Cloud</span><h3>Designing resilient cloud systems for fast-moving teams</h3><p>How modern teams update their infrastructure for better performance and less operational drag.</p><span class="xh-more">Read article</span></a>
-      <a href="{% url 'blogs' %}" class="xh-post"><span class="xh-chip">AI</span><h3>AI workflows that turn data into smarter decisions</h3><p>Where AI automation pays off first, and how to start without a huge budget.</p><span class="xh-more">Read article</span></a>
-      <a href="{% url 'blogs' %}" class="xh-post"><span class="xh-chip">Strategy</span><h3>How product teams build better digital experiences</h3><p>Practical habits that help product teams ship features users actually want.</p><span class="xh-more">Read article</span></a>
+      <a href="{% url 'resource_detail' 'cloud-cost-controls-without-slowing-delivery' %}" class="xh-post"><span class="xh-chip">Cloud</span><h3>Cloud cost controls without slowing delivery</h3><p>A practical operating model for understanding cloud spend and making cost ownership part of engineering work.</p><span class="xh-more">Read article</span></a>
+      <a href="{% url 'resource_detail' 'enterprise-ai-readiness-checklist' %}" class="xh-post"><span class="xh-chip">AI</span><h3>An enterprise AI readiness checklist</h3><p>Questions to assess whether a team, process, and data set are ready for a useful AI pilot.</p><span class="xh-more">Read guide</span></a>
+      <a href="{% url 'resource_detail' 'product-roadmap-from-user-evidence' %}" class="xh-post"><span class="xh-chip">Strategy</span><h3>Turning user evidence into a product roadmap</h3><p>Connect customer feedback, business objectives, and delivery capacity to a roadmap teams can explain.</p><span class="xh-more">Read article</span></a>
     </div>
   </div>
 </section>

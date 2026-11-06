@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Technology Insights, Guides &amp; Reports - Xvera Labs{% endblock %}
+{% block meta_description %}Explore original articles, practical guides, and reports on AI, software, cloud, security, and digital product delivery.{% endblock %}
+{% block body_class %}page-resources{% endblock %}
+{% block page_css %}<link rel="stylesheet" href="{% static 'css/pages/resources.css' %}?v=1">{% endblock %}
+
+{% block content %}
+<main class="rs">
+  <section class="rs-hero">
+    <div class="rs-wrap">
+      <nav class="rs-crumbs" aria-label="Breadcrumb"><a href="{% url 'home' %}">Home</a><span>/</span><span aria-current="page">Resources</span></nav>
+      <p class="rs-eyebrow">Ideas for what comes next</p>
+      <div class="rs-hero__row">
+        <div><h1>Insights on technology, AI and better products</h1><p>Practical perspectives, field guides and research for teams building digital services and modernizing the way they work.</p></div>
+        <a class="rs-hero__link" href="#resource-library">Explore the library <span aria-hidden="true">↓</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="rs-library" id="resource-library">
+    <div class="rs-wrap">
+      <nav class="rs-filters" aria-label="Filter resources">
+        {% for value, label in resource_filters %}<a href="{% url 'resources' %}?filter={{ value }}"{% if active_filter == value %} class="is-active" aria-current="page"{% endif %}>{{ label }}</a>{% endfor %}
+      </nav>
+
+      <div class="rs-layout">
+        <div class="rs-main">
+          {% if resources %}
+          <div class="rs-grid">
+            {% for resource in resources %}
+            <article class="rs-card">
+              <a class="rs-card__image" href="{% url 'resource_detail' resource.slug %}" aria-label="Read {{ resource.title }}">
+                <img src="{{ resource.image }}" alt="{{ resource.image_alt }}" loading="lazy" decoding="async">
+                <span class="rs-card__type rs-card__type--{{ resource.kind }}">{{ resource.kind|title }}</span>
+              </a>
+              <div class="rs-card__body">
+                <div class="rs-meta"><span>{{ resource.category }}</span><span>{{ resource.read_time }}</span></div>
+                <h2><a href="{% url 'resource_detail' resource.slug %}">{{ resource.title }}</a></h2>
+                <p>{{ resource.excerpt }}</p>
+                <a class="rs-read" href="{% url 'resource_detail' resource.slug %}">Read {{ resource.kind }} <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+            {% endfor %}
+          </div>
+          {% else %}
+          <div class="rs-empty"><h2>No resources in this collection yet</h2><p>Choose another topic to explore the library.</p><a href="{% url 'resources' %}">View all resources</a></div>
+          {% endif %}
+        </div>
+
+        <aside class="rs-sidebar">
+          <section class="rs-side-block">
+            <p class="rs-side-kicker">Browse by topic</p>
+            <h2>Categories</h2>
+            <ul class="rs-category-list">
+              <li><a href="{% url 'resources' %}?filter=technology">Technology <span>→</span></a></li>
+              <li><a href="{% url 'resources' %}?filter=business">Business &amp; product <span>→</span></a></li>
+              <li><a href="{% url 'resources' %}?filter=industry">Industry insights <span>→</span></a></li>
+              <li><a href="{% url 'resources' %}?filter=guides">Guides &amp; playbooks <span>→</span></a></li>
+              <li><a href="{% url 'resources' %}?filter=reports">Reports <span>→</span></a></li>
+            </ul>
+          </section>
+          <section class="rs-side-block rs-playbooks">
+            <p class="rs-side-kicker">Practical downloads</p>
+            <h2>Guides to get you moving</h2>
+            {% for guide in playbooks %}
+            <a class="rs-playbook" href="{% url 'resource_detail' guide.slug %}">
+              <img src="{{ guide.image }}" alt="" loading="lazy" decoding="async">
+              <span><b>{{ guide.title }}</b><small>{{ guide.read_time }} · {{ guide.kind|title }}</small></span>
+            </a>
+            {% endfor %}
+          </section>
+          <aside class="rs-side-cta">
+            <span class="rs-side-cta__mark" aria-hidden="true">X</span>
+            <h2>Curious about a challenge?</h2>
+            <p>Talk through your goals, systems, and constraints with our team.</p>
+            <a href="{% url 'contact_us' %}">Start a conversation <span aria-hidden="true">→</span></a>
+          </aside>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

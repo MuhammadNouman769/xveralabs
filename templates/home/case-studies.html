@@ -1,290 +1,80 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Xvera Labs - CaseStudies{% endblock %}
-{% block body_class %}page-home-case-studies{% endblock %}
-
-{% block page_css %}<link rel="stylesheet" href="{% static 'css/pages/home-case-studies.css' %}">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-{% endblock %}
+{% block title %}Industry Case Studies - Xvera Labs{% endblock %}
+{% block meta_description %}Explore how digital products and technology services can address practical challenges across healthcare, finance, commerce, education, and logistics.{% endblock %}
+{% block body_class %}page-case-studies{% endblock %}
+{% block page_css %}<link rel="stylesheet" href="{% static 'css/pages/home-case-studies.css' %}?v=2">{% endblock %}
 
 {% block content %}
-    <!-- ===== HERO ===== -->
-    <section class="hero">
-        <div class="hero-content">
-            <span>{M N} SOLUTIONS • SUCCESS STORIES</span>
-            <h1>Transforming Challenges Into Success Stories</h1>
-            <p>
-                Explore how {M N} Solutions helps businesses achieve growth,
-                improve efficiency, and accelerate digital transformation
-                through innovative software solutions.
-            </p>
-            <a href="#industries" class="hero-btn">Explore Our Work</a>
+<main class="cs">
+  <section class="cs-hero">
+    <div class="cs-wrap">
+      <nav class="cs-crumbs" aria-label="Breadcrumb"><a href="{% url 'home' %}">Home</a><span>/</span><span aria-current="page">Case Studies</span></nav>
+      <div class="cs-hero__grid">
+        <div class="cs-hero__copy">
+          <p class="cs-eyebrow">Industry perspectives</p>
+          <h1>Technology shaped around the work your industry does</h1>
+          <p>Explore practical delivery approaches for the workflows, users, and operating needs that make each industry different.</p>
+          <a class="cs-button" href="#industry-studies">Explore industries <span aria-hidden="true">↓</span></a>
         </div>
-    </section>
+        <aside class="cs-hero__note">
+          <span class="cs-hero__note-mark" aria-hidden="true">X</span>
+          <p>Good digital products start by understanding the people, processes, and systems behind the challenge.</p>
+          <span class="cs-hero__note-rule"></span>
+          <small>Explore the industry perspectives</small>
+        </aside>
+      </div>
+      <div class="cs-hero__index"><span>01</span><span>Industry case studies</span><span>Discover / Design / Deliver</span></div>
+    </div>
+  </section>
 
-    <!-- ===== INDUSTRIES CARDS ===== -->
-    <section class="cards-section" id="industries">
-        <div class="section-title">
-            <h2>Industries We Serve</h2>
-            <p>Transforming businesses across sectors with tailored solutions.</p>
-        </div>
-        <div class="cards-grid">
-            <div class="card">
-                <div class="card-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=800" alt="Healthcare">
-                    <div class="dark-overlay"></div>
-                    <span class="btr-label">{M N}</span>
-                </div>
-                <div class="card-content">
-                    <h3>Healthcare</h3>
-                    <p>Digital health platforms, telemedicine, and hospital management systems for better patient care.</p>
-                    <a href="#">Learn More →</a>
-                </div>
-            </div>
+  <section class="cs-directory" id="industry-studies">
+    <div class="cs-wrap">
+      <header class="cs-section-head">
+        <div><p class="cs-eyebrow">Choose an industry</p><h2>Explore the challenges and opportunities</h2></div>
+        <p>Each page is managed in the site admin, including its industry image, overview, capabilities, and considerations.</p>
+      </header>
 
-            <div class="card">
-                <div class="card-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800" alt="FinTech">
-                    <div class="dark-overlay"></div>
-                    <span class="btr-label">{M N}</span>
-                </div>
-                <div class="card-content">
-                    <h3>FinTech</h3>
-                    <p>Secure payment gateways, digital banking, and AI-powered financial analytics solutions.</p>
-                    <a href="#">Learn More →</a>
-                </div>
-            </div>
+      {% if case_studies %}
+      <div class="cs-grid">
+        {% for study in case_studies %}
+        <article class="cs-card{% if forloop.counter|divisibleby:3 %} cs-card--wide{% endif %}">
+          <a class="cs-card__image" href="{% url 'case_study_detail' study.slug %}" aria-label="Explore {{ study.name }}">
+            <img src="{{ study.image_url }}" alt="{{ study.image_alt }}" loading="lazy" decoding="async">
+            <span class="cs-card__number">0{{ forloop.counter|stringformat:"d" }}</span>
+            <span class="cs-card__image-arrow" aria-hidden="true">↗</span>
+          </a>
+          <div class="cs-card__body">
+            <p class="cs-card__eyebrow">{{ study.eyebrow }}</p>
+            <h3><a href="{% url 'case_study_detail' study.slug %}">{{ study.name }}</a></h3>
+            <p>{{ study.summary }}</p>
+            <a class="cs-card__link" href="{% url 'case_study_detail' study.slug %}">Explore {{ study.name }} <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+      {% else %}
+      <div class="cs-empty"><h2>Industry case studies are being prepared</h2><p>Please check back soon or contact our team to discuss your industry.</p><a href="{% url 'contact_us' %}">Talk to our team</a></div>
+      {% endif %}
+    </div>
+  </section>
 
-            <div class="card">
-                <div class="card-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1556740749-887f6717d7e4?q=80&w=800" alt="E-Commerce">
-                    <div class="dark-overlay"></div>
-                    <span class="btr-label">{M N}</span>
-                </div>
-                <div class="card-content">
-                    <h3>E-Commerce</h3>
-                    <p>Scalable online store platforms, inventory management, and personalized shopping experiences.</p>
-                    <a href="#">Learn More →</a>
-                </div>
-            </div>
+  <section class="cs-approach">
+    <div class="cs-wrap cs-approach__grid">
+      <div><p class="cs-eyebrow">A useful starting point</p><h2>Understand the context before choosing the technology</h2></div>
+      <div class="cs-approach__steps">
+        <article><span>01</span><div><h3>Listen</h3><p>Understand the users, current workflows, and intended outcome.</p></div></article>
+        <article><span>02</span><div><h3>Shape</h3><p>Agree a realistic scope, key dependencies, and how the work will be reviewed.</p></div></article>
+        <article><span>03</span><div><h3>Deliver</h3><p>Build and improve in manageable stages with the right people involved.</p></div></article>
+      </div>
+    </div>
+  </section>
 
-            <div class="card">
-                <div class="card-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=800" alt="Education">
-                    <div class="dark-overlay"></div>
-                    <span class="btr-label">{M N}</span>
-                </div>
-                <div class="card-content">
-                    <h3>Education</h3>
-                    <p>LMS platforms, virtual classrooms, and AI-driven personalized learning solutions.</p>
-                    <a href="#">Learn More →</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?q=80&w=800" alt="Logistics">
-                    <div class="dark-overlay"></div>
-                    <span class="btr-label">{M N}</span>
-                </div>
-                <div class="card-content">
-                    <h3>Logistics</h3>
-                    <p>Supply chain optimization, fleet management, and real-time tracking systems.</p>
-                    <a href="#">Learn More →</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== SOLUTIONS DELIVERED CARDS ===== -->
-    <section class="cards-section alt-bg">
-        <div class="section-title">
-            <h2>Solutions Delivered</h2>
-            <p>Innovative technology solutions built for scale and performance.</p>
-        </div>
-        <div class="cards-grid">
-            <div class="card">
-                <div class="card-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800" alt="Web Applications">
-                    <div class="dark-overlay"></div>
-                    <span class="btr-label">{M N}</span>
-                </div>
-                <div class="card-content">
-                    <h3>Web Applications</h3>
-                    <p>Custom web apps built with modern frameworks for speed, security, and scalability.</p>
-                    <a href="#">View Solutions →</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=800" alt="Mobile Applications">
-                    <div class="dark-overlay"></div>
-                    <span class="btr-label">{M N}</span>
-                </div>
-                <div class="card-content">
-                    <h3>Mobile Applications</h3>
-                    <p>Native and cross-platform mobile apps with seamless UX and high performance.</p>
-                    <a href="#">View Solutions →</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800" alt="Enterprise Software">
-                    <div class="dark-overlay"></div>
-                    <span class="btr-label">{M N}</span>
-                </div>
-                <div class="card-content">
-                    <h3>Enterprise Software</h3>
-                    <p>ERP, CRM, and custom enterprise solutions for large-scale business operations.</p>
-                    <a href="#">View Solutions →</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800" alt="Cloud Migration">
-                    <div class="dark-overlay"></div>
-                    <span class="btr-label">{M N}</span>
-                </div>
-                <div class="card-content">
-                    <h3>Cloud Migration</h3>
-                    <p>Seamless cloud migration services to AWS, Azure, and Google Cloud platforms.</p>
-                    <a href="#">View Solutions →</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?q=80&w=800" alt="DevOps Automation">
-                    <div class="dark-overlay"></div>
-                    <span class="btr-label">{M N}</span>
-                </div>
-                <div class="card-content">
-                    <h3>DevOps Automation</h3>
-                    <p>CI/CD pipelines, infrastructure as code, and automated deployment strategies.</p>
-                    <a href="#">View Solutions →</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== SUCCESS STORIES CARDS ===== -->
-    <section class="cards-section">
-        <div class="section-title">
-            <h2>Success Stories</h2>
-            <p>Real results delivered through innovation and expertise.</p>
-        </div>
-        <div class="cards-grid">
-            <div class="card">
-                <div class="card-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?q=80&w=800" alt="Startup Growth">
-                    <div class="dark-overlay"></div>
-                    <span class="btr-label">{M N}</span>
-                </div>
-                <div class="card-content">
-                    <h3>Startup Growth Stories</h3>
-                    <p>How we helped 50+ startups scale from idea to market leaders with the right tech stack.</p>
-                    <a href="#">Read More →</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?q=80&w=800" alt="Digital Transformation">
-                    <div class="dark-overlay"></div>
-                    <span class="btr-label">{M N}</span>
-                </div>
-                <div class="card-content">
-                    <h3>Digital Transformation</h3>
-                    <p>Enterprise-wide digital transformation journeys that modernized legacy systems.</p>
-                    <a href="#">Read More →</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=800" alt="AI Implementations">
-                    <div class="dark-overlay"></div>
-                    <span class="btr-label">{M N}</span>
-                </div>
-                <div class="card-content">
-                    <h3>AI Implementations</h3>
-                    <p>AI and ML solutions that drive smarter decisions, automation, and predictive insights.</p>
-                    <a href="#">Read More →</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800" alt="Product Scaling">
-                    <div class="dark-overlay"></div>
-                    <span class="btr-label">{M N}</span>
-                </div>
-                <div class="card-content">
-                    <h3>Product Scaling</h3>
-                    <p>Architectural redesign and scaling strategies for products handling millions of users.</p>
-                    <a href="#">Read More →</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=800" alt="View All">
-                    <div class="dark-overlay"></div>
-                    <span class="btr-label">{M N}</span>
-                </div>
-                <div class="card-content">
-                    <h3>View All Case Studies</h3>
-                    <p>Browse our complete portfolio of case studies and success stories across all industries.</p>
-                    <a href="#">View All →</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== RESULTS ===== -->
-    <section class="results">
-        <div class="section-title">
-            <h2 class="page-inline-home-case-studies-1">Impact Delivered</h2>
-            <p class="page-inline-home-case-studies-2">Numbers that reflect our commitment to excellence.</p>
-        </div>
-        <div class="stats">
-            <div class="stat"><h2>50+</h2><p>Projects Delivered</p></div>
-            <div class="stat"><h2>98%</h2><p>Client Satisfaction</p></div>
-            <div class="stat"><h2>180%</h2><p>Average Growth Achieved</p></div>
-            <div class="stat"><h2>24/7</h2><p>Support & Maintenance</p></div>
-        </div>
-    </section>
-
-    <!-- ===== CTA ===== -->
-    <section class="cta">
-        <h2>Let's Build The Next Success Story Together</h2>
-        <p>
-            Whether you're launching a startup or scaling an enterprise,
-            {M N} Solutions is ready to help you achieve measurable results.
-        </p>
-        <a href="#">Start Your Project</a>
-    </section>
-
-    <!-- ===== MINI TAGS - CTA KE NEECHE (INDUSTRY LEVEL) ===== -->
-    <section class="tags-section">
-        <div class="tags-label">— Trusted Across Industries —</div>
-        <div class="tags-wrapper">
-            <span class="tag-item">Healthcare</span>
-            <span class="tag-item">FinTech</span>
-            <span class="tag-item">E-Commerce</span>
-            <span class="tag-item">Education</span>
-            <span class="tag-item">Logistics</span>
-            <span class="tag-item">Real Estate</span>
-            <span class="tag-item">Manufacturing</span>
-            <span class="tag-item">Retail</span>
-            <span class="tag-item">Hospitality</span>
-            <span class="tag-item">Media & Entertainment</span>
-            <span class="tag-item">Automotive</span>
-            <span class="tag-item">Energy</span>
-        </div>
-    </section>
-
+  <section class="cs-cta">
+    <div class="cs-wrap cs-cta__inner">
+      <div><p class="cs-eyebrow">Have a challenge in mind?</p><h2>Let’s explore what would work for your team.</h2></div>
+      <a class="cs-button" href="{% url 'contact_us' %}">Talk to our team <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</main>
 {% endblock %}
