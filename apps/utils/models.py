@@ -59,7 +59,7 @@ class ContactPersonModel(models.Model):
 """ ========= Ordering and publishing =========== """
 
 class OrderedModel(models.Model):
-    """Lets staff choose the order in the admin (smaller number shows first)."""
+    """Lets staff choose the order in which items appear (smaller number shows first)."""
     order = models.PositiveSmallIntegerField(default=0, help_text="Smaller number shows first")
 
     class Meta:

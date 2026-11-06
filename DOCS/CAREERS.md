@@ -12,10 +12,10 @@ CAREERS: setup
    Delete the old about-careers.css, about-careers-1.js and the old careers template.
 5) CVs are saved OUTSIDE the public media folder: BASE_DIR/private_media/
    Add  private_media/  to .gitignore, and never serve that folder from nginx or whitenoise.
-   Staff download CVs from the admin (Job applications > Download CV).
+   Staff download CVs from the dashboard (Career applications > Download CV).
 6) python manage.py makemigrations careers && python manage.py migrate
 7) Sample data (optional, for testing): python manage.py seed_careers
-   They are SAMPLE roles. Edit, close or delete them in the admin and keep only the roles you really hire for.
-8) Admin: Careers > Job positions  (add a role, tick "Is open", pick type "Internship" for internships)
-         Careers > Job applications (status, notes, CSV export)
+   They are SAMPLE roles. Edit, close or delete them in the dashboard and keep only the roles you really hire for.
+8) Dashboard: Career positions (add a role, tick "Is open", pick type "Internship" for internships)
+              Career applications (status, notes, CSV export)
 9) Replace header/header.html (a new "Internships" link was added under Careers).

@@ -130,6 +130,27 @@ class SitemapTests(TestCase):
 				self.assertContains(xml_response, path)
 				self.assertContains(text_response, path)
 
+	def test_html_sitemap_lists_public_pages_and_is_linked_from_footer(self):
+		response = self.client.get(reverse('site_map'))
+		home_response = self.client.get(reverse('home'))
+
+		self.assertEqual(response.status_code, 200)
+		self.assertContains(response, 'Website sitemap')
+		self.assertContains(response, 'Web App Development')
+		self.assertContains(response, '/services/web-app-development/')
+		self.assertContains(response, 'Industry case studies')
+		self.assertContains(response, reverse('sitemap'))
+		self.assertContains(home_response, reverse('site_map'))
+
+	def test_terms_page_uses_shared_legal_layout_and_section_navigation(self):
+		response = self.client.get(reverse('term_condition'))
+
+		self.assertEqual(response.status_code, 200)
+		self.assertContains(response, 'Terms of Use')
+		self.assertContains(response, 'faqs-privacy_policy.css')
+		self.assertContains(response, 'href="#acceptance"')
+		self.assertContains(response, 'id="contact"')
+
 
 class IndustryCaseStudyTests(TestCase):
 	def setUp(self):
@@ -178,7 +199,7 @@ class IndustryCaseStudyTests(TestCase):
 			404,
 		)
 
-	def test_detail_page_reflects_admin_edits_from_the_database(self):
+	def test_detail_page_reflects_dashboard_edits_from_the_database(self):
 		study = IndustryCaseStudy.objects.get(slug='healthcare')
 		study.title = 'Updated healthcare case study title'
 		study.save(update_fields=['title'])

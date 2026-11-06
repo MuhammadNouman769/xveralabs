@@ -1,0 +1,55 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>{% block title %}Dashboard{% endblock %} | Xvera Labs</title>
+  <link rel="stylesheet" href="{% static 'css/dashboard/dashboard.css' %}">
+</head>
+<body class="db">
+  <div class="db-shell">
+    <aside class="db-sidebar" id="dbSidebar">
+      <a class="db-brand" href="{% url 'dashboard:home' %}" aria-label="Xvera Labs dashboard home">
+        <span class="db-brand__mark">X</span><span>XVERA <small>CONTROL CENTER</small></span>
+      </a>
+      <p class="db-nav-label">WORKSPACE</p>
+      <nav class="db-nav" aria-label="Dashboard navigation">
+        <a href="{% url 'dashboard:home' %}" class="db-nav__link{% if request.resolver_match.url_name == 'home' %} is-active{% endif %}"><span class="db-nav__icon">⌂</span>Overview</a>
+        {% for item in nav_sections %}
+        <a href="{% url 'dashboard:section' item.key %}" class="db-nav__link{% if active_section == item.key %} is-active{% endif %}">
+          <span class="db-nav__icon">{{ item.icon }}</span>{{ item.title }}
+        </a>
+        {% endfor %}
+      </nav>
+      <div class="db-sidebar__bottom">
+        <span class="db-status-dot"></span><span>Private workspace</span>
+        <a href="/" target="_blank" rel="noopener">View website <span aria-hidden="true">↗</span></a>
+      </div>
+    </aside>
+    <div class="db-main">
+      <header class="db-topbar">
+        <button class="db-menu-button" type="button" aria-label="Open dashboard menu" aria-controls="dbSidebar" aria-expanded="false" data-sidebar-toggle>☰</button>
+        <div class="db-topbar__crumb">{% block breadcrumb %}<span>Workspace</span><b>/</b><span>Overview</span>{% endblock %}</div>
+        <div class="db-user">
+          <span class="db-avatar">{{ request.user.first_name|default:request.user.username|slice:":1"|upper }}</span>
+          <span class="db-user__name">{{ request.user.get_full_name|default:request.user.username }}<small>{% if request.user.is_superuser %}Administrator{% else %}Staff{% endif %}</small></span>
+          <form method="post" action="{% url 'dashboard:logout' %}">{% csrf_token %}<button class="db-logout" type="submit">Sign out</button></form>
+        </div>
+      </header>
+      <main class="db-content">
+        {% if messages %}<div class="db-messages">{% for message in messages %}<p class="db-message db-message--{{ message.tags|default:'info' }}">{{ message }}</p>{% endfor %}</div>{% endif %}
+        {% block content %}{% endblock %}
+      </main>
+      <footer class="db-footer"><span>Xvera Labs · Internal workspace</span><span>Secure staff access</span></footer>
+    </div>
+  </div>
+  <script>
+    document.querySelector("[data-sidebar-toggle]")?.addEventListener("click", function () {
+      var open = document.body.classList.toggle("db-menu-open");
+      this.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+  </script>
+</body>
+</html>

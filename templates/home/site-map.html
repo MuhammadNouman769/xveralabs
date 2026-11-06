@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Sitemap - Xvera Labs{% endblock %}
+{% block meta_description %}Browse the Xvera Labs website, including services, resources, and industry case studies.{% endblock %}
+{% block body_class %}page-site-map{% endblock %}
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'css/pages/faqs-privacy_policy.css' %}?v=3">
+<link rel="stylesheet" href="{% static 'css/pages/site-map.css' %}?v=1">
+{% endblock %}
+
+{% block content %}
+<main class="lg sm">
+  <header class="lg-hero">
+    <div class="lg-wrap">
+      <nav class="lg-crumbs" aria-label="Breadcrumb">
+        <a href="{% url 'home' %}">Home</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">Sitemap</span>
+      </nav>
+      <h1>Website sitemap</h1>
+      <p class="lg-sub">Explore the main pages, services, resources, and industry case studies on Xvera Labs.</p>
+    </div>
+  </header>
+
+  <div class="lg-wrap sm-body">
+    <nav class="sm-formats" aria-label="Sitemap formats">
+      <span>Machine-readable sitemaps:</span>
+      <a href="{% url 'sitemap' %}">XML sitemap</a>
+      <a href="{% url 'sitemap_txt' %}">Text sitemap</a>
+    </nav>
+
+    <div class="sm-grid">
+      {% for section in sitemap_sections %}
+        <section class="sm-group" aria-labelledby="sm-heading-{{ forloop.counter }}">
+          <h2 id="sm-heading-{{ forloop.counter }}">{{ section.title }}</h2>
+          <ul>
+            {% for entry in section.entries %}
+              <li><a href="{{ entry.url }}">{{ entry.title }}</a></li>
+            {% empty %}
+              <li class="sm-empty">No published pages yet.</li>
+            {% endfor %}
+          </ul>
+        </section>
+      {% endfor %}
+    </div>
+  </div>
+</main>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'dashboard/base.html' %}
+{% block title %}{% if record %}Edit{% else %}Add{% endif %} {{ section.title }}{% endblock %}
+{% block breadcrumb %}<a href="{% url 'dashboard:home' %}">Workspace</a><b>/</b><a href="{% url 'dashboard:section' section.key %}">{{ section.title }}</a><b>/</b><span>{% if record %}Edit record{% else %}New record{% endif %}</span>{% endblock %}
+{% block content %}
+<header class="db-page-head">
+  <div><p class="db-eyebrow">{{ section.title|upper }}</p><h1>{% if record %}Edit record{% else %}Create a record{% endif %}</h1><p>{{ section.description }}</p></div>
+  <a class="db-button db-button--quiet" href="{% url 'dashboard:section' section.key %}">← Back to list</a>
+</header>
+{% if record_data %}
+<details class="db-record-details">
+  <summary>Submission details <span>Read-only visitor information</span></summary>
+  {% if record.cv %}<p class="db-cv-link"><a href="{% url 'career_cv' record.pk %}">Download CV attachment ↗</a></p>{% endif %}
+  {% if record.receipt %}<p class="db-cv-link"><a href="{% url 'dashboard:expense_receipt' record.pk %}">Download private receipt ↗</a></p>{% endif %}
+  <dl>{% for item in record_data %}<div><dt>{{ item.label }}</dt><dd>{{ item.value|default:"—" }}</dd></div>{% endfor %}</dl>
+</details>
+{% endif %}
+<section class="db-panel db-form-panel">
+  <form method="post" enctype="multipart/form-data" novalidate>
+    {% csrf_token %}
+    {% if form.non_field_errors %}<div class="db-form-error">{{ form.non_field_errors }}</div>{% endif %}
+    <div class="db-form-grid">
+      {% for field in form %}
+      <div class="db-field{% if field.field.widget.input_type == 'checkbox' %} db-field--check{% endif %}{% if field.name == 'sections' or field.name == 'intro' or field.name == 'text' or field.name == 'description' or field.name == 'responsibilities' or field.name == 'requirements' or field.name == 'nice_to_have' or field.name == 'internal_notes' or field.name == 'permissions' or field.name == 'user_permissions' or field.name == 'eligibility' or field.name == 'details' or field.name == 'message' or field.name == 'quote' or field.name == 'motivation' or field.name == 'experience' %} db-field--wide{% endif %}">
+        {% if field.field.widget.input_type == 'checkbox' %}
+          <label class="db-checkbox">{{ field }}<span>{{ field.label }}{% if field.field.required %} <em>*</em>{% endif %}</span></label>
+        {% else %}
+          <label for="{{ field.id_for_label }}">{{ field.label }}{% if field.field.required %} <em>*</em>{% endif %}</label>
+          {{ field }}
+        {% endif %}
+        {% if field.help_text %}<small class="db-help">{{ field.help_text }}</small>{% endif %}
+        {% for error in field.errors %}<small class="db-field-error">{{ error }}</small>{% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+    <div class="db-form-actions">
+      <a class="db-button db-button--quiet" href="{% url 'dashboard:section' section.key %}">Cancel</a>
+      {% if can_change or not record %}<button class="db-button db-button--primary" type="submit">Save changes <span aria-hidden="true">→</span></button>{% endif %}
+      {% if record and section.deletable and can_delete %}<a class="db-delete-link" href="{% url 'dashboard:delete' section.key record.pk %}">Delete record</a>{% endif %}
+    </div>
+  </form>
+</section>
+{% endblock %}

@@ -5,7 +5,7 @@ from apps.main.models import IndustryCaseStudy, IndustryCaseStudyBlock
 
 
 class Command(BaseCommand):
-    help = "Create starter industry case studies; existing admin content is preserved."
+    help = "Create starter industry case studies; existing dashboard content is preserved."
 
     def handle(self, *args, **options):
         created_count = 0

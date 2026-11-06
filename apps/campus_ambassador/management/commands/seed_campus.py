@@ -2,7 +2,7 @@ from django.core.management.base import BaseCommand
 
 from apps.campus_ambassador.models import Cohort, ItemKind, ProgramItem
 
-# SAMPLE content so you can see the page working. Edit everything in the admin
+# SAMPLE content so you can see the page working. Edit everything in the dashboard
 # (Campus Ambassador > Program items) and keep only points that are TRUE for your program.
 ITEMS = [
     (ItemKind.BENEFIT, "Certificate of participation", "Receive a certificate when you complete the program term."),
@@ -28,7 +28,7 @@ ITEMS = [
 
 
 class Command(BaseCommand):
-    help = "Create a sample cohort and sample page content (edit or delete them in the admin)."
+    help = "Create a sample cohort and sample page content (edit or delete them in the dashboard)."
 
     def handle(self, *args, **opts):
         cohort, c_new = Cohort.objects.get_or_create(

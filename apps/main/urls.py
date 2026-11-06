@@ -18,6 +18,7 @@ urlpatterns = [
     path('faqs/', views.faqs, name='faqs'),
     path('terms-conditions/', views.term_condition, name='term_condition'),
     path('privacy-policy/', views.privacy_policy, name='privacy_policy'),
+    path('site-map/', views.site_map, name='site_map'),
     path('sqa/', views.sqa, name='sqa'),
     path('web-development/', views.web_dev, name='web_dev'),
     path('product-development/', views.product_dev, name='product_dev'),

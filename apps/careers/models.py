@@ -9,7 +9,7 @@ from django.utils.text import slugify
 from .storage import private_storage
 
 
-# ---- Dropdown data lives here. Edit once, the pages and the admin update themselves. ----
+# ---- Dropdown data lives here. Edit once, the pages update themselves. ----
 class Department(models.TextChoices):
     ENGINEERING = "engineering", "Engineering"
     CLOUD = "cloud", "Cloud"

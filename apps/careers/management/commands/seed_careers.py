@@ -2,7 +2,7 @@ from django.core.management.base import BaseCommand
 
 from apps.careers.models import JobPosition
 
-# SAMPLE roles so you can see the pages working. Edit or close them in the admin,
+# SAMPLE roles so you can see the pages working. Edit or close them in the dashboard,
 # and keep only the roles you really want to hire for.
 SAMPLES = [
     dict(title="Python / Django Backend Engineer", department="engineering", job_type="full_time", work_mode="hybrid", level="mid",
@@ -50,7 +50,7 @@ SAMPLES = [
 
 
 class Command(BaseCommand):
-    help = "Create sample open positions and internships (they are only samples: edit or close them in the admin)."
+    help = "Create sample open positions and internships (they are only samples: edit or close them in the dashboard)."
 
     def handle(self, *args, **opts):
         made = 0

@@ -68,7 +68,7 @@ class Cohort(BaseModel):
 
 
 class ProgramItem(models.Model):
-    """Benefits, steps, responsibilities and FAQs shown on the page. Edit them in the admin."""
+    """Benefits, steps, responsibilities and FAQs shown on the page. Edit them in the dashboard."""
     kind = models.CharField(max_length=15, choices=ItemKind.choices, db_index=True)
     title = models.CharField(max_length=160)
     text = models.TextField()

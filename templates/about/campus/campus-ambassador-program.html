@@ -6,7 +6,7 @@
 {% block page_css %}<link rel="stylesheet" href="{% static 'css/pages/campus-ambassador-program.css' %}?v=2">{% endblock %}
 
 {% block content %}
-{% comment %} Everything below the hero text comes from the admin: Campus Ambassador > Cohorts / Program items / Stories. {% endcomment %}
+{% comment %} Everything below the hero text comes from the dashboard: Ambassador cohorts / page content / stories. {% endcomment %}
 <main class="cp" id="cpMain">
 
   <!-- HERO -->
@@ -94,7 +94,7 @@
   </section>
   {% endif %}
 
-  <!-- STORIES (only when real stories are published in the admin) -->
+  <!-- STORIES (only when real stories are published in the dashboard) -->
   {% if stories %}
   <section class="cp-sec" id="stories" aria-labelledby="stT">
     <div class="cp-wrap">

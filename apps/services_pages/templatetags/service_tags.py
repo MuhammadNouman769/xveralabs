@@ -1,4 +1,4 @@
-"""{{ text|richtext }}: turns simple admin text into safe HTML.
+"""{{ text|richtext }}: turns dashboard-managed text into safe HTML.
 Everything is HTML-escaped first, so nobody can inject scripts. Only the markup below is converted."""
 import re
 

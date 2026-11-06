@@ -1,6 +1,4 @@
 from django.http import HttpResponse
-
-from django.http import HttpResponse
 from django.urls import reverse
 
 from .sitemaps import PUBLIC_SITEMAPS
@@ -11,7 +9,7 @@ def robots_txt(request):
     content = f"""User-agent: *
 Allow: /
 
-Disallow: /admin/
+Disallow: /dashboard/
 Disallow: /signin/
 Disallow: /signup/
 

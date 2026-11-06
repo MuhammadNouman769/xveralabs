@@ -67,7 +67,7 @@ def additional_faqs(title, group_name):
 
 
 # Starter content for the Strategy & Consulting pages. It describes HOW we work, with no invented numbers or client claims.
-# Review it, edit it in the admin (Service pages) and delete anything that is not true for your company.
+# Review it, edit it in the staff dashboard (Service pages) and remove anything that is not true for your company.
 PAGES = [
  dict(slug="strategy-and-consulting", title="Strategy & Consulting", short="Overview", order=0,
   tagline="Clear direction for your business, product and technology decisions, from a team that also builds the software.",
@@ -362,7 +362,7 @@ We help define the experience, assess device and accessibility needs, and protot
 
 
 class Command(BaseCommand):
-    help = "Create starter content for all service pages (edit it in the admin)."
+    help = "Create starter content for all service pages (edit it in the dashboard)."
 
     def handle(self, *args, **opts):
         made = 0

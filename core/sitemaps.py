@@ -1,7 +1,7 @@
 from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
 
-from apps.blogs.catalog import RESOURCES
+from apps.blogs.models import Resource
 from apps.main.models import IndustryCaseStudy
 from apps.services_pages.models import ServicePage
 from apps.services_pages.routes import SERVICE_ROUTES
@@ -22,6 +22,7 @@ class StaticViewSitemap(Sitemap):
         "faqs",
         "term_condition",
         "privacy_policy",
+        "site_map",
         "careeers",
         "career_apply",
         "life_at_xvera_labs",
@@ -68,10 +69,10 @@ class ResourceSitemap(Sitemap):
     protocol = "https"
 
     def items(self):
-        return RESOURCES
+        return Resource.objects.filter(is_published=True)
 
     def location(self, item):
-        return reverse("resource_detail", args=[item["slug"]])
+        return reverse("resource_detail", args=[item.slug])
 
 
 class IndustryCaseStudySitemap(Sitemap):

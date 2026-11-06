@@ -1,0 +1,51 @@
+{% extends 'dashboard/base.html' %}
+{% block title %}{{ section.title }}{% endblock %}
+{% block breadcrumb %}<a href="{% url 'dashboard:home' %}">Workspace</a><b>/</b><span>{{ section.title }}</span>{% endblock %}
+{% block content %}
+<header class="db-page-head">
+  <div><p class="db-eyebrow">CONTENT &amp; OPERATIONS</p><h1>{{ section.title }}</h1><p>{{ section.description }}</p></div>
+  <div class="db-page-head__actions">
+    {% if section.export_fields %}<a class="db-button db-button--quiet" href="{% url 'dashboard:export' section.key %}">Export CSV</a>{% endif %}
+    {% if section.addable and can_add %}<a class="db-button db-button--primary" href="{% url 'dashboard:create' section.key %}"><span aria-hidden="true">＋</span> Add new</a>{% endif %}
+  </div>
+</header>
+<section class="db-panel">
+  {% if expense_summary %}
+  <div class="db-expense-summary" aria-label="Expense summary">
+    <div><span class="db-expense-summary__label">Spent this month</span>
+      <div class="db-expense-summary__totals">{% for item in expense_summary.monthly_totals %}<b>{{ item.currency }} {{ item.total }}</b>{% empty %}<b>No expenses recorded this month</b>{% endfor %}</div>
+    </div>
+    <div><span class="db-expense-summary__label">Pending payments</span><strong>{{ expense_summary.pending_count }}</strong></div>
+  </div>
+  {% endif %}
+  <div class="db-panel__head">
+    <div><h2>All records</h2><p>{{ page_obj.paginator.count }} total</p></div>
+    <form class="db-search" method="get" role="search">
+      <label class="db-visually-hidden" for="dbSearch">Search {{ section.title }}</label>
+      <input id="dbSearch" name="q" value="{{ search }}" type="search" placeholder="Search {{ section.title|lower }}...">
+      <button type="submit">Search</button>
+    </form>
+  </div>
+  <div class="db-table-wrap">
+    <table class="db-table">
+      <thead><tr>{% for label in column_labels %}<th scope="col">{{ label }}</th>{% endfor %}<th scope="col"><span class="db-visually-hidden">Actions</span></th></tr></thead>
+      <tbody>
+      {% for row in rows %}
+        <tr>
+          {% for value in row.values %}<td>{% if forloop.first %}<a class="db-table__primary" href="{% url 'dashboard:edit' section.key row.record.pk %}">{{ value|default:"—"|truncatechars:72 }}</a>{% else %}{{ value|default:"—"|truncatechars:72 }}{% endif %}</td>{% endfor %}
+          <td class="db-table__action"><a href="{% url 'dashboard:edit' section.key row.record.pk %}">View / edit <span aria-hidden="true">→</span></a></td>
+        </tr>
+      {% empty %}
+        <tr><td class="db-empty" colspan="12"><span>Nothing here yet</span><p>{% if search %}Try a different search term.{% else %}Records will appear here when available.{% endif %}</p></td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% if page_obj.paginator.num_pages > 1 %}
+  <nav class="db-pagination" aria-label="Pagination">
+    <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+    <div>{% if page_obj.has_previous %}<a href="?q={{ search|urlencode }}&amp;page={{ page_obj.previous_page_number }}">Previous</a>{% endif %}{% if page_obj.has_next %}<a href="?q={{ search|urlencode }}&amp;page={{ page_obj.next_page_number }}">Next</a>{% endif %}</div>
+  </nav>
+  {% endif %}
+</section>
+{% endblock %}

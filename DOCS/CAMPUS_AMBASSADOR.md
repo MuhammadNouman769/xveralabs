@@ -10,8 +10,8 @@ CAMPUS AMBASSADOR: setup
            static/campus-ambassador-program-1.js -> static/js/pages/campus-ambassador-program-1.js
 5) python manage.py makemigrations campus_ambassador && python manage.py migrate
 6) Sample content (optional): python manage.py seed_campus
-   It creates a cohort and sample benefits, steps, responsibilities and FAQs. Edit them in the admin.
-7) Admin: Campus Ambassador > Cohorts (open/close applications, dates, term, hours)
-          Campus Ambassador > Program items (benefits, steps, responsibilities, FAQs)
-          Campus Ambassador > Stories (add REAL quotes later; the section appears only when one is published)
-          Campus Ambassador > Ambassador applications (status, notes, CSV export)
+   It creates a cohort and sample benefits, steps, responsibilities and FAQs. Edit them in the dashboard.
+7) Dashboard: Ambassador cohorts (open/close applications, dates, term, hours)
+              Ambassador page content (benefits, steps, responsibilities, FAQs)
+              Ambassador stories (add REAL quotes later; the section appears only when one is published)
+              Ambassador applications (status, notes, CSV export)

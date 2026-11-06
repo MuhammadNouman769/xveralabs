@@ -65,7 +65,6 @@ if proxy_ssl_header:
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -74,6 +73,8 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     # custom apps
     'apps.utils',
+    'apps.dashboard',
+    'apps.expenses',
     'apps.about_us',
     'apps.campus_ambassador',
     
@@ -109,6 +110,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'apps.contact.context_processors.chat_form',
+                'apps.dashboard.context_processors.dashboard_navigation',
             ],
         },
     },

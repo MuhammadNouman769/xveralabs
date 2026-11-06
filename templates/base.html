@@ -38,7 +38,7 @@
 
     <!-- Preloader: shown once per visit, skipped on the next pages (runs before first paint) -->
     <script>try{if(sessionStorage.getItem('btrx_seen')==='1')document.documentElement.classList.add('btrx-skip')}catch(e){}</script>
-    <noscript><style>#btrx-preloader{display:none!important}</style></noscript>
+    <noscript><link rel="stylesheet" href="{% static 'css/noscript.css' %}"></noscript>
 </head>
 <body class="{% block body_class %}{% endblock %}">
 

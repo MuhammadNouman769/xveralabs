@@ -1,0 +1,38 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Staff sign in | Xvera Labs</title>
+  <link rel="stylesheet" href="{% static 'css/dashboard/dashboard.css' %}">
+</head>
+<body class="db db-login">
+  <main class="db-login__layout">
+    <section class="db-login__brand">
+      <a class="db-brand db-brand--login" href="/"><span class="db-brand__mark">X</span><span>XVERA <small>CONTROL CENTER</small></span></a>
+      <div><p class="db-eyebrow">A clearer view of your business</p><h1>One workspace.<br><span>Every detail in view.</span></h1><p>Manage your website content, enquiries, applications and publishing from one secure place.</p></div>
+      <small class="db-login__foot">Xvera Labs · Internal systems</small>
+    </section>
+    <section class="db-login__panel">
+      <form class="db-login-card" method="post">
+        {% csrf_token %}
+        <p class="db-eyebrow">WELCOME BACK</p>
+        <h2>Sign in to your workspace</h2>
+        <p class="db-login-card__intro">Use your staff account to continue.</p>
+        {% if form.non_field_errors %}<div class="db-form-error" role="alert">{{ form.non_field_errors }}</div>{% endif %}
+        {% if next %}<input type="hidden" name="next" value="{{ next }}">{% endif %}
+        <label for="{{ form.username.id_for_label }}">Username</label>
+        {{ form.username }}
+        {% for error in form.username.errors %}<p class="db-field-error">{{ error }}</p>{% endfor %}
+        <label for="{{ form.password.id_for_label }}">Password</label>
+        {{ form.password }}
+        {% for error in form.password.errors %}<p class="db-field-error">{{ error }}</p>{% endfor %}
+        <button class="db-button db-button--primary db-login-card__submit" type="submit">Sign in <span aria-hidden="true">→</span></button>
+        <p class="db-login-card__note">Staff access only. Contact your administrator if you need an account.</p>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

@@ -2,11 +2,11 @@ import json
 from pathlib import Path
 
 from django.conf import settings
-from django.contrib.admin.views.decorators import staff_member_required
 from django.core.cache import cache
 from django.core.mail import send_mail
 from django.http import FileResponse, Http404
 from django.shortcuts import get_object_or_404, redirect, render
+from django.contrib.auth.decorators import user_passes_test
 from django.views import View
 
 from .content import BENEFITS, INTERNSHIP_POINTS, PROCESS, VALUES
@@ -57,7 +57,7 @@ def _notify(app):
     if hr:
         body = (f"Reference: {app.reference}\nRole: {role}\nName: {app.full_name}\nEmail: {app.email}\n"
                 f"Phone: {app.phone}\nCity: {app.city}\nProfile: {app.profile_url}\n\n{app.cover_note}\n\n"
-                "The CV is in the admin (Job applications).")
+                "The CV is available in the staff dashboard (Job applications).")
         send_mail(f"[Xvera Labs] New application: {app.full_name} - {role} ({app.reference})", body, sender, [hr], fail_silently=True)
     send_mail(
         "We received your application",
@@ -142,7 +142,10 @@ class PositionView(ApplyBase):
 
 
 # ------------------------------ staff-only CV download ------------------------------
-@staff_member_required
+@user_passes_test(
+    lambda user: user.is_active and user.is_staff,
+    login_url="dashboard:login",
+)
 def cv_download(request, pk):
     app = get_object_or_404(JobApplication, pk=pk)
     if not app.cv:

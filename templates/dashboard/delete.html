@@ -1,0 +1,15 @@
+{% extends 'dashboard/base.html' %}
+{% block title %}Delete {{ section.title }}{% endblock %}
+{% block breadcrumb %}<a href="{% url 'dashboard:home' %}">Workspace</a><b>/</b><a href="{% url 'dashboard:section' section.key %}">{{ section.title }}</a><b>/</b><span>Delete</span>{% endblock %}
+{% block content %}
+<section class="db-delete-card">
+  <span class="db-delete-card__icon" aria-hidden="true">!</span>
+  <p class="db-eyebrow">CONFIRM REMOVAL</p>
+  <h1>Delete this record?</h1>
+  <p>This action permanently removes <strong>{{ record }}</strong> from {{ section.title }}. It cannot be undone.</p>
+  <form method="post">{% csrf_token %}
+    <a class="db-button db-button--quiet" href="{% url 'dashboard:edit' section.key record.pk %}">Keep record</a>
+    <button class="db-button db-button--danger" type="submit">Delete permanently</button>
+  </form>
+</section>
+{% endblock %}

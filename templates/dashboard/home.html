@@ -1,0 +1,20 @@
+{% extends 'dashboard/base.html' %}
+{% block title %}Overview{% endblock %}
+{% block content %}
+<section class="db-welcome">
+  <div><p class="db-eyebrow">OVERVIEW</p><h1>Good to see you, {{ request.user.first_name|default:request.user.username }}.</h1><p>Your website operations, organized in one place.</p></div>
+  <div class="db-welcome__date"><span class="db-status-dot"></span>Workspace is ready</div>
+</section>
+<section class="db-section-heading"><div><p class="db-eyebrow">YOUR WORKSPACE</p><h2>Manage the moving parts</h2><p>Choose an area to review or update its content.</p></div></section>
+<section class="db-card-grid" aria-label="Website management sections">
+  {% for item in sections %}
+  <a class="db-module-card" href="{% url 'dashboard:section' item.key %}">
+    <span class="db-module-card__icon">{{ forloop.counter|stringformat:"02d" }}</span>
+    <span class="db-module-card__count">{{ item.count }} records</span>
+    <h3>{{ item.title }}</h3>
+    <p>{{ item.description }}</p>
+    <span class="db-module-card__link">Open section <b aria-hidden="true">↗</b></span>
+  </a>
+  {% endfor %}
+</section>
+{% endblock %}

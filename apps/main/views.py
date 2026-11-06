@@ -1,5 +1,9 @@
 from django.shortcuts import get_object_or_404, redirect, render
 
+from apps.services_pages.models import ServicePage
+from apps.services_pages.routes import SERVICE_ROUTES
+from core.sitemaps import PUBLIC_SITEMAPS
+
 from .models import IndustryCaseStudy, IndustryCaseStudyBlock
 
 # Create your views here.
@@ -73,6 +77,72 @@ def term_condition(request):
 
 def privacy_policy(request):
     return render(request, 'faqs/privacy_policy.html')
+
+
+def site_map(request):
+    static_titles = {
+        "home": "Home",
+        "about-us": "About Us",
+        "why_choose_us": "Why Choose Us",
+        "contact_us": "Contact Us",
+        "case_studies": "Case Studies",
+        "resources": "Resources & Insights",
+        "faqs": "FAQs",
+        "term_condition": "Terms of Use",
+        "privacy_policy": "Privacy Policy",
+        "careeers": "Careers",
+        "career_apply": "Apply for a Career",
+        "life_at_xvera_labs": "Life at Xvera Labs",
+        "people": "Our People",
+        "campus_ambassador_program": "Campus Ambassador Program",
+        "partners": "Partners",
+        "partners_investors": "Investor Partners",
+        "partner_apply": "Partner Application",
+        "site_map": "Sitemap",
+    }
+    service_titles = dict(
+        ServicePage.objects.filter(
+            is_active=True,
+            is_published=True,
+            slug__in=SERVICE_ROUTES,
+        ).values_list("slug", "title")
+    )
+    service_slugs_by_route = {
+        route_name: slug
+        for slug, (_, route_name) in SERVICE_ROUTES.items()
+    }
+    section_titles = {
+        "static": "Main pages",
+        "services": "Services",
+        "resources": "Resources & insights",
+        "industry-case-studies": "Industry case studies",
+    }
+    sitemap_sections = []
+    for key, sitemap_class in PUBLIC_SITEMAPS.items():
+        sitemap = sitemap_class()
+        entries = []
+        for item in sitemap.items():
+            if key == "static":
+                title = static_titles.get(
+                    item,
+                    item.replace("_", " ").replace("-", " ").title(),
+                )
+            elif key == "services":
+                slug = service_slugs_by_route[item]
+                title = service_titles[slug]
+            else:
+                title = getattr(item, "title", getattr(item, "name", str(item)))
+            entries.append({"title": title, "url": sitemap.location(item)})
+        sitemap_sections.append(
+            {"title": section_titles[key], "entries": entries}
+        )
+
+    return render(
+        request,
+        "home/site-map.html",
+        {"sitemap_sections": sitemap_sections},
+    )
+
 
 def sqa(request):
     return redirect("quality_assurance", permanent=True)

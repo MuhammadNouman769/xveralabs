@@ -1,98 +1,115 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}BTR - Terms & Conditions{% endblock %}
-
+{% block title %}Terms of Use &amp; Conditions - Xvera Labs{% endblock %}
+{% block meta_description %}Read the terms that apply when you access the Xvera Labs website and use the information and services described on it.{% endblock %}
+{% block og_title %}Terms of Use &amp; Conditions - Xvera Labs{% endblock %}
+{% block twitter_title %}Terms of Use &amp; Conditions - Xvera Labs{% endblock %}
 {% block body_class %}page-faqs-term_condition{% endblock %}
-
-{% block page_css %}<link rel="stylesheet" href="{% static 'css/pages/faqs-term_condition.css' %}">{% endblock %}
+{% block page_css %}<link rel="stylesheet" href="{% static 'css/pages/faqs-privacy_policy.css' %}?v=3">{% endblock %}
 
 {% block content %}
-
-
-
-<div class="btr-terms-wrapper">
-
-  <!-- Banner -->
-  <div class="btr-terms-banner">
-    <div class="btr-terms-banner-content">
-        <h1 class="btr-terms-banner-title">
-            Terms & Conditions
-        </h1>
-
-        <p class="btr-terms-banner-text">
-            Clear, Transparent & Enterprise-Grade Service Terms
-        </p>
+<main class="lg" id="lgMain">
+  <header class="lg-hero">
+    <div class="lg-wrap">
+      <nav class="lg-crumbs" aria-label="Breadcrumb">
+        <a href="{% url 'home' %}">Home</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">Terms of Use</span>
+      </nav>
+      <h1>Terms of Use</h1>
+      <p class="lg-sub">The terms that apply when you visit the Xvera Labs website and use the information and services described here.</p>
+      <dl class="lg-meta">
+        <div><dt>Last updated</dt><dd>June 2026</dd></div>
+        <div><dt>Applies to</dt><dd>This website and its services</dd></div>
+      </dl>
     </div>
-</div>
+  </header>
 
-  <!-- Content -->
-  <div class="btr-terms-container">
+  <div class="lg-wrap lg-body">
+    <aside class="lg-toc" aria-label="Terms of use contents">
+      <p class="lg-toc__title">On this page</p>
+      <ol id="lgToc">
+        <li><a href="#acceptance">Acceptance of terms</a></li>
+        <li><a href="#website-use">Use of website</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#responsibilities">Your responsibilities</a></li>
+        <li><a href="#intellectual-property">Intellectual property</a></li>
+        <li><a href="#liability">Limitation of liability</a></li>
+        <li><a href="#third-party-links">Third-party links</a></li>
+        <li><a href="#changes">Changes to these terms</a></li>
+        <li><a href="#contact">Contact us</a></li>
+      </ol>
+    </aside>
 
-    <div class="btr-terms-highlight">
-      <strong>Last Updated:</strong> June 2026  
-      <br>
-      By using our website, you agree to these Terms & Conditions.
-    </div>
+    <article class="lg-art">
+      <div class="lg-short">
+        <h2>At a glance</h2>
+        <ul>
+          <li>Use this website for lawful purposes and do not damage or disrupt its services.</li>
+          <li>Our services and website functionality may be updated or discontinued.</li>
+          <li>Continued use of the website means you accept updated terms.</li>
+        </ul>
+      </div>
 
-    <h2 class="btr-terms-section-title">1. Acceptance of Terms</h2>
-    <p class="btr-terms-text">
-      By accessing and using this website, you agree to comply with all applicable terms and conditions.
-      If you do not agree, please discontinue using our services immediately.
-    </p>
+      <section id="acceptance" data-lg>
+        <h2>Acceptance of terms</h2>
+        <p>By accessing and using this website, you agree to comply with all applicable terms and conditions. If you do not agree, please discontinue using our services immediately.</p>
+      </section>
 
-    <h2 class="btr-terms-section-title">2. Use of Website</h2>
-    <ul class="btr-terms-list">
-      <li>Use the website only for lawful purposes.</li>
-      <li>Do not attempt to damage or disrupt services.</li>
-      <li>Unauthorized access or scraping is strictly prohibited.</li>
-    </ul>
+      <section id="website-use" data-lg>
+        <h2>Use of website</h2>
+        <ul>
+          <li>Use the website only for lawful purposes.</li>
+          <li>Do not attempt to damage or disrupt services.</li>
+          <li>Unauthorized access or scraping is strictly prohibited.</li>
+        </ul>
+      </section>
 
-    <h2 class="btr-terms-section-title">3. Services</h2>
-    <p class="btr-terms-text">
-      Our services may be updated, modified, or discontinued at any time without prior notice.
-      We reserve full rights to improve platform functionality.
-    </p>
+      <section id="services" data-lg>
+        <h2>Services</h2>
+        <p>Our services may be updated, modified, or discontinued at any time without prior notice. We reserve full rights to improve platform functionality.</p>
+      </section>
 
-    <h2 class="btr-terms-section-title">4. User Responsibilities</h2>
-    <ul class="btr-terms-list">
-      <li>Maintain confidentiality of your account.</li>
-      <li>Provide accurate and updated information.</li>
-      <li>Accept responsibility for all account activity.</li>
-    </ul>
+      <section id="responsibilities" data-lg>
+        <h2>Your responsibilities</h2>
+        <ul>
+          <li>Maintain confidentiality of your account.</li>
+          <li>Provide accurate and updated information.</li>
+          <li>Accept responsibility for all account activity.</li>
+        </ul>
+      </section>
 
-    <h2 class="btr-terms-section-title">5. Intellectual Property</h2>
-    <p class="btr-terms-text">
-      All content including logos, design, text, and graphics belongs to BTR Solutions.
-      Unauthorized copying or distribution is strictly prohibited.
-    </p>
+      <section id="intellectual-property" data-lg>
+        <h2>Intellectual property</h2>
+        <p>All content including logos, design, text, and graphics belongs to BTR Solutions. Unauthorized copying or distribution is strictly prohibited.</p>
+      </section>
 
-    <h2 class="btr-terms-section-title">6. Limitation of Liability</h2>
-    <p class="btr-terms-text">
-      We are not responsible for any direct or indirect damages resulting from use of our services.
-    </p>
+      <section id="liability" data-lg>
+        <h2>Limitation of liability</h2>
+        <p>We are not responsible for any direct or indirect damages resulting from use of our services.</p>
+      </section>
 
-    <h2 class="btr-terms-section-title">7. Third-Party Links</h2>
-    <p class="btr-terms-text">
-      External links are provided for convenience. We are not responsible for third-party content.
-    </p>
+      <section id="third-party-links" data-lg>
+        <h2>Third-party links</h2>
+        <p>External links are provided for convenience. We are not responsible for third-party content.</p>
+      </section>
 
-    <h2 class="btr-terms-section-title">8. Changes to Terms</h2>
-    <p class="btr-terms-text">
-      We may update these terms at any time. Continued use means you accept the updated version.
-    </p>
+      <section id="changes" data-lg>
+        <h2>Changes to these terms</h2>
+        <p>We may update these terms from time to time. The “Last updated” date at the top indicates when they were last revised. If you continue to use the website after an update, you accept the revised terms.</p>
+      </section>
 
-    <h2 class="btr-terms-section-title">9. Contact Us</h2>
-    <p class="btr-terms-text">
-      For any questions regarding these Terms, contact our support team via official channels.
-    </p>
-
-    <div class="btr-terms-footer">
-      © 2026 BTR Solutions. All Rights Reserved.
-    </div>
-
+      <section id="contact" data-lg>
+        <h2>Contact us</h2>
+        <div class="lg-contact">
+          <p>For any questions regarding these Terms, contact our support team via official channels.</p>
+          <a href="{% url 'contact_us' %}" class="lg-btn">Contact form</a>
+        </div>
+        <p class="lg-also">See also our <a href="{% url 'privacy_policy' %}">Privacy Policy</a>.</p>
+      </section>
+    </article>
   </div>
-
-</div>
-
+</main>
+<script src="{% static 'js/pages/faqs-privacy_policy-1.js' %}?v=2"></script>
 {% endblock %}
