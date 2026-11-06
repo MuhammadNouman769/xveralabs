@@ -59,6 +59,11 @@ class ErrorPageTests(TestCase):
 		self.assertEqual(response.status_code, 200)
 		self.assertContains(response, 'page-home-index')
 		self.assertContains(response, '/static/css/pages/home-index.css')
+		self.assertContains(response, 'xh-slide__image', count=4)
+		self.assertContains(response, 'images.unsplash.com', count=4)
+		self.assertContains(response, 'Previous slide')
+		self.assertContains(response, 'Next slide')
+		self.assertContains(response, 'home-index-1.js')
 		self.assertNotContains(response, '<style')
 		self.assertNotContains(response, ' style=')
 

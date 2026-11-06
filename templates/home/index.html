@@ -24,67 +24,45 @@
 
       <!-- 1 -->
       <article class="xh-slide is-active" role="group" aria-roledescription="slide" aria-label="1 of 4">
+        <img class="xh-slide__image" src="{% static 'images/banner-1.png' %}" alt="" fetchpriority="high" decoding="async">
         <div class="xh-slide__copy">
           <p class="xh-kicker">Software development</p>
           <h1>Custom software, web and mobile apps built to last.</h1>
           <p class="xh-lead">From the first idea to production, our engineers design and build products for startups, SMEs and growing companies.</p>
           <div class="xh-actions"><a href="{% url 'software_development' %}" class="xh-btn xh-btn--line">Explore software development</a></div>
         </div>
-        <div class="xh-panel" aria-hidden="true">
-          <div class="xh-panel__top"><i></i><i></i><i></i><span>what we build</span></div>
-          <ul class="xh-check">
-            <li>Web applications</li><li>Mobile apps (iOS and Android)</li><li>E-commerce platforms</li><li>Admin dashboards</li><li>APIs and integrations</li>
-          </ul>
-        </div>
       </article>
 
       <!-- 2 -->
       <article class="xh-slide" role="group" aria-roledescription="slide" aria-label="2 of 4" aria-hidden="true">
+        <img class="xh-slide__image" src="{% static 'images/banner-2.png' %}" alt="" loading="lazy" decoding="async">
         <div class="xh-slide__copy">
           <p class="xh-kicker">AI and automation</p>
           <h2>Practical AI that gives your team hours back.</h2>
           <p class="xh-lead">Chatbots, knowledge assistants and workflow automation built on OpenAI, Claude and Gemini, connected to your own data.</p>
           <div class="xh-actions"><a href="{% url 'ai_solutions_engineering' %}" class="xh-btn xh-btn--line">Explore AI solutions</a></div>
         </div>
-        <div class="xh-panel" aria-hidden="true">
-          <div class="xh-panel__top"><i></i><i></i><i></i><span>ai assistant</span></div>
-          <p class="xh-bubble">Summarise this week's support tickets</p>
-          <div class="xh-reply"><b class="xh-reply__line xh-reply__line--long"></b><b class="xh-reply__line xh-reply__line--medium"></b><b class="xh-reply__line xh-reply__line--short"></b></div>
-        </div>
       </article>
 
       <!-- 3 -->
       <article class="xh-slide" role="group" aria-roledescription="slide" aria-label="3 of 4" aria-hidden="true">
+        <img class="xh-slide__image" src="{% static 'images/banner-3.png' %}" alt="" loading="lazy" decoding="async">
         <div class="xh-slide__copy">
           <p class="xh-kicker">Cloud and DevOps</p>
           <h2>Ship faster on a cloud foundation you can trust.</h2>
           <p class="xh-lead">Migration, CI/CD, containers and monitoring, so releases are routine and your platform scales with you.</p>
           <div class="xh-actions"><a href="{% url 'cloud' %}" class="xh-btn xh-btn--line">Explore cloud services</a></div>
         </div>
-        <div class="xh-panel" aria-hidden="true">
-          <div class="xh-panel__top"><i></i><i></i><i></i><span>release pipeline</span></div>
-          <ul class="xh-pipe">
-            <li class="xh-pipe__step--build"><span>Build</span><em><b></b></em></li>
-            <li class="xh-pipe__step--test"><span>Test</span><em><b></b></em></li>
-            <li class="xh-pipe__step--scan"><span>Security scan</span><em><b></b></em></li>
-            <li class="xh-pipe__step--deploy"><span>Deploy</span><em><b></b></em></li>
-          </ul>
-        </div>
       </article>
 
       <!-- 4 -->
       <article class="xh-slide" role="group" aria-roledescription="slide" aria-label="4 of 4" aria-hidden="true">
+        <img class="xh-slide__image" src="{% static 'images/banner-4.png' %}" alt="" loading="lazy" decoding="async">
         <div class="xh-slide__copy">
           <p class="xh-kicker">Partners</p>
           <h2>Grow with Xvera Labs.</h2>
           <p class="xh-lead">Join as an investor, referral partner or campus ambassador and help grow technology, education and community projects under a clear written agreement.</p>
           <div class="xh-actions"><a href="{% url 'partner_apply' %}" class="xh-btn xh-btn--teal">Become a partner</a><a href="{% url 'partners' %}" class="xh-btn xh-btn--line">All programs</a></div>
-        </div>
-        <div class="xh-panel xh-panel--links">
-          <div class="xh-panel__top"><i></i><i></i><i></i><span>partner programs</span></div>
-          <a href="{% url 'partners_investors' %}">Investor partner<small>Invest in our products</small></a>
-          <a href="{% url 'partners' %}#referral">Referral and reseller<small>Bring a client</small></a>
-          <a href="{% url 'campus_ambassador_program' %}">Campus ambassador<small>Represent us at your campus</small></a>
         </div>
       </article>
     </div>
