@@ -13,7 +13,7 @@ Xvera Labs is a Django-based corporate website designed for a technology and con
 - FAQ, privacy policy, and terms pages
 - Contact us page
 - User authentication pages for sign in and sign up
-- Django admin for content management
+- Responsive, staff-only dashboard for website content and operations
 - Responsive template-based frontend with static media support
 
 ## Tech Stack
@@ -215,13 +215,15 @@ Then open:
 http://127.0.0.1:8000/
 ```
 
-## Admin Access
+## Dashboard Access
 
-After creating the superuser, you can access Django admin here:
+Create a superuser, apply migrations, then sign in to the custom dashboard:
 
 ```text
-http://127.0.0.1:8000/admin/
+http://127.0.0.1:8000/dashboard/login/
 ```
+
+Resources are seeded into the database by migrations. Services and industry case studies can be loaded with `python manage.py seed_services` and `python manage.py seed_case_studies`. The dashboard also includes a permission-controlled expense ledger; receipt uploads are stored privately.
 
 ## Configuration Notes
 
@@ -239,4 +241,3 @@ http://127.0.0.1:8000/admin/
 This project is a template-based Django website for a business/agency brand and is suitable for extension into a production-ready company website with CMS integration, contact form processing, and deployment optimization.
 
 ## License
-
