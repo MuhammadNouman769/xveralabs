@@ -82,6 +82,18 @@ button, input, select, textarea { font: inherit; }
 .db-expense-summary__label { display: block; margin-bottom: 7px; color: #788783; font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 .db-expense-summary__totals { display: flex; flex-wrap: wrap; gap: 14px; color: #196e62; font: 700 13px Manrope, sans-serif; }
 .db-expense-summary > div:last-child strong { color: #273e39; font: 700 18px Manrope, sans-serif; }
+.db-financial-summary { padding: 20px 22px; border-bottom: 1px solid var(--db-line); background: linear-gradient(100deg, #f1f8f6, #fff); }
+.db-financial-summary__head h2 { margin: 0; color: #273e39; font: 700 15px Manrope, sans-serif; }
+.db-financial-summary__head p { margin: 5px 0 0; color: #788783; font-size: 10px; }
+.db-financial-currency { margin-top: 16px; }
+.db-financial-currency h3 { margin: 0 0 8px; color: #196e62; font: 700 11px Manrope, sans-serif; }
+.db-financial-currency__metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(125px, 1fr)); gap: 8px; }
+.db-financial-currency__metrics > div { display: flex; min-height: 62px; flex-direction: column; justify-content: space-between; gap: 8px; padding: 10px 12px; border: 1px solid #e5eeeb; border-radius: 6px; background: #fff; }
+.db-financial-currency__metrics span { color: #788783; font-size: 9px; font-weight: 700; }
+.db-financial-currency__metrics strong { color: #273e39; font: 700 14px Manrope, sans-serif; }
+.db-financial-currency__balance { border-color: #b9ddd3 !important; background: #eff8f5 !important; }
+.db-financial-currency__balance strong { color: #196e62; }
+.db-financial-summary__empty { margin: 15px 0 0; color: #788783; font-size: 11px; }
 .db-panel__head h2 { margin: 0; font: 700 14px Manrope, sans-serif; }
 .db-panel__head p { margin: 5px 0 0; color: #899491; font-size: 10px; }
 .db-search { display: flex; width: min(360px, 48%); gap: 7px; }
@@ -206,4 +218,11 @@ button, input, select, textarea { font: inherit; }
   .db-login__brand > div > p:last-child { margin-top: 12px; font-size: 11px; }
   .db-login__foot { display: none; }
   .db-login__panel { padding: 35px 22px 50px; }
+}
+@media (max-width: 560px) {
+  .db-financial-summary { padding: 16px; }
+  .db-financial-currency__metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .db-financial-currency__metrics > div { min-width: 0; padding: 9px; }
+  .db-financial-currency__metrics strong { overflow-wrap: anywhere; font-size: 12px; }
+  .db-financial-currency__balance { grid-column: 1 / -1; }
 }

@@ -9,6 +9,7 @@ NAV_ICONS = {
     "industry-blocks": "▤",
     "resources": "▧",
     "expenses": "$",
+    "income": "$",
     "contacts": "✉",
     "jobs": "◇",
     "job-applications": "▣",

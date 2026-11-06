@@ -10,8 +10,8 @@ from apps.campus_ambassador.models import Cohort, ProgramItem, Story
 from apps.careers.models import JobApplication, JobPosition
 from apps.contact.models import ContactMessage
 from apps.dashboard.forms import GroupForm, StaffUserForm
-from apps.expenses.forms import ExpenseForm
-from apps.expenses.models import Expense
+from apps.expenses.forms import CompanyIncomeForm, ExpenseForm
+from apps.expenses.models import CompanyIncome, Expense
 from apps.main.models import IndustryCaseStudy, IndustryCaseStudyBlock
 from apps.partners.models import PartnerApplication
 from apps.services_pages.models import ServiceBlock, ServiceGroup, ServicePage
@@ -63,6 +63,12 @@ SECTIONS = (
             ("title", "vendor", "reference", "notes"),
             ("title", "category", "expense_date", "vendor", "amount", "currency", "payment_method", "status", "reference", "notes", "receipt", "recorded_by", "created_at", "updated_at"),
             form_class=ExpenseForm, export_fields=("expense_date", "title", "category", "vendor", "amount", "currency", "payment_method", "status", "reference", "recorded_by", "notes"), recorded_by_field="recorded_by"),
+    Section("income", "Company income", "Track where company income comes from, what has been received, and what is pending.", CompanyIncome,
+            ("title", "source", "income_date", "payer", "amount", "currency", "payment_method", "status"),
+            ("income_date", "source", "title", "payer", "amount", "currency", "status"),
+            ("title", "source", "payer", "reference", "notes"),
+            ("title", "source", "income_date", "payer", "amount", "currency", "payment_method", "status", "reference", "notes", "recorded_by", "created_at", "updated_at"),
+            form_class=CompanyIncomeForm, export_fields=("income_date", "source", "title", "payer", "amount", "currency", "payment_method", "status", "reference", "recorded_by", "notes"), recorded_by_field="recorded_by"),
     Section("contacts", "Contact messages", "Review incoming project and partnership enquiries.", ContactMessage,
             ("status",), ("created_at", "full_name", "company", "topic", "region", "status"),
             ("full_name", "email", "company", "phone", "details"),

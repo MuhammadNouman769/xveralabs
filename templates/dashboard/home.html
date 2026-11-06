@@ -5,6 +5,7 @@
   <div><p class="db-eyebrow">OVERVIEW</p><h1>Good to see you, {{ request.user.first_name|default:request.user.username }}.</h1><p>Your website operations, organized in one place.</p></div>
   <div class="db-welcome__date"><span class="db-status-dot"></span>Workspace is ready</div>
 </section>
+{% if can_view_finances %}{% include "dashboard/financial_summary.html" %}{% endif %}
 <section class="db-section-heading"><div><p class="db-eyebrow">YOUR WORKSPACE</p><h2>Manage the moving parts</h2><p>Choose an area to review or update its content.</p></div></section>
 <section class="db-card-grid" aria-label="Website management sections">
   {% for item in sections %}

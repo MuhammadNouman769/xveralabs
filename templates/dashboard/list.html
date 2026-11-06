@@ -5,14 +5,35 @@
 <header class="db-page-head">
   <div><p class="db-eyebrow">CONTENT &amp; OPERATIONS</p><h1>{{ section.title }}</h1><p>{{ section.description }}</p></div>
   <div class="db-page-head__actions">
+    {% if section.key == "income" %}<a class="db-button db-button--quiet" href="{% url 'dashboard:financial_report' %}">Download PDF report</a>{% endif %}
     {% if section.export_fields %}<a class="db-button db-button--quiet" href="{% url 'dashboard:export' section.key %}">Export CSV</a>{% endif %}
     {% if section.addable and can_add %}<a class="db-button db-button--primary" href="{% url 'dashboard:create' section.key %}"><span aria-hidden="true">＋</span> Add new</a>{% endif %}
   </div>
 </header>
 <section class="db-panel">
+  {% if section.key == "income" and can_view_finances %}
+  {% include "dashboard/financial_summary.html" %}
+  {% endif %}
   {% if expense_summary %}
+  <section class="db-financial-summary" aria-label="Expense payment summary">
+    <div class="db-financial-summary__head">
+      <div><h2>Payment summary</h2><p>Total, paid and outstanding amounts are grouped by currency.</p></div>
+    </div>
+    {% for item in expense_summary.payment_totals %}
+    <div class="db-financial-currency">
+      <h3>{{ item.currency }}</h3>
+      <div class="db-financial-currency__metrics">
+        <div><span>Total payments</span><strong>{{ item.total }}</strong></div>
+        <div><span>Paid · {{ item.paid_count }} entries</span><strong>{{ item.paid }}</strong></div>
+        <div class="db-financial-currency__balance"><span>Outstanding · {{ item.pending_count }} entries</span><strong>{{ item.pending }}</strong></div>
+      </div>
+    </div>
+    {% empty %}
+    <p class="db-financial-summary__empty">No expense payments recorded yet.</p>
+    {% endfor %}
+  </section>
   <div class="db-expense-summary" aria-label="Expense summary">
-    <div><span class="db-expense-summary__label">Spent this month</span>
+    <div><span class="db-expense-summary__label">Recorded this month</span>
       <div class="db-expense-summary__totals">{% for item in expense_summary.monthly_totals %}<b>{{ item.currency }} {{ item.total }}</b>{% empty %}<b>No expenses recorded this month</b>{% endfor %}</div>
     </div>
     <div><span class="db-expense-summary__label">Pending payments</span><strong>{{ expense_summary.pending_count }}</strong></div>
@@ -33,7 +54,11 @@
       {% for row in rows %}
         <tr>
           {% for value in row.values %}<td>{% if forloop.first %}<a class="db-table__primary" href="{% url 'dashboard:edit' section.key row.record.pk %}">{{ value|default:"—"|truncatechars:72 }}</a>{% else %}{{ value|default:"—"|truncatechars:72 }}{% endif %}</td>{% endfor %}
-          <td class="db-table__action"><a href="{% url 'dashboard:edit' section.key row.record.pk %}">View / edit <span aria-hidden="true">→</span></a></td>
+          <td class="db-table__action">
+            <a href="{% url 'dashboard:edit' section.key row.record.pk %}">View / edit <span aria-hidden="true">→</span></a>
+            {% if section.key == "income" %}<a href="{% url 'dashboard:income_pdf' row.record.pk %}">PDF</a>{% endif %}
+            {% if section.key == "expenses" %}<a href="{% url 'dashboard:expense_pdf' row.record.pk %}">PDF</a>{% endif %}
+          </td>
         </tr>
       {% empty %}
         <tr><td class="db-empty" colspan="12"><span>Nothing here yet</span><p>{% if search %}Try a different search term.{% else %}Records will appear here when available.{% endif %}</p></td></tr>

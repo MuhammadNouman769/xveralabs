@@ -4,8 +4,13 @@
 {% block content %}
 <header class="db-page-head">
   <div><p class="db-eyebrow">{{ section.title|upper }}</p><h1>{% if record %}Edit record{% else %}Create a record{% endif %}</h1><p>{{ section.description }}</p></div>
-  <a class="db-button db-button--quiet" href="{% url 'dashboard:section' section.key %}">← Back to list</a>
+  <div class="db-page-head__actions">
+    {% if record and section.key == "income" %}<a class="db-button db-button--quiet" href="{% url 'dashboard:income_pdf' record.pk %}">Download PDF</a>{% endif %}
+    {% if record and section.key == "expenses" %}<a class="db-button db-button--quiet" href="{% url 'dashboard:expense_pdf' record.pk %}">Download PDF</a>{% endif %}
+    <a class="db-button db-button--quiet" href="{% url 'dashboard:section' section.key %}">← Back to list</a>
+  </div>
 </header>
+{% if can_view_finances %}{% include "dashboard/financial_summary.html" %}{% endif %}
 {% if record_data %}
 <details class="db-record-details">
   <summary>Submission details <span>Read-only visitor information</span></summary>

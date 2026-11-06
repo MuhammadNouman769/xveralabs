@@ -1,0 +1,19 @@
+<section class="db-financial-summary" aria-label="Company financial summary">
+  <div class="db-financial-summary__head">
+    <div><h2>Financial snapshot</h2><p>Total, paid/received and outstanding amounts are grouped by currency.</p></div>
+  </div>
+  {% for item in financial_summary %}
+  <div class="db-financial-currency">
+    <h3>{{ item.currency }}</h3>
+    <div class="db-financial-currency__metrics">
+      <div><span>Total income · {{ item.income_count }} record{{ item.income_count|pluralize }}</span><strong>{{ item.income_total }}</strong></div>
+      <div><span>Received · {{ item.received_count }} record{{ item.received_count|pluralize }}</span><strong>{{ item.received }}</strong></div>
+      <div><span>Outstanding · {{ item.pending_count }} record{{ item.pending_count|pluralize }}</span><strong>{{ item.pending }}</strong></div>
+      <div><span>Total expenses · {{ item.expense_count }} record{{ item.expense_count|pluralize }}</span><strong>{{ item.expense_total }}</strong></div>
+      <div><span>Paid expenses · {{ item.expense_paid_count }} record{{ item.expense_paid_count|pluralize }}</span><strong>{{ item.expenses }}</strong></div>
+      <div><span>Outstanding expenses · {{ item.expense_pending_count }} record{{ item.expense_pending_count|pluralize }}</span><strong>{{ item.expense_pending }}</strong></div>
+      <div class="db-financial-currency__balance"><span>Available balance</span><strong>{{ item.balance }}</strong></div>
+    </div>
+  </div>
+  {% endfor %}
+</section>
