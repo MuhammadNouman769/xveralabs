@@ -10,6 +10,39 @@
 {% block twitter_description %}Build and scale your business with custom software, AI-powered products, and cloud solutions from Xvera Labs.{% endblock %}
 {% block body_class %}page-home-index{% endblock %}
 
+{% block extra_head %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://{{ request.get_host }}/#organization",
+      "name": "Xvera Labs",
+      "url": "https://{{ request.get_host }}/",
+      "logo": "https://{{ request.get_host }}{% static 'images/logos/xvera.png' %}",
+      "email": "xveralabs@gmail.com",
+      "telephone": "+92 324 8699647",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "297-C, P.I.A. Main Boulevard Road",
+        "addressLocality": "Lahore",
+        "addressCountry": "PK"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://{{ request.get_host }}/#website",
+      "name": "Xvera Labs",
+      "alternateName": ["XveraLabs", "Xvera"],
+      "url": "https://{{ request.get_host }}/",
+      "publisher": { "@id": "https://{{ request.get_host }}/#organization" }
+    }
+  ]
+}
+</script>
+{% endblock %}
+
 {% block page_css %}
 <!-- home-index.css is kept ONLY for the Featured Insights section (btrwho). Everything else is in home-index-2.css -->
 <link rel="stylesheet" href="{% static 'css/pages/home-index.css' %}">
