@@ -1,0 +1,60 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/layout/cookie-banner.css' %}?v=1">
+
+<!-- COOKIE CONSENT. Hidden until the script decides to show it. data-nosnippet keeps this text out of Google search snippets. -->
+<div class="xck" id="xckBanner" role="dialog" aria-modal="false" aria-labelledby="xckTitle" data-nosnippet hidden>
+  <div class="xck__card">
+
+    <!-- VIEW 1: the main choice -->
+    <div class="xck__view" id="xckMain">
+      <div class="xck__copy">
+        <h2 class="xck__title" id="xckTitle" tabindex="-1">Your privacy and cookie preferences</h2>
+        <p class="xck__text">We use essential cookies to keep this website secure and working. With your permission we may also use optional analytics and marketing cookies to understand how the site is used and to improve it. You can accept, reject or customize optional cookies at any time.</p>
+        <p class="xck__text xck__text--small">Learn more in our <a href="{% url 'privacy_policy' %}">Privacy Policy</a>.</p>
+      </div>
+      <div class="xck__actions">
+        <button type="button" class="xck__btn xck__btn--primary" data-xck="accept">Accept All</button>
+        <button type="button" class="xck__btn" data-xck="reject">Reject Optional</button>
+        <button type="button" class="xck__btn" data-xck="customize">Customize Settings</button>
+      </div>
+    </div>
+
+    <!-- VIEW 2: category toggles -->
+    <div class="xck__view" id="xckPrefs" hidden>
+      <div class="xck__copy">
+        <h2 class="xck__title" id="xckPrefsTitle" tabindex="-1">Customize cookie settings</h2>
+        <ul class="xck__list">
+          <li class="xck__row">
+            <div>
+              <strong>Essential</strong>
+              <p>Needed for security, forms and basic site features. Always on.</p>
+            </div>
+            <label class="xck__switch"><input type="checkbox" checked disabled aria-label="Essential cookies, always on"><span class="xck__track" aria-hidden="true"></span></label>
+          </li>
+          <li class="xck__row">
+            <div>
+              <strong>Analytics</strong>
+              <p>Helps us understand which pages are used so we can improve the site.</p>
+            </div>
+            <label class="xck__switch"><input type="checkbox" id="xckAnalytics" aria-label="Analytics cookies"><span class="xck__track" aria-hidden="true"></span></label>
+          </li>
+          <li class="xck__row">
+            <div>
+              <strong>Marketing</strong>
+              <p>Used to measure campaigns and show relevant content on other sites.</p>
+            </div>
+            <label class="xck__switch"><input type="checkbox" id="xckMarketing" aria-label="Marketing cookies"><span class="xck__track" aria-hidden="true"></span></label>
+          </li>
+        </ul>
+      </div>
+      <div class="xck__actions">
+        <button type="button" class="xck__btn xck__btn--primary" data-xck="save">Save Preferences</button>
+        <button type="button" class="xck__btn" data-xck="accept">Accept All</button>
+        <button type="button" class="xck__btn xck__btn--ghost" data-xck="back">Back</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="{% static 'js/layout/cookie-banner-1.js' %}?v=1"></script>

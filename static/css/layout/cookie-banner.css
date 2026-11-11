@@ -1,0 +1,56 @@
+/* Cookie consent banner. Uses the brand variables from base.css, with fallbacks. */
+.xck{position:fixed;left:0;right:0;bottom:0;z-index:100000;display:flex;justify-content:center;padding:0 16px calc(16px + env(safe-area-inset-bottom,0px));pointer-events:none;font-family:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif}
+.xck[hidden]{display:none}
+.xck__card{pointer-events:auto;width:min(980px,100%);max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px);overflow:auto;padding:24px 28px;color:#e9f1f0;background:var(--btrx-ink,#0a2321);border:1px solid rgba(255,255,255,.14);border-radius:16px;box-shadow:0 24px 70px rgba(0,0,0,.45),0 0 0 1px rgba(14,186,177,.12);animation:xckIn .45s cubic-bezier(.22,.61,.36,1) both}
+.xck__view{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:28px;align-items:center}
+.xck__view[hidden]{display:none}
+
+.xck__title{margin:0 0 10px;font:700 19px/1.25 'Bricolage Grotesque','Manrope',system-ui,sans-serif;color:#fff}
+.xck__title:focus{outline:none}
+.xck__text{margin:0 0 8px;font-size:14px;line-height:1.65;color:#c4d3d1}
+.xck__text--small{margin:0;font-size:13px;color:var(--btrx-dim,#9fb4b1)}
+.xck__text a{color:var(--btrx-teal,#0ebab1);text-decoration:underline;text-underline-offset:2px}
+.xck__text a:hover{color:var(--btrx-mint,#7ef6eb)}
+
+.xck__actions{display:flex;flex-direction:column;gap:10px}
+.xck__btn{display:block;width:100%;padding:13px 18px;font:600 15px/1.2 'Manrope',system-ui,sans-serif;color:#fff;text-align:center;background:transparent;border:1.5px solid rgba(255,255,255,.35);border-radius:10px;cursor:pointer;transition:background .2s,border-color .2s,color .2s,transform .2s}
+.xck__btn:hover{border-color:var(--btrx-teal,#0ebab1);background:rgba(14,186,177,.12)}
+.xck__btn:active{transform:translateY(1px)}
+.xck__btn--primary{color:#06201e;background:var(--btrx-teal,#0ebab1);border-color:var(--btrx-teal,#0ebab1)}
+.xck__btn--primary:hover{background:var(--btrx-mint,#7ef6eb);border-color:var(--btrx-mint,#7ef6eb)}
+.xck__btn--ghost{border-color:transparent;color:var(--btrx-dim,#9fb4b1)}
+.xck__btn--ghost:hover{color:#fff;background:rgba(255,255,255,.06);border-color:transparent}
+.xck__btn:focus-visible,.xck__switch input:focus-visible + .xck__track{outline:3px solid var(--btrx-mint,#7ef6eb);outline-offset:3px}
+
+/* Category rows */
+.xck__list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.xck__row{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px}
+.xck__row strong{display:block;margin-bottom:2px;font-size:14px;color:#fff}
+.xck__row p{margin:0;font-size:13px;line-height:1.5;color:var(--btrx-dim,#9fb4b1)}
+
+/* Toggle switch */
+.xck__switch{position:relative;flex:none;display:inline-block;width:46px;height:26px;cursor:pointer}
+.xck__switch input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+.xck__switch input:disabled{cursor:not-allowed}
+.xck__track{position:absolute;inset:0;border-radius:999px;background:rgba(255,255,255,.22);transition:background .2s}
+.xck__track::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform .2s}
+.xck__switch input:checked + .xck__track{background:var(--btrx-teal,#0ebab1)}
+.xck__switch input:checked + .xck__track::after{transform:translateX(20px)}
+.xck__switch input:disabled + .xck__track{opacity:.55}
+
+@keyframes xckIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+
+@media (max-width:760px){
+  .xck{padding:0 10px calc(10px + env(safe-area-inset-bottom,0px))}
+  .xck__card{padding:20px 18px}
+  .xck__view{grid-template-columns:1fr;gap:18px}
+  .xck__title{font-size:17px}
+}
+@media (prefers-reduced-motion:reduce){
+  .xck__card{animation:none}
+  .xck__btn,.xck__track,.xck__track::after{transition:none}
+}
+
+/* "Cookie Settings" link in the footer bottom bar: looks like the other links */
+.xf-bottom button[data-xck-open]{padding:0;font:inherit;font-size:13px;color:var(--dim,#9fb4b1);background:none;border:0;cursor:pointer;text-decoration:none}
+.xf-bottom button[data-xck-open]:hover{color:var(--teal,#0ebab1);text-decoration:underline}
